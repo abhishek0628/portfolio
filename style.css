@@ -28,7 +28,7 @@
  
 
 .body {
-    flex: 1; 
+    flex: 0.95; 
     width: 98%;
     display:flex;
     /* align-items: center; */
@@ -41,3 +41,19 @@
     align-items: center;
     align-content: center;
 } */
+
+.footer {
+    flex: 0 0 3vh; /* fixed header height */
+    width: 98%;
+    display: flex;
+    justify-content: center;   /* center horizontally */
+    align-items: center;
+    gap: 40px;  /* custom space between buttons (change value as you like) */
+    margin-top: 20px;
+    margin: 2px auto;
+    /* border: 2px solid red; */
+}
+a{
+    text-decoration: none;
+    color: brown;
+}

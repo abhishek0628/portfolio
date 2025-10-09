@@ -22,7 +22,7 @@
     /* justify-content: center;  */
     margin: 2px auto; 
     padding:5px;
-    /* border: 2px solid blue;  */
+    border-right: 2px solid black; 
 }
 a{
   text-decoration: none;  
