@@ -1,7 +1,73 @@
-a{
-    text-decoration: none;
-    color:rgb(180, 12, 12)
+.container {
+  width: 100%;
+  min-height: 700px;
+  /* border: 2px solid black; */
+  display: flex;
+  padding: 10px;
+  flex-direction: row; /* left to right */
+  justify-content: space-between;
+  align-items: flex-start; /* top align instead of middle squish */
+  /* background-color: rgb(209, 227, 199); */
 }
 *{
-    background-color: beige;
+    background-color: rgb(209, 227, 199);
+}
+
+.skills,
+.education {
+  width: 50%;
+  min-height: 680px;
+  /* border: 2px solid black; */
+  padding: 10px;
+  display: flex;
+  flex-direction: column; /* stack internal items neatly */
+  justify-content: flex-start;
+  align-items: flex-start;
+  box-sizing: border-box;
+}
+
+/* each skill column */
+.Con,
+.database,
+.tool {
+  width: 95%;
+  border-bottom: 1px solid black;
+  /* margin-bottom: 10px; */
+  padding: 2px;
+  display: flex;
+  flex-direction: column;
+  /* gap: 2px; */
+}
+
+/* link appearance */
+a {
+  text-decoration: none;
+  color: #222;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+a:hover {
+  color: #d9534f;
+}
+
+/* education section tweaks */
+.education ul {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+.education li {
+  margin-bottom: 20px;
+}
+
+.education h3 {
+  margin: 0;
+  font-size: 18px;
+}
+
+.education p {
+  margin: 5px 0 0 0;
+  font-size: 14px;
+  color: #333;
 }
