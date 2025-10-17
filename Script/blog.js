@@ -8,7 +8,8 @@ const pages = {
     ca: "./Courses/ca.html",
     cn: "./Courses/cn.html",
     oops: "./Courses/oops.html",
-    cd: "./Courses/compiler.html"
+    cd: "./Courses/compiler.html",
+    dsa:"./Courses/dsa.html"
 };
 
 // Attach click listeners to all buttons
