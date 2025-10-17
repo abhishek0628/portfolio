@@ -1,7 +1,4 @@
-// const os=document.getElementById("os");
-// os.addEventListener("click",()=>{
-//     window.location.href="OS.html";
-// });
+
 const pages = {
     os: "./Courses/os.html",
     dbms: "./Courses/dbms.html",
@@ -12,12 +9,14 @@ const pages = {
     dsa:"./Courses/dsa.html"
 };
 
-// Attach click listeners to all buttons
-Object.keys(pages).forEach(id => {
-    const btn = document.getElementById(id);
-    if (btn) {
-        btn.addEventListener("click", () => {
-            window.location.href = pages[id];
-        });
-    }
+// Add click listeners to all buttons dynamically
+document.querySelectorAll('.header button').forEach(button => {
+    button.addEventListener('click', () => {
+        const courseId = button.id;
+        if (pages[courseId]) {
+            window.location.href = pages[courseId]; // Navigate to course page
+        } else {
+            alert("Course page not found!");
+        }
+    });
 });
