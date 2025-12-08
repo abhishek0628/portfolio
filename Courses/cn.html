@@ -1,0 +1,4508 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OSI Model</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            border: 1px solid #333;
+            padding: 10px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        caption {
+            font-size: 1.5em;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <table>
+        <caption>OSI Model (Open Systems Interconnection)</caption>
+        <thead>
+            <tr>
+                <th>Layer</th>
+                <th>Number</th>
+                <th>Function / Role</th>
+                <th>Devices / Protocols</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Application Layer</td>
+                <td>7</td>
+                <td>Interface for applications to access network services.</td>
+                <td>HTTP, FTP, SMTP, DNS</td>
+            </tr>
+            <tr>
+                <td>Presentation Layer</td>
+                <td>6</td>
+                <td>Formats data, encryption/decryption, compression.</td>
+                <td>JPEG, MPEG, SSL/TLS</td>
+            </tr>
+            <tr>
+                <td>Session Layer</td>
+                <td>5</td>
+                <td>Manages sessions between applications (start, maintain, terminate).</td>
+                <td>NetBIOS, PPTP</td>
+            </tr>
+            <tr>
+                <td>Transport Layer</td>
+                <td>4</td>
+                <td>Ensures reliable data transfer, error detection, flow control.</td>
+                <td>TCP, UDP</td>
+            </tr>
+            <tr>
+                <td>Network Layer</td>
+                <td>3</td>
+                <td>Determines path for data delivery (routing).</td>
+                <td>IP, ICMP, Routers</td>
+            </tr>
+            <tr>
+                <td>Data Link Layer</td>
+                <td>2</td>
+                <td>Handles error-free delivery over a physical link; frames data.</td>
+                <td>Ethernet, MAC, Switches</td>
+            </tr>
+            <tr>
+                <td>Physical Layer</td>
+                <td>1</td>
+                <td>Transmits raw bits over physical medium.</td>
+                <td>Cables, Hubs, NICs, Wi-Fi signals</td>
+            </tr>
+        </tbody>
+    </table>
+    <table>
+        <caption>TCP/IP Model</caption>
+        <thead>
+            <tr>
+                <th>Layer</th>
+                <th>Function / Role</th>
+                <th>Protocols / Devices</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Application Layer</td>
+                <td>Application + Presentation + Session combined.</td>
+                <td>HTTP, FTP, SMTP, DNS, Telnet</td>
+            </tr>
+            <tr>
+                <td>Transport Layer</td>
+                <td>Reliable or unreliable delivery.</td>
+                <td>TCP (reliable), UDP (unreliable)</td>
+            </tr>
+            <tr>
+                <td>Internet Layer</td>
+                <td>Routing and addressing.</td>
+                <td>IP, ICMP, Routers</td>
+            </tr>
+            <tr>
+                <td>Network Access / Link Layer</td>
+                <td>Physical + Data Link combined.</td>
+                <td>Ethernet, Wi-Fi, Switches, Hubs</td>
+            </tr>
+        </tbody>
+    </table>
+      <h1>Application Layer</h1>
+
+    <h2>1. What is the Application Layer?</h2>
+    <p>
+        The Application Layer provides the interface between the user/application software and the network.
+        It does not mean applications like Word or Excel, but network services used by these applications.
+    </p>
+    <p>It is responsible for network services directly to end-users and interacts with software like web browsers, email clients, or file transfer programs.</p>
+
+    <h2>2. Main Functions of the Application Layer</h2>
+    <ul>
+        <li><strong>Network Virtualization for Applications:</strong> Lets applications send and receive data over a network without worrying about physical connections.</li>
+        <li><strong>Resource Sharing and Communication:</strong> Supports email, file transfer, remote login, messaging, etc.</li>
+        <li><strong>Data Representation / Encoding:</strong> Often works with Presentation Layer tasks like encryption or data format translation in OSI.</li>
+        <li><strong>Identifying Communication Partners:</strong> Uses hostnames, domain names, or IP addresses to locate resources.</li>
+        <li><strong>Protocol Support:</strong> Provides standard protocols for services like web, email, or file transfer.</li>
+    </ul>
+
+    <h2>3. Common Protocols at the Application Layer</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Protocol</th>
+                <th>Purpose</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>HTTP / HTTPS</td>
+                <td>Web browsing</td>
+            </tr>
+            <tr>
+                <td>FTP / SFTP</td>
+                <td>File transfer</td>
+            </tr>
+            <tr>
+                <td>SMTP</td>
+                <td>Sending emails</td>
+            </tr>
+            <tr>
+                <td>POP3 / IMAP</td>
+                <td>Receiving emails</td>
+            </tr>
+            <tr>
+                <td>DNS</td>
+                <td>Translating domain names to IP addresses</td>
+            </tr>
+            <tr>
+                <td>Telnet / SSH</td>
+                <td>Remote login to servers</td>
+            </tr>
+            <tr>
+                <td>SNMP</td>
+                <td>Network management</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h2>4. Example of Application Layer in Action</h2>
+    <p><strong>Scenario:</strong> You open a browser and type <em>www.google.com</em>:</p>
+    <ol>
+        <li>Browser uses HTTP/HTTPS (Application Layer) to request a webpage.</li>
+        <li>Browser passes the request to the Transport Layer (TCP) for reliable delivery.</li>
+        <li>TCP passes it to the Network Layer (IP) to find the route to Google server.</li>
+        <li>Data travels across the Internet and is reversed on Google’s server.</li>
+        <li>The response comes back, and the browser renders the webpage.</li>
+    </ol>
+
+    <h2>1.Main Functions of the Application Layer</h2>
+
+    <ul>
+        <li>
+            <strong>Providing Network Services to Applications:</strong>  
+            Acts as a bridge between user applications and the network.  
+            <div class="example">Example: Web browsers, email clients, and file transfer programs use this layer to communicate over the network.</div>
+        </li>
+
+        <li>
+            <strong>Identifying Communication Partners:</strong>  
+            Determines which device or service on the network you want to communicate with using hostnames, domain names, or IP addresses.  
+            <div class="example">Example: Translating www.google.com to an IP address using DNS.</div>
+        </li>
+
+        <li>
+            <strong>Resource Sharing:</strong>  
+            Enables sharing of files, printers, databases, or other network resources among multiple devices.  
+            <div class="example">Example: Accessing a shared folder on a network drive.</div>
+        </li>
+
+        <li>
+            <strong>Remote Access Services:</strong>  
+            Supports remote login and control of devices or servers.  
+            <div class="example">Example: SSH, Telnet, Remote Desktop.</div>
+        </li>
+
+        <li>
+            <strong>File Transfer, Email, and Messaging:</strong>  
+            Provides standard protocols for sending/receiving data and messages.  
+            <div class="example">Example: FTP for files, SMTP/IMAP for email, HTTP for web content.</div>
+        </li>
+
+        <li>
+            <strong>Data Representation & Encoding Support:</strong>  
+            Ensures that data is in a format that the receiving application can understand, often overlapping with Presentation Layer functions like encryption, compression, or character conversion.
+        </li>
+
+        <li>
+            <strong>Network Transparency for Applications:</strong>  
+            Hides the complexity of the network from applications. Applications do not need to know about routing, IP addresses, or physical data transmission.
+        </li>
+    </ul>
+
+    <h1>HTTP (HyperText Transfer Protocol)</h1>
+
+    <h2>1. What is HTTP?</h2>
+    <p>
+        HTTP is used for communication between a web client (browser) and a web server.  
+        It allows web pages, images, videos, and other resources to be requested and delivered over the Internet.  
+        HTTP works on a <strong>request-response model</strong>.
+    </p>
+
+    <h2>2. How HTTP Works</h2>
+    <ul>
+        <li>
+            <strong>Client Request:</strong> Browser sends an HTTP request to the server, including method, URL, headers, and optionally data (for POST).  
+            <div class="example">Example: You type www.google.com → Browser sends: GET / HTTP/1.1 to www.google.com.</div>
+        </li>
+        <li>
+            <strong>Server Response:</strong> Server processes the request and sends back an HTTP response, including status code, headers, and requested content.  
+            <div class="example">Example: Server responds with HTML page of Google homepage.</div>
+        </li>
+    </ul>
+
+    <h2>3. HTTP Methods</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Method</th>
+                <th>Purpose</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr><td>GET</td><td>Retrieve data from server.</td></tr>
+            <tr><td>POST</td><td>Send data to server (e.g., form submission).</td></tr>
+            <tr><td>PUT</td><td>Update existing data on server.</td></tr>
+            <tr><td>DELETE</td><td>Delete data on server.</td></tr>
+            <tr><td>HEAD</td><td>Get headers only (no body).</td></tr>
+            <tr><td>PATCH</td><td>Partially update data on server.</td></tr>
+        </tbody>
+    </table>
+
+    <h2>4. HTTP Status Codes</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Code</th>
+                <th>Meaning</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr><td>200</td><td>OK – Request succeeded</td></tr>
+            <tr><td>301</td><td>Moved Permanently – Resource moved</td></tr>
+            <tr><td>400</td><td>Bad Request – Client error</td></tr>
+            <tr><td>401</td><td>Unauthorized – Need authentication</td></tr>
+            <tr><td>403</td><td>Forbidden – Access denied</td></tr>
+            <tr><td>404</td><td>Not Found – Resource does not exist</td></tr>
+            <tr><td>500</td><td>Internal Server Error – Server problem</td></tr>
+            <tr><td>503</td><td>Service Unavailable – Server overloaded</td></tr>
+        </tbody>
+    </table>
+
+    <h2>5. HTTP vs HTTPS</h2>
+    <ul>
+        <li><strong>HTTP:</strong> Unencrypted, data sent as plain text → Not secure. Uses port 80.</li>
+        <li><strong>HTTPS:</strong> Encrypted using SSL/TLS → Secure data transmission. Uses port 443.</li>
+    </ul>
+
+    <h2>6. Real-World Example</h2>
+    <p>
+        Open browser → Enter <em>https://example.com</em>  
+        Browser sends HTTPS request → Server processes → Browser displays webpage.  
+        Browser may load additional resources (images, CSS, JS) via separate HTTP requests.
+    </p>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            line-height: 1.6;
+        }
+        h1, h2, h3 {
+            color: #2a5d9f;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 10px 0 20px 0;
+        }
+        th, td {
+            border: 1px solid #333;
+            padding: 8px 12px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        pre {
+            background-color: #f4f4f4;
+            padding: 10px;
+            border-left: 3px solid #2a5d9f;
+            overflow-x: auto;
+        }
+        ul, ol {
+            margin-left: 20px;
+            margin-bottom: 15px;
+        }
+        .note {
+            font-style: italic;
+            color: #555;
+            margin-left: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>HTTP/0.9 – In-Depth Overview</h1>
+
+    <h2>1. Historical Context</h2>
+    <ul>
+        <li><strong>Year Introduced:</strong> 1991</li>
+        <li><strong>Inventor:</strong> Tim Berners-Lee (for first web browser WorldWideWeb, later Nexus)</li>
+        <li><strong>Purpose:</strong> Fetch HTML documents from web servers. Early web pages were simple text and hyperlinks.</li>
+    </ul>
+
+    <h2>2. Design Philosophy</h2>
+    <ul>
+        <li><strong>Minimalism:</strong> Only essential functionality to fetch documents.</li>
+        <li><strong>Simplicity:</strong> No headers, status codes, or metadata.</li>
+        <li><strong>Stateless:</strong> Each request is independent.</li>
+        <li><strong>Single-purpose:</strong> Focused only on GET requests for HTML content.</li>
+    </ul>
+
+    <h2>3. Key Features</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Feature</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr><td>Methods</td><td>Only GET supported</td></tr>
+            <tr><td>Headers</td><td>None (no Content-Type, Content-Length, or metadata)</td></tr>
+            <tr><td>Request Format</td><td>GET /path/to/file (no HTTP version)</td></tr>
+            <tr><td>Response Format</td><td>Only raw HTML content, no headers or status codes</td></tr>
+            <tr><td>Connection</td><td>Single TCP connection per request, closed after response</td></tr>
+            <tr><td>Stateless</td><td>Server does not remember previous requests</td></tr>
+            <tr><td>Content Type</td><td>Assumed HTML by default; no MIME type</td></tr>
+        </tbody>
+    </table>
+
+    <h2>4. HTTP/0.9 Request and Response Example</h2>
+    <pre>
+Request:
+GET /index.html
+
+Response:
+&lt;html&gt;
+  &lt;head&gt;&lt;title&gt;My First Page&lt;/title&gt;&lt;/head&gt;
+  &lt;body&gt;
+    Welcome to my website!
+  &lt;/body&gt;
+&lt;/html&gt;
+    </pre>
+    <div class="note">
+        Key Notes: No HTTP version, no headers, no status code.
+    </div>
+
+    <h2>5. Limitations of HTTP/0.9</h2>
+    <ul>
+        <li>No Metadata / Headers – cannot tell file type or encoding.</li>
+        <li>No Status Codes – cannot distinguish errors.</li>
+        <li>Single TCP Connection per Request – inefficient for multiple resources.</li>
+        <li>Limited to Text/HTML – cannot handle images, videos, or other types.</li>
+        <li>No Security or Encryption – SSL/TLS not supported.</li>
+    </ul>
+
+    <h2>6. Importance of HTTP/0.9</h2>
+    <ul>
+        <li>Foundation of the Web – allowed early browsers to retrieve HTML.</li>
+        <li>Proof of Concept – showed hypertext transfer over TCP/IP.</li>
+        <li>Inspired HTTP/1.0 – led to headers, status codes, and multiple methods.</li>
+    </ul>
+
+    <h2>7. Technical Details</h2>
+    <ul>
+        <li><strong>Transport Layer:</strong> TCP/IP</li>
+        <li><strong>Default Port:</strong> 80</li>
+        <li><strong>Request Line:</strong> GET /file-path (no HTTP version, no headers)</li>
+        <li><strong>Response Format:</strong> Raw HTML content</li>
+        <li><strong>Connection Handling:</strong> Client opens TCP → sends GET → server responds → connection closes</li>
+        <li><strong>Stateless:</strong> Server does not retain information between requests</li>
+    </ul>
+
+    <h2>8. Example Workflow</h2>
+    <ol>
+        <li>Browser requests /index.html.</li>
+        <li>Server sends raw HTML.</li>
+        <li>Browser renders the page.</li>
+        <li>Browser requests /about.html → new TCP connection.</li>
+        <li>Problem: 10 images → 11 separate TCP connections → slow.</li>
+    </ol>
+
+    <h2>9. Key Differences Between HTTP/0.9 and HTTP/1.x</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Feature</th>
+                <th>HTTP/0.9</th>
+                <th>HTTP/1.0 / 1.1</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr><td>Methods</td><td>GET only</td><td>GET, POST, HEAD, PUT, DELETE</td></tr>
+            <tr><td>Headers</td><td>None</td><td>Content-Type, Content-Length, Host, etc.</td></tr>
+            <tr><td>Status Codes</td><td>None</td><td>200, 404, 500, etc.</td></tr>
+            <tr><td>TCP Connections</td><td>One per request</td><td>Persistent connections in 1.1</td></tr>
+            <tr><td>Content Types</td><td>HTML only</td><td>Any MIME type</td></tr>
+            <tr><td>Security</td><td>None</td><td>HTTPS/SSL support later</td></tr>
+        </tbody>
+    </table>
+
+    <h2>10. Key Takeaways</h2>
+    <ul>
+        <li>HTTP/0.9 = simple, minimal, stateless protocol for HTML transfer</li>
+        <li>Designed for early browsers with basic HTML</li>
+        <li>Obsolete now, replaced by HTTP/1.x, HTTP/2, HTTP/3</li>
+        <li>Historically important as foundation of the World Wide Web</li>
+    </ul>
+        <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            line-height: 1.6;
+        }
+        h1, h2 {
+            color: #2a5d9f;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 10px 0 20px 0;
+        }
+        th, td {
+            border: 1px solid #333;
+            padding: 8px 12px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        pre {
+            background-color: #f4f4f4;
+            padding: 10px;
+            border-left: 3px solid #2a5d9f;
+            overflow-x: auto;
+        }
+        ul, ol {
+            margin-left: 20px;
+            margin-bottom: 15px;
+        }
+        .note {
+            font-style: italic;
+            color: #555;
+            margin-left: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>HTTP/1.0 – Detailed Overview</h1>
+
+    <h2>1. Introduction</h2>
+    <ul>
+        <li><strong>Year Introduced:</strong> 1996</li>
+        <li><strong>Purpose:</strong> Overcome limitations of HTTP/0.9 and support complex web applications.</li>
+        <li><strong>Significance:</strong> Introduced HTTP headers, multiple methods, and status codes—the foundation of modern web communication.</li>
+    </ul>
+
+    <h2>2. Key Features of HTTP/1.0</h2>
+
+    <h3>a. Support for Multiple Methods</h3>
+    <table>
+        <thead>
+            <tr>
+                <th>Method</th>
+                <th>Purpose</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr><td>GET</td><td>Retrieve a resource (e.g., web page)</td></tr>
+            <tr><td>POST</td><td>Send data to the server (e.g., form submission)</td></tr>
+            <tr><td>HEAD</td><td>Request headers only, without the body</td></tr>
+        </tbody>
+    </table>
+    <p><strong>Note:</strong> PUT and DELETE were not standardized in 1.0; became common in later versions.</p>
+
+    <h3>b. HTTP Headers</h3>
+    <ul>
+        <li>Introduced request and response headers to provide metadata.</li>
+        <li><strong>Request Headers:</strong> Sent by client (e.g., User-Agent, Accept)</li>
+        <li><strong>Response Headers:</strong> Sent by server (e.g., Content-Type, Content-Length, Date)</li>
+    </ul>
+    <pre>
+Example Request:
+GET /index.html HTTP/1.0
+Host: www.example.com
+User-Agent: Mozilla/5.0
+
+Example Response:
+HTTP/1.0 200 OK
+Date: Thu, 16 Oct 2025 14:00:00 GMT
+Content-Type: text/html
+Content-Length: 1024
+
+&lt;html&gt;
+<head>&lt;title&gt;Example&lt;/title&gt;</head>
+<body>Hello World!</body>
+&lt;/html&gt;
+    </pre>
+
+    <h3>c. Status Codes</h3>
+    <table>
+        <thead>
+            <tr><th>Code</th><th>Meaning</th></tr>
+        </thead>
+        <tbody>
+            <tr><td>200</td><td>OK – Request succeeded</td></tr>
+            <tr><td>301</td><td>Moved Permanently – Resource moved</td></tr>
+            <tr><td>302</td><td>Found (Temporary Redirect)</td></tr>
+            <tr><td>400</td><td>Bad Request – Client sent invalid request</td></tr>
+            <tr><td>401</td><td>Unauthorized – Authentication required</td></tr>
+            <tr><td>403</td><td>Forbidden – Access denied</td></tr>
+            <tr><td>404</td><td>Not Found – Resource does not exist</td></tr>
+            <tr><td>500</td><td>Internal Server Error</td></tr>
+            <tr><td>503</td><td>Service Unavailable</td></tr>
+        </tbody>
+    </table>
+
+    <h3>d. MIME Types</h3>
+    <ul>
+        <li>Supports MIME types in Content-Type header to tell browser how to process content.</li>
+        <li>Examples:</li>
+        <ul>
+            <li>text/html → HTML page</li>
+            <li>image/jpeg → JPEG image</li>
+            <li>application/json → JSON data</li>
+        </ul>
+    </ul>
+
+    <h3>e. Stateless Protocol</h3>
+    <p>Every request is independent; server does not remember previous requests.</p>
+    <div class="note">Example: Logging in on one page does not persist without cookies or sessions.</div>
+
+    <h3>f. TCP Connections</h3>
+    <p>HTTP/1.0 opens a new TCP connection for each request.</p>
+    <div class="note">Example: Web page with 5 images → 6 TCP connections (1 HTML + 5 images)</div>
+
+    <h3>g. Limitations of HTTP/1.0</h3>
+    <ul>
+        <li>No persistent connections (fixed in HTTP/1.1)</li>
+        <li>Inefficient for multiple resources due to multiple TCP connections</li>
+        <li>No host header initially → virtual hosting difficult</li>
+        <li>Statelessness requires workarounds (cookies, hidden fields) for sessions</li>
+    </ul>
+
+    <h2>3. Example of HTTP/1.0 Flow</h2>
+    <pre>
+Request HTML page:
+GET /index.html HTTP/1.0
+Host: www.example.com
+
+Server Response:
+HTTP/1.0 200 OK
+Content-Type: text/html
+Content-Length: 512
+
+&lt;html&gt;
+&lt;body&gt;
+&lt;img src="image.jpg"&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+
+Request Image (new TCP connection):
+GET /image.jpg HTTP/1.0
+Host: www.example.com
+
+Server Response:
+HTTP/1.0 200 OK
+Content-Type: image/jpeg
+Content-Length: 20480
+(binary data)
+    </pre>
+    <div class="note">Observation: Two separate TCP connections, one per resource.</div>
+
+    <h2>4. Advantages of HTTP/1.0</h2>
+    <ul>
+        <li>Introduced headers and status codes → structured communication</li>
+        <li>Supported multiple methods (GET, POST, HEAD)</li>
+        <li>Allowed browsers to understand content type (MIME types)</li>
+    </ul>
+
+    <h2>5. Transition to HTTP/1.1</h2>
+    <ul>
+        <li>Persistent connections fixed connection inefficiency</li>
+        <li>Added more methods (PUT, DELETE, OPTIONS)</li>
+        <li>Introduced caching, host headers, chunked transfers → more efficient</li>
+    </ul>
+
+    <h2>Summary Table – HTTP/0.9 vs HTTP/1.0</h2>
+    <table>
+        <thead>
+            <tr><th>Feature</th><th>HTTP/0.9</th><th>HTTP/1.0</th></tr>
+        </thead>
+        <tbody>
+            <tr><td>Methods</td><td>GET only</td><td>GET, POST, HEAD</td></tr>
+            <tr><td>Headers</td><td>None</td><td>Request & Response Headers</td></tr>
+            <tr><td>Status Codes</td><td>None</td><td>200, 404, 500, etc.</td></tr>
+            <tr><td>TCP Connection</td><td>New per request</td><td>New per request (no persistent connections)</td></tr>
+            <tr><td>MIME Support</td><td>No</td><td>Yes (Content-Type)</td></tr>
+            <tr><td>Efficiency</td><td>Very basic</td><td>More structured but still limited</td></tr>
+        </tbody>
+    </table>
+
+    <h1>HTTP/1.1 – Detailed Overview</h1>
+
+<h2>1. Introduction</h2>
+<ul>
+    <li><strong>Year Introduced:</strong> 1997 (RFC 2068, updated RFC 2616, now RFC 7230-7235)</li>
+    <li><strong>Purpose:</strong> Improve HTTP/1.0 by adding persistent connections, caching, host headers, and additional methods.</li>
+    <li><strong>Port:</strong> 80 (HTTP), 443 (HTTPS)</li>
+    <li><strong>Nature:</strong> Text-based, request-response protocol</li>
+</ul>
+
+<h2>2. Key Features of HTTP/1.1</h2>
+
+<h3>A. Persistent Connections</h3>
+<p>HTTP/1.0: Each request required a new TCP connection → high overhead.</p>
+<p>HTTP/1.1: Default is persistent connection (keep-alive). Multiple requests/responses can be sent over a single TCP connection, reducing latency.</p>
+<pre>
+Header Example:
+Connection: keep-alive
+</pre>
+
+<h3>B. Chunked Transfer Encoding</h3>
+<p>Allows sending data in chunks when the server doesn’t know content length in advance. Useful for dynamic content.</p>
+<pre>
+Example Response:
+HTTP/1.1 200 OK
+Transfer-Encoding: chunked
+
+7
+Mozilla
+9
+Developer
+7
+Network
+0
+</pre>
+
+<h3>C. Host Header</h3>
+<p>Supports multiple domains on a single IP (virtual hosting). Client must send Host header in every request.</p>
+<pre>
+GET /index.html HTTP/1.1
+Host: www.example.com
+</pre>
+
+<h3>D. Additional Methods</h3>
+<table>
+    <thead>
+        <tr><th>Method</th><th>Purpose</th></tr>
+    </thead>
+    <tbody>
+        <tr><td>GET</td><td>Retrieve resource</td></tr>
+        <tr><td>POST</td><td>Submit data to server</td></tr>
+        <tr><td>HEAD</td><td>Retrieve headers only</td></tr>
+        <tr><td>PUT</td><td>Update existing resource</td></tr>
+        <tr><td>DELETE</td><td>Remove resource</td></tr>
+        <tr><td>OPTIONS</td><td>Check available methods for a resource</td></tr>
+        <tr><td>TRACE</td><td>Echo request for testing</td></tr>
+        <tr><td>CONNECT</td><td>Tunnel through a proxy</td></tr>
+    </tbody>
+</table>
+
+<h3>E. HTTP Headers</h3>
+<p><strong>Request Headers:</strong> Provide info about the request or client.</p>
+<ul>
+    <li>User-Agent → identifies client browser</li>
+    <li>Accept → content types the client can handle</li>
+    <li>Host → domain of the server</li>
+    <li>Cookie → client-side stored data</li>
+</ul>
+<p><strong>Response Headers:</strong> Provide info about the server or response.</p>
+<ul>
+    <li>Content-Type → type of resource (text/html, image/png)</li>
+    <li>Content-Length → size of resource</li>
+    <li>Cache-Control → caching instructions</li>
+    <li>Set-Cookie → store cookies in client</li>
+</ul>
+
+<h3>F. Status Codes</h3>
+<table>
+    <thead>
+        <tr><th>Code</th><th>Meaning</th></tr>
+    </thead>
+    <tbody>
+        <tr><td>100</td><td>Continue</td></tr>
+        <tr><td>200</td><td>OK</td></tr>
+        <tr><td>201</td><td>Created</td></tr>
+        <tr><td>204</td><td>No Content</td></tr>
+        <tr><td>301</td><td>Moved Permanently</td></tr>
+        <tr><td>302</td><td>Found (Temporary Redirect)</td></tr>
+        <tr><td>304</td><td>Not Modified</td></tr>
+        <tr><td>400</td><td>Bad Request</td></tr>
+        <tr><td>401</td><td>Unauthorized</td></tr>
+        <tr><td>403</td><td>Forbidden</td></tr>
+        <tr><td>404</td><td>Not Found</td></tr>
+        <tr><td>500</td><td>Internal Server Error</td></tr>
+        <tr><td>503</td><td>Service Unavailable</td></tr>
+    </tbody>
+</table>
+
+<h3>G. Caching Support</h3>
+<ul>
+    <li>Expires: Absolute expiry time.</li>
+    <li>Cache-Control: Detailed caching directives (no-cache, max-age=3600).</li>
+    <li>ETag: Entity tag to validate cached content.</li>
+    <li>If-Modified-Since / If-None-Match: Conditional requests to reduce bandwidth.</li>
+</ul>
+
+<h3>H. Content Negotiation</h3>
+<p>Server can provide different versions of content based on client preferences:</p>
+<ul>
+    <li>Language (Accept-Language)</li>
+    <li>Format (Accept)</li>
+    <li>Encoding (Accept-Encoding)</li>
+</ul>
+
+<h3>I. Pipelining (Optional)</h3>
+<p>Allows sending multiple requests without waiting for each response. Not widely used due to head-of-line blocking.</p>
+
+<h2>3. HTTP/1.1 Request-Response Example</h2>
+<pre>
+Request:
+GET /index.html HTTP/1.1
+Host: www.example.com
+User-Agent: Mozilla/5.0
+Accept: text/html
+Connection: keep-alive
+
+Response:
+HTTP/1.1 200 OK
+Date: Wed, 16 Oct 2025 16:00:00 GMT
+Server: Apache/2.4.41 (Unix)
+Content-Type: text/html
+Content-Length: 1256
+Connection: keep-alive
+
+<html>
+<head><title>Example Page</title></head>
+<body>Hello HTTP/1.1!</body>
+</html>
+</pre>
+
+<h2>4. Advantages over HTTP/1.0</h2>
+<ul>
+    <li>Persistent connections → fewer TCP connections</li>
+    <li>Host header → multiple websites on same IP</li>
+    <li>Chunked transfer → send dynamic content efficiently</li>
+    <li>Expanded methods → more flexible web interactions</li>
+    <li>Better caching → reduced bandwidth and faster load times</li>
+</ul>
+
+<h2>5. Limitations</h2>
+<ul>
+    <li>Text-based → headers repeated in each request (inefficient)</li>
+    <li>Head-of-line blocking → requests processed sequentially per connection</li>
+    <li>No multiplexing → solved in HTTP/2</li>
+</ul>
+<h1>HTTP/2 – Detailed Overview</h1>
+
+<h2>1. Introduction</h2>
+<ul>
+    <li><strong>Standardized:</strong> 2015 by the IETF (RFC 7540)</li>
+    <li><strong>Goal:</strong> Improve web performance by reducing latency and optimizing data transfer between client and server.</li>
+    <li><strong>Backward Compatibility:</strong> Fully compatible with HTTP/1.1 – existing applications work without modification.</li>
+</ul>
+
+<h2>2. Key Goals of HTTP/2</h2>
+<ul>
+    <li>Reduce latency – Deliver web pages faster.</li>
+    <li>Minimize overhead – Reduce repetitive headers and connection delays.</li>
+    <li>Enable multiplexing – Send multiple requests simultaneously over a single connection.</li>
+    <li>Improve security – Typically used with HTTPS (TLS), though can technically work without encryption.</li>
+</ul>
+
+<h2>3. Major Features of HTTP/2</h2>
+
+<h3>A. Binary Protocol</h3>
+<p>HTTP/2 is binary, unlike HTTP/1.x which is text-based.</p>
+<ul>
+    <li>Easier for computers to parse</li>
+    <li>Reduces errors and improves performance</li>
+    <li>Data is sent as frames rather than plain text</li>
+</ul>
+
+<h3>B. Multiplexing</h3>
+<p>Multiple requests and responses can be sent simultaneously over a single TCP connection, eliminating head-of-line blocking at the HTTP layer.</p>
+<p><strong>Example:</strong> Loading a page with multiple images, CSS, JS files – all requests are sent in parallel over one connection.</p>
+
+<h3>C. Header Compression (HPACK)</h3>
+<p>HTTP/2 compresses headers to reduce data sent over the network.</p>
+<ul>
+    <li>Cookies and repeated headers are compressed and reused.</li>
+</ul>
+
+<h3>D. Server Push</h3>
+<p>The server can proactively send resources before the client requests them, reducing round-trip time.</p>
+<p><strong>Example:</strong> Client requests <code>index.html</code>; server pushes <code>style.css</code> and <code>script.js</code> immediately.</p>
+
+<h3>E. Stream Prioritization</h3>
+<p>Clients can prioritize important resources, e.g., main HTML content loads first, then images and ads.</p>
+
+<h3>F. Persistent Connections</h3>
+<p>Like HTTP/1.1, TCP connections remain alive. Multiplexing allows multiple resources to share the same connection efficiently.</p>
+
+<h2>4. How HTTP/2 Works</h2>
+<ol>
+    <li>Client and server negotiate HTTP/2 via ALPN (Application-Layer Protocol Negotiation) during TLS handshake.</li>
+    <li>HTTP/2 establishes a single TCP connection.</li>
+    <li>All data is split into binary frames tagged with a stream ID.</li>
+    <li>Multiplexing and header compression occur.</li>
+    <li>Server may push additional resources if needed.</li>
+</ol>
+
+<h2>5. Advantages of HTTP/2</h2>
+<table>
+    <thead>
+        <tr><th>Advantage</th><th>Explanation</th></tr>
+    </thead>
+    <tbody>
+        <tr><td>Faster Web Pages</td><td>Multiplexing reduces waiting time for multiple requests.</td></tr>
+        <tr><td>Lower Latency</td><td>Header compression and server push reduce overhead.</td></tr>
+        <tr><td>Better Use of Single Connection</td><td>Fewer TCP connections needed → efficient use of network resources.</td></tr>
+        <tr><td>Backward Compatible</td><td>Works with existing HTTP/1.1 applications.</td></tr>
+        <tr><td>Improved Security</td><td>Usually paired with HTTPS, enhancing data confidentiality and integrity.</td></tr>
+    </tbody>
+</table>
+
+<h2>6. Limitations</h2>
+<ul>
+    <li>Relies on TCP, so packet loss affects all streams (head-of-line blocking at TCP level).</li>
+    <li>Server push must be carefully used to avoid wasting bandwidth.</li>
+    <li>More complex than HTTP/1.x (binary framing, HPACK compression).</li>
+</ul>
+
+<h2>7. Ports</h2>
+<ul>
+    <li>HTTP/2 over TLS: Port 443 (HTTPS) – most common.</li>
+    <li>HTTP/2 without TLS: Port 80 (rare, not recommended).</li>
+</ul>
+
+<h2>8. Real-World Example</h2>
+<p>Browser requests <code>https://example.com/index.html</code>. Server responds with <code>index.html</code>. HTTP/2 server pushes <code>style.css</code> and <code>script.js</code> automatically. Browser renders page faster because multiple resources were delivered in parallel.</p>
+
+<h2>9. Comparison with HTTP/1.1</h2>
+<table>
+    <thead>
+        <tr><th>Feature</th><th>HTTP/1.1</th><th>HTTP/2</th></tr>
+    </thead>
+    <tbody>
+        <tr><td>Protocol Type</td><td>Text</td><td>Binary</td></tr>
+        <tr><td>Multiplexing</td><td>No</td><td>Yes</td></tr>
+        <tr><td>Header Compression</td><td>No</td><td>HPACK</td></tr>
+        <tr><td>Server Push</td><td>No</td><td>Yes</td></tr>
+        <tr><td>Connection</td><td>One request per connection (persistent optional)</td><td>Single connection for multiple requests</td></tr>
+        <tr><td>Performance</td><td>Slower with many resources</td><td>Faster, efficient, low latency</td></tr>
+    </tbody>
+</table>
+<h1>HTTP/3 – The Complete Deep Dive</h1>
+
+<h2>1. Introduction to HTTP/3</h2>
+<ul>
+    <li><strong>Full Name:</strong> HyperText Transfer Protocol version 3</li>
+    <li><strong>Standardized By:</strong> IETF in 2020</li>
+    <li><strong>Underlying Protocol:</strong> QUIC (Quick UDP Internet Connections)</li>
+    <li><strong>Purpose:</strong> Designed for low latency, high reliability, multiplexing, and encryption, addressing limitations of HTTP/2 over TCP.</li>
+</ul>
+
+<h2>2. Why HTTP/3 Was Needed</h2>
+<ul>
+    <li><strong>Head-of-Line (HOL) Blocking in TCP:</strong> Packet loss blocks all streams in HTTP/2.</li>
+    <li><strong>Slow Connection Establishment:</strong> TCP + TLS handshakes increase latency.</li>
+    <li><strong>Network Changes Break Connections:</strong> Switching networks breaks HTTP/2 connections.</li>
+    <li><strong>Inefficient Recovery from Packet Loss:</strong> TCP retransmits lost packets for all streams → reduces throughput.</li>
+</ul>
+<p>HTTP/3 solves these issues by moving from TCP to QUIC (over UDP).</p>
+
+<h2>3. QUIC Protocol – The Foundation of HTTP/3</h2>
+<p>HTTP/3 is implemented on QUIC, which combines transport and security layers.</p>
+<table>
+    <thead>
+        <tr><th>Feature</th><th>Description</th></tr>
+    </thead>
+    <tbody>
+        <tr><td>Based on UDP</td><td>Uses UDP to bypass TCP limitations.</td></tr>
+        <tr><td>Multiplexed Streams</td><td>Multiple independent streams per connection; lost packets affect only that stream.</td></tr>
+        <tr><td>0-RTT / 1-RTT Handshake</td><td>Reduces latency by allowing returning clients to send data immediately.</td></tr>
+        <tr><td>Integrated TLS 1.3</td><td>Encryption is mandatory and built into the protocol.</td></tr>
+        <tr><td>Connection Migration</td><td>Connection continues even if the client IP changes.</td></tr>
+        <tr><td>Forward Error Correction (FEC)</td><td>Optional; reduces retransmissions in high-loss networks.</td></tr>
+    </tbody>
+</table>
+
+<p><strong>Architecture:</strong></p>
+<pre>
++------------------+  <-- HTTP Layer
+|  HTTP/3 Streams  |
++------------------+
+|    QUIC Layer    |  <-- Transport + Security
++------------------+
+|    UDP Layer     |  <-- Internet Layer
++------------------+
+| Network / IP     |
++------------------+
+</pre>
+
+<h2>4. HTTP/3 Features in Detail</h2>
+
+<h3>4.1 Multiplexing Without Head-of-Line Blocking</h3>
+<p>Each stream in QUIC is independent. Packet loss in one stream does not block others.</p>
+
+<h3>4.2 0-RTT Connection Setup</h3>
+<p>Returning clients can resume previous sessions. Browser sends data immediately without waiting for handshake.</p>
+
+<h3>4.3 Built-in Encryption (TLS 1.3)</h3>
+<p>All communication is secure and private; no separate TLS handshake over TCP is needed.</p>
+
+<h3>4.4 Connection Migration</h3>
+<p>QUIC uses connection IDs rather than IP addresses. Changing IP (Wi-Fi → mobile) does not drop the connection.</p>
+
+<h3>4.5 Stream Prioritization & Flow Control</h3>
+<p>HTTP/3 allows prioritizing streams to load important resources first. Flow control prevents a single stream from monopolizing bandwidth.</p>
+
+<h3>4.6 Reduced Latency</h3>
+<ul>
+    <li>Fewer handshakes</li>
+    <li>0-RTT resumption</li>
+    <li>Multiplexed streams</li>
+    <li>Particularly beneficial for mobile networks with high packet loss or jitter</li>
+</ul>
+
+<h2>5. HTTP/3 Request-Response Workflow</h2>
+<ol>
+    <li>Client initiates QUIC connection (0-RTT if resuming) and sends HTTP/3 request over a QUIC stream.</li>
+    <li>Server responds over independent streams; multiple resources are delivered simultaneously.</li>
+    <li>QUIC connection persists; streams can be added dynamically without opening new connections.</li>
+</ol>
+
+<p><strong>Diagram:</strong></p>
+<pre>
+Client Browser
+   | HTTP/3 Request (QUIC Stream 1)
+   |------------------------------>|
+   | HTTP/3 Request (QUIC Stream 2)
+   |------------------------------>|
+Server
+   | Response Stream 1 (HTML)
+   |<------------------------------|
+   | Response Stream 2 (CSS, JS)
+   |<------------------------------|
+</pre>
+
+<h2>6. Comparison with HTTP/1.1 and HTTP/2</h2>
+<table>
+    <thead>
+        <tr><th>Feature</th><th>HTTP/1.1</th><th>HTTP/2</th><th>HTTP/3</th></tr>
+    </thead>
+    <tbody>
+        <tr><td>Transport</td><td>TCP</td><td>TCP</td><td>QUIC (UDP)</td></tr>
+        <tr><td>Encryption</td><td>Optional</td><td>Optional</td><td>Mandatory (TLS 1.3)</td></tr>
+        <tr><td>Multiplexing</td><td>No</td><td>Yes (TCP)</td><td>Yes (QUIC, independent streams)</td></tr>
+        <tr><td>Head-of-Line Blocking</td><td>Yes</td><td>Yes (TCP-level)</td><td>No</td></tr>
+        <tr><td>Connection Migration</td><td>No</td><td>No</td><td>Yes</td></tr>
+        <tr><td>Latency</td><td>High</td><td>Medium</td><td>Low</td></tr>
+        <tr><td>Stream Prioritization</td><td>No</td><td>Yes</td><td>Yes</td></tr>
+    </tbody>
+</table>
+
+<h2>7. Advantages of HTTP/3</h2>
+<ul>
+    <li>Faster page load times, especially on mobile or unreliable networks.</li>
+    <li>No head-of-line blocking; lost packets affect only one stream.</li>
+    <li>Always encrypted → better security and privacy.</li>
+    <li>Connection migration → seamless network switching.</li>
+    <li>Efficient multiplexing → reduces overhead and improves throughput.</li>
+    <li>0-RTT → faster reconnections.</li>
+    <li>Better support for real-time applications (video, gaming, streaming).</li>
+</ul>
+
+<h2>8. Challenges of HTTP/3</h2>
+<ul>
+    <li>Firewall and NAT compatibility: Some networks block or throttle UDP traffic.</li>
+    <li>Server adoption: Older servers and load balancers may not fully support QUIC.</li>
+    <li>Complexity: QUIC is more complex than TCP, requiring sophisticated implementation.</li>
+    <li>Debugging tools: Harder to inspect and troubleshoot due to encryption and multiplexing.</li>
+</ul>
+
+<h2>9. Real-World Use Cases</h2>
+<ul>
+    <li>Video Streaming: YouTube, Netflix → smoother streaming with HTTP/3.</li>
+    <li>Gaming: Cloud gaming services like Stadia → low-latency input and streaming.</li>
+    <li>Mobile Browsing: Faster page loads on cellular networks.</li>
+    <li>Enterprise Applications: SaaS apps with multiple resources benefit from multiplexing and low latency.</li>
+</ul>
+
+<h2>10. Key Takeaways</h2>
+<ul>
+    <li>HTTP/3 is designed for speed, reliability, and security.</li>
+    <li>It replaces TCP with QUIC to solve latency and packet loss issues.</li>
+    <li>All communication is encrypted by default.</li>
+    <li>HTTP/3 improves mobile performance, real-time applications, and high-traffic websites.</li>
+</ul>
+<h1>Browser & Network Protocols Overview</h1>
+
+<h2>1. HTTP / HTTPS</h2>
+<ul>
+    <li><strong>Full Form:</strong> HyperText Transfer Protocol / Secure HTTP</li>
+    <li><strong>Layer:</strong> Application Layer</li>
+    <li><strong>Purpose:</strong> Access websites, web pages, and resources</li>
+    <li><strong>Ports:</strong> HTTP → 80, HTTPS → 443</li>
+    <li><strong>Features:</strong> HTTP/1.1, HTTP/2, HTTP/3; HTTPS uses TLS/SSL for encryption</li>
+    <li><strong>Example:</strong> <a href="https://www.google.com">https://www.google.com</a></li>
+</ul>
+
+<h2>2. FTP / SFTP</h2>
+<ul>
+    <li><strong>Full Form:</strong> File Transfer Protocol / Secure File Transfer Protocol</li>
+    <li><strong>Layer:</strong> Application Layer</li>
+    <li><strong>Purpose:</strong> Download/upload files from/to servers</li>
+    <li><strong>Ports:</strong> FTP → 21, SFTP → 22</li>
+    <li><strong>Example:</strong> Uploading website files to a hosting server</li>
+</ul>
+
+<h2>3. DNS (Domain Name System)</h2>
+<ul>
+    <li><strong>Layer:</strong> Application Layer</li>
+    <li><strong>Purpose:</strong> Converts domain names to IP addresses</li>
+    <li><strong>Ports:</strong> 53 (UDP for queries, TCP for zone transfers)</li>
+    <li><strong>Example:</strong> www.youtube.com → 142.250.190.78</li>
+</ul>
+
+<h2>4. WebSocket</h2>
+<ul>
+    <li><strong>Layer:</strong> Application Layer</li>
+    <li><strong>Purpose:</strong> Full-duplex communication between client and server in real-time</li>
+    <li><strong>Ports:</strong> 80 (ws), 443 (wss - secure)</li>
+    <li><strong>Example:</strong> Chat applications, live notifications, online gaming</li>
+</ul>
+
+<h2>5. QUIC</h2>
+<ul>
+    <li><strong>Layer:</strong> Transport Layer (UDP-based)</li>
+    <li><strong>Purpose:</strong> Underlying transport protocol for HTTP/3</li>
+    <li><strong>Ports:</strong> 443 (used with HTTP/3)</li>
+    <li><strong>Example:</strong> Faster, multiplexed, encrypted connections for modern web pages</li>
+</ul>
+
+<h2>6. TLS / SSL</h2>
+<ul>
+    <li><strong>Full Form:</strong> Transport Layer Security / Secure Sockets Layer</li>
+    <li><strong>Layer:</strong> Presentation / Security Layer</li>
+    <li><strong>Purpose:</strong> Encrypts communication between browser and server</li>
+    <li><strong>Ports:</strong> Typically piggybacks on HTTPS → 443</li>
+    <li><strong>Example:</strong> HTTPS websites, banking apps, e-commerce</li>
+</ul>
+
+<h2>7. SMTP / IMAP / POP3 (Mail Protocols)</h2>
+<ul>
+    <li><strong>Layer:</strong> Application Layer</li>
+    <li><strong>Purpose:</strong> Sending/receiving emails from browser-based email clients</li>
+    <li><strong>Ports:</strong> 
+        <ul>
+            <li>SMTP → 25 / 587 / 465</li>
+            <li>IMAP → 143 / 993 (secure)</li>
+            <li>POP3 → 110 / 995 (secure)</li>
+        </ul>
+    </li>
+    <li><strong>Example:</strong> Gmail, Outlook webmail</li>
+</ul>
+
+<h2>8. WebRTC (Web Real-Time Communication)</h2>
+<ul>
+    <li><strong>Layer:</strong> Application Layer</li>
+    <li><strong>Purpose:</strong> Real-time audio, video, and data sharing directly between browsers</li>
+    <li><strong>Ports:</strong> Uses UDP (via ICE/STUN/TURN)</li>
+    <li><strong>Example:</strong> Video calls (Google Meet, Zoom web), P2P file transfer</li>
+</ul>
+
+<h2>9. MQTT / AMQP (IoT / Messaging Protocols)</h2>
+<ul>
+    <li><strong>Layer:</strong> Application Layer</li>
+    <li><strong>Purpose:</strong> Lightweight messaging protocol for IoT or web apps</li>
+    <li><strong>Ports:</strong> MQTT → 1883, 8883 (secure)</li>
+    <li><strong>Example:</strong> Web-based dashboards showing live sensor data</li>
+</ul>
+
+<h2>10. SIP (Session Initiation Protocol)</h2>
+<ul>
+    <li><strong>Layer:</strong> Application Layer</li>
+    <li><strong>Purpose:</strong> Establish, manage, and terminate real-time communication sessions</li>
+    <li><strong>Ports:</strong> 5060 (UDP/TCP), 5061 (TLS)</li>
+    <li><strong>Example:</strong> Web-based VoIP calls</li>
+</ul>
+
+<h2>11. NTP (Network Time Protocol)</h2>
+<ul>
+    <li><strong>Layer:</strong> Application Layer</li>
+    <li><strong>Purpose:</strong> Syncs browser/device clock with server time</li>
+    <li><strong>Ports:</strong> 123 (UDP)</li>
+    <li><strong>Example:</strong> Security certificates, online transactions, timestamping</li>
+</ul>
+
+<h2>12. ICMP / Ping (Indirectly Used by Browsers)</h2>
+<ul>
+    <li><strong>Layer:</strong> Network Layer</li>
+    <li><strong>Purpose:</strong> Browser doesn’t directly use ICMP, but network diagnostics (ping/traceroute) rely on it</li>
+    <li><strong>Example:</strong> Detecting network reachability for AJAX calls or APIs</li>
+</ul>
+
+<h2>13. Other Protocols</h2>
+<ul>
+    <li>WebDAV: File editing/management over HTTP</li>
+    <li>SPDY: Predecessor to HTTP/2 (obsolete)</li>
+    <li>CoAP (Constrained Application Protocol): Lightweight protocol for IoT via browsers</li>
+</ul>
+
+<h2>Summary Table: Browser Protocols</h2>
+<table border="1" cellspacing="0" cellpadding="5">
+    <thead>
+        <tr>
+            <th>Protocol</th>
+            <th>Layer</th>
+            <th>Purpose</th>
+            <th>Ports</th>
+            <th>Example</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr><td>HTTP / HTTPS</td><td>Application</td><td>Web pages</td><td>80 / 443</td><td>www.google.com</td></tr>
+        <tr><td>FTP / SFTP</td><td>Application</td><td>File transfer</td><td>21 / 22</td><td>Upload files to server</td></tr>
+        <tr><td>DNS</td><td>Application</td><td>Resolve domain → IP</td><td>53</td><td>www.youtube.com</td></tr>
+        <tr><td>WebSocket</td><td>Application</td><td>Real-time two-way communication</td><td>80 / 443</td><td>Chat apps</td></tr>
+        <tr><td>QUIC</td><td>Transport</td><td>HTTP/3 transport</td><td>443</td><td>Fast web pages</td></tr>
+        <tr><td>TLS / SSL</td><td>Security</td><td>Encryption</td><td>443</td><td>HTTPS</td></tr>
+        <tr><td>SMTP / IMAP / POP3</td><td>Application</td><td>Email</td><td>25 / 587 / 465 / 143 / 993 / 110 / 995</td><td>Gmail</td></tr>
+        <tr><td>WebRTC</td><td>Application</td><td>Real-time media</td><td>UDP</td><td>Video calls</td></tr>
+        <tr><td>MQTT / AMQP</td><td>Application</td><td>IoT messaging</td><td>1883 / 8883</td><td>Live dashboards</td></tr>
+        <tr><td>SIP</td><td>Application</td><td>VoIP signaling</td><td>5060 / 5061</td><td>Web VoIP calls</td></tr>
+        <tr><td>NTP</td><td>Application</td><td>Time sync</td><td>123</td><td>Certificates, timestamps</td></tr>
+    </tbody>
+</table>
+<h1>Transport Layer Overview</h1>
+
+  <h2>1. What is the Transport Layer?</h2>
+  <ul>
+    <li>Provides <strong>reliable or unreliable communication</strong> between processes on different hosts.</li>
+    <li>Acts as a bridge between the <strong>Application Layer</strong> and <strong>Network Layer</strong>.</li>
+    <li>Uses <strong>ports</strong> to differentiate applications on the same host.</li>
+    <li><strong>Key Idea:</strong> While the Network Layer delivers packets host-to-host, the Transport Layer ensures <strong>process-to-process delivery</strong>.</li>
+  </ul>
+
+  <h2>2. Main Functions of the Transport Layer</h2>
+  <h3>a) Segmentation & Reassembly</h3>
+  <p>Breaks large messages into smaller <strong>segments</strong> for transmission and reassembles them at the receiver.</p>
+
+  <h3>b) Connection Establishment & Termination</h3>
+  <p>Manages TCP connections using a <strong>3-way handshake</strong> and ensures reliable connection setup and teardown.</p>
+
+  <h3>c) Flow Control</h3>
+  <p>Prevents fast sender from overwhelming slow receiver. Example: <strong>TCP sliding window</strong>.</p>
+
+  <h3>d) Error Detection & Recovery</h3>
+  <p>Uses checksums to detect errors and retransmits lost or corrupted segments (TCP).</p>
+
+  <h3>e) Multiplexing & Demultiplexing</h3>
+  <p>Uses port numbers to deliver data to the correct application. Example: Web browser (port 80) vs Email client (port 25).</p>
+
+  <h3>f) Reliability</h3>
+  <p>TCP provides reliable, ordered delivery; UDP provides unreliable, best-effort delivery.</p>
+
+  <h2>3. Transport Layer Protocols</h2>
+  <table>
+    <tr>
+      <th>Protocol</th>
+      <th>Type</th>
+      <th>Features</th>
+      <th>Port Example</th>
+    </tr>
+    <tr>
+      <td>TCP</td>
+      <td>Connection-oriented</td>
+      <td>Reliable, ordered, error-checked, flow control</td>
+      <td>HTTP: 80, HTTPS: 443</td>
+    </tr>
+    <tr>
+      <td>UDP</td>
+      <td>Connectionless</td>
+      <td>Fast, minimal overhead, no reliability</td>
+      <td>DNS: 53, DHCP: 67/68</td>
+    </tr>
+    <tr>
+      <td>SCTP</td>
+      <td>Connection-oriented</td>
+      <td>Multi-stream, reliable, supports message boundaries</td>
+      <td>VoIP, telecom</td>
+    </tr>
+    <tr>
+      <td>DCCP</td>
+      <td>Connection-oriented</td>
+      <td>Reliable delivery with congestion control, for streaming</td>
+      <td>Multimedia streaming</td>
+    </tr>
+  </table>
+
+  <h2>4. TCP vs UDP</h2>
+  <table>
+    <tr>
+      <th>Feature</th>
+      <th>TCP</th>
+      <th>UDP</th>
+    </tr>
+    <tr>
+      <td>Connection</td>
+      <td>Connection-oriented</td>
+      <td>Connectionless</td>
+    </tr>
+    <tr>
+      <td>Reliability</td>
+      <td>Yes, retransmission on loss</td>
+      <td>No, best-effort</td>
+    </tr>
+    <tr>
+      <td>Flow Control</td>
+      <td>Yes (sliding window)</td>
+      <td>No</td>
+    </tr>
+    <tr>
+      <td>Ordering</td>
+      <td>Guarantees order</td>
+      <td>No guarantee</td>
+    </tr>
+    <tr>
+      <td>Header Size</td>
+      <td>20–60 bytes</td>
+      <td>8 bytes</td>
+    </tr>
+    <tr>
+      <td>Use Case</td>
+      <td>Web, Email, File Transfer</td>
+      <td>DNS, Video streaming, VoIP</td>
+    </tr>
+  </table>
+
+  <h2>5. TCP Connection Establishment (3-Way Handshake)</h2>
+  <pre><code>SYN: Client → Server (Request connection)
+SYN-ACK: Server → Client (Acknowledges SYN)
+ACK: Client → Server (Acknowledges SYN-ACK, connection established)
+
+Termination: Usually 4-way handshake with FIN and ACK messages.</code></pre>
+
+  <h2>6. Flow Control (TCP Sliding Window)</h2>
+  <ul>
+    <li>Ensures sender does not overwhelm receiver.</li>
+    <li>Receiver advertises a <strong>window size</strong> (how much data it can accept).</li>
+    <li>Sender sends only that much data at a time.</li>
+  </ul>
+
+  <h2>7. Multiplexing & Demultiplexing</h2>
+  <ul>
+    <li><strong>Multiplexing:</strong> Multiple applications share the same network connection.</li>
+    <li><strong>Demultiplexing:</strong> Uses port numbers to deliver data to the correct application.</li>
+    <li>Example: HTTP (80) & SMTP (25) both use TCP → Transport layer delivers segments based on <strong>destination port</strong>.</li>
+  </ul>
+
+  <h2>8. Error Detection & Reliability</h2>
+  <ul>
+    <li><strong>Checksum:</strong> Detects errors in transmitted segments.</li>
+    <li><strong>Acknowledgment (ACK):</strong> Confirms receipt of data.</li>
+    <li><strong>Retransmission:</strong> Lost/corrupted segments are resent.</li>
+    <li><strong>Sequence Numbers:</strong> Ensure data arrives in order.</li>
+  </ul>
+
+  <h2>9. Real-World Example</h2>
+  <pre><code>1. Open https://www.google.com in a browser.
+2. HTTP request sent from Application Layer → Transport Layer (TCP).
+3. TCP breaks data into segments, adds sequence numbers, sends to Network Layer (IP).
+4. Server reassembles segments and responds with HTTP response.</code></pre>
+
+
+  <h1>Transmission Control Protocol (TCP) – Full Depth</h1>
+
+  <h2>1. Introduction</h2>
+  <ul>
+    <li>Full Name: <strong>Transmission Control Protocol</strong></li>
+    <li>Layer: <strong>Transport Layer (Layer 4, OSI model)</strong></li>
+    <li>Type: Connection-oriented, reliable, full-duplex protocol</li>
+    <li>Purpose: Ensures process-to-process delivery of data between hosts on a network.</li>
+    <li>Key Idea: TCP is like a reliable virtual pipe between two applications.</li>
+  </ul>
+
+  <h2>2. Features of TCP</h2>
+  <ul>
+    <li>Connection-Oriented: 3-way handshake before data transfer.</li>
+    <li>Reliable: Guarantees delivery using acknowledgments and retransmissions.</li>
+    <li>Ordered: Bytes arrive in the same order as sent.</li>
+    <li>Full-Duplex: Both sender and receiver can transmit simultaneously.</li>
+    <li>Flow Control: Sliding window prevents overwhelming receiver.</li>
+    <li>Congestion Control: Slow start, congestion avoidance, fast retransmit/recovery.</li>
+    <li>Error Detection: Uses checksum to detect corrupted segments.</li>
+    <li>Multiplexing/Demultiplexing: Uses ports to deliver data to correct applications.</li>
+    <li>Variable Segment Size: Supports Maximum Segment Size (MSS).</li>
+  </ul>
+
+  <h2>3. TCP Segment Structure</h2>
+  <p>Header (minimum 20 bytes) + Data</p>
+  <table>
+    <tr>
+      <th>Field</th>
+      <th>Size</th>
+      <th>Description</th>
+    </tr>
+    <tr><td>Source Port</td><td>16 bits</td><td>Sending application port</td></tr>
+    <tr><td>Destination Port</td><td>16 bits</td><td>Receiving application port</td></tr>
+    <tr><td>Sequence Number</td><td>32 bits</td><td>Position of first byte in segment</td></tr>
+    <tr><td>Acknowledgment Number</td><td>32 bits</td><td>Next expected byte from sender</td></tr>
+    <tr><td>Data Offset</td><td>4 bits</td><td>Header length</td></tr>
+    <tr><td>Reserved</td><td>6 bits</td><td>Reserved for future use</td></tr>
+    <tr><td>Flags (Control Bits)</td><td>6 bits</td><td>SYN, ACK, FIN, RST, PSH, URG</td></tr>
+    <tr><td>Window Size</td><td>16 bits</td><td>Sliding window for flow control</td></tr>
+    <tr><td>Checksum</td><td>16 bits</td><td>Error detection</td></tr>
+    <tr><td>Urgent Pointer</td><td>16 bits</td><td>Marks urgent data</td></tr>
+    <tr><td>Options</td><td>Variable</td><td>Optional features (timestamps, MSS, etc.)</td></tr>
+    <tr><td>Data</td><td>Variable</td><td>Actual application data</td></tr>
+  </table>
+
+  <h2>4. TCP Control Flags</h2>
+  <table>
+    <tr><th>Flag</th><th>Description</th></tr>
+    <tr><td>SYN</td><td>Synchronize sequence numbers (connection setup)</td></tr>
+    <tr><td>ACK</td><td>Acknowledgment field is valid</td></tr>
+    <tr><td>FIN</td><td>Sender has finished sending data (connection termination)</td></tr>
+    <tr><td>RST</td><td>Reset connection (abort)</td></tr>
+    <tr><td>PSH</td><td>Push data immediately to the application</td></tr>
+    <tr><td>URG</td><td>Urgent pointer valid, indicates urgent data</td></tr>
+  </table>
+
+  <h2>5. TCP Connection Management</h2>
+  <h3>5.1 Connection Establishment – 3-Way Handshake</h3>
+  <pre><code>Client -> Server: SYN (seq=x)
+Server -> Client: SYN-ACK (seq=y, ack=x+1)
+Client -> Server: ACK (ack=y+1)</code></pre>
+  <p>Purpose: Synchronize sequence numbers, establish reliable, full-duplex connection.</p>
+
+  <h3>5.2 Connection Termination – 4-Way Handshake</h3>
+  <pre><code>FIN -> ACK -> FIN -> ACK</code></pre>
+
+  <h2>6. TCP States</h2>
+  <table>
+    <tr><th>State</th><th>Description</th></tr>
+    <tr><td>CLOSED</td><td>No connection</td></tr>
+    <tr><td>LISTEN</td><td>Waiting for connection (server)</td></tr>
+    <tr><td>SYN-SENT</td><td>SYN sent, waiting for SYN-ACK</td></tr>
+    <tr><td>SYN-RECEIVED</td><td>SYN received, sent SYN-ACK</td></tr>
+    <tr><td>ESTABLISHED</td><td>Connection open, data transfer</td></tr>
+    <tr><td>FIN-WAIT-1</td><td>Waiting for ACK of FIN sent</td></tr>
+    <tr><td>FIN-WAIT-2</td><td>FIN acknowledged, waiting FIN from other side</td></tr>
+    <tr><td>CLOSE-WAIT</td><td>Received FIN, waiting application to close</td></tr>
+    <tr><td>CLOSING</td><td>Both sides sent FIN, waiting ACK</td></tr>
+    <tr><td>LAST-ACK</td><td>Waiting final ACK to terminate</td></tr>
+    <tr><td>TIME-WAIT</td><td>Wait 2*MSL to ensure ACK received</td></tr>
+  </table>
+
+  <h2>7. TCP Reliability Mechanisms</h2>
+  <ul>
+    <li><strong>Sequence Numbers:</strong> Each byte has a unique number, helps reassemble data in order.</li>
+    <li><strong>ACK:</strong> Receiver sends ACK with next expected byte.</li>
+    <li><strong>Retransmission:</strong> Lost segments are resent (timeout or duplicate ACK triggers retransmission).</li>
+    <li><strong>Checksum:</strong> Detects errors in header and data.</li>
+  </ul>
+
+  <h2>8. Flow Control</h2>
+  <p>Sliding Window: Window size = bytes receiver can accept. Sender sends only within advertised window.</p>
+
+  <h2>9. Congestion Control</h2>
+  <table>
+    <tr><th>Algorithm</th><th>Purpose</th></tr>
+    <tr><td>Slow Start</td><td>Gradually increases sending rate</td></tr>
+    <tr><td>Congestion Avoidance</td><td>Detects congestion, avoids overloading</td></tr>
+    <tr><td>Fast Retransmit</td><td>Quickly retransmit lost segments on duplicate ACKs</td></tr>
+    <tr><td>Fast Recovery</td><td>Resume sending after retransmission without starting slow</td></tr>
+  </table>
+
+  <h2>10. TCP Segment Example</h2>
+  <pre><code>Message = 4000 bytes
+MSS = 1000 bytes
+TCP breaks into 4 segments, adds sequence numbers, sends
+Receiver ACKs each segment and reassembles</code></pre>
+
+  <h2>11. TCP Multiplexing & Demultiplexing</h2>
+  <p>Port Numbers identify sending/receiving applications. Socket = (IP, Port).</p>
+  <ul>
+    <li>Web server HTTP → port 80</li>
+    <li>Email server SMTP → port 25</li>
+  </ul>
+
+  <h2>12. TCP Options</h2>
+  <ul>
+    <li>Maximum Segment Size (MSS)</li>
+    <li>Window Scaling</li>
+    <li>Timestamps (RTT measurement)</li>
+    <li>Selective Acknowledgment (SACK)</li>
+  </ul>
+
+  <h2>13. TCP vs UDP</h2>
+  <table>
+    <tr><th>Feature</th><th>TCP</th><th>UDP</th></tr>
+    <tr><td>Connection</td><td>Yes</td><td>No</td></tr>
+    <tr><td>Reliability</td><td>Yes</td><td>No</td></tr>
+    <tr><td>Ordering</td><td>Yes</td><td>No</td></tr>
+    <tr><td>Flow Control</td><td>Yes</td><td>No</td></tr>
+    <tr><td>Congestion Control</td><td>Yes</td><td>No</td></tr>
+    <tr><td>Speed</td><td>Slower</td><td>Faster</td></tr>
+    <tr><td>Header Size</td><td>20-60 bytes</td><td>8 bytes</td></tr>
+  </table>
+
+  <h2>14. Real-World Applications of TCP</h2>
+  <ul>
+    <li>Web Browsing: HTTP/HTTPS</li>
+    <li>Email: SMTP, IMAP, POP3</li>
+    <li>File Transfer: FTP, SFTP</li>
+    <li>Remote Login: Telnet, SSH</li>
+    <li>Databases: MySQL, PostgreSQL client-server communication</li>
+  </ul>
+
+  <h2>15. Summary</h2>
+  <p>TCP provides reliable, ordered, error-checked, full-duplex communication between applications. Key mechanisms include:</p>
+  <ul>
+    <li>3-way handshake (connection setup)</li>
+    <li>4-way termination handshake</li>
+    <li>Flow control (sliding window)</li>
+    <li>Congestion control</li>
+    <li>Sequence numbers, ACKs, checksum, retransmission</li>
+    <li>Multiplexing using ports</li>
+  </ul>
+  <h1>User Datagram Protocol (UDP) – Full Depth</h1>
+
+  <h2>1. Introduction</h2>
+  <ul>
+    <li>Full Name: <strong>User Datagram Protocol</strong></li>
+    <li>Layer: <strong>Transport Layer (Layer 4 in OSI)</strong></li>
+    <li>Type: Connectionless, unreliable protocol</li>
+    <li>Purpose: Fast, lightweight, low-overhead communication without guaranteeing delivery or order.</li>
+    <li>Key Idea: UDP is “send and forget”—no connection, no delivery check.</li>
+  </ul>
+
+  <h2>2. Key Features of UDP</h2>
+  <ul>
+    <li>Connectionless: No handshake before sending data.</li>
+    <li>Unreliable / Best-Effort Delivery: No ACK, retransmission, or sequencing.</li>
+    <li>No Flow Control: Sender can send at any rate; receiver may drop packets.</li>
+    <li>Low Overhead: Small 8-byte header → minimal processing.</li>
+    <li>Supports Multiplexing: Uses port numbers to direct datagrams.</li>
+    <li>Suitable for Real-Time Applications: Audio/video streaming, gaming, VoIP.</li>
+  </ul>
+
+  <h2>3. UDP Datagram Structure</h2>
+  <p>A UDP datagram consists of header + data (header = 8 bytes)</p>
+  <table>
+    <tr><th>Field</th><th>Size</th><th>Purpose</th></tr>
+    <tr><td>Source Port</td><td>16 bits</td><td>Port of sending application (optional)</td></tr>
+    <tr><td>Destination Port</td><td>16 bits</td><td>Port of receiving application</td></tr>
+    <tr><td>Length</td><td>16 bits</td><td>Length of header + data</td></tr>
+    <tr><td>Checksum</td><td>16 bits</td><td>Error detection for header + data</td></tr>
+    <tr><td>Data</td><td>Variable</td><td>Actual application data</td></tr>
+  </table>
+
+  <h2>4. How UDP Works</h2>
+  <ol>
+    <li>Application sends data to UDP layer.</li>
+    <li>UDP adds source/destination port, length, checksum.</li>
+    <li>UDP sends datagram to IP layer.</li>
+    <li>Receiver UDP delivers data to application via port number.</li>
+    <li>No guarantee of delivery—packets may be lost, duplicated, or arrive out of order.</li>
+  </ol>
+  <p><strong>Flow:</strong> Application → UDP → IP → Network → IP → UDP → Application</p>
+
+  <h2>5. Advantages of UDP</h2>
+  <ul>
+    <li>Fast: No connection setup or ACK.</li>
+    <li>Low Overhead: Small header, minimal processing.</li>
+    <li>Supports Broadcast & Multicast: Efficient one-to-many communication.</li>
+    <li>Real-Time Applications: Ideal for streaming, VoIP, gaming.</li>
+    <li>Simple Implementation: Less complex than TCP.</li>
+  </ul>
+
+  <h2>6. Disadvantages of UDP</h2>
+  <ul>
+    <li>Unreliable: No guarantees for delivery or order.</li>
+    <li>No Congestion Control: Can overload networks.</li>
+    <li>Error Recovery Handled by Application: Lost/corrupted packets must be managed by app.</li>
+  </ul>
+
+  <h2>7. UDP vs TCP</h2>
+  <table>
+    <tr><th>Feature</th><th>TCP</th><th>UDP</th></tr>
+    <tr><td>Connection</td><td>Connection-oriented</td><td>Connectionless</td></tr>
+    <tr><td>Reliability</td><td>Reliable, retransmits lost segments</td><td>Unreliable, no retransmission</td></tr>
+    <tr><td>Flow Control</td><td>Yes (sliding window)</td><td>No</td></tr>
+    <tr><td>Ordering</td><td>Guaranteed</td><td>No guarantee</td></tr>
+    <tr><td>Header Size</td><td>20-60 bytes</td><td>8 bytes</td></tr>
+    <tr><td>Speed</td><td>Slower</td><td>Fast</td></tr>
+    <tr><td>Use Case</td><td>Web, Email, File Transfer</td><td>Streaming, Gaming, VoIP, DNS</td></tr>
+  </table>
+
+  <h2>8. Common UDP Applications / Protocols</h2>
+  <ul>
+    <li>DNS: Port 53, fast query resolution</li>
+    <li>DHCP: Ports 67/68, IP assignment</li>
+    <li>VoIP / Video Calls: Skype, Google Meet</li>
+    <li>Streaming: YouTube live, IPTV</li>
+    <li>Online Gaming: Real-time multiplayer games</li>
+    <li>SNMP: Port 161, network monitoring</li>
+  </ul>
+
+  <h2>9. UDP Packet Example</h2>
+  <pre><code>Client sends: "Hello, Server" → UDP adds ports and checksum → sends as datagram
+Server receives: UDP reads destination port → passes data to application → no ACK sent back</code></pre>
+
+  <h2>10. When to Use UDP</h2>
+  <ul>
+    <li>Speed is critical and occasional packet loss is acceptable.</li>
+    <li>Real-time applications where retransmission would cause delays.</li>
+    <li>Broadcast or multicast scenarios.</li>
+    <li>Simple request-response applications (like DNS).</li>
+  </ul>
+
+  <h2>Summary</h2>
+  <ul>
+    <li>Connectionless → no handshake</li>
+    <li>Unreliable → no guarantees for delivery, ordering, or duplication</li>
+    <li>Low overhead → small header (8 bytes)</li>
+    <li>Fast and lightweight → suitable for real-time apps</li>
+  </ul>
+
+  <h1>Multiplexing & Demultiplexing – Transport Layer</h1>
+
+  <h2>1. What is Multiplexing?</h2>
+  <ul>
+    <li><strong>Definition:</strong> Combining data from multiple applications (processes) into a single stream for transmission.</li>
+    <li><strong>Purpose:</strong> Allows multiple applications to share the same transport and network layer resources.</li>
+    <li><strong>Example:</strong> Browser (HTTP) and Email client (SMTP) sending data simultaneously from the same computer.</li>
+    <li><strong>How it Works:</strong> Transport Layer adds port numbers; combination of source IP, source port, destination IP, destination port uniquely identifies each session.</li>
+  </ul>
+
+  <h2>2. What is Demultiplexing?</h2>
+  <ul>
+    <li><strong>Definition:</strong> Delivering incoming segments/datagrams to the correct application on the receiving host.</li>
+    <li><strong>Purpose:</strong> Ensures data sent from multiple sources reaches the correct application.</li>
+    <li><strong>Example:</strong>
+      <ul>
+        <li>TCP segments on port 80 → delivered to web server</li>
+        <li>TCP segments on port 25 → delivered to mail server</li>
+      </ul>
+    </li>
+    <li><strong>How it Works:</strong> Uses destination port in transport header + checks IP address to route to correct application.</li>
+  </ul>
+
+  <h2>3. Transport Layer Identifiers</h2>
+  <table>
+    <tr><th>Term</th><th>Meaning</th></tr>
+    <tr><td>Port Number</td><td>Identifies a specific application/process on a host</td></tr>
+    <tr><td>Well-Known Ports</td><td>Standard services: HTTP → 80, HTTPS → 443, SMTP → 25</td></tr>
+    <tr><td>Dynamic/Private Ports</td><td>49152–65535, used dynamically by client applications</td></tr>
+  </table>
+
+  <h2>4. TCP/UDP Demultiplexing</h2>
+  <h3>TCP (Connection-Oriented)</h3>
+  <ul>
+    <li>Uses 4-tuple to identify a connection: Source IP, Source Port, Destination IP, Destination Port</li>
+    <li>Example: Client IP 192.168.1.5, Port 50000 → Server IP 10.0.0.1, Port 80</li>
+    <li>Allows multiple clients to connect to same server port without confusion.</li>
+  </ul>
+
+  <h3>UDP (Connectionless)</h3>
+  <ul>
+    <li>Uses 2-tuple or 4-tuple depending on implementation: Destination IP + Destination Port (sometimes source IP + source port)</li>
+    <li>Example: DNS query from client port 54321 → server port 53 → response sent back to client IP + port 54321</li>
+  </ul>
+
+  <h2>5. Example Scenario</h2>
+  <pre><code>Multiplexing:
+Computer A runs two applications:
+- Web browser → HTTP request
+- Email client → SMTP request
+
+Transport Layer attaches port numbers:
+- HTTP: source port 50001 → dest port 80
+- SMTP: source port 50002 → dest port 25
+
+Demultiplexing on Server:
+- Segment to port 80 → web server process
+- Segment to port 25 → mail server process
+</code></pre>
+
+  <h2>6. Why It’s Important</h2>
+  <ul>
+    <li>Without multiplexing/demultiplexing, only one application could send/receive data at a time.</li>
+    <li>Transport layer could not differentiate between multiple sessions.</li>
+    <li>Ensures simultaneous communication of multiple applications efficiently.</li>
+  </ul>
+
+  <h2>Summary</h2>
+  <table>
+    <tr><th>Concept</th><th>Definition</th><th>Key Mechanism</th></tr>
+    <tr><td>Multiplexing</td><td>Combine data from multiple applications into one transport stream</td><td>Source port numbers</td></tr>
+    <tr><td>Demultiplexing</td><td>Deliver received segments to correct application</td><td>Destination port numbers</td></tr>
+  </table>
+  <h1>Error Detection & Reliability – Transport Layer (TCP)</h1>
+
+  <h2>1. Why Error Detection & Reliability is Needed</h2>
+  <ul>
+    <li>Networks are unreliable: packets may be lost, corrupted, duplicated, or arrive out of order.</li>
+    <li>Transport layer (TCP) ensures end-to-end reliable delivery between applications.</li>
+  </ul>
+
+  <h2>2. Checksum</h2>
+  <ul>
+    <li><strong>Purpose:</strong> Detect errors in transmitted segments.</li>
+    <li><strong>How it Works:</strong>
+      <ol>
+        <li>Sender computes checksum based on header + data.</li>
+        <li>Receiver recomputes checksum and compares with received checksum.</li>
+        <li>If mismatch → segment discarded, may trigger retransmission.</li>
+      </ol>
+    </li>
+    <li><strong>Example:</strong>
+      <pre><code>Data: 10101010
+Checksum: 11001100
+Receiver computes checksum → matches? → Yes → OK / No → discard
+</code></pre>
+    </li>
+  </ul>
+
+  <h2>3. Acknowledgment (ACK)</h2>
+  <ul>
+    <li><strong>Purpose:</strong> Confirms receipt of data.</li>
+    <li><strong>How it Works:</strong> Receiver sends ACK after receiving data correctly; TCP uses cumulative acknowledgment.</li>
+    <li><strong>Example:</strong> Sender sends bytes 1–100 → Receiver ACKs 101</li>
+  </ul>
+
+  <h2>4. Retransmission</h2>
+  <ul>
+    <li><strong>Purpose:</strong> Resend lost or corrupted segments.</li>
+    <li><strong>Trigger:</strong> No ACK within timeout, or duplicate ACKs indicate missing segment.</li>
+    <li><strong>Mechanisms:</strong> Timeout-based retransmission, Fast retransmit (after 3 duplicate ACKs).</li>
+    <li><strong>Example:</strong>
+      <pre><code>Sender sends segment #5
+ACK not received → timeout → resend segment #5
+</code></pre>
+    </li>
+  </ul>
+
+  <h2>5. Sequence Numbers</h2>
+  <ul>
+    <li><strong>Purpose:</strong> Ensure data arrives in order.</li>
+    <li><strong>How it Works:</strong> Each byte assigned a sequence number; receiver uses them to reassemble and detect duplicates/missing segments.</li>
+    <li><strong>Example:</strong>
+      <pre><code>Sender sends 3 segments:
+Segment1: bytes 1–100
+Segment2: bytes 101–200
+Segment3: bytes 201–300
+
+Receiver may receive: Segment1, Segment3, Segment2
+TCP reorders using sequence numbers → 1–300 correctly
+</code></pre>
+    </li>
+  </ul>
+
+  <h2>6. Putting It All Together</h2>
+  <pre><code>Sender attaches sequence numbers + checksum
+Receiver checks checksum → if valid, sends ACK
+Sender waits for ACK → if timeout → retransmit segment
+Receiver reassembles using sequence numbers
+</code></pre>
+  <pre><code>Example Workflow:
+Sender: Sends segment #1 (bytes 1–100, checksum)
+Network: Segment lost
+Sender: Timeout → retransmit #1
+Receiver: Receives #1 → checksum OK → sends ACK 101
+Sender: ACK received → send next segment
+</code></pre>
+
+  <h2>7. Visual Summary</h2>
+  <table>
+    <tr>
+      <th>Mechanism</th>
+      <th>Purpose</th>
+      <th>Example</th>
+    </tr>
+    <tr>
+      <td>Checksum</td>
+      <td>Detect errors</td>
+      <td>Receiver discards corrupted segment</td>
+    </tr>
+    <tr>
+      <td>ACK</td>
+      <td>Confirm receipt</td>
+      <td>Receiver sends ACK 101 for bytes 1–100</td>
+    </tr>
+    <tr>
+      <td>Retransmission</td>
+      <td>Resend lost/corrupted data</td>
+      <td>Timeout triggers resend of segment</td>
+    </tr>
+    <tr>
+      <td>Sequence Numbers</td>
+      <td>Maintain order</td>
+      <td>Reassemble segments 1–300 correctly</td>
+    </tr>
+  </table>
+  <h1>TCP Connection Handshake</h1>
+
+  <h2>1. TCP Connection Establishment – 3-Way Handshake</h2>
+  <p>TCP is connection-oriented, meaning a reliable channel must be established before data transfer. The 3-way handshake ensures both client and server are synchronized.</p>
+
+  <h3>Steps</h3>
+  <ol>
+    <li><strong>SYN (Synchronize) – Client → Server:</strong>
+      <ul>
+        <li>Client wants to start a connection.</li>
+        <li>Sends a SYN packet with initial sequence number (ISN), say x.</li>
+        <li>SYN indicates client wants to synchronize sequence numbers.</li>
+      </ul>
+    </li>
+    <li><strong>SYN-ACK (Synchronize-Acknowledge) – Server → Client:</strong>
+      <ul>
+        <li>Server receives SYN, reserves resources, and responds.</li>
+        <li>Sends SYN to synchronize its sequence number y and ACK = x+1 to acknowledge client’s SYN.</li>
+      </ul>
+    </li>
+    <li><strong>ACK (Acknowledge) – Client → Server:</strong>
+      <ul>
+        <li>Client acknowledges server’s SYN by sending ACK = y+1.</li>
+        <li>Connection established, data transfer can start.</li>
+      </ul>
+    </li>
+  </ol>
+
+  <h3>Diagram</h3>
+  <pre><code>Client                        Server
+  | SYN (Seq=x)               ->|
+  |                            <-| SYN-ACK (Seq=y, Ack=x+1)
+  | ACK (Ack=y+1)             ->|
+Connection Established
+</code></pre>
+
+  <h3>Key Points</h3>
+  <ul>
+    <li>Both sides know each other’s initial sequence numbers.</li>
+    <li>Full-duplex communication is ready.</li>
+  </ul>
+
+  <h2>2. TCP Connection Termination – 4-Way Handshake</h2>
+  <p>TCP uses a 4-step process to terminate a connection cleanly because each side may finish sending at different times.</p>
+
+  <h3>Steps</h3>
+  <ol>
+    <li><strong>FIN – Initiator → Receiver:</strong> Side wanting to close sends FIN.</li>
+    <li><strong>ACK – Receiver → Initiator:</strong> Receiver acknowledges FIN.</li>
+    <li><strong>FIN – Receiver → Initiator:</strong> Receiver sends its own FIN when finished sending data.</li>
+    <li><strong>ACK – Initiator → Receiver:</strong> Initiator acknowledges receiver’s FIN.</li>
+  </ol>
+
+  <h3>Diagram</h3>
+  <pre><code>Client                        Server
+  | FIN                       ->|
+  |                            <-| ACK
+  |                            <-| FIN
+  | ACK                       ->|
+Connection Closed
+</code></pre>
+
+  <h3>Key Points</h3>
+  <ul>
+    <li>Both sides can finish sending independently.</li>
+    <li>TCP enters TIME-WAIT state for 2*MSL to ensure last ACK is received.</li>
+  </ul>
+
+  <h2>3. Why 3-Way Handshake?</h2>
+  <ul>
+    <li>Two-way handshake is insufficient; server would not know if client’s SYN arrived.</li>
+    <li>3-way handshake ensures both sides are ready and synchronized.</li>
+  </ul>
+
+  <h2>4. Important Notes</h2>
+  <ul>
+    <li><strong>Sequence Numbers:</strong> Ensure reliable and ordered delivery.</li>
+    <li><strong>Full Duplex:</strong> After handshake, data flows both ways simultaneously.</li>
+    <li><strong>Timeouts & Retransmissions:</strong> Lost segments are retransmitted.</li>
+    <li><strong>State Tracking:</strong> TCP maintains connection state in a table for each active connection.</li>
+  </ul>
+  <h1>TCP Sliding Window</h1>
+
+  <h2>1. What is Sliding Window?</h2>
+  <p><strong>Definition:</strong> Sliding Window is a flow control mechanism in TCP that regulates the amount of data the sender can transmit before needing an acknowledgment (ACK) from the receiver.</p>
+  <p><strong>Purpose:</strong></p>
+  <ul>
+    <li>Prevents the sender from overwhelming the receiver.</li>
+    <li>Ensures efficient and continuous data transfer.</li>
+  </ul>
+  <p><strong>Key Concept:</strong> Both sender and receiver maintain a window of bytes that can be sent or received.</p>
+
+  <h2>2. How Sliding Window Works</h2>
+  <ul>
+    <li>Window size is advertised by the receiver.</li>
+    <li>Sender can send all bytes within the window without waiting for ACKs.</li>
+    <li>As ACKs are received, the window “slides forward,” allowing sender to send more data.</li>
+  </ul>
+  <p><strong>Terminology:</strong></p>
+  <ul>
+    <li><strong>Window Size (rwnd):</strong> Bytes receiver is willing to accept.</li>
+    <li><strong>Sequence Numbers:</strong> Each byte has a unique number.</li>
+    <li><strong>Acknowledgment (ACK):</strong> Receiver acknowledges next expected byte.</li>
+  </ul>
+
+  <h2>3. Example</h2>
+  <p><strong>Initial Setup:</strong></p>
+  <ul>
+    <li>Window size = 5 bytes</li>
+    <li>Sender data: 1 2 3 4 5 6 7 8 9 10</li>
+    <li>Receiver can buffer 5 bytes</li>
+  </ul>
+
+  <p><strong>Step 1:</strong> Sender sends first 5 bytes</p>
+  <pre><code>Sender Window: 1 2 3 4 5
+Receiver receives 1-5, sends ACK=6</code></pre>
+
+  <p><strong>Step 2:</strong> Window slides</p>
+  <pre><code>Receiver ACK=6 → sender can send bytes 6 7 8 9 10
+Sender Window: 6 7 8 9 10</code></pre>
+
+  <p><strong>Step 3:</strong> Continuous sliding</p>
+  <p>As ACKs arrive, window slides forward until all data is delivered. Only unacknowledged data stays in the window.</p>
+
+  <h2>4. Flow Control Using Sliding Window</h2>
+  <ul>
+    <li><strong>Receiver Advertises rwnd:</strong> Number of bytes it can receive.</li>
+    <li><strong>Sender Restricts Transmission:</strong> Never sends more than the window.</li>
+    <li><strong>Dynamic Adjustment:</strong> Window size can increase or decrease based on network and receiver capacity.</li>
+  </ul>
+
+  <h2>5. Advantages of Sliding Window</h2>
+  <ul>
+    <li>Efficient bandwidth usage – multiple segments in flight.</li>
+    <li>Reduces waiting time for ACKs.</li>
+    <li>Supports full-duplex communication.</li>
+    <li>Enables error recovery – lost segments retransmitted without stopping flow.</li>
+  </ul>
+
+  <h2>6. Types of Sliding Window</h2>
+  <table>
+    <tr>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+    <tr>
+      <td>Go-Back-N ARQ</td>
+      <td>All subsequent segments retransmitted if a segment is lost; simpler but less efficient.</td>
+    </tr>
+    <tr>
+      <td>Selective Repeat ARQ</td>
+      <td>Only lost segments retransmitted; more efficient; used in TCP.</td>
+    </tr>
+  </table>
+
+  <h2>7. Visual Representation</h2>
+  <pre><code>Sender Side (Window size = 4)
+Seq: 1  2  3  4  5  6  7  8
+      [1  2  3  4]  <- Sent
+      ACK=3 received
+Seq: 3  4  5  6  7  8
+      [5  6  7  8]  <- New window after sliding
+
+Window “slides” forward as ACKs are received.
+Unacknowledged data remains in window.</code></pre>
+
+  <h2>8. Sliding Window in TCP</h2>
+  <ul>
+    <li>TCP uses dynamic window size based on receiver buffer (rwnd).</li>
+    <li>TCP also uses congestion window (cwnd) to avoid network congestion.</li>
+    <li><strong>Actual window:</strong> min(rwnd, cwnd) → ensures both flow control and congestion control.</li>
+  </ul>
+
+  <h2>9. Summary</h2>
+  <ul>
+    <li>Sliding Window is a flow control and reliable delivery mechanism.</li>
+    <li>Key concepts: window size, sequence numbers, ACKs, sliding forward.</li>
+    <li>Ensures continuous and reliable transmission without overwhelming receiver.</li>
+    <li>TCP implements Selective Repeat ARQ using sliding window.</li>
+  </ul>
+
+  <h1>Network Layer</h1>
+
+  <h2>1. What is the Network Layer?</h2>
+  <p><strong>Layer:</strong> 3rd layer of OSI, also exists in TCP/IP model.</p>
+  <p><strong>Purpose:</strong> Delivers packets from source host to destination host, possibly across multiple networks (end-to-end delivery).</p>
+  <p><strong>Key Function:</strong> Routing and addressing.</p>
+  <p><strong>Example:</strong> Sending an email from your computer in India to a server in the USA.</p>
+
+  <h2>2. Main Functions of Network Layer</h2>
+  <ul>
+    <li><strong>Logical Addressing:</strong> Assigns IP addresses to devices to uniquely identify hosts (IPv4: 32 bits, IPv6: 128 bits).</li>
+    <li><strong>Routing:</strong> Determines the best path for a packet to reach the destination (OSPF, RIP, BGP).</li>
+    <li><strong>Packet Forwarding:</strong> Moves packets through routers using routing tables.</li>
+    <li><strong>Fragmentation & Reassembly:</strong> Breaks large packets into smaller fragments to fit MTU, reassembles at destination.</li>
+    <li><strong>Error Handling & Diagnostics:</strong> Detects errors in header (ICMP used for ping/traceroute).</li>
+  </ul>
+
+  <h2>3. Key Concepts</h2>
+  
+  <h3>3.1 Logical Addressing (IP Address)</h3>
+  <p>Unique identifier for a host on a network.</p>
+  <ul>
+    <li>IPv4: 32 bits, e.g., 192.168.1.10</li>
+    <li>IPv6: 128 bits, e.g., 2001:0db8:85a3::8a2e:0370:7334</li>
+    <li>Subnetting: Divides IP into network and host portions.</li>
+  </ul>
+
+  <h3>3.2 Packet</h3>
+  <p>Data unit at network layer containing:</p>
+  <ul>
+    <li><strong>Header:</strong> Source/destination IP, TTL, protocol, etc.</li>
+    <li><strong>Payload:</strong> Data from transport layer.</li>
+  </ul>
+
+  <h3>3.3 Routing</h3>
+  <ul>
+    <li><strong>Static Routing:</strong> Manually configured routes.</li>
+    <li><strong>Dynamic Routing:</strong> Protocols update routes automatically (RIP, OSPF, BGP).</li>
+    <li><strong>Routing Tables:</strong> Stores next hop for each destination network.</li>
+  </ul>
+
+  <h3>3.4 Fragmentation & Reassembly</h3>
+  <p>Networks have different MTUs. Large packets are split and reassembled at destination.</p>
+  <p>IPv4 allows fragmentation; IPv6 does not allow intermediate fragmentation.</p>
+
+  <h3>3.5 Time to Live (TTL)</h3>
+  <p>Field in IP header preventing packets from looping indefinitely. Decremented at each hop; discarded when TTL = 0.</p>
+
+  <h3>3.6 Protocols in Network Layer</h3>
+  <table>
+    <tr>
+      <th>Protocol</th>
+      <th>Purpose</th>
+      <th>Notes</th>
+    </tr>
+    <tr>
+      <td>IP (IPv4/IPv6)</td>
+      <td>Addressing and packet delivery</td>
+      <td>Core protocol</td>
+    </tr>
+    <tr>
+      <td>ICMP</td>
+      <td>Diagnostics, error reporting</td>
+      <td>ping, traceroute</td>
+    </tr>
+    <tr>
+      <td>ARP</td>
+      <td>Map IP → MAC address</td>
+      <td>Works in local network</td>
+    </tr>
+    <tr>
+      <td>RARP</td>
+      <td>Map MAC → IP address</td>
+      <td>Rarely used now</td>
+    </tr>
+    <tr>
+      <td>IGMP</td>
+      <td>Multicast group management</td>
+      <td>Video streaming, IPTV</td>
+    </tr>
+    <tr>
+      <td>IPsec</td>
+      <td>Security & encryption at IP layer</td>
+      <td>VPNs</td>
+    </tr>
+  </table>
+
+  <h3>3.7 ICMP (Internet Control Message Protocol)</h3>
+  <p>Used for error reporting and network diagnostics:</p>
+  <ul>
+    <li><strong>Ping:</strong> Checks if host is reachable.</li>
+    <li><strong>Traceroute:</strong> Shows path packets take to destination.</li>
+  </ul>
+  <p>ICMP messages are encapsulated in IP packets.</p>
+
+  <h2>4. Packet Structure (IP Header)</h2>
+  <table>
+    <tr>
+      <th>Field</th>
+      <th>Size</th>
+      <th>Purpose</th>
+    </tr>
+    <tr><td>Version</td><td>4 bits</td><td>IPv4 (4) or IPv6 (6)</td></tr>
+    <tr><td>IHL</td><td>4 bits</td><td>Header length</td></tr>
+    <tr><td>Type of Service</td><td>8 bits</td><td>Priority/DSCP</td></tr>
+    <tr><td>Total Length</td><td>16 bits</td><td>Packet size</td></tr>
+    <tr><td>Identification</td><td>16 bits</td><td>Fragment ID</td></tr>
+    <tr><td>Flags</td><td>3 bits</td><td>Fragmentation control</td></tr>
+    <tr><td>Fragment Offset</td><td>13 bits</td><td>Position of fragment</td></tr>
+    <tr><td>TTL</td><td>8 bits</td><td>Time to Live</td></tr>
+    <tr><td>Protocol</td><td>8 bits</td><td>Encapsulated protocol (TCP=6, UDP=17)</td></tr>
+    <tr><td>Header Checksum</td><td>16 bits</td><td>Error detection</td></tr>
+    <tr><td>Source IP</td><td>32 bits</td><td>Sender address</td></tr>
+    <tr><td>Destination IP</td><td>32 bits</td><td>Receiver address</td></tr>
+    <tr><td>Options</td><td>Variable</td><td>Optional features</td></tr>
+  </table>
+
+  <h2>5. Routing Concepts</h2>
+  <ul>
+    <li><strong>Static Routing:</strong> Manually configured paths.</li>
+    <li><strong>Dynamic Routing Protocols:</strong>
+      <ul>
+        <li>RIP: Distance-vector, hop count metric</li>
+        <li>OSPF: Link-state, cost metric</li>
+        <li>BGP: Path-vector, used between ISPs</li>
+      </ul>
+    </li>
+  </ul>
+
+  <h2>6. Address Resolution</h2>
+  <ul>
+    <li>ARP (Address Resolution Protocol): Converts IP → MAC for local delivery.</li>
+    <li>RARP (Reverse ARP): Converts MAC → IP (rarely used).</li>
+  </ul>
+
+  <h2>7. Summary of Network Layer Functions</h2>
+  <ul>
+    <li>Logical Addressing (IP) → Unique identification of hosts.</li>
+    <li>Routing → Determines best path across networks.</li>
+    <li>Forwarding → Sends packets via routers toward destination.</li>
+    <li>Fragmentation & Reassembly → Adapts packets to MTU.</li>
+    <li>Error Handling → ICMP for network errors.</li>
+    <li>Security → IPsec for encryption/authentication.</li>
+  </ul>
+
+  <h1>Logical Addressing</h1>
+
+  <h2>1. What is Logical Addressing?</h2>
+  <p>Definition: Logical addressing assigns a unique identifier to each host on a network, enabling end-to-end communication across multiple networks.</p>
+  <p><strong>Purpose:</strong></p>
+  <ul>
+    <li>Identifies a device uniquely in an internetwork.</li>
+    <li>Helps routers forward packets from source to destination.</li>
+    <li>Supports hierarchical addressing to simplify routing.</li>
+  </ul>
+  <p><strong>Key Idea:</strong> Unlike MAC addresses (physical addresses) which are fixed, logical addresses (IP addresses) can change and are hierarchical.</p>
+
+  <h2>2. Types of Addressing</h2>
+  <ul>
+    <li><strong>Physical Addressing (MAC):</strong> Layer 2, unique per NIC, fixed.</li>
+    <li><strong>Logical Addressing (IP):</strong> Layer 3, hierarchical, assigned by admin or DHCP.</li>
+  </ul>
+
+  <h2>3. IP Address</h2>
+  <ul>
+    <li><strong>Definition:</strong> Numeric identifier assigned to each host.</li>
+    <li><strong>IPv4:</strong> 32-bit, e.g., 192.168.1.1, decimal notation, 4 octets.</li>
+    <li><strong>IPv6:</strong> 128-bit, e.g., 2001:0db8:85a3::8a2e:0370:7334, hexadecimal, supports many devices.</li>
+  </ul>
+
+  <h2>4. Structure of IP Address</h2>
+  <h3>IPv4</h3>
+  <ul>
+    <li>Network Portion: Identifies network.</li>
+    <li>Host Portion: Identifies host.</li>
+    <li>Example: 192.168.1.10/24 → Network: 192.168.1.0, Host: 10, Subnet Mask: 255.255.255.0</li>
+  </ul>
+  <h3>IPv6</h3>
+  <ul>
+    <li>Network prefix + Interface Identifier</li>
+    <li>Example: 2001:db8::1/64 → Network: 64 bits, Host ID: 64 bits</li>
+  </ul>
+
+  <h2>5. Subnetting</h2>
+  <p>Purpose: Divide a large network into smaller subnetworks.</p>
+  <ul>
+    <li>Efficient IP usage</li>
+    <li>Better security</li>
+    <li>Easier management</li>
+  </ul>
+  <p>Example: 192.168.1.0/24 → 256 IPs → Divide into 4 subnets → /26 → 64 IPs each</p>
+
+  <h2>6. IP Address Classes (IPv4)</h2>
+  <table>
+    <tr>
+      <th>Class</th>
+      <th>Range</th>
+      <th>Use</th>
+    </tr>
+    <tr><td>A</td><td>1.0.0.0 – 126.255.255.255</td><td>Large networks</td></tr>
+    <tr><td>B</td><td>128.0.0.0 – 191.255.255.255</td><td>Medium networks</td></tr>
+    <tr><td>C</td><td>192.0.0.0 – 223.255.255.255</td><td>Small networks</td></tr>
+    <tr><td>D</td><td>224.0.0.0 – 239.255.255.255</td><td>Multicast</td></tr>
+    <tr><td>E</td><td>240.0.0.0 – 255.255.255.255</td><td>Reserved</td></tr>
+  </table>
+
+  <h2>7. Address Types</h2>
+  <ul>
+    <li>Unicast: One-to-one delivery</li>
+    <li>Broadcast (IPv4 only): One-to-all hosts</li>
+    <li>Multicast: One-to-many (selected hosts)</li>
+    <li>Anycast (IPv6): One-to-nearest host</li>
+  </ul>
+
+  <h2>8. How Logical Addressing Works</h2>
+  <ul>
+    <li>Sender knows the destination IP.</li>
+    <li>Network layer uses routing tables to find next hop.</li>
+    <li>Packet forwarded through routers to destination network.</li>
+    <li>ARP maps destination IP → MAC for final LAN delivery.</li>
+  </ul>
+  <p><strong>Flow:</strong> Application → Transport → Network → Data Link → Physical</p>
+  <p>IP address identifies destination host; MAC used for local delivery.</p>
+
+  <h2>9. Difference Between Logical and Physical Address</h2>
+  <table>
+    <tr>
+      <th>Feature</th>
+      <th>Logical Address</th>
+      <th>Physical Address</th>
+    </tr>
+    <tr><td>Layer</td><td>Network (L3)</td><td>Data Link (L2)</td></tr>
+    <tr><td>Type</td><td>Hierarchical</td><td>Flat/Unique</td></tr>
+    <tr><td>Example</td><td>IP (192.168.1.10)</td><td>MAC (00:1A:2B:3C:4D:5E)</td></tr>
+    <tr><td>Assignment</td><td>Configured manually/DHCP</td><td>Assigned by manufacturer</td></tr>
+    <tr><td>Scope</td><td>Global (across networks)</td><td>Local (LAN only)</td></tr>
+  </table>
+
+  <h2>10. Key Points</h2>
+  <ul>
+    <li>Logical addressing enables end-to-end communication.</li>
+    <li>Supports hierarchical routing to scale large networks.</li>
+    <li>IP addresses can change; MAC addresses are permanent.</li>
+    <li>Subnetting and address classes allow efficient IP management.</li>
+  </ul>
+  <h1>IPv4 (Internet Protocol Version 4)</h1>
+
+  <h2>1. Overview</h2>
+  <ul>
+    <li><strong>Full Name:</strong> Internet Protocol Version 4</li>
+    <li><strong>Layer:</strong> Network Layer (Layer 3, OSI)</li>
+    <li><strong>Purpose:</strong> Provides logical addressing and packet delivery from source to destination across multiple networks.</li>
+    <li><strong>Address Size:</strong> 32 bits → allows ~4.3 billion unique addresses</li>
+  </ul>
+
+  <h2>2. IPv4 Address Format</h2>
+  <ul>
+    <li><strong>Binary:</strong> <code>11000000 10101000 00000001 00001010</code></li>
+    <li><strong>Decimal:</strong> <code>192.168.1.10</code></li>
+  </ul>
+  <h1>IPv4 Packet Structure</h1>
+
+  <h2>Overview</h2>
+  <ul>
+    <li>An IPv4 packet consists of two parts:
+      <ul>
+        <li><strong>Header:</strong> Contains control and addressing information.</li>
+        <li><strong>Data (Payload):</strong> Contains the segment from the transport layer (TCP/UDP).</li>
+      </ul>
+    </li>
+    <li>Minimum header size: 20 bytes (without options)</li>
+    <li>Maximum header size: 60 bytes (with options)</li>
+  </ul>
+
+  <h2>1. IPv4 Header Fields</h2>
+  <table>
+    <tr>
+      <th>Field</th>
+      <th>Size</th>
+      <th>Description</th>
+    </tr>
+    <tr><td>Version</td><td>4 bits</td><td>IP version (IPv4 = 4)</td></tr>
+    <tr><td>IHL (Internet Header Length)</td><td>4 bits</td><td>Header length in 32-bit words (min 5 → 20 bytes)</td></tr>
+    <tr><td>Type of Service (ToS) / DSCP</td><td>8 bits</td><td>Priority and QoS info</td></tr>
+    <tr><td>Total Length</td><td>16 bits</td><td>Total size of IP packet (header + data)</td></tr>
+    <tr><td>Identification</td><td>16 bits</td><td>Unique ID for fragmentation/reassembly</td></tr>
+    <tr><td>Flags</td><td>3 bits</td><td>Controls fragmentation: 0 = reserved, DF = Don't Fragment, MF = More Fragments</td></tr>
+    <tr><td>Fragment Offset</td><td>13 bits</td><td>Position of fragment in original data</td></tr>
+    <tr><td>Time to Live (TTL)</td><td>8 bits</td><td>Max hops packet can traverse</td></tr>
+    <tr><td>Protocol</td><td>8 bits</td><td>Encapsulated protocol (TCP=6, UDP=17, ICMP=1)</td></tr>
+    <tr><td>Header Checksum</td><td>16 bits</td><td>Error detection for header</td></tr>
+    <tr><td>Source IP Address</td><td>32 bits</td><td>Sender's IP address</td></tr>
+    <tr><td>Destination IP Address</td><td>32 bits</td><td>Receiver's IP address</td></tr>
+    <tr><td>Options</td><td>Variable (0–40 bytes)</td><td>Optional features (security, timestamps, record route)</td></tr>
+    <tr><td>Data (Payload)</td><td>Variable</td><td>Transport layer segment (TCP/UDP)</td></tr>
+  </table>
+
+  <h2>2. Key Field Explanations</h2>
+  <ul>
+    <li><strong>Version:</strong> Identifies IP version (4 for IPv4).</li>
+    <li><strong>IHL:</strong> Header length in 32-bit words (min 5 → 20 bytes; max 15 → 60 bytes).</li>
+    <li><strong>ToS / DSCP:</strong> Priority and QoS info.</li>
+    <li><strong>Total Length:</strong> Packet size including header and data.</li>
+    <li><strong>Identification:</strong> Unique for each packet; used in fragmentation.</li>
+    <li><strong>Flags:</strong> Controls fragmentation (DF, MF).</li>
+    <li><strong>Fragment Offset:</strong> Helps reassemble fragments in order.</li>
+    <li><strong>TTL:</strong> Prevents packet loops; decremented at each hop.</li>
+    <li><strong>Protocol:</strong> Specifies upper-layer protocol (TCP, UDP, ICMP).</li>
+    <li><strong>Header Checksum:</strong> Ensures header integrity.</li>
+    <li><strong>Source/Destination IP:</strong> Sender and receiver addresses.</li>
+    <li><strong>Options:</strong> Optional features like record route, timestamps.</li>
+    <li><strong>Data (Payload):</strong> Transport layer segment.</li>
+  </ul>
+
+  <h2>3. Fragmentation in IPv4</h2>
+  <ul>
+    <li>Packets larger than MTU are split into fragments.</li>
+    <li>Each fragment keeps the same Identification, Fragment Offset, and MF flag (except last fragment).</li>
+    <li>Fragments are reassembled at the destination.</li>
+  </ul>
+
+  <h2>4. Visual Representation of IPv4 Packet</h2>
+  <pre>
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+|Version| IHL |Type of Service|        Total Length             |
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+|       Identification          |Flags|   Fragment Offset      |
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+|  Time to Live |   Protocol    |       Header Checksum       |
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+|                     Source IP Address                        |
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+|                  Destination IP Address                     |
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+| Options (if any) ...                                        |
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+|                          Data (Payload)                     |
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+  </pre>
+
+  <h2>5. Key Points</h2>
+  <ul>
+    <li>IPv4 header minimum 20 bytes, optional up to 60 bytes.</li>
+    <li>Provides logical addressing, fragmentation, error detection, and routing support.</li>
+    <li>Works with transport layer protocols (TCP/UDP) for end-to-end communication.</li>
+    <li>Fragmentation allows IPv4 to traverse networks with different MTUs.</li>
+  </ul>
+ <h1>IPv4 Address Basics</h1>
+
+  <h2>1. Overview</h2>
+  <ul>
+    <li><strong>Length:</strong> 32 bits → ~4.3 billion addresses.</li>
+    <li><strong>Notation:</strong> Dotted decimal – 4 octets (8 bits each) separated by dots.
+      <pre>Example: 192.168.1.10 → binary: 11000000.10101000.00000001.00001010</pre>
+    </li>
+    <li><strong>Purpose:</strong> Uniquely identifies a host in an internetwork.</li>
+  </ul>
+
+  <h2>2. Network and Host Portions</h2>
+  <ul>
+    <li>IPv4 address is divided into:
+      <ul>
+        <li><strong>Network Portion:</strong> Identifies the network.</li>
+        <li><strong>Host Portion:</strong> Identifies the device within that network.</li>
+      </ul>
+    </li>
+    <li>Example:
+      <pre>IP: 192.168.1.10
+Subnet mask: 255.255.255.0</pre>
+    </li>
+  </ul>
+
+  <h3>Subnet Mask</h3>
+  <ul>
+    <li>Determines which bits belong to network and host.</li>
+    <li>Example: 255.255.255.0 → binary: 11111111.11111111.11111111.00000000</li>
+    <li>First 24 bits → network, Last 8 bits → host</li>
+  </ul>
+
+  <h3>Network and Broadcast Addresses</h3>
+  <ul>
+    <li><strong>Network Address:</strong> Set all host bits to 0 → identifies network.
+      <pre>Example: 192.168.1.0</pre>
+    </li>
+    <li><strong>Broadcast Address:</strong> Set all host bits to 1 → send to all hosts.
+      <pre>Example: 192.168.1.255</pre>
+    </li>
+  </ul>
+
+  <h2>3. CIDR Notation</h2>
+  <ul>
+    <li>Stands for <strong>Classless Inter-Domain Routing</strong>.</li>
+    <li>Represents network prefix: <code>IP_address / prefix_length</code></li>
+    <li>Example: 192.168.1.10/24 → 24 bits network, 8 bits host</li>
+    <li><strong>Number of hosts formula:</strong> 2^(host bits) - 2
+      <ul>
+        <li>Subtract 2 for network & broadcast addresses.</li>
+      </ul>
+    </li>
+    <li>Example: /24 → 2^8 - 2 = 254 hosts per subnet</li>
+  </ul>
+
+  <h2>4. Examples</h2>
+  <table>
+    <tr>
+      <th>IP</th>
+      <th>Network</th>
+      <th>Broadcast</th>
+      <th>Host Range</th>
+    </tr>
+    <tr>
+      <td>192.168.10.5 /24</td>
+      <td>192.168.10.0</td>
+      <td>192.168.10.255</td>
+      <td>192.168.10.1 – 192.168.10.254</td>
+    </tr>
+    <tr>
+      <td>10.0.5.7 /16</td>
+      <td>10.0.0.0</td>
+      <td>10.0.255.255</td>
+      <td>10.0.0.1 – 10.0.255.254</td>
+    </tr>
+  </table>
+
+  <h2>5. Key Points</h2>
+  <ul>
+    <li>IPv4 addresses are hierarchical → helps routing.</li>
+    <li>Subnet mask divides network and host portions.</li>
+    <li>CIDR allows flexible subnetting, not limited by class.</li>
+    <li>Always reserve network and broadcast addresses; rest are usable hosts.</li>
+  </ul>
+   <h1>IPv4 Address Classes</h1>
+
+  <h2>1. Class A</h2>
+  <ul>
+    <li><strong>Range:</strong> 1.0.0.0 – 126.255.255.255</li>
+    <li><strong>Network Bits:</strong> 8</li>
+    <li><strong>Host Bits:</strong> 24</li>
+    <li><strong>Default Subnet Mask:</strong> 255.0.0.0</li>
+    <li><strong>Purpose:</strong> Large networks (up to ~16 million hosts per network)</li>
+    <li><strong>Example:</strong> 10.0.0.1</li>
+    <li><strong>Notes:</strong> First bit always 0; supports 128 networks (0 and 127 reserved)</li>
+  </ul>
+
+  <h2>2. Class B</h2>
+  <ul>
+    <li><strong>Range:</strong> 128.0.0.0 – 191.255.255.255</li>
+    <li><strong>Network Bits:</strong> 16</li>
+    <li><strong>Host Bits:</strong> 16</li>
+    <li><strong>Default Subnet Mask:</strong> 255.255.0.0</li>
+    <li><strong>Purpose:</strong> Medium-sized networks (~65,000 hosts per network)</li>
+    <li><strong>Example:</strong> 172.16.0.1</li>
+    <li><strong>Notes:</strong> First two bits 10; supports 16,384 networks</li>
+  </ul>
+
+  <h2>3. Class C</h2>
+  <ul>
+    <li><strong>Range:</strong> 192.0.0.0 – 223.255.255.255</li>
+    <li><strong>Network Bits:</strong> 24</li>
+    <li><strong>Host Bits:</strong> 8</li>
+    <li><strong>Default Subnet Mask:</strong> 255.255.255.0</li>
+    <li><strong>Purpose:</strong> Small networks (up to 254 hosts per network)</li>
+    <li><strong>Example:</strong> 192.168.1.1</li>
+    <li><strong>Notes:</strong> First three bits 110; supports 2 million networks</li>
+  </ul>
+
+  <h2>4. Class D</h2>
+  <ul>
+    <li><strong>Range:</strong> 224.0.0.0 – 239.255.255.255</li>
+    <li><strong>Purpose:</strong> Multicast addresses (one-to-many)</li>
+    <li><strong>Example:</strong> 224.0.0.1</li>
+    <li><strong>Notes:</strong> First four bits 1110; not used for standard host-to-host communication</li>
+  </ul>
+
+  <h2>5. Class E</h2>
+  <ul>
+    <li><strong>Range:</strong> 240.0.0.0 – 255.255.255.255</li>
+    <li><strong>Purpose:</strong> Experimental / reserved</li>
+    <li><strong>Example:</strong> Rarely used</li>
+    <li><strong>Notes:</strong> First four bits 1111; reserved for research/future use</li>
+  </ul>
+
+  <h2>Visual Summary</h2>
+  <table>
+    <tr>
+      <th>Class</th>
+      <th>Range</th>
+      <th>Network Bits</th>
+      <th>Host Bits</th>
+      <th>Subnet Mask</th>
+      <th>Purpose</th>
+    </tr>
+    <tr>
+      <td>A</td>
+      <td>1.0.0.0 – 126.255.255.255</td>
+      <td>8</td>
+      <td>24</td>
+      <td>255.0.0.0</td>
+      <td>Large networks</td>
+    </tr>
+    <tr>
+      <td>B</td>
+      <td>128.0.0.0 – 191.255.255.255</td>
+      <td>16</td>
+      <td>16</td>
+      <td>255.255.0.0</td>
+      <td>Medium networks</td>
+    </tr>
+    <tr>
+      <td>C</td>
+      <td>192.0.0.0 – 223.255.255.255</td>
+      <td>24</td>
+      <td>8</td>
+      <td>255.255.255.0</td>
+      <td>Small networks</td>
+    </tr>
+    <tr>
+      <td>D</td>
+      <td>224.0.0.0 – 239.255.255.255</td>
+      <td>-</td>
+      <td>-</td>
+      <td>-</td>
+      <td>Multicast</td>
+    </tr>
+    <tr>
+      <td>E</td>
+      <td>240.0.0.0 – 255.255.255.255</td>
+      <td>-</td>
+      <td>-</td>
+      <td>-</td>
+      <td>Experimental</td>
+    </tr>
+  </table>
+  <h1>Special IPv4 Addresses</h1>
+
+  <h2>1. Private Addresses (RFC 1918)</h2>
+  <ul>
+    <li><strong>Definition:</strong> Reserved for private networks; not routable on public Internet.</li>
+    <li><strong>Purpose:</strong> Enable LAN communication, conserve public IPv4 addresses.</li>
+    <li><strong>Ranges by Class:</strong>
+      <ul>
+        <li>Class A: 10.0.0.0 – 10.255.255.255 → Large private networks</li>
+        <li>Class B: 172.16.0.0 – 172.31.255.255 → Medium private networks</li>
+        <li>Class C: 192.168.0.0 – 192.168.255.255 → Small private networks, common in home routers</li>
+      </ul>
+    </li>
+    <li><strong>Example:</strong> Home router assigns 192.168.1.x to LAN devices; NAT allows Internet access.</li>
+  </ul>
+
+  <h2>2. Loopback Address</h2>
+  <ul>
+    <li><strong>Definition:</strong> Refers to the local host.</li>
+    <li><strong>Range:</strong> 127.0.0.0 – 127.255.255.255 (commonly 127.0.0.1)</li>
+    <li><strong>Purpose:</strong> Test host's network stack for diagnostics.</li>
+    <li><strong>Example:</strong>
+      <pre>ping 127.0.0.1</pre>
+    </li>
+  </ul>
+
+  <h2>3. Broadcast Address</h2>
+  <ul>
+    <li><strong>Definition:</strong> Sends packet to all hosts in a subnet.</li>
+    <li><strong>How it works:</strong> All host bits = 1</li>
+    <li><strong>Example:</strong> Subnet 192.168.1.0/24 → Broadcast: 192.168.1.255</li>
+    <li><strong>Purpose:</strong> Useful for announcements, ARP requests, DHCP requests.</li>
+  </ul>
+
+  <h2>4. Multicast Address</h2>
+  <ul>
+    <li><strong>Definition:</strong> Sends packets to a group of hosts (one-to-many).</li>
+    <li><strong>Range (Class D):</strong> 224.0.0.0 – 239.255.255.255</li>
+    <li><strong>Purpose:</strong> Efficiently deliver data to multiple subscribers (video conferencing, IPTV, streaming).</li>
+    <li><strong>Example:</strong> Streaming live video to subscribed clients using 224.1.1.1</li>
+  </ul>
+
+  <h2>5. Summary Table</h2>
+  <table>
+    <tr>
+      <th>Type</th>
+      <th>Range</th>
+      <th>Purpose</th>
+      <th>Example</th>
+    </tr>
+    <tr>
+      <td>Private</td>
+      <td>10.0.0.0 – 10.255.255.255<br>172.16.0.0 – 172.31.255.255<br>192.168.0.0 – 192.168.255.255</td>
+      <td>Internal networks</td>
+      <td>192.168.1.10</td>
+    </tr>
+    <tr>
+      <td>Loopback</td>
+      <td>127.0.0.0 – 127.255.255.255</td>
+      <td>Test local host</td>
+      <td>127.0.0.1</td>
+    </tr>
+    <tr>
+      <td>Broadcast</td>
+      <td>Host bits = 1</td>
+      <td>Send to all hosts in subnet</td>
+      <td>192.168.1.255</td>
+    </tr>
+    <tr>
+      <td>Multicast</td>
+      <td>224.0.0.0 – 239.255.255.255</td>
+      <td>Send to group of hosts</td>
+      <td>224.1.1.1</td>
+    </tr>
+  </table>
+  <body>
+
+  <h1>IPv4 Subnetting – In-Depth</h1>
+
+  <h2>1. Purpose of Subnetting</h2>
+  <ul>
+    <li>Divide a large network into smaller, manageable subnets.</li>
+    <li>Benefits:
+      <ul>
+        <li>Efficient IP address utilization</li>
+        <li>Improved network performance</li>
+        <li>Easier management and security</li>
+      </ul>
+    </li>
+  </ul>
+
+  <h2>2. Subnet Mask</h2>
+  <ul>
+    <li>Definition: 32-bit number dividing IP into network and host parts.</li>
+    <li>Example:
+      <pre>
+IP: 192.168.1.10
+Subnet Mask: 255.255.255.0
+Network: 192.168.1.0
+Host: 0.0.0.10
+
+Binary Representation:
+IP:       11000000.10101000.00000001.00001010
+Subnet:   11111111.11111111.11111111.00000000
+      </pre>
+    </li>
+  </ul>
+
+  <h2>3. CIDR Notation</h2>
+  <ul>
+    <li>Classless Inter-Domain Routing (CIDR) represents subnet mask as /n</li>
+    <li>n = number of network bits</li>
+    <li>Example: 192.168.1.0/26 → 26 network bits, 6 host bits</li>
+  </ul>
+
+  <h2>4. Number of Hosts per Subnet</h2>
+  <ul>
+    <li>Formula: <strong>2^(host bits) - 2</strong> (subtract network & broadcast)</li>
+    <li>Example: /26 → host bits = 6 → 2^6 - 2 = 62 hosts per subnet</li>
+  </ul>
+
+  <h2>5. Number of Subnets</h2>
+  <ul>
+    <li>Formula: <strong>2^(borrowed bits)</strong></li>
+    <li>Borrowed bits = bits taken from host portion to create more subnets.</li>
+    <li>Example: 192.168.1.0/24 → subnet mask /26 → 2 bits borrowed → 2^2 = 4 subnets</li>
+  </ul>
+
+  <h2>6. Subnet Address Calculation</h2>
+  <p>Example: 192.168.1.0/26 → 4 subnets</p>
+  <table>
+    <tr>
+      <th>Subnet</th>
+      <th>Network Address</th>
+      <th>First Host</th>
+      <th>Last Host</th>
+      <th>Broadcast Address</th>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td>192.168.1.0</td>
+      <td>192.168.1.1</td>
+      <td>192.168.1.62</td>
+      <td>192.168.1.63</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>192.168.1.64</td>
+      <td>192.168.1.65</td>
+      <td>192.168.1.126</td>
+      <td>192.168.1.127</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>192.168.1.128</td>
+      <td>192.168.1.129</td>
+      <td>192.168.1.190</td>
+      <td>192.168.1.191</td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td>192.168.1.192</td>
+      <td>192.168.1.193</td>
+      <td>192.168.1.254</td>
+      <td>192.168.1.255</td>
+    </tr>
+  </table>
+
+  <h2>7. Shortcut Table for Common Subnets</h2>
+  <table>
+    <tr>
+      <th>CIDR</th>
+      <th>Subnet Mask</th>
+      <th>#Hosts</th>
+      <th>Increment</th>
+    </tr>
+    <tr><td>/24</td><td>255.255.255.0</td><td>254</td><td>256</td></tr>
+    <tr><td>/25</td><td>255.255.255.128</td><td>126</td><td>128</td></tr>
+    <tr><td>/26</td><td>255.255.255.192</td><td>62</td><td>64</td></tr>
+    <tr><td>/27</td><td>255.255.255.224</td><td>30</td><td>32</td></tr>
+    <tr><td>/28</td><td>255.255.255.240</td><td>14</td><td>16</td></tr>
+    <tr><td>/29</td><td>255.255.255.248</td><td>6</td><td>8</td></tr>
+    <tr><td>/30</td><td>255.255.255.252</td><td>2</td><td>4</td></tr>
+  </table>
+
+  <h2>✅ Summary</h2>
+  <ul>
+    <li>Subnetting divides networks for better management and efficiency.</li>
+    <li>CIDR /n represents network portion.</li>
+    <li>Hosts per subnet: 2^(host bits) - 2</li>
+    <li>Number of subnets: 2^(borrowed bits)</li>
+    <li>Use increment to calculate consecutive subnet addresses.</li>
+  </ul>
+  <h1>IPv4 Fragmentation and MTU</h1>
+
+  <h2>1. What is MTU (Maximum Transmission Unit)?</h2>
+  <ul>
+    <li>The largest size of a packet (in bytes) that a network can transmit without fragmentation.</li>
+    <li>Purpose: Ensures packets can traverse networks with different MTUs.</li>
+    <li>Examples:
+      <ul>
+        <li>Ethernet: MTU = 1500 bytes</li>
+        <li>PPPoE: MTU = 1492 bytes</li>
+        <li>Wireless networks: varies</li>
+      </ul>
+    </li>
+  </ul>
+
+  <h2>2. Why Fragmentation is Needed</h2>
+  <ul>
+    <li>Networks along the path may have different MTUs.</li>
+    <li>If a packet is larger than the MTU, it must be fragmented to fit.</li>
+    <li>Fragmentation ensures end-to-end delivery over smaller MTU links.</li>
+  </ul>
+
+  <h2>3. How IPv4 Fragmentation Works</h2>
+  <p>IPv4 allows routers or sender to split large packets into smaller fragments. Each fragment:</p>
+  <ul>
+    <li>Has its own IP header</li>
+    <li>Carries a portion of the original payload</li>
+  </ul>
+
+  <h3>IPv4 Header Fields for Fragmentation</h3>
+  <table>
+    <tr>
+      <th>Field</th>
+      <th>Purpose</th>
+    </tr>
+    <tr>
+      <td>Identification</td>
+      <td>Unique ID for original packet; used to reassemble fragments.</td>
+    </tr>
+    <tr>
+      <td>Flags (3 bits)</td>
+      <td>
+        <ul>
+          <li>DF (Don't Fragment) = 1 → cannot fragment</li>
+          <li>MF (More Fragments) = 1 → more fragments follow</li>
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td>Fragment Offset</td>
+      <td>Position of fragment’s data in the original packet (in 8-byte units)</td>
+    </tr>
+  </table>
+
+  <h2>4. Fragmentation Process Example</h2>
+  <p>Scenario: Original packet = 4000 bytes, MTU = 1500 bytes</p>
+  <ul>
+    <li>Step 1: Calculate fragment size → 1500 - 20 = 1480 bytes payload per fragment</li>
+    <li>Step 2: Split packet:
+      <pre>
+Fragment 1 → 1480 bytes payload, MF=1, Offset=0
+Fragment 2 → 1480 bytes payload, MF=1, Offset=185  (1480/8)
+Fragment 3 → 1040 bytes payload, MF=0, Offset=370
+      </pre>
+    </li>
+    <li>Step 3: Forward fragments independently</li>
+    <li>Step 4: Reassemble at destination using Identification and Fragment Offset; MF=0 indicates last fragment</li>
+  </ul>
+
+  <h2>5. Important Points</h2>
+  <ul>
+    <li>Reassembly occurs only at the destination, not at routers.</li>
+    <li>Fragmentation can reduce performance; modern networks prefer Path MTU Discovery (PMTUD).</li>
+    <li>DF bit avoids intermediate fragmentation; routers drop packet if > MTU and send ICMP “Fragmentation Needed”.</li>
+  </ul>
+
+  <h2>6. Path MTU Discovery (PMTUD)</h2>
+  <ul>
+    <li>Technique to find the smallest MTU along a path.</li>
+    <li>Prevents fragmentation by sending packets small enough to traverse all links.</li>
+    <li>Uses ICMP “Fragmentation Needed” messages to adjust packet size.</li>
+  </ul>
+
+  <h2>7. Summary</h2>
+  <ul>
+    <li>MTU = Maximum packet size a network can carry.</li>
+    <li>IPv4 supports fragmentation for large packets over smaller MTU links.</li>
+    <li>Key IPv4 header fields: Identification, Flags (DF/MF), Fragment Offset.</li>
+    <li>Reassembly occurs at the destination host.</li>
+    <li>Modern networks prefer avoiding fragmentation using PMTUD.</li>
+  </ul>
+  <h2>Protocols Used with IPv4</h2>
+
+<h3>1. ICMP (Internet Control Message Protocol)</h3>
+<p><strong>Purpose:</strong> Provides error reporting and network diagnostics. Helps identify problems such as unreachable hosts or routing loops.</p>
+<p><strong>Key Functions:</strong></p>
+<ul>
+  <li><strong>Error Reporting:</strong> Destination Unreachable, Time Exceeded (TTL expired), Source Quench (rarely used)</li>
+  <li><strong>Network Diagnostics:</strong> 
+    <ul>
+      <li>Ping: Checks if a host is reachable</li>
+      <li>Traceroute: Shows the path packets take to reach a destination</li>
+    </ul>
+  </li>
+</ul>
+<p><strong>How ICMP Works:</strong> Encapsulated in an IPv4 packet (Protocol field = 1). ICMP messages are control messages, not for data transfer.</p>
+<p><strong>Example:</strong> ping 8.8.8.8 → ICMP Echo Request sent → ICMP Echo Reply received</p>
+
+<h3>2. ARP (Address Resolution Protocol)</h3>
+<p><strong>Purpose:</strong> Maps IPv4 addresses to MAC addresses in a local network (LAN).</p>
+<p><strong>How ARP Works:</strong></p>
+<ol>
+  <li>Host wants to send a packet to IP 192.168.1.10.</li>
+  <li>Checks ARP cache for corresponding MAC address.</li>
+  <li>If not found, sends ARP Request (broadcast): "Who has 192.168.1.10?"</li>
+  <li>Host with that IP responds with ARP Reply (MAC address).</li>
+  <li>Sender updates ARP table and transmits frame to MAC address.</li>
+</ol>
+
+<h3>3. TCP / UDP (Transport Layer Protocols)</h3>
+<p><strong>Purpose:</strong> IPv4 encapsulates Transport Layer segments, allowing process-to-process communication between applications.</p>
+<ul>
+  <li><strong>TCP (Transmission Control Protocol):</strong> Connection-oriented, reliable, ordered delivery. Examples: HTTP, HTTPS, FTP, SMTP.</li>
+  <li><strong>UDP (User Datagram Protocol):</strong> Connectionless, unreliable, faster. Examples: DNS, DHCP, VoIP, streaming services.</li>
+</ul>
+<p><strong>How TCP/UDP Works with IPv4:</strong></p>
+<ol>
+  <li>Transport layer creates segment (TCP/UDP).</li>
+  <li>IPv4 adds IP header → forms packet.</li>
+  <li>Routers forward based on destination IP.</li>
+  <li>Receiver extracts segment and passes to correct application using port number.</li>
+</ol>
+
+<h3>Summary Table of IPv4-Related Protocols</h3>
+<table border="1" cellpadding="5">
+  <tr>
+    <th>Protocol</th>
+    <th>Layer</th>
+    <th>Purpose</th>
+    <th>Examples</th>
+  </tr>
+  <tr>
+    <td>ICMP</td>
+    <td>Network</td>
+    <td>Error reporting, diagnostics</td>
+    <td>ping, traceroute</td>
+  </tr>
+  <tr>
+    <td>ARP</td>
+    <td>Network / Data Link</td>
+    <td>Map IP → MAC</td>
+    <td>LAN delivery</td>
+  </tr>
+  <tr>
+    <td>TCP</td>
+    <td>Transport</td>
+    <td>Reliable, connection-oriented delivery</td>
+    <td>HTTP, FTP, SMTP</td>
+  </tr>
+  <tr>
+    <td>UDP</td>
+    <td>Transport</td>
+    <td>Fast, connectionless delivery</td>
+    <td>DNS, VoIP, Streaming</td>
+  </tr>
+</table>
+<h2>IPv4 Packet Flow (Step by Step)</h2>
+
+<h3>1. Application Layer Generates Data</h3>
+<p>The application (e.g., web browser, email client) generates raw data.</p>
+<p><strong>Example:</strong> Requesting a webpage → HTTP generates a request message.</p>
+
+<h3>2. Transport Layer Adds Header</h3>
+<p>TCP or UDP adds its transport header to create a segment.</p>
+<ul>
+  <li>Header includes source/destination ports, sequence number (TCP), checksum, etc.</li>
+  <li>Resulting data unit = segment (TCP/UDP header + application data)</li>
+</ul>
+
+<h3>3. Network Layer Adds IPv4 Header</h3>
+<p>IPv4 encapsulates the segment by adding an IP header, creating a packet.</p>
+<ul>
+  <li>Header includes: Source IP, Destination IP, TTL, Protocol (TCP/UDP), Fragmentation info if needed</li>
+</ul>
+
+<h3>4. Data Link Layer Encapsulation</h3>
+<p>Packet is passed to the Data Link Layer.</p>
+<ul>
+  <li>Adds frame header & trailer (MAC addresses, error-checking checksum)</li>
+  <li>Resulting data unit = frame ready for transmission</li>
+</ul>
+
+<h3>5. Physical Layer Transmission</h3>
+<p>Frame is transmitted as electrical, optical, or wireless signals through the physical medium.</p>
+
+<h3>6. Routing Across Networks</h3>
+<ul>
+  <li>If destination is on a different network, routers examine the destination IP and forward packet using routing tables</li>
+  <li>TTL in the IP header is decremented at each hop to prevent loops</li>
+</ul>
+
+<h3>7. Arrival at Destination Host</h3>
+<ul>
+  <li>Frame reaches destination host’s Data Link Layer → frame header removed, IP packet extracted</li>
+</ul>
+
+<h3>8. Network Layer Processing</h3>
+<ul>
+  <li>IPv4 checks destination IP and header checksum</li>
+  <li>Reassembles any fragments if needed</li>
+  <li>Passes payload (TCP/UDP segment) to Transport Layer</li>
+</ul>
+
+<h3>9. Transport Layer Processing</h3>
+<ul>
+  <li>TCP/UDP uses port number to deliver the segment to correct application</li>
+  <li>TCP ensures reliability: ACKs, sequence numbers, reordering if needed</li>
+</ul>
+
+<h3>10. Application Receives Data</h3>
+<p>Application processes the data, e.g., displaying a webpage, storing an email, or playing a video stream.</p>
+
+<h3>Visual Flow (Simplified)</h3>
+<pre>
+[Application Data]
+        ↓
+[Transport Layer: TCP/UDP Segment]
+        ↓
+[Network Layer: IPv4 Packet]
+        ↓
+[Data Link Layer: Frame with MAC addresses]
+        ↓
+[Physical Layer: Signals on medium]
+        ↓ (Routers forward based on IP)
+[Data Link Layer at Destination: Remove frame]
+        ↓
+[Network Layer: IPv4 header removed]
+        ↓
+[Transport Layer: TCP/UDP delivers to app]
+        ↓
+[Application Layer: Data received]
+</pre>
+
+<h3>Key Points</h3>
+<ul>
+  <li>IPv4 enables end-to-end delivery across multiple networks</li>
+  <li>Routing is based on logical IP addresses, not MAC addresses</li>
+  <li>Transport layer ensures port-based delivery and reliability</li>
+  <li>Packet is encapsulated at each layer and decapsulated at the receiver</li>
+</ul>
+<h2>Limitations of IPv4 and IPv6 Improvements</h2>
+
+<h3>1. Limited Address Space</h3>
+<p><strong>Issue:</strong> IPv4 uses 32-bit addresses, allowing approximately <strong>4.3 billion</strong> unique addresses.</p>
+<p>With the rapid growth of the Internet, especially due to mobile devices and IoT, this address space has become insufficient.</p>
+<p><strong>IPv6 Solution:</strong> Uses 128-bit addresses, allowing <strong>340 undecillion</strong> (3.4 × 10<sup>38</sup>) unique addresses — effectively eliminating address shortages.</p>
+
+<h3>2. No Built-in Security</h3>
+<p><strong>Issue:</strong> IPv4 does not include encryption or authentication by default. Any IP packet can be intercepted, altered, or spoofed.</p>
+<p>Security can be added via <strong>IPsec</strong>, but it is optional and not inherently part of IPv4.</p>
+<p><strong>IPv6 Solution:</strong> Security is built-in — <strong>IPsec</strong> is mandatory in IPv6, providing end-to-end encryption and authentication.</p>
+
+<h3>3. Fragmentation and Efficiency</h3>
+<p><strong>Issue:</strong> In IPv4, routers can fragment packets if they exceed the MTU (Maximum Transmission Unit) of a link.</p>
+<p><strong>Problems with Fragmentation:</strong></p>
+<ul>
+  <li>Increases overhead (each fragment carries its own IP header).</li>
+  <li>Reassembly at the destination is complex and resource-intensive.</li>
+  <li>Loss of a single fragment requires retransmission of the entire packet.</li>
+</ul>
+<p><strong>IPv6 Solution:</strong> Removes router-based fragmentation — only the sender performs fragmentation, improving efficiency and simplifying routing.</p>
+
+<h3>Summary</h3>
+<table border="1" cellpadding="6">
+  <tr>
+    <th>Limitation</th>
+    <th>Impact</th>
+    <th>IPv6 Improvement</th>
+  </tr>
+  <tr>
+    <td>Limited Address Space</td>
+    <td>Not enough IPs for all devices</td>
+    <td>128-bit address space</td>
+  </tr>
+  <tr>
+    <td>No Built-in Security</td>
+    <td>Vulnerable to interception and spoofing</td>
+    <td>Mandatory IPsec for encryption and authentication</td>
+  </tr>
+  <tr>
+    <td>Fragmentation Inefficiency</td>
+    <td>Higher overhead and slower transmission</td>
+    <td>Only sender fragments packets; more efficient</td>
+  </tr>
+</table>
+<h2>1. Introduction to IPv6</h2>
+
+<p><strong>Developed by:</strong> IETF (Internet Engineering Task Force)</p>
+<p><strong>Standardized in:</strong> 1998 (<a href="https://datatracker.ietf.org/doc/html/rfc2460" target="_blank">RFC 2460</a>), updated by 
+<a href="https://datatracker.ietf.org/doc/html/rfc8200" target="_blank">RFC 8200</a></p>
+<p><strong>Purpose:</strong> To overcome the limitations of IPv4, particularly:</p>
+<ul>
+  <li>Address exhaustion</li>
+  <li>Lack of built-in security</li>
+  <li>Inefficient routing and packet processing</li>
+</ul>
+<p><strong>Address Length:</strong> 128 bits → approximately <strong>3.4 × 10<sup>38</sup></strong> unique addresses 
+(340 undecillion), ensuring enough addresses for every device globally.</p>
+<h2>Key Features of IPv6</h2>
+<p>IPv6 introduces several improvements over IPv4 to enhance scalability, performance, and security. Below is a detailed comparison:</p>
+
+<table border="1" cellpadding="6">
+  <tr>
+    <th>Feature</th>
+    <th>IPv4</th>
+    <th>IPv6</th>
+  </tr>
+  <tr>
+    <td><strong>Address Size</strong></td>
+    <td>32 bits</td>
+    <td>128 bits</td>
+  </tr>
+  <tr>
+    <td><strong>Address Notation</strong></td>
+    <td>Dotted decimal (e.g., 192.168.0.1)</td>
+    <td>Hexadecimal (e.g., 2001:0db8:85a3::8a2e:0370:7334)</td>
+  </tr>
+  <tr>
+    <td><strong>Header Length</strong></td>
+    <td>Variable (20–60 bytes)</td>
+    <td>Fixed (40 bytes)</td>
+  </tr>
+  <tr>
+    <td><strong>Checksum</strong></td>
+    <td>Present</td>
+    <td>Removed for faster processing</td>
+  </tr>
+  <tr>
+    <td><strong>Fragmentation</strong></td>
+    <td>Routers can fragment packets</td>
+    <td>Only sender fragments packets</td>
+  </tr>
+  <tr>
+    <td><strong>Security (IPsec)</strong></td>
+    <td>Optional</td>
+    <td>Built-in and mandatory</td>
+  </tr>
+  <tr>
+    <td><strong>Configuration</strong></td>
+    <td>Manual or DHCP</td>
+    <td>Stateless (SLAAC) or DHCPv6</td>
+  </tr>
+  <tr>
+    <td><strong>Broadcasting</strong></td>
+    <td>Supported</td>
+    <td>Not supported (uses multicast/anycast instead)</td>
+  </tr>
+  <tr>
+    <td><strong>QoS Field</strong></td>
+    <td>Type of Service (ToS)</td>
+    <td>Traffic Class + Flow Label</td>
+  </tr>
+</table>
+<h2>IPv6 Addressing</h2>
+
+<p>IPv6 uses 128-bit addresses, providing an enormous number of unique addresses. It supports multiple address types to handle different communication needs.</p>
+
+<h3>Types of IPv6 Addresses</h3>
+
+<table border="1" cellpadding="6">
+  <tr>
+    <th>Type</th>
+    <th>Description</th>
+    <th>Example</th>
+  </tr>
+  <tr>
+    <td><strong>Unicast</strong></td>
+    <td>Identifies a single interface. Packets sent to a unicast address are delivered to one specific device.</td>
+    <td><code>2001:db8::1</code></td>
+  </tr>
+  <tr>
+    <td><strong>Multicast</strong></td>
+    <td>Used for one-to-many communication. Packets are delivered to multiple devices in a multicast group.</td>
+    <td><code>ff02::1</code> (all nodes)</td>
+  </tr>
+  <tr>
+    <td><strong>Anycast</strong></td>
+    <td>Used for one-to-nearest communication. The same address is assigned to multiple interfaces, and the packet is delivered to the nearest one.</td>
+    <td><em>Same address assigned to multiple interfaces</em></td>
+  </tr>
+  <tr>
+    <td><strong>Loopback</strong></td>
+    <td>Used for testing within the same host.</td>
+    <td><code>::1</code></td>
+  </tr>
+  <tr>
+    <td><strong>Link-local</strong></td>
+    <td>Automatically configured for communication within a local network (not routable on the Internet).</td>
+    <td><code>fe80::/10</code></td>
+  </tr>
+  <tr>
+    <td><strong>Global Unicast</strong></td>
+    <td>Publicly routable IPv6 addresses used across the Internet.</td>
+    <td><code>2000::/3</code></td>
+  </tr>
+</table>
+<h1>🌐 IPv6 Header Structure</h1>
+<p><strong>Fixed Header Size:</strong> 40 bytes (unlike IPv4’s 20–60 bytes) → faster and simpler processing.</p>
+
+<h2>🧩 IPv6 Fixed Header Format</h2>
+<pre>
+| Version | Traffic Class |      Flow Label        |
+|     Payload Length      | Next Header | Hop Limit |
+|                                                |
+|               Source Address (128 bits)       |
+|                                                |
+|             Destination Address (128 bits)   |
+</pre>
+
+<h2>📘 Field-by-Field Explanation</h2>
+<table>
+<tr>
+<th>Field</th>
+<th>Size (bits)</th>
+<th>Purpose / Explanation</th>
+</tr>
+<tr><td>Version</td><td>4</td><td>Always 6 (IPv6); identifies protocol version.</td></tr>
+<tr><td>Traffic Class</td><td>8</td><td>QoS / priority (similar to IPv4 ToS).</td></tr>
+<tr><td>Flow Label</td><td>20</td><td>Identifies packets in the same flow; supports QoS for real-time data.</td></tr>
+<tr><td>Payload Length</td><td>16</td><td>Size of payload (excluding header); max 65,535 bytes. Jumbo payload handled via extension header.</td></tr>
+<tr><td>Next Header</td><td>8</td><td>Identifies upper-layer protocol or extension header (TCP=6, UDP=17, ICMPv6=58).</td></tr>
+<tr><td>Hop Limit</td><td>8</td><td>Limits packet lifetime; same as IPv4 TTL.</td></tr>
+<tr><td>Source Address</td><td>128</td><td>Sender’s IPv6 address (unicast, anycast).</td></tr>
+<tr><td>Destination Address</td><td>128</td><td>Receiver’s IPv6 address (unicast, multicast, or anycast).</td></tr>
+</table>
+
+<h2>⚙️ Key Improvements Over IPv4 Header</h2>
+<table>
+<tr><th>IPv4 Feature</th><th>IPv6 Feature / Improvement</th></tr>
+<tr><td>Variable header (20–60 B)</td><td>Fixed header (40 B) → faster routing</td></tr>
+<tr><td>Includes checksum</td><td>No checksum → less router computation</td></tr>
+<tr><td>Fragmentation by routers</td><td>Only sender fragments → more efficient</td></tr>
+<tr><td>Options inside header</td><td>Optional features in extension headers</td></tr>
+<tr><td>Fragmentation fields (ID, flags, offset)</td><td>Removed → simpler processing</td></tr>
+<tr><td>Header Length field</td><td>Not needed (fixed size)</td></tr>
+</table>
+
+<h2>🧱 IPv6 Extension Headers</h2>
+<p>Optional features are included via extension headers; identified by the <strong>Next Header</strong> field of the previous header.</p>
+<table>
+<tr><th>Extension Header</th><th>Next Header Value</th><th>Purpose</th></tr>
+<tr><td>Hop-by-Hop Options</td><td>0</td><td>Examined by every router along the path</td></tr>
+<tr><td>Routing Header</td><td>43</td><td>List of intermediate nodes to visit</td></tr>
+<tr><td>Fragment Header</td><td>44</td><td>Packet fragmentation</td></tr>
+<tr><td>Destination Options</td><td>60</td><td>Options for destination node only</td></tr>
+<tr><td>Authentication Header (AH)</td><td>51</td><td>IPsec authentication</td></tr>
+<tr><td>Encapsulating Security Payload (ESP)</td><td>50</td><td>IPsec encryption</td></tr>
+</table>
+
+<h2>🧠 Advantages of IPv6 Header Design</h2>
+<ul>
+<li><strong>Simplified Processing:</strong> Fixed size + no checksum → faster per-hop handling.</li>
+<li><strong>Scalability:</strong> 128-bit addresses → massive global network support.</li>
+<li><strong>Better QoS Support:</strong> Traffic Class + Flow Label enable priority routing.</li>
+<li><strong>Security:</strong> IPsec natively supported via AH and ESP headers.</li>
+<li><strong>Efficient Extension Mechanism:</strong> Clean separation of main header and optional features.</li>
+</ul>
+
+<h2>🧾 Example IPv6 Header (Hexadecimal)</h2>
+<table>
+<tr><th>Field</th><th>Value</th></tr>
+<tr><td>Version</td><td>6</td></tr>
+<tr><td>Traffic Class</td><td>0x00</td></tr>
+<tr><td>Flow Label</td><td>0x00000</td></tr>
+<tr><td>Payload Length</td><td>0x0020 (32 bytes)</td></tr>
+<tr><td>Next Header</td><td>0x3A (ICMPv6)</td></tr>
+<tr><td>Hop Limit</td><td>0x40 (64)</td></tr>
+<tr><td>Source Address</td><td>2001:0db8::1</td></tr>
+<tr><td>Destination Address</td><td>2001:0db8::2</td></tr>
+</table>
+<p><em>Example represents an ICMPv6 Echo Request (ping) from <strong>2001:db8::1</strong> → <strong>2001:db8::2</strong>.</em></p>
+
+<h2>🧩 Summary of IPv6 Header Fields</h2>
+<table>
+<tr><th>Field</th><th>Size</th><th>Purpose</th></tr>
+<tr><td>Version</td><td>4 bits</td><td>IPv6 identifier (value = 6)</td></tr>
+<tr><td>Traffic Class</td><td>8 bits</td><td>Packet priority / QoS</td></tr>
+<tr><td>Flow Label</td><td>20 bits</td><td>Identify packets in the same flow</td></tr>
+<tr><td>Payload Length</td><td>16 bits</td><td>Length of payload data</td></tr>
+<tr><td>Next Header</td><td>8 bits</td><td>Upper-layer protocol or extension header</td></tr>
+<tr><td>Hop Limit</td><td>8 bits</td><td>Max hops (like TTL)</td></tr>
+<tr><td>Source Address</td><td>128 bits</td><td>Sender address</td></tr>
+<tr><td>Destination Address</td><td>128 bits</td><td>Receiver address</td></tr>
+</table>
+<h1>🌐 IPv6 Address Configuration Methods</h1>
+<p>IPv6 addresses can be assigned to hosts using three main methods.</p>
+
+<h2>1. Stateless Address Autoconfiguration (SLAAC)</h2>
+<p><strong>Purpose:</strong> Automatically configure IPv6 addresses without a DHCP server.</p>
+
+<h3>How it Works:</h3>
+<ol>
+<li>Device generates a link-local address automatically using its MAC address.<br>
+<em>Example:</em> <code>fe80::1a2b:3c4d:5e6f:7g8h</code></li>
+<li>Device sends a Router Solicitation (RS) message to the network.</li>
+<li>Router responds with Router Advertisement (RA) containing:
+<ul>
+<li>Network prefix</li>
+<li>Prefix length</li>
+<li>Default gateway info</li>
+</ul>
+</li>
+<li>Device combines RA’s network prefix with its interface ID → forms global unicast IPv6 address.</li>
+<li>Performs Duplicate Address Detection (DAD) to ensure uniqueness.</li>
+</ol>
+
+<h3>Advantages:</h3>
+<ul>
+<li>No DHCP server needed</li>
+<li>Fully automatic</li>
+<li>Easy deployment in large networks</li>
+</ul>
+
+<h2>2. DHCPv6 (Stateful Configuration)</h2>
+<p><strong>Purpose:</strong> Centralized server assigns IPv6 addresses and other parameters.</p>
+
+<h3>How it Works:</h3>
+<ol>
+<li>Device sends DHCPv6 Solicit message to discover servers.</li>
+<li>Server responds with Advertise message containing available addresses.</li>
+<li>Device requests a specific address using Request message.</li>
+<li>Server confirms assignment with Reply message, including:
+<ul>
+<li>DNS servers</li>
+<li>Domain name</li>
+<li>NTP servers</li>
+</ul>
+</li>
+</ol>
+
+<h3>Advantages:</h3>
+<ul>
+<li>Centralized management</li>
+<li>Suitable for enterprise networks</li>
+<li>Provides full configuration options</li>
+</ul>
+
+<h2>3. Manual Configuration</h2>
+<p><strong>Purpose:</strong> Administrator assigns IPv6 addresses manually.</p>
+
+<h3>When Used:</h3>
+<ul>
+<li>Critical servers</li>
+<li>Routers</li>
+<li>Special devices requiring fixed addresses</li>
+</ul>
+
+<h3>Process:</h3>
+<ul>
+<li>Admin assigns global unicast address</li>
+<li>Sets subnet prefix, gateway, and DNS manually</li>
+</ul>
+
+<h3>Disadvantages:</h3>
+<ul>
+<li>Time-consuming</li>
+<li>Prone to errors</li>
+<li>Not scalable for large networks</li>
+</ul>
+
+<h2>Comparison Table</h2>
+<table>
+<tr>
+<th>Method</th>
+<th>Automatic</th>
+<th>Centralized</th>
+<th>Suitable For</th>
+<th>Notes</th>
+</tr>
+<tr>
+<td>SLAAC</td>
+<td>Yes</td>
+<td>No</td>
+<td>Most clients</td>
+<td>Uses RA messages, no DHCP</td>
+</tr>
+<tr>
+<td>DHCPv6</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Enterprises</td>
+<td>Provides extra configuration info</td>
+</tr>
+<tr>
+<td>Manual</td>
+<td>No</td>
+<td>No</td>
+<td>Servers, routers</td>
+<td>Requires admin setup</td>
+</tr>
+</table>
+
+<h2>💡 Key Points</h2>
+<ul>
+<li>SLAAC is stateless → device self-configures</li>
+<li>DHCPv6 is stateful → server tracks assigned addresses</li>
+</ul>
+<h1>🌐 Important IPv6 Concepts – Detailed Explanation</h1>
+
+<h2>(a) Neighbor Discovery Protocol (NDP)</h2>
+<p><strong>Purpose:</strong> NDP replaces multiple IPv4 protocols:</p>
+<ul>
+<li>ARP → NDP handles IPv6 address → MAC mapping</li>
+<li>ICMP Router Discovery → NDP enables automatic router discovery</li>
+<li>ICMP Redirect → NDP manages route optimization</li>
+</ul>
+
+<h3>Functions of NDP:</h3>
+<ul>
+<li><strong>Address Resolution:</strong> Maps IPv6 addresses to MAC addresses. <em>Example:</em> fe80::1 → NDP finds MAC.</li>
+<li><strong>Router Discovery:</strong> Hosts discover routers via Router Advertisement (RA) messages including network prefix, MTU, etc.</li>
+<li><strong>Duplicate Address Detection (DAD):</strong> Ensures newly assigned IPv6 addresses are unique. Host sends Neighbor Solicitation; no response → address valid.</li>
+<li><strong>Prefix Discovery:</strong> Hosts learn link network prefix from RA messages → enables SLAAC.</li>
+</ul>
+
+<h2>(b) ICMPv6</h2>
+<p><strong>Purpose:</strong> IPv6 version of ICMP used for:</p>
+<ul>
+<li>Error reporting (unreachable destination, packet too big)</li>
+<li>Diagnostics (ping6, traceroute6)</li>
+<li>Neighbor Discovery (NDP relies on ICMPv6 messages)</li>
+<li>Path MTU Discovery</li>
+</ul>
+
+<h3>Key ICMPv6 Message Types:</h3>
+<ul>
+<li><strong>Error Messages:</strong> Destination Unreachable, Packet Too Big, Time Exceeded, Parameter Problem</li>
+<li><strong>Informational Messages:</strong> Echo Request / Echo Reply (ping)</li>
+</ul>
+<p><em>Note:</em> ICMPv6 is mandatory in IPv6 since NDP depends on it.</p>
+
+<h2>(c) Flow Label</h2>
+<p><strong>Purpose:</strong> 20-bit field in IPv6 header to support flows.</p>
+
+<h3>Function:</h3>
+<ul>
+<li>Allows routers to identify packets belonging to the same “flow”.</li>
+<li>Flow: sequence of packets requiring special handling (e.g., low-latency streaming, VoIP, real-time video).</li>
+</ul>
+
+<h3>Benefit:</h3>
+<ul>
+<li>Supports QoS without examining upper-layer headers.</li>
+<li>Efficient forwarding, reduced latency, improved performance for real-time traffic.</li>
+<li>Example: Packets with same source/destination and flow label → routed consistently.</li>
+</ul>
+
+<h2>📊 Summary Table</h2>
+<table>
+<tr>
+<th>Concept</th>
+<th>Purpose</th>
+<th>Key Functions</th>
+</tr>
+<tr>
+<td>NDP</td>
+<td>Replaces ARP & router discovery</td>
+<td>Address resolution, router discovery, DAD, prefix discovery</td>
+</tr>
+<tr>
+<td>ICMPv6</td>
+<td>Error reporting & diagnostics</td>
+<td>Echo request/reply, packet too big, path MTU, NDP messaging</td>
+</tr>
+<tr>
+<td>Flow Label</td>
+<td>QoS & flow identification</td>
+<td>Identifies packets of same flow for special treatment</td>
+</tr>
+</table>
+<h1>🔐 IPv6 Security – IPsec</h1>
+
+<h2>1. What is IPsec?</h2>
+<p><strong>Full form:</strong> Internet Protocol Security</p>
+<p>A set of protocols for securing IP communications by authenticating and encrypting each IP packet.</p>
+<ul>
+<li>In IPv4, IPsec is optional.</li>
+<li>In IPv6, IPsec support is mandatory, though usage is optional in practice.</li>
+</ul>
+
+<h2>2. Components of IPsec</h2>
+<table>
+<tr>
+<th>Component</th>
+<th>Purpose</th>
+</tr>
+<tr>
+<td>AH (Authentication Header)</td>
+<td>Provides authentication and integrity of the packet. Ensures packet is from a trusted source and not altered.</td>
+</tr>
+<tr>
+<td>ESP (Encapsulating Security Payload)</td>
+<td>Provides encryption, authentication, and integrity. Hides the data inside the packet from eavesdroppers.</td>
+</tr>
+</table>
+
+<h2>3. Security Features Provided</h2>
+<ul>
+<li><strong>Authentication:</strong> Confirms sender is legitimate and prevents IP spoofing.</li>
+<li><strong>Encryption:</strong> Encrypts payload to prevent eavesdropping.</li>
+<li><strong>Integrity:</strong> Ensures packet data is not tampered with; uses cryptographic hash functions.</li>
+</ul>
+
+<h2>4. How IPsec Works in IPv6</h2>
+<p>IPsec can operate in two modes:</p>
+<ul>
+<li><strong>Transport Mode:</strong> Only the payload is encrypted/authenticated. Header remains intact. Used for host-to-host communication.</li>
+<li><strong>Tunnel Mode:</strong> Entire packet (header + payload) is encrypted/authenticated. Encapsulated inside a new IPv6 packet. Used for VPNs or gateway-to-gateway communication.</li>
+</ul>
+
+<h2>5. Advantages over IPv4</h2>
+<ul>
+<li>IPv6 has native IPsec support → easier end-to-end security.</li>
+<li>Reduces reliance on optional add-ons or application-layer encryption (TLS still recommended).</li>
+<li>Secures communications, VPNs, and mobile networks efficiently.</li>
+</ul>
+
+<h2>6. Summary</h2>
+<table>
+<tr>
+<th>Feature</th>
+<th>IPv4</th>
+<th>IPv6</th>
+</tr>
+<tr>
+<td>IPsec Support</td>
+<td>Optional</td>
+<td>Mandatory (supported)</td>
+</tr>
+<tr>
+<td>Authentication</td>
+<td>Optional</td>
+<td>Provided via AH</td>
+</tr>
+<tr>
+<td>Encryption</td>
+<td>Optional</td>
+<td>Provided via ESP</td>
+</tr>
+<tr>
+<td>Integrity</td>
+<td>Optional</td>
+<td>Guaranteed via AH/ESP</td>
+</tr>
+</table>
+<h1>🌐 IPv6 Advantages over IPv4</h1>
+
+<h2>1. Huge Address Space</h2>
+<p>IPv6 uses 128-bit addresses, giving ~3.4 × 10<sup>38</sup> unique addresses. This solves the IPv4 limitation (~4.3 billion addresses), supporting billions of devices, IoT, and future expansion.</p>
+
+<h2>2. Better Routing and Packet Handling</h2>
+<p>IPv6 supports hierarchical addressing for efficient routing. The simplified header allows routers to process packets faster, reducing delays.</p>
+
+<h2>3. Simplified Header Format</h2>
+<p>The IPv6 header is fixed at 40 bytes (vs. variable 20–60 bytes in IPv4). Fewer fields → faster processing at routers, improving network performance.</p>
+
+<h2>4. Built-in IPsec for Security</h2>
+<p>IPv6 mandates support for IPsec, enabling:</p>
+<ul>
+<li>Authentication</li>
+<li>Encryption</li>
+<li>Data integrity</li>
+</ul>
+<p>IPv4 only has optional IPsec.</p>
+
+<h2>5. No NAT Needed</h2>
+<p>IPv6 provides enough public addresses for every device, enabling true end-to-end connectivity without Network Address Translation (NAT). This allows easier peer-to-peer communication and better IoT support.</p>
+
+<h2>6. Autoconfiguration (SLAAC)</h2>
+<p>Devices can automatically assign themselves an address using Router Advertisements, reducing administrative effort and DHCP dependency.</p>
+
+<h2>7. Efficient Multicast Instead of Broadcast</h2>
+<p>IPv6 eliminates broadcast traffic (which wastes bandwidth) and uses multicast for one-to-many communication → more efficient.</p>
+
+<h2>8. Improved Mobility and QoS</h2>
+<p>The Flow Label field allows routers to identify packet flows for Quality of Service (QoS), providing better support for real-time applications like VoIP and video conferencing. Mobile devices can change networks without breaking connections.</p>
+
+<div class="summary">
+<h3>✅ Summary</h3>
+<p>IPv6 solves IPv4 limitations by providing massive address space, better performance, built-in security, and modern features like autoconfiguration and multicast, making the Internet more scalable and efficient.</p>
+</div>
+<h1>🌐 Transition from IPv4 to IPv6</h1>
+<p>IPv4 and IPv6 are not directly compatible because:</p>
+<ul>
+<li>IPv4 uses 32-bit addresses, IPv6 uses 128-bit addresses</li>
+<li>IPv6 has a different header structure and no checksum in the header</li>
+<li>IPv6 supports features like SLAAC, mandatory IPsec, and no NAT</li>
+</ul>
+<p>Mechanisms are needed to allow communication between IPv4 and IPv6 networks during the transition period.</p>
+
+<h2>1. Dual Stack</h2>
+<p><strong>Concept:</strong> Devices run both IPv4 and IPv6 simultaneously.</p>
+<h3>How it works:</h3>
+<ul>
+<li>Network interface has both IPv4 and IPv6 addresses.</li>
+<li>Can communicate with IPv4 hosts using IPv4 and IPv6 hosts using IPv6.</li>
+</ul>
+<h3>Advantages:</h3>
+<ul>
+<li>Gradual transition without breaking connectivity.</li>
+<li>Modern routers and OSs support dual-stack.</li>
+</ul>
+
+<h2>2. Tunneling</h2>
+<p><strong>Concept:</strong> IPv6 packets are encapsulated inside IPv4 packets to traverse IPv4-only networks.</p>
+<h3>How it works:</h3>
+<ul>
+<li>IPv6 packet is wrapped inside an IPv4 packet.</li>
+<li>Travels through IPv4 network.</li>
+<li>Decapsulated at tunnel endpoint and delivered as IPv6.</li>
+</ul>
+<h3>Types of Tunneling:</h3>
+<ul>
+<li>Manual/Configured Tunnels: Admin sets up tunnel endpoints.</li>
+<li>Automatic Tunnels: Use techniques like 6to4 or Teredo.</li>
+</ul>
+<h3>Advantages:</h3>
+<ul>
+<li>Allows IPv6 deployment without upgrading the entire network.</li>
+</ul>
+
+<h2>3. Translation (NAT64 / DNS64)</h2>
+<p><strong>Concept:</strong> Converts IPv6 packets to IPv4 packets (and vice versa) to allow communication between IPv4-only and IPv6-only hosts.</p>
+<h3>How it works:</h3>
+<ul>
+<li><strong>NAT64:</strong> Translates IPv6 header and payload to IPv4 format.</li>
+<li><strong>DNS64:</strong> Synthesizes AAAA records for IPv6 hosts querying IPv4-only hosts.</li>
+</ul>
+<h3>Advantages:</h3>
+<ul>
+<li>IPv6-only clients can reach IPv4 servers.</li>
+</ul>
+<h3>Limitations:</h3>
+<ul>
+<li>Some protocols may not work well if they depend on end-to-end IPv4 addresses.</li>
+</ul>
+
+<h2>Comparison Table</h2>
+<table>
+<tr>
+<th>Mechanism</th>
+<th>Purpose</th>
+<th>How it Works</th>
+<th>Pros</th>
+<th>Cons</th>
+</tr>
+<tr>
+<td>Dual Stack</td>
+<td>Gradual IPv6 adoption</td>
+<td>Device supports both IPv4 & IPv6</td>
+<td>Simple, gradual transition</td>
+<td>Requires dual-stack on all devices</td>
+</tr>
+<tr>
+<td>Tunneling</td>
+<td>IPv6 through IPv4 network</td>
+<td>Encapsulates IPv6 in IPv4</td>
+<td>Allows IPv6 deployment without upgrading</td>
+<td>Extra overhead, slightly slower</td>
+</tr>
+<tr>
+<td>Translation (NAT64/DNS64)</td>
+<td>IPv6 ↔ IPv4 communication</td>
+<td>Converts headers and payload</td>
+<td>IPv6-only clients reach IPv4 servers</td>
+<td>Limited protocol support, some apps may break</td>
+</tr>
+</table>
+
+<h2>Summary</h2>
+<ul>
+<li>Transition is necessary because IPv4 and IPv6 are incompatible.</li>
+<li><strong>Dual Stack:</strong> Run both protocols simultaneously.</li>
+<li><strong>Tunneling:</strong> IPv6 packets travel over IPv4 networks.</li>
+<li><strong>Translation:</strong> IPv6 ↔ IPv4 communication for compatibility.</li>
+<li>Gradual adoption is important as IPv6 usage grows worldwide.</li>
+</ul>
+<h1>📡 IPv6 Packet Forwarding Process</h1>
+<p>This describes the journey of an IPv6 packet from source host (Host A) to destination host (Host B).</p>
+
+<h2>1. Host A Generates the Packet</h2>
+<ol>
+<li>Application layer sends data to transport layer (TCP/UDP).</li>
+<li>Transport layer adds its header → forms TCP/UDP segment.</li>
+<li>IPv6 layer wraps the segment in an IPv6 packet:
+<ul>
+<li>Source Address: Host A (e.g., <code>2001:db8::1</code>)</li>
+<li>Destination Address: Host B (e.g., <code>2001:db8::2</code>)</li>
+<li>Hop Limit: Default 64</li>
+<li>Next Header: TCP or UDP</li>
+<li>IPv6 header is fixed 40 bytes and has no checksum → faster processing</li>
+</ul>
+</li>
+</ol>
+
+<h2>2. Packet Leaves Host A</h2>
+<ul>
+<li>Packet passed to data link layer (e.g., Ethernet).</li>
+<li>MAC address of next hop determined using Neighbor Discovery Protocol (NDP).</li>
+<li>Frame transmitted over the link to the first router.</li>
+</ul>
+
+<h2>3. Routers Forward the Packet</h2>
+<ul>
+<li>Each router examines only the <strong>Destination Address</strong> in IPv6 header.</li>
+<li>Router looks up routing table → finds next hop.</li>
+<li>Hop Limit decremented by 1 at each router to prevent loops.</li>
+<li>Packet forwarded until it reaches destination network.</li>
+<li>No checksum recalculation needed (unlike IPv4).</li>
+</ul>
+
+<h2>4. Packet Arrives at Destination</h2>
+<ul>
+<li>Host B receives the frame at data link layer.</li>
+<li>Data link layer extracts IPv6 packet → passes to network layer.</li>
+<li>IPv6 layer verifies:
+<ul>
+<li>Destination Address matches Host B</li>
+<li>Hop Limit &gt; 0</li>
+</ul>
+</li>
+<li>IPv6 header stripped → payload (TCP/UDP segment) passed to transport layer.</li>
+</ul>
+
+<h2>5. Upper-Layer Processing</h2>
+<ul>
+<li>TCP/UDP layer checks port → delivers data to correct application.</li>
+<li>If TCP → ensures reliability and ordering.</li>
+<li>Application finally receives data (e.g., web page, email, video stream).</li>
+</ul>
+
+<h2>Visual Summary</h2>
+<pre>
+Host A (Source)
+  └─ Application Layer → TCP/UDP segment
+  └─ IPv6 Header Added → Packet (Src: 2001:db8::1, Dst: 2001:db8::2)
+  └─ Data Link Layer Frame → Sent over network
+
+Router 1 → Router 2 → Router 3
+  └─ Examine Destination Address
+  └─ Decrement Hop Limit
+  └─ Forward to next hop
+
+Host B (Destination)
+  └─ Data Link Layer → Extract Packet
+  └─ IPv6 Layer → Verify Address, Hop Limit
+  └─ Transport Layer → TCP/UDP delivers to Application
+</pre>
+
+<h2>✅ Key Takeaways</h2>
+<ul>
+<li>IPv6 uses hop-by-hop forwarding based solely on destination address.</li>
+<li>Hop Limit prevents packets from looping infinitely.</li>
+<li>No checksum in IPv6 header → faster router forwarding.</li>
+<li>Upper-layer protocols (TCP/UDP) handle reliability and ordering.</li>
+</ul>
+<h1>🌐 IPv6 Address Types</h1>
+<p>IPv6 addresses are categorized based on their scope and purpose.</p>
+
+<h2>1. Global Unicast (2000::/3)</h2>
+<ul>
+<li><strong>Purpose:</strong> Publicly routable addresses on the Internet.</li>
+<li><strong>Scope:</strong> Can be reached from anywhere on the IPv6 Internet.</li>
+<li><strong>Example:</strong> <code>2001:0db8::1</code></li>
+<li><strong>Use:</strong> Assign to devices needing Internet access, e.g., web servers or public hosts.</li>
+</ul>
+
+<h2>2. Link-Local (fe80::/10)</h2>
+<ul>
+<li><strong>Purpose:</strong> Communication within a single link (local network segment).</li>
+<li><strong>Scope:</strong> Cannot be routed beyond the local link.</li>
+<li><strong>Automatic Assignment:</strong> Every IPv6-enabled interface gets a link-local address automatically.</li>
+<li><strong>Example:</strong> <code>fe80::1ff:fe23:4567:890a</code></li>
+<li><strong>Use:</strong> Essential for neighbor discovery, routing protocols, and automatic configuration.</li>
+</ul>
+
+<h2>3. Unique Local Address (ULA, fc00::/7)</h2>
+<ul>
+<li><strong>Purpose:</strong> Private addresses, similar to IPv4 private addresses (10.x.x.x, 192.168.x.x).</li>
+<li><strong>Scope:</strong> Local to a site or organization; not routable on the global Internet.</li>
+<li><strong>Example:</strong> <code>fd12:3456:789a::1</code></li>
+<li><strong>Use:</strong> Internal networks, VPNs, isolated communication between devices.</li>
+</ul>
+
+<h2>4. Multicast (ff00::/8)</h2>
+<ul>
+<li><strong>Purpose:</strong> One-to-many communication; sends packets to multiple hosts simultaneously.</li>
+<li><strong>Scope:</strong> Depends on multicast group (link-local, site-local, global).</li>
+<li><strong>Example:</strong> <code>ff02::1</code> → all nodes on the local link</li>
+<li><strong>Use:</strong> Video streaming, network services, routing updates.</li>
+<li><strong>Note:</strong> IPv6 does not use broadcast; multicast replaces it.</li>
+</ul>
+
+<h2>5. Loopback (::1/128)</h2>
+<ul>
+<li><strong>Purpose:</strong> Tests the IPv6 stack of a host locally.</li>
+<li><strong>Scope:</strong> Only within the host itself.</li>
+<li><strong>Example:</strong> <code>::1</code></li>
+<li><strong>Use:</strong> Verify IPv6 functionality without sending packets to the network.</li>
+</ul>
+
+<h2>Quick Summary Table</h2>
+<table>
+<tr>
+<th>Type</th>
+<th>Prefix</th>
+<th>Scope</th>
+<th>Usage</th>
+</tr>
+<tr>
+<td>Global Unicast</td>
+<td>2000::/3</td>
+<td>Internet-wide</td>
+<td>Public IP addresses</td>
+</tr>
+<tr>
+<td>Link-Local</td>
+<td>fe80::/10</td>
+<td>Local link</td>
+<td>Auto-config, routing, neighbor discovery</td>
+</tr>
+<tr>
+<td>Unique Local (ULA)</td>
+<td>fc00::/7</td>
+<td>Private network</td>
+<td>Internal communication, VPNs</td>
+</tr>
+<tr>
+<td>Multicast</td>
+<td>ff00::/8</td>
+<td>Group</td>
+<td>One-to-many communication</td>
+</tr>
+<tr>
+<td>Loopback</td>
+<td>::1/128</td>
+<td>Host</td>
+<td>Local testing</td>
+</tr>
+</table>
+<h1>🌐 IPv6 Address Example</h1>
+
+<p><strong>Example IPv6 Address:</strong> <code>2001:0db8:85a3:0000:0000:8a2e:0370:7334</code></p>
+
+<h2>1. Global Routing Prefix (First 48 bits)</h2>
+<p><code>2001:0db8:85a3</code></p>
+<ul>
+<li>Assigned by IANA / ISPs to identify a specific organization or site on the Internet.</li>
+<li>Used for routing between networks globally.</li>
+</ul>
+
+<h2>2. Subnet ID (Next 16 bits)</h2>
+<p><code>85a3</code></p>
+<ul>
+<li>Used within the organization to divide the site into multiple subnets.</li>
+<li>Helps manage internal networks efficiently.</li>
+</ul>
+
+<h2>3. Interface ID (Last 64 bits)</h2>
+<p><code>0000:0000:8a2e:0370:7334</code></p>
+<ul>
+<li>Uniquely identifies a device interface on a subnet.</li>
+<li>Often derived from MAC address or configured manually.</li>
+</ul>
+
+<h2>📊 Visual Representation</h2>
+<table>
+<tr>
+<th>Global Routing Prefix</th>
+<th>Subnet ID</th>
+<th>Interface ID</th>
+</tr>
+<tr>
+<td>2001:0db8</td>
+<td>85a3</td>
+<td>0000:0000:8a2e:0370:7334</td>
+</tr>
+</table>
+
+<h2>🔑 Key Notes</h2>
+<ul>
+<li>Total 128 bits: 48 + 16 + 64 bits</li>
+<li>First 64 bits (Global Routing Prefix + Subnet ID) are network-related.</li>
+<li>Last 64 bits are host/interface-related.</li>
+</ul>
+<h2>1. ping6</h2>
+<p><strong>Purpose:</strong> Test reachability of an IPv6 host.</p>
+<pre><code>ping6 2001:db8::1</code></pre>
+<p><strong>Details:</strong></p>
+<ul>
+<li>Sends ICMPv6 Echo Request messages.</li>
+<li>Replies confirm connectivity and measure round-trip time.</li>
+<li>Similar to ping in IPv4 but uses ICMPv6.</li>
+</ul>
+
+<h2>2. traceroute6</h2>
+<p><strong>Purpose:</strong> Trace the path packets take to reach an IPv6 destination.</p>
+<pre><code>traceroute6 2001:db8::1</code></pre>
+<p><strong>Details:</strong></p>
+<ul>
+<li>Shows all routers (hops) along the path.</li>
+<li>Helps diagnose network routing issues.</li>
+</ul>
+
+<h2>3. ip -6 addr</h2>
+<p><strong>Purpose:</strong> View IPv6 addresses assigned to all interfaces.</p>
+<pre><code>ip -6 addr</code></pre>
+<p><strong>Details:</strong></p>
+<ul>
+<li>Displays link-local, global, and unique local addresses.</li>
+<li>Shows interface names, prefix lengths, and scope.</li>
+</ul>
+
+<h2>4. ifconfig / ipconfig</h2>
+<p><strong>Purpose:</strong> Display and configure network interfaces.</p>
+<pre><code>Linux/macOS: ifconfig
+Windows: ipconfig</code></pre>
+<p><strong>Details:</strong></p>
+<ul>
+<li>Shows IPv6 addresses assigned to each interface.</li>
+<li>Can configure temporary IPv6 addresses for testing.</li>
+</ul>
+
+<h2>5. Wireshark</h2>
+<p><strong>Purpose:</strong> Analyze IPv6 traffic and headers.</p>
+<p><strong>Usage:</strong> Capture packets on any interface and filter using <code>ipv6</code>.</p>
+<p><strong>Details:</strong></p>
+<ul>
+<li>View source/destination addresses, Next Header field, Flow Label, and payload.</li>
+<li>Useful for debugging, learning, and verifying IPv6 configurations.</li>
+</ul>
+
+<h2>📋 Summary of Tools</h2>
+<table>
+<tr>
+<th>Tool</th>
+<th>Function</th>
+<th>Protocol</th>
+</tr>
+<tr>
+<td>ping6</td>
+<td>Connectivity test</td>
+<td>ICMPv6 Echo</td>
+</tr>
+<tr>
+<td>traceroute6</td>
+<td>Path tracing / hops</td>
+<td>ICMPv6 TTL</td>
+</tr>
+<tr>
+<td>ip -6 addr</td>
+<td>View interface IPv6 addresses</td>
+<td>N/A</td>
+</tr>
+<tr>
+<td>ifconfig / ipconfig</td>
+<td>Interface configuration</td>
+<td>N/A</td>
+</tr>
+<tr>
+<td>Wireshark</td>
+<td>Packet capture & analysis</td>
+<td>IPv6</td>
+</tr>
+</table>
+<h1>🌐 What is Routing?</h1>
+
+<p><strong>Definition:</strong> Routing is the process of determining the optimal path for data packets to travel from the source to the destination across one or more networks.</p>
+
+<p><strong>Goal:</strong> Deliver packets efficiently, reliably, and quickly.</p>
+
+<p><strong>Key Point:</strong> Routers use routing tables and protocols to make forwarding decisions.</p>
+<h1>🌐 Static Routing</h1>
+
+<h2>1. Definition</h2>
+<p>Static routing is a type of routing in which network routes are manually configured by a network administrator. These routes do not change automatically if the network topology changes. Suitable for small or simple networks.</p>
+<p><strong>Key Idea:</strong> The administrator tells the router exactly where to send packets for specific networks.</p>
+
+<h2>2. Characteristics of Static Routing</h2>
+<table>
+<tr>
+<th>Feature</th>
+<th>Description</th>
+</tr>
+<tr>
+<td>Configuration</td>
+<td>Manual by admin</td>
+</tr>
+<tr>
+<td>Adaptability</td>
+<td>Does not adapt automatically to network failures</td>
+</tr>
+<tr>
+<td>Complexity</td>
+<td>Simple in small networks, complex in large networks</td>
+</tr>
+<tr>
+<td>Overhead</td>
+<td>No extra routing protocol overhead</td>
+</tr>
+<tr>
+<td>Security</td>
+<td>More secure because routes cannot be altered by external routers</td>
+</tr>
+</table>
+
+<h2>3. Advantages</h2>
+<ul>
+<li>Simplicity: Easy to configure in small networks.</li>
+<li>Low Overhead: No routing protocol updates or calculations.</li>
+<li>Predictable: Routes are fixed, making troubleshooting easier.</li>
+<li>Security: No risk of external routing updates changing the routes.</li>
+</ul>
+
+<h2>4. Disadvantages</h2>
+<ul>
+<li>Not scalable: Hard to manage in large networks with many routers.</li>
+<li>No automatic adaptation: Packets may be lost if a link goes down.</li>
+<li>Administrative effort: Any network change requires manual updates.</li>
+</ul>
+
+<h2>5. Configuration Example</h2>
+
+<h3>IPv4 Static Route</h3>
+<p>Suppose you have two networks connected via a router:</p>
+<ul>
+<li>Network A: 192.168.1.0/24</li>
+<li>Network B: 192.168.2.0/24</li>
+<li>Router interface toward B: 192.168.1.2</li>
+</ul>
+<p><strong>Command (Cisco IOS syntax):</strong></p>
+<pre><code>ip route 192.168.2.0 255.255.255.0 192.168.1.2</code></pre>
+<p>Destination network: 192.168.2.0<br>
+Subnet mask: 255.255.255.0<br>
+Next hop: 192.168.1.2</p>
+
+<h3>IPv6 Static Route</h3>
+<pre><code>ipv6 route 2001:db8:2::/64 2001:db8:1::2</code></pre>
+
+<h2>6. When to Use Static Routing</h2>
+<ul>
+<li>Small networks with few routers.</li>
+<li>Connections to ISP routers for default routes.</li>
+<li>Networks where security and control are important.</li>
+<li>When network topology rarely changes.</li>
+</ul>
+
+<h2>7. Comparison: Static vs Dynamic Routing</h2>
+<table>
+<tr>
+<th>Feature</th>
+<th>Static Routing</th>
+<th>Dynamic Routing</th>
+</tr>
+<tr>
+<td>Configuration</td>
+<td>Manual</td>
+<td>Automatic via protocols</td>
+</tr>
+<tr>
+<td>Adaptability</td>
+<td>No</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>Complexity</td>
+<td>Low for small networks</td>
+<td>Higher</td>
+</tr>
+<tr>
+<td>Overhead</td>
+<td>Minimal</td>
+<td>Uses bandwidth & CPU</td>
+</tr>
+<tr>
+<td>Scalability</td>
+<td>Poor</td>
+<td>Good for large networks</td>
+</tr>
+<tr>
+<td>Security</td>
+<td>High</td>
+<td>Moderate</td>
+</tr>
+</table>
+<h1>🌐 Dynamic Routing</h1>
+
+<h2>Definition</h2>
+<p>Routing in which routers automatically exchange routing information and update their routing tables in real time.</p>
+
+<h2>Goal</h2>
+<p>Adapt to network changes such as link failures or new networks without manual intervention.</p>
+
+<h2>Key Idea</h2>
+<p>Each router communicates with its neighbors to learn the best path through the network.</p>
+
+<h1>🌐 Dynamic Routing Overview</h1>
+
+<h2>1. Automatic Updates</h2>
+<p>Dynamic routing protocols allow routers to learn new routes automatically from neighboring routers.</p>
+<ul>
+<li>No manual configuration required after initial setup.</li>
+<li>Ensures routing tables are always up-to-date with the current network topology.</li>
+</ul>
+
+<h2>2. Adaptability</h2>
+<p>Dynamic routing can respond to network failures or changes:</p>
+<ul>
+<li>If a link goes down, routers detect it and recalculate alternative paths.</li>
+<li>If a new network is added, routers automatically propagate the new route.</li>
+<li>Ensures continuous network connectivity without human intervention.</li>
+</ul>
+
+<h2>3. Scalability</h2>
+<p>Dynamic routing works well in large and complex networks:</p>
+<ul>
+<li>Routers exchange information dynamically, so adding more routers/networks doesn’t require manual route entries.</li>
+<li>Protocols like OSPF and BGP are designed for enterprise and Internet-scale networks.</li>
+</ul>
+
+<h2>4. Routing Protocols</h2>
+<p>Examples of dynamic routing protocols:</p>
+<table>
+<tr>
+<th>Protocol</th>
+<th>Type</th>
+<th>Notes</th>
+</tr>
+<tr>
+<td>RIP (Routing Information Protocol)</td>
+<td>Distance-vector</td>
+<td>Simple, suitable for small networks</td>
+</tr>
+<tr>
+<td>OSPF (Open Shortest Path First)</td>
+<td>Link-state</td>
+<td>Fast convergence, scalable</td>
+</tr>
+<tr>
+<td>EIGRP (Enhanced Interior Gateway Routing Protocol)</td>
+<td>Hybrid</td>
+<td>Cisco proprietary, efficient</td>
+</tr>
+<tr>
+<td>BGP (Border Gateway Protocol)</td>
+<td>Path-vector</td>
+<td>Used between autonomous systems (Internet backbone)</td>
+</tr>
+</table>
+
+<h2>5. Convergence</h2>
+<p>Convergence is the state when all routers have a consistent and updated view of reachable networks.</p>
+<ul>
+<li>Fast convergence prevents routing loops and packet loss.</li>
+<li>Protocol convergence speeds:</li>
+<ul>
+<li>RIP → slower (periodic updates)</li>
+<li>OSPF/EIGRP → faster (event-driven updates)</li>
+</ul>
+</ul>
+<h1>📡 Distance-Vector Routing Protocols (In-Depth)</h1>
+
+<h2>1. Definition</h2>
+<p>Distance-vector routing is a dynamic routing method where each router shares its routing table with directly connected neighbors.</p>
+<ul>
+<li><strong>Distance:</strong> Metric to reach a destination (usually hop count)</li>
+<li><strong>Vector:</strong> Direction (next-hop router) to reach the destination</li>
+<li>Routers only know information from neighbors, not complete network topology</li>
+</ul>
+
+<h2>2. Algorithm: Bellman-Ford</h2>
+<p>Distance-vector routing uses the Bellman-Ford algorithm:</p>
+
+<pre>D(X) = min { C(X, Y) + D(Y) }</pre>
+
+<p>Where:</p>
+<ul>
+<li><code>D(X)</code> = Distance from current router to destination X</li>
+<li><code>C(X, Y)</code> = Cost from current router to neighbor Y</li>
+<li><code>D(Y)</code> = Distance from neighbor Y to destination X</li>
+</ul>
+<p>Explanation: Router selects the neighbor Y that provides the minimum total distance to reach X.</p>
+
+<h2>3. Key Features</h2>
+<ul>
+<li><strong>Periodic Updates:</strong> Each router sends its routing table to neighbors every 30 seconds (default in RIP)</li>
+<li><strong>Simple Implementation:</strong> Low CPU and memory requirement</li>
+<li><strong>Limited Knowledge:</strong> Routers do not know entire network topology</li>
+<li><strong>Convergence Issues:</strong> Slow convergence can cause routing loops</li>
+<li><strong>Loop Prevention Techniques:</strong>
+    <ul>
+        <li>Split Horizon: Do not advertise a route back to the router from which it was learned</li>
+        <li>Poison Reverse: Advertise route back to neighbor with infinite metric to prevent loops</li>
+        <li>Hold-down Timers: Delay accepting potentially bad updates</li>
+    </ul>
+</li>
+</ul>
+
+<h2>4. Example: RIP (Routing Information Protocol)</h2>
+<table>
+<tr>
+<th>Feature</th>
+<th>Details</th>
+</tr>
+<tr>
+<td>Protocol</td>
+<td>RIP (v1, v2)</td>
+</tr>
+<tr>
+<td>Type</td>
+<td>Distance-vector</td>
+</tr>
+<tr>
+<td>Metric</td>
+<td>Hop count</td>
+</tr>
+<tr>
+<td>Maximum hops</td>
+<td>15 (16 = unreachable)</td>
+</tr>
+<tr>
+<td>Update interval</td>
+<td>30 seconds</td>
+</tr>
+</table>
+
+<h3>Example Network:</h3>
+<pre>
+Network A --- R1 --- R2 --- Network B
+             |
+             R3
+             |
+           Network C
+</pre>
+
+<h3>Routing Table at R1 (simplified):</h3>
+<table>
+<tr>
+<th>Destination</th>
+<th>Next Hop</th>
+<th>Hop Count</th>
+</tr>
+<tr>
+<td>Network A</td>
+<td>Direct</td>
+<td>0</td>
+</tr>
+<tr>
+<td>Network B</td>
+<td>R2</td>
+<td>1</td>
+</tr>
+<tr>
+<td>Network C</td>
+<td>R3</td>
+<td>1</td>
+</tr>
+</table>
+
+<h3>Update Process:</h3>
+<ul>
+<li>R1 sends its table to R2 and R3 every 30 seconds</li>
+<li>R2 updates its table based on R1’s info and sends back updates</li>
+<li>Each router gradually learns the best paths</li>
+</ul>
+
+<h2>5. Advantages of Distance-Vector Protocols</h2>
+<ul>
+<li>Simple to configure and implement</li>
+<li>Low memory and CPU usage</li>
+<li>Works well in small networks</li>
+</ul>
+
+<h2>6. Disadvantages</h2>
+<ul>
+<li>Slow convergence → routing loops possible</li>
+<li>Limited scalability → not suitable for very large networks</li>
+<li>Only considers hop count → not suitable for complex networks where bandwidth, delay, or reliability matter</li>
+</ul>
+<h1>🌐 Link-State Routing Protocols</h1>
+
+<h2>1. Definition</h2>
+<p>Link-State Routing Protocols are dynamic routing protocols in which each router maintains a complete map of the network topology and independently computes the shortest path to every destination.</p>
+<ul>
+    <li><strong>Key Algorithm:</strong> Dijkstra’s Shortest Path First (SPF)</li>
+    <li><strong>Key Idea:</strong> Every router knows the entire network graph, unlike distance-vector protocols that only know neighbors.</li>
+</ul>
+
+<h2>2. How Link-State Protocols Work</h2>
+
+<h3>Step 1: Neighbor Discovery</h3>
+<ul>
+    <li>Routers use Hello messages to discover directly connected neighbors.</li>
+    <li>Each router builds a neighbor table with interface info and link status.</li>
+</ul>
+
+<h3>Step 2: Link-State Advertisement (LSA)</h3>
+<ul>
+    <li>Routers broadcast LSAs to all routers in the area/network.</li>
+    <li>LSA contains:
+        <ul>
+            <li>Router ID</li>
+            <li>List of directly connected neighbors</li>
+            <li>Cost (metric) of each link</li>
+        </ul>
+    </li>
+    <li>LSAs are flooded reliably so all routers get the same information.</li>
+</ul>
+
+<h3>Step 3: Building Link-State Database</h3>
+<ul>
+    <li>Each router collects LSAs from all routers → forms a Link-State Database (LSDB).</li>
+    <li>LSDB represents the complete topology of the network.</li>
+</ul>
+
+<h3>Step 4: Shortest Path Calculation</h3>
+<ul>
+    <li>Routers run Dijkstra’s SPF algorithm on LSDB:</li>
+    <ul>
+        <li>Start from the router itself (root)</li>
+        <li>Calculate shortest path to every destination based on link cost</li>
+        <li>Result = Shortest Path Tree</li>
+    </ul>
+    <li>Router updates its routing table with next-hop info for each destination.</li>
+</ul>
+
+<h3>Step 5: Forwarding</h3>
+<p>Packets are forwarded according to the routing table computed by SPF. Each router independently computes paths, ensuring consistent network-wide routing.</p>
+
+<h2>3. Key Features</h2>
+<ul>
+    <li>Fast Convergence: Network changes propagate quickly via LSAs.</li>
+    <li>Accurate Topology: Routers have a full view of the network → optimal paths.</li>
+    <li>Flooding Mechanism: LSAs reliably sent to all routers in the area.</li>
+    <li>Hierarchical Design: Uses areas to reduce overhead (e.g., OSPF Areas).</li>
+    <li>Resource Usage: Higher CPU and memory compared to distance-vector protocols.</li>
+</ul>
+
+<h2>4. Advantages</h2>
+<ul>
+    <li>No routing loops (thanks to SPF algorithm)</li>
+    <li>Fast adaptation to network changes</li>
+    <li>Scalable with hierarchical area design</li>
+    <li>Supports variable metrics (cost, bandwidth, delay)</li>
+</ul>
+
+<h2>5. Disadvantages</h2>
+<ul>
+    <li>Higher resource usage → CPU and memory intensive</li>
+    <li>More complex configuration than distance-vector</li>
+    <li>Flooding LSAs can temporarily increase network traffic</li>
+</ul>
+
+<h2>6. Examples</h2>
+<h3>A. OSPF (Open Shortest Path First)</h3>
+<ul>
+    <li>Widely used in enterprise networks</li>
+    <li>Hierarchical design using areas</li>
+    <li>Cost metric based on bandwidth</li>
+    <li>Supports IPv4 and IPv6 (OSPFv3)</li>
+</ul>
+
+<h3>B. IS-IS (Intermediate System to Intermediate System)</h3>
+<ul>
+    <li>Often used in service provider networks / ISP backbones</li>
+    <li>Hierarchical design using areas and levels</li>
+    <li>Can carry both IPv4 and IPv6 addresses</li>
+    <li>Uses CLNS addressing internally</li>
+</ul>
+
+<h2>7. Key Concepts</h2>
+<table>
+<tr>
+<th>Concept</th>
+<th>Description</th>
+</tr>
+<tr>
+<td>LSA (Link-State Advertisement)</td>
+<td>Packet describing router links and metrics</td>
+</tr>
+<tr>
+<td>LSDB (Link-State Database)</td>
+<td>Complete network map at each router</td>
+</tr>
+<tr>
+<td>SPF (Shortest Path First)</td>
+<td>Algorithm to compute shortest path tree</td>
+</tr>
+<tr>
+<td>Hello Protocol</td>
+<td>Detects and maintains neighbor relationships</td>
+</tr>
+<tr>
+<td>Area</td>
+<td>Logical grouping to reduce LSA flooding (OSPF)</td>
+</tr>
+</table>
+
+<h2>8. Example Flow in OSPF</h2>
+<ol>
+    <li>Router discovers neighbors → forms neighbor table</li>
+    <li>Sends LSA describing its links</li>
+    <li>Receives LSAs from all routers → builds LSDB</li>
+    <li>Runs SPF algorithm → generates routing table</li>
+    <li>Forwards packets based on the table</li>
+</ol>
+<h1>🌐 Path-Vector Routing Protocols</h1>
+
+<h2>1. Definition</h2>
+<p>Path-Vector Routing is a type of dynamic routing used to exchange routing information between <strong>autonomous systems (AS)</strong>.</p>
+<p>Each router maintains:</p>
+<ul>
+<li>The next hop for each destination</li>
+<li>The full path of AS numbers the route traverses</li>
+</ul>
+<p><strong>Purpose:</strong> Prevent routing loops in large-scale networks (Internet).</p>
+
+<h2>2. Key Characteristics</h2>
+<ul>
+<li><strong>Inter-domain Routing:</strong> Works between ASes, unlike RIP/OSPF (intra-domain).</li>
+<li><strong>Loop Prevention:</strong> Maintains full AS path in route advertisements → if an AS number appears twice, the route is rejected.</li>
+<li><strong>Policy-Based Routing:</strong> Operators control preferred paths using policies, local preference, and route filtering.</li>
+<li><strong>Scalable:</strong> Designed for the Internet’s large network of routers and autonomous systems.</li>
+</ul>
+
+<h2>3. BGP (Border Gateway Protocol)</h2>
+<ul>
+<li>Most common path-vector protocol</li>
+<li>RFC: 4271</li>
+<li>Used for: Internet backbone routing between ISPs</li>
+</ul>
+
+<h3>Types of BGP</h3>
+<ul>
+<li><strong>eBGP (External BGP):</strong> Between different autonomous systems</li>
+<li><strong>iBGP (Internal BGP):</strong> Within the same autonomous system</li>
+</ul>
+
+<h2>4. How BGP Works</h2>
+<p>Routers establish <strong>TCP connection (port 179)</strong> → reliable session, then exchange messages:</p>
+<ul>
+<li><strong>OPEN:</strong> Establish session</li>
+<li><strong>UPDATE:</strong> Advertise routes and AS-path</li>
+<li><strong>KEEPALIVE:</strong> Maintain session</li>
+<li><strong>NOTIFICATION:</strong> Error handling</li>
+</ul>
+<p>Routers build BGP Table with:</p>
+<ul>
+<li>Destination network</li>
+<li>Next hop</li>
+<li>AS path</li>
+<li>Local preference</li>
+</ul>
+
+<h2>5. BGP Route Selection</h2>
+<table>
+<tr>
+<th>Attribute</th>
+<th>Description</th>
+</tr>
+<tr>
+<td>AS-path</td>
+<td>Shortest number of ASes traversed</td>
+</tr>
+<tr>
+<td>Local Preference</td>
+<td>Preference set within AS (higher = preferred)</td>
+</tr>
+<tr>
+<td>MED (Multi-Exit Discriminator)</td>
+<td>Suggests preferred entry point to neighbor AS</td>
+</tr>
+<tr>
+<td>Next Hop</td>
+<td>IP of the next router to reach destination</td>
+</tr>
+<tr>
+<td>Origin</td>
+<td>How route was learned (IGP, EGP, Incomplete)</td>
+</tr>
+<tr>
+<td>Weight</td>
+<td>Cisco-specific, local priority</td>
+</tr>
+</table>
+
+<h2>6. Advantages of Path-Vector (BGP)</h2>
+<ul>
+<li>Prevents routing loops across ASes</li>
+<li>Supports policy-based routing</li>
+<li>Scalable for Internet-wide routing</li>
+<li>Can handle multiple paths and failover</li>
+</ul>
+
+<h2>7. Disadvantages</h2>
+<ul>
+<li>Complex configuration</li>
+<li>Slower convergence than IGPs (RIP/OSPF)</li>
+<li>Needs careful policy management</li>
+<li>BGP misconfigurations can affect global Internet routing</li>
+</ul>
+
+<h2>8. Example</h2>
+<p>AS1 → AS2 → AS3 → Destination network</p>
+<p>Route advertisement includes <strong>AS-path:</strong> 1 2 3</p>
+<p>If AS2 receives the same route again → sees its own AS in path → ignores route, preventing loops.</p>
+
+<h2>1. Convergence</h2>
+<p><strong>Definition:</strong> Convergence is the process where all routers in a network agree on the best paths after a network change (link failure or addition).</p>
+
+<h3>Importance:</h3>
+<ul>
+    <li>Ensures stable and reliable routing.</li>
+    <li>Slow convergence → routing loops, lost packets, delays.</li>
+</ul>
+
+<h3>Speed of Convergence by Protocol:</h3>
+<ul>
+    <li>Link-State Protocols (OSPF, IS-IS): Fast convergence</li>
+    <li>Distance-Vector Protocols (RIP): Slow convergence</li>
+</ul>
+
+<h3>Techniques to Improve Convergence:</h3>
+<ul>
+    <li>Triggered updates: Send updates immediately when topology changes (RIP)</li>
+    <li>Hold-down timers: Prevent unstable routes from being reinstated too quickly</li>
+    <li>Split horizon & poison reverse: Prevent loops in distance-vector protocols</li>
+    <li>SPF recalculation: Recompute shortest paths using Dijkstra algorithm (OSPF)</li>
+</ul>
+
+<h2>2. Advantages of Dynamic Routing</h2>
+<ul>
+    <li>Automatic updates → No manual configuration needed after changes</li>
+    <li>Scalable → Works well for large networks</li>
+    <li>Adaptive to failures → Reroutes traffic if a link goes down</li>
+    <li>Efficient path selection → Uses metrics like hop count, bandwidth, or policy</li>
+</ul>
+
+<h2>3. Disadvantages of Dynamic Routing</h2>
+<ul>
+    <li>Complexity → Requires proper protocol configuration</li>
+    <li>Higher resource usage → More CPU, memory, and bandwidth compared to static routing</li>
+    <li>Security risks → Routes can be manipulated; authentication required</li>
+    <li>Routing loops → Possible in distance-vector protocols if not mitigated</li>
+</ul>
+
+<h2>4. How Dynamic Routing Works (Example)</h2>
+<p>Scenario: 3 Routers (R1, R2, R3) connecting networks A, B, C</p>
+<p>Routers exchange routing info using a protocol (e.g., RIP) and build a routing table:</p>
+
+<table>
+<tr>
+<th>Destination Network</th>
+<th>Next Hop</th>
+<th>Metric</th>
+</tr>
+<tr>
+<td>Network B</td>
+<td>R2</td>
+<td>1</td>
+</tr>
+<tr>
+<td>Network C</td>
+<td>R2 → R3</td>
+<td>2</td>
+</tr>
+</table>
+
+<p>If a link fails, routers detect it and update tables automatically to reroute packets.</p>
+
+<h2>5. Comparison of Dynamic Routing Protocol Types</h2>
+<table>
+<tr>
+<th>Feature</th>
+<th>Distance-Vector</th>
+<th>Link-State</th>
+<th>Path-Vector</th>
+</tr>
+<tr>
+<td>Protocol Examples</td>
+<td>RIP</td>
+<td>OSPF, IS-IS</td>
+<td>BGP</td>
+</tr>
+<tr>
+<td>Knowledge</td>
+<td>Neighbor info only</td>
+<td>Entire network topology</td>
+<td>Path to destinations (AS-path)</td>
+</tr>
+<tr>
+<td>Convergence</td>
+<td>Slow</td>
+<td>Fast</td>
+<td>Moderate</td>
+</tr>
+<tr>
+<td>Complexity</td>
+<td>Low</td>
+<td>High</td>
+<td>High</td>
+</tr>
+<tr>
+<td>Loop Prevention</td>
+<td>Split horizon, poison reverse</td>
+<td>SPF algorithm</td>
+<td>Path info</td>
+</tr>
+<tr>
+<td>Usage</td>
+<td>Small–medium networks</td>
+<td>Large enterprise networks</td>
+<td>Inter-ISP / Internet backbone</td>
+</tr>
+</table>
+
+<h2>✅ Key Takeaways</h2>
+<ul>
+<li>Distance-Vector: Simple, slow convergence, small networks</li>
+<li>Link-State: Fast, accurate, suitable for large enterprise networks</li>
+<li>Path-Vector: Handles Internet-wide routing between autonomous systems (BGP)</li>
+<li>Convergence and loop prevention are critical for network stability</li>
+</ul>
+
+
+
+
+
+
+</body>
+</html>
