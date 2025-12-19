@@ -3,9 +3,108 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>OS</title>
+    <style>
+       /* Global styles */
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    margin: 20px;
+    background-color: #ffffff;
+    color: #000000;
+}
+
+/* Headings */
+h1, h2, h3 {
+    color: #2c3e50;
+    margin-top: 20px;
+}
+
+/* Paragraphs and lists */
+p, li {
+    color: #000000;
+}
+ul, ol {
+    margin-bottom: 15px;
+}
+
+/* Tables */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+table, th, td {
+    border: 1px solid #ccc;
+}
+th, td {
+    padding: 8px;
+    text-align: left;
+}
+th {
+    background-color: #f5f5f5;
+}
+caption {
+    font-size: 1.5em;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+/* Code and pre blocks */
+code {
+    font-family: monospace;
+    background-color: #f4f4f4;
+    padding: 2px 4px;
+    border-radius: 4px;
+}
+pre {
+    font-family: monospace;
+    background-color: #f4f4f4;
+    padding: 10px;
+    border-left: 4px solid #3498db;
+    overflow-x: auto;
+}
+
+/* Special boxes */
+.example {
+    background-color: #f1c40f;
+    color: #000000;
+    padding: 10px;
+    margin-top: 10px;
+    border-radius: 4px;
+}
+
+.architecture {
+    background-color: #ffffff;
+    color: #000000;
+    padding: 15px 20px;
+    margin-bottom: 25px;
+    border-left: 5px solid #2980b9;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.diagram {
+    font-family: monospace;
+    background-color: #ecf0f1;
+    color: #000000;
+    padding: 10px;
+    margin-top: 10px;
+    white-space: pre;
+    overflow-x: auto;
+}
+
+.state-example {
+    background-color: #dfe6e9;
+    color: #000000;
+    padding: 8px;
+    border-left: 5px solid #0984e3;
+    margin-bottom: 10px;
+}
+
+    </style>
 </head>
 <body>
+    <h1>OPERATING SYSTEM</h1>
     <ol>
         <li>Basics</li>
         <li>Process Management</li>
@@ -18,128 +117,5889 @@
     <div>
         <h2>Basics of Operating Systems</h2>
 
-<h3>1. What Is an Operating System (OS)?</h3>
-<p>
-An operating system is software that manages hardware resources and provides a platform for applications to run. It acts as a middleman between users and the machine, handling all the messy details so you don’t have to speak in binary.
-</p>
+<h3>1.Operating System</h3>
 
-<h3>2. Main Goals of an OS</h3>
-<ul>
-  <li><strong>Convenience:</strong> So users don’t need to write machine code just to open a file.</li>
-  <li><strong>Efficiency:</strong> Ensures hardware resources are fully utilized.</li>
-  <li><strong>Resource Management:</strong> Fairly distributes CPU time, memory, files, and I/O devices.</li>
-  <li><strong>Security:</strong> Prevents processes from interfering with each other’s data.</li>
-</ul>
-
-<h3>3. Main Components</h3>
-<ul>
-  <li><strong>Kernel:</strong> The core that manages hardware, scheduling, memory, and devices.</li>
-  <li><strong>Shell:</strong> The command-line interface or command interpreter (e.g., bash, PowerShell).</li>
-  <li><strong>File System:</strong> Organizes and stores data.</li>
-  <li><strong>Device Drivers:</strong> Translate OS commands into hardware operations.</li>
-  <li><strong>User Interface:</strong> CLI or GUI—whatever keeps users from typing hex codes.</li>
-</ul>
-
-<h3>4. Key Concepts</h3>
-<ul>
-  <li><strong>Process:</strong> A running program (like Chrome devouring your RAM).</li>
-  <li><strong>Thread:</strong> A lightweight unit of a process.</li>
-  <li><strong>Scheduling:</strong> Determines which process gets CPU time next.</li>
-  <li><strong>Memory Management:</strong> Allocates and frees up memory efficiently.</li>
-  <li><strong>File Management:</strong> Handles data storage, retrieval, and protection.</li>
-  <li><strong>I/O Management:</strong> Controls input and output devices such as keyboards and disks.</li>
-</ul>
-
-<h3>5. Types of Operating Systems</h3>
-<ul>
-  <li><strong>Batch OS:</strong> Executes jobs in batches with no user interaction.</li>
-  <li><strong>Time-Sharing OS:</strong> Allows multiple users to share CPU time (e.g., Unix).</li>
-  <li><strong>Real-Time OS:</strong> Used in systems where timing is critical (robots, medical devices).</li>
-  <li><strong>Distributed OS:</strong> Runs across multiple interconnected systems.</li>
-  <li><strong>Embedded OS:</strong> Powers smaller systems like routers, ATMs, and appliances.</li>
-</ul>
-
+    <div class="section">
+        <p>
+            An Operating System is system software that sits smack in the middle between the user’s programs 
+            and the computer’s hardware. It provides an environment where applications can run safely, efficiently, 
+            and without stepping on each other’s toes. If hardware is the body, the OS is the nervous system. 
+            Without it, your computer is an expensive brick with RGB lights.
+        </p>
     </div>
-    <div>
-        <h2>Process Management in Operating Systems</h2>
 
-<h3>1. What Is a Process?</h3>
-<p>
-A process is simply a program in execution.  
-A program is just passive code stored on disk, but once the OS loads it into memory, assigns resources, and starts it running, it becomes a process.
-</p>
+    <h1>Operating System Functions (In Depth)</h1>
 
-<p>Each process includes:</p>
+    <h2>1. Process Management</h2>
+    <ul>
+        <li>Tracks and controls all running programs.</li>
+        <li><strong>Process Control Block (PCB):</strong> Contains process state, registers, PC, memory info.</li>
+        <li><strong>States:</strong> New, Ready, Running, Waiting, Terminated.</li>
+        <li><strong>Scheduling:</strong> FCFS, SJF, Round Robin, Priority.</li>
+        <li><strong>Context Switching:</strong> Saves and loads process states.</li>
+        <li><strong>IPC Mechanisms:</strong> Pipes, message queues, shared memory, semaphores.</li>
+    </ul>
+
+    <h2>2. Memory Management</h2>
+    <ul>
+        <li>Allocates and deallocates memory for processes.</li>
+        <li><strong>Virtual Address Spaces</strong> for isolation.</li>
+        <li><strong>Paging:</strong> Non-contiguous fixed-size blocks.</li>
+        <li><strong>Segmentation:</strong> Logical division (code, stack, heap).</li>
+        <li><strong>Virtual Memory:</strong> Extends RAM using disk.</li>
+        <li><strong>Page Replacement:</strong> FIFO, LRU, Optimal.</li>
+        <li><strong>Fragmentation Management:</strong> Internal and external.</li>
+    </ul>
+
+    <h2>3. File Management</h2>
+    <ul>
+        <li>Handles storage and retrieval of data.</li>
+        <li><strong>File Operations:</strong> Create, read, write, open, close, delete.</li>
+        <li><strong>Directory Structure</strong> management.</li>
+        <li><strong>File Types:</strong> Regular, directory, device.</li>
+        <li><strong>Allocation Methods:</strong>
+            <ul>
+                <li>Contiguous</li>
+                <li>Linked</li>
+                <li>Indexed (i-nodes)</li>
+            </ul>
+        </li>
+        <li><strong>Metadata:</strong> Permissions, timestamps, ownership, size.</li>
+    </ul>
+
+    <h2>4. I/O Device Management</h2>
+    <ul>
+        <li><strong>Device Drivers</strong> for hardware communication.</li>
+        <li><strong>I/O Scheduling</strong> for request ordering.</li>
+        <li><strong>Buffering</strong> to balance speed differences.</li>
+        <li><strong>Caching</strong> frequently used data.</li>
+        <li><strong>Spooling</strong> for queued I/O (e.g., printing).</li>
+        <li><strong>Interrupt Handling</strong> to manage device signals.</li>
+    </ul>
+
+    <h2>5. Storage and Disk Management</h2>
+    <ul>
+        <li><strong>Disk Scheduling:</strong> FCFS, SSTF, SCAN, C-SCAN, LOOK.</li>
+        <li><strong>Partitioning & Formatting</strong> storage devices.</li>
+        <li><strong>Free Space Management:</strong> Bitmaps, linked lists.</li>
+        <li><strong>Journaling</strong> for crash recovery.</li>
+    </ul>
+
+    <h2>6. Security & Protection</h2>
+    <ul>
+        <li><strong>Authentication</strong> (passwords, biometrics).</li>
+        <li><strong>Authorization</strong> via permissions and ACLs.</li>
+        <li><strong>Protection Rings</strong> for privilege levels.</li>
+        <li><strong>Isolation</strong> of process memory.</li>
+        <li><strong>Encryption Support</strong> in file systems.</li>
+    </ul>
+
+    <h2>7. Resource Allocation & Accounting</h2>
+    <ul>
+        <li>Manages CPU, memory, I/O, and bandwidth.</li>
+        <li>Ensures fairness and priority-based distribution.</li>
+        <li>Tracks usage for monitoring and billing.</li>
+    </ul>
+
+    <h2>8. Networking Functions</h2>
+    <ul>
+        <li>Implements TCP/IP stack.</li>
+        <li>Provides socket interface.</li>
+        <li>Handles packet routing and buffering.</li>
+    </ul>
+
+    <h2>9. Deadlock Handling</h2>
+    <ul>
+        <li><strong>Prevention</strong> by avoiding dangerous conditions.</li>
+        <li><strong>Avoidance:</strong> Banker’s Algorithm.</li>
+        <li><strong>Detection & Recovery</strong> mechanisms.</li>
+    </ul>
+
+    <h2>10. System Monitoring & Performance Management</h2>
+    <ul>
+        <li>Logs and system metrics.</li>
+        <li>Tracks CPU, memory, disk, network usage.</li>
+        <li>Tools like <code>top</code> and <code>htop</code>.</li>
+    </ul>
+
+    <h2>11. User Interface Services</h2>
+    <ul>
+        <li>Command Line Interface (shell).</li>
+        <li>Graphical User Interface (desktop environment).</li>
+    </ul>
+    <h1>Types of Operating Systems (In Depth)</h1>
+
+<div class="section">
+    <h2>1. Batch Operating System</h2>
+    <p>Designed for systems where users do not interact directly with the computer. Jobs are collected, grouped (batched), and processed one after another.</p>
+
+    <h3>Key Features</h3>
+    <ul>
+        <li>No user interaction once job is submitted</li>
+        <li>Jobs are processed sequentially or in batches</li>
+        <li>High throughput, low CPU idle time</li>
+    </ul>
+
+    <h3>Advantages</h3>
+    <ul>
+        <li>Efficient for large-scale repetitive tasks</li>
+        <li>Reduces setup time between jobs</li>
+    </ul>
+
+    <h3>Disadvantages</h3>
+    <ul>
+        <li>Debugging is painful</li>
+        <li>Long turnaround time</li>
+        <li>No real-time interaction</li>
+    </ul>
+
+    <h3>Used In</h3>
+    <p>Payroll systems, bank cheque processing, scientific simulations.</p>
+</div>
+
+<div class="section">
+    <h2>2. Time-Sharing Operating System</h2>
+    <p>Multiple users share system resources simultaneously through rapid context switching.</p>
+
+    <h3>Key Features</h3>
+    <ul>
+        <li>CPU time is divided into small time slices</li>
+        <li>Interactive system</li>
+        <li>Fairness among users</li>
+    </ul>
+
+    <h3>Advantages</h3>
+    <ul>
+        <li>Quick response time</li>
+        <li>Supports multiple interactive users</li>
+        <li>Good resource utilization</li>
+    </ul>
+
+    <h3>Disadvantages</h3>
+    <ul>
+        <li>Complex scheduling</li>
+        <li>Security issues due to multi-user access</li>
+    </ul>
+
+    <h3>Used In</h3>
+    <p>Server systems, educational institutes, multi-user UNIX terminals.</p>
+</div>
+
+<div class="section">
+    <h2>3. Multiprogramming Operating System</h2>
+    <p>Multiple programs are kept in main memory. CPU switches to another job when the current one is waiting for I/O.</p>
+
+    <h3>Key Features</h3>
+    <ul>
+        <li>Maximizes CPU utilization</li>
+        <li>Uses context switching</li>
+        <li>Increases system throughput</li>
+    </ul>
+
+    <h3>Advantages</h3>
+    <ul>
+        <li>Less CPU idle time</li>
+        <li>Efficient resource utilization</li>
+    </ul>
+
+    <h3>Disadvantages</h3>
+    <ul>
+        <li>Memory management becomes complex</li>
+        <li>Scheduling becomes tricky</li>
+    </ul>
+
+    <h3>Used In</h3>
+    <p>General-purpose computers, mainframes.</p>
+</div>
+
+<div class="section">
+    <h2>4. Multitasking Operating System</h2>
+    <p>Allows users to run multiple tasks apparently at the same time. Based on time-sharing and multiprogramming.</p>
+
+    <h3>Types</h3>
+    <ul>
+        <li>Cooperative multitasking</li>
+        <li>Preemptive multitasking</li>
+    </ul>
+
+    <h3>Advantages</h3>
+    <ul>
+        <li>Better productivity</li>
+        <li>Smooth running of multiple applications</li>
+    </ul>
+
+    <h3>Disadvantages</h3>
+    <ul>
+        <li>Requires strong CPU and memory management</li>
+        <li>Bugs in one task can affect others in some systems</li>
+    </ul>
+
+    <h3>Used In</h3>
+    <p>Windows, macOS, Linux desktops.</p>
+</div>
+
+<div class="section">
+    <h2>5. Real-Time Operating System (RTOS)</h2>
+    <p>Handles events or data within a strict time limit.</p>
+
+    <h3>Types</h3>
+    <ul>
+        <li>Hard real-time</li>
+        <li>Soft real-time</li>
+    </ul>
+
+    <h3>Key Features</h3>
+    <ul>
+        <li>Deterministic response</li>
+        <li>Priority-based preemptive scheduling</li>
+        <li>Minimal latency</li>
+    </ul>
+
+    <h3>Advantages</h3>
+    <ul>
+        <li>Predictable and reliable</li>
+        <li>Good for mission-critical systems</li>
+    </ul>
+
+    <h3>Disadvantages</h3>
+    <ul>
+        <li>Limited multitasking ability</li>
+        <li>Expensive hardware requirements</li>
+    </ul>
+
+    <h3>Used In</h3>
+    <p>Robotics, autopilot systems, industrial controls, medical instrumentation.</p>
+</div>
+
+<div class="section">
+    <h2>6. Distributed Operating System</h2>
+    <p>Manages a group of independent computers and makes them appear as a single coherent system.</p>
+
+    <h3>Key Features</h3>
+    <ul>
+        <li>Transparency</li>
+        <li>Resource sharing across network</li>
+        <li>Fault tolerance</li>
+    </ul>
+
+    <h3>Advantages</h3>
+    <ul>
+        <li>High scalability</li>
+        <li>Better performance for distributed workloads</li>
+    </ul>
+
+    <h3>Disadvantages</h3>
+    <ul>
+        <li>Complex design and debugging</li>
+        <li>Security challenges</li>
+    </ul>
+
+    <h3>Used In</h3>
+    <p>Clusters, grid computing, cloud backend systems.</p>
+</div>
+
+<div class="section">
+    <h2>7. Network Operating System (NOS)</h2>
+    <p>Provides services to computers connected in a network from a central server.</p>
+
+    <h3>Key Features</h3>
+    <ul>
+        <li>File sharing</li>
+        <li>Printer and device sharing</li>
+        <li>Network security</li>
+        <li>Multi-user support</li>
+    </ul>
+
+    <h3>Advantages</h3>
+    <ul>
+        <li>Centralized control</li>
+        <li>Easy to add new nodes</li>
+    </ul>
+
+    <h3>Disadvantages</h3>
+    <ul>
+        <li>Server dependency</li>
+        <li>Requires trained administrators</li>
+    </ul>
+
+    <h3>Used In</h3>
+    <p>Windows Server, Linux-based servers.</p>
+</div>
+
+<div class="section">
+    <h2>8. Mobile Operating System</h2>
+    <p>Designed for smartphones, tablets, and embedded devices.</p>
+
+    <h3>Key Features</h3>
+    <ul>
+        <li>Touch-based interface</li>
+        <li>Lightweight kernel</li>
+        <li>Battery optimization</li>
+    </ul>
+
+    <h3>Advantages</h3>
+    <ul>
+        <li>Portable and user-friendly</li>
+        <li>Good app ecosystem</li>
+    </ul>
+
+    <h3>Disadvantages</h3>
+    <ul>
+        <li>Limited hardware access</li>
+        <li>Less control for users</li>
+    </ul>
+
+    <h3>Used In</h3>
+    <p>Android, iOS.</p>
+</div>
+
+<div class="section">
+    <h2>9. Embedded Operating System</h2>
+    <p>Runs on devices with limited memory and processing power.</p>
+
+    <h3>Key Features</h3>
+    <ul>
+        <li>Compact design</li>
+        <li>Highly specialized</li>
+        <li>Often works under real-time constraints</li>
+    </ul>
+
+    <h3>Used In</h3>
+    <p>Washing machines, microwaves, routers, automotive systems.</p>
+</div>
+
+<div class="section">
+    <h2>10. Multiprocessing Operating System</h2>
+    <p>Supports multiple CPUs working together in a system.</p>
+
+    <h3>Key Features</h3>
+    <ul>
+        <li>Parallel task execution</li>
+        <li>Shared memory access</li>
+        <li>Load balancing</li>
+    </ul>
+
+    <h3>Advantages</h3>
+    <ul>
+        <li>High performance</li>
+        <li>Supports heavy computation</li>
+    </ul>
+
+    <h3>Disadvantages</h3>
+    <ul>
+        <li>Complex synchronization</li>
+        <li>Expensive hardware</li>
+    </ul>
+
+    <h3>Used In</h3>
+    <p>High-performance servers, scientific computing systems.</p>
+</div>
+<h1>System Calls in Operating Systems</h1>
+
+    <h2>1. What are System Calls?</h2>
+    <p>System calls are the interface between a running program (user space) and the OS kernel.</p>
+    <ul>
+        <li>User programs can’t directly access hardware or critical resources.</li>
+        <li>System calls let a program ask the OS to perform privileged operations safely.</li>
+        <li>Think of them as official requests: <em>“Hey OS, can you open this file for me?”</em></li>
+    </ul>
+
+    <h2>2. Why System Calls Exist</h2>
+    <ul>
+        <li><strong>Protection:</strong> Prevent programs from messing up memory, devices, or other processes.</li>
+        <li><strong>Abstraction:</strong> Hide hardware details. Your code doesn’t care if the disk is SSD or HDD.</li>
+        <li><strong>Resource Management:</strong> OS tracks usage (CPU, memory, I/O).</li>
+    </ul>
+
+    <h2>3. Categories of System Calls</h2>
+
+    <h3>Process Control</h3>
+    <ul>
+        <li><code>fork()</code>: Create a new process (child).</li>
+        <li><code>exec()</code>: Replace current process image with a new program.</li>
+        <li><code>exit()</code>: Terminate a process.</li>
+        <li><code>wait()</code>: Wait for a child process to finish.</li>
+        <li><code>getpid()</code>: Get process ID.</li>
+    </ul>
+
+    <h3>File Management</h3>
+    <ul>
+        <li><code>open(), close()</code>: Open or close a file.</li>
+        <li><code>read(), write()</code>: Read/write data.</li>
+        <li><code>lseek()</code>: Move file pointer.</li>
+        <li><code>unlink()</code>: Delete a file.</li>
+    </ul>
+
+    <h3>Device Management</h3>
+    <ul>
+        <li><code>ioctl()</code>: Device-specific operations.</li>
+        <li><code>read(), write()</code>: Same as files, but on devices (keyboard, disk).</li>
+        <li><code>mknod()</code>: Create a device file.</li>
+    </ul>
+
+    <h3>Information Maintenance</h3>
+    <ul>
+        <li><code>gettimeofday()</code>: System time.</li>
+        <li><code>getpid()</code>: Process info.</li>
+        <li><code>uname()</code>: System info (OS type, version).</li>
+    </ul>
+
+    <h3>Communication</h3>
+    <ul>
+        <li><code>pipe()</code>: Unidirectional communication between processes.</li>
+        <li><code>shmget(), shmat()</code>: Shared memory.</li>
+        <li><code>msgget(), msgsnd(), msgrcv()</code>: Message queues.</li>
+        <li><code>socket(), bind(), connect()</code>: Network communication.</li>
+    </ul>
+
+    <h2>4. How System Calls Work (Step by Step)</h2>
+    <ol>
+        <li>Program executes a system call (e.g., <code>read()</code>).</li>
+        <li>CPU switches to kernel mode (privileged mode).</li>
+        <li>Kernel performs the requested operation.</li>
+        <li>Result or error code is returned to the program.</li>
+        <li>CPU switches back to user mode.</li>
+    </ol>
+    <p>Without this mode switching, user programs could accidentally fry the system.</p>
+
+    <h2>5. Types of System Calls (By Invocation Method)</h2>
+    <ul>
+        <li><strong>Direct:</strong> Program uses a library function which internally triggers a syscall.</li>
+        <li><strong>Indirect / Library:</strong> Higher-level functions (like <code>printf()</code>) eventually call syscalls (<code>write()</code> under the hood).</li>
+    </ul>
+
+    <h2>6. Examples in Linux (C code)</h2>
+    <pre><code>#include &lt;stdio.h&gt;
+#include &lt;unistd.h&gt;
+#include &lt;fcntl.h&gt;
+
+int main() {
+    int fd = open("file.txt", O_RDONLY);  // System call
+    if(fd &lt; 0) {
+        perror("open");
+        return 1;
+    }
+    char buffer[100];
+    read(fd, buffer, 100);                // System call
+    write(1, buffer, 100);                // System call (stdout)
+    close(fd);                            // System call
+    return 0;
+}
+</code></pre>
+<p><code>open</code>, <code>read</code>, <code>write</code>, <code>close</code> are all system calls that go straight to the kernel.</p>
+
+<h2>7. Key Points to Remember</h2>
 <ul>
-  <li><strong>Code:</strong> The actual instructions to execute.</li>
-  <li><strong>Program Counter (PC):</strong> Tracks the current point of execution.</li>
-  <li><strong>Stack:</strong> Stores function calls and local variables.</li>
-  <li><strong>Heap:</strong> Dynamic memory (from <code>malloc</code> or <code>new</code>).</li>
-  <li><strong>Data Section:</strong> Contains global and static variables.</li>
+    <li>Every system call is costly compared to normal function calls because of mode switching.</li>
+    <li>They enforce security, stability, and hardware abstraction.</li>
+    <li>Programs cannot bypass system calls to access hardware directly in modern OSes.</li>
 </ul>
+ <h1>Kernel vs User Space</h1>
 
-<h3>2. Process States</h3>
-<p>Processes change states constantly as they run. Typical states include:</p>
-<ul>
-  <li><strong>New:</strong> The process is being created.</li>
-  <li><strong>Ready:</strong> Waiting for CPU time.</li>
-  <li><strong>Running:</strong> Currently executing on the CPU.</li>
-  <li><strong>Waiting/Blocked:</strong> Paused, waiting for I/O or another event.</li>
-  <li><strong>Terminated:</strong> Finished execution and released resources.</li>
-</ul>
+    <h2>1. Definition</h2>
+    <h3>Kernel Space</h3>
+    <ul>
+        <li>The OS’s inner sanctum.</li>
+        <li>Full access to hardware, memory, and CPU instructions.</li>
+        <li>Runs in privileged mode (ring 0 in x86).</li>
+        <li>Handles process scheduling, memory management, device I/O, and security.</li>
+        <li>Example: When you call <code>read()</code> on a file, the kernel talks to the disk controller.</li>
+    </ul>
 
-<h3>3. Process Control Block (PCB)</h3>
-<p>
-The OS maintains a <strong>Process Control Block</strong> for every process, storing all information needed to manage it:
-</p>
-<ul>
-  <li>Process ID (PID)</li>
-  <li>Current process state</li>
-  <li>CPU register values</li>
-  <li>Scheduling information</li>
-  <li>Memory management data</li>
-  <li>I/O status</li>
-</ul>
-<p>
-When switching from one process to another, the OS saves the current PCB and restores another—this is a <strong>context switch</strong>, which enables multitasking (at the cost of speed).
-</p>
+    <h3>User Space</h3>
+    <ul>
+        <li>Where normal programs live.</li>
+        <li>Limited access: cannot directly touch hardware or memory outside their allocation.</li>
+        <li>Runs in unprivileged mode (ring 3 in x86).</li>
+        <li>Relies on system calls to interact with the kernel.</li>
+        <li>Example: Your Python script, browser, or game runs here.</li>
+    </ul>
 
-<h3>4. Process Scheduling</h3>
-<p>
-The OS uses schedulers to decide which process runs next:
-</p>
-<ul>
-  <li><strong>Long-term scheduler:</strong> Admits new jobs to the system.</li>
-  <li><strong>Short-term scheduler:</strong> Selects the next ready process for CPU time.</li>
-  <li><strong>Medium-term scheduler:</strong> Manages swapping processes between memory and disk.</li>
-</ul>
+    <h2>2. Why the Separation Exists</h2>
+    <ul>
+        <li><strong>Protection:</strong> Prevents user programs from crashing the OS.</li>
+        <li><strong>Stability:</strong> Bugs in user programs don’t take down the whole system.</li>
+        <li><strong>Security:</strong> Restricts access to critical data and devices.</li>
+    </ul>
 
-<h3>5. Scheduling Algorithms</h3>
-<ul>
-  <li><strong>FCFS (First Come, First Served):</strong> Fair but can be inefficient.</li>
-  <li><strong>SJF (Shortest Job First):</strong> Fast but impractical—job length isn’t always known.</li>
-  <li><strong>RR (Round Robin):</strong> Each process gets equal CPU time; great for time-sharing systems.</li>
-  <li><strong>Priority Scheduling:</strong> High-priority processes run first; may cause starvation.</li>
-  <li><strong>Multilevel Queue:</strong> Groups processes into categories with different scheduling rules.</li>
-</ul>
+    <h2>3. Communication Between User Space and Kernel Space</h2>
+    <p>Interaction happens via system calls:</p>
+    <ol>
+        <li>User program calls a system function → triggers a software interrupt or trap.</li>
+        <li>CPU switches from user mode to kernel mode.</li>
+        <li>Kernel executes the requested operation.</li>
+        <li>Returns results → CPU switches back to user mode.</li>
+    </ol>
+    <pre><code>int fd = open("file.txt", O_RDONLY); // User space
+char buf[100];
+ssize_t n = read(fd, buf, 100);          // System call triggers kernel</code></pre>
 
-<h3>6. Inter-Process Communication (IPC)</h3>
-<p>
-Processes often need to exchange information. IPC provides mechanisms for safe communication:
-</p>
-<ul>
-  <li><strong>Pipes:</strong> One-way communication between processes (e.g., parent ↔ child).</li>
-  <li><strong>Message Queues:</strong> System-managed channels for sending messages.</li>
-  <li><strong>Shared Memory:</strong> Fastest method; multiple processes share a common memory area.</li>
-  <li><strong>Semaphores/Mutexes:</strong> Synchronization tools that prevent data conflicts.</li>
-</ul>
-
-<h3>7. Process Creation and Termination</h3>
-<ul>
-  <li><strong>Creation:</strong> Uses <code>fork()</code> in Unix or <code>CreateProcess()</code> in Windows.</li>
-  <li><strong>Termination:</strong> A process may exit normally, crash (e.g., segmentation fault), or be killed by signals or user intervention.</li>
-</ul>
-
+    <h2>4. Memory Layout</h2>
+    <div class="memory-layout">
+        High Address<br>
+        +--------------------+<br>
+        | Kernel Space       | &lt;- Reserved for OS, shared among all processes<br>
+        +--------------------+<br>
+        | User Space         | &lt;- Stack, Heap, Data, Text segments of the program<br>
+        Low Address
     </div>
+    <p>Kernel memory is protected; user cannot touch it. Kernel can access both its own and user memory.</p>
+
+    <h2>5. Context Switching</h2>
+    <p>When switching between processes, the CPU may also switch mode: <strong>user → kernel → user</strong>. This is critical for multitasking but comes with a performance cost (saving/restoring registers, memory maps, etc.).</p>
+
+    <h2>6. Advantages and Disadvantages</h2>
+    <table>
+        <tr>
+            <th>Aspect</th>
+            <th>Kernel Space</th>
+            <th>User Space</th>
+        </tr>
+        <tr>
+            <td>Access Level</td>
+            <td>Full (privileged)</td>
+            <td>Limited (restricted)</td>
+        </tr>
+        <tr>
+            <td>Safety</td>
+            <td>Dangerous if bugs occur</td>
+            <td>Safer; isolated</td>
+        </tr>
+        <tr>
+            <td>Stability</td>
+            <td>Kernel crash = OS crash</td>
+            <td>Program crash ≠ OS crash</td>
+        </tr>
+        <tr>
+            <td>Performance</td>
+            <td>Fast (direct access)</td>
+            <td>Slower (needs system call)</td>
+        </tr>
+        <tr>
+            <td>Example</td>
+            <td>Scheduler, File system, Drivers</td>
+            <td>Browsers, Editors, Games</td>
+        </tr>
+    </table>
+
+    <h2>7. Special Cases</h2>
+    <ul>
+        <li><strong>Kernel Modules / Drivers:</strong> Can run in kernel space but can be dynamically loaded/unloaded.</li>
+        <li><strong>Microkernels:</strong> Move some traditional kernel services into user space to improve safety at a small performance cost.</li>
+    </ul>
+     <h1>OS Architecture Styles</h1>
+
+    <div class="architecture">
+        <h2>1. Monolithic Kernel Architecture</h2>
+        <p><strong>Description:</strong> Everything the OS does—process management, memory management, file system, device drivers—is in one large kernel running in kernel mode. No isolation; all services can directly call each other.</p>
+        <ul>
+            <li><strong>Pros:</strong> Fast (direct procedure calls), simple design for small OSes.</li>
+            <li><strong>Cons:</strong> Hard to maintain/debug; a bug in any part can crash the whole system.</li>
+            <li><strong>Example OS:</strong> Unix (traditional), Linux (originally monolithic).</li>
+        </ul>
+        <div class="diagram">
++----------------------------------+
+|         User Applications        |
++----------------------------------+
+|           System Calls           |
++----------------------------------+
+|           Monolithic Kernel      |
+|  - Process Management            |
+|  - Memory Management             |
+|  - File System                   |
+|  - Device Drivers                |
++----------------------------------+
+|          Hardware Layer           |
++----------------------------------+
+        </div>
+    </div>
+
+    <div class="architecture">
+        <h2>2. Microkernel Architecture</h2>
+        <p><strong>Description:</strong> Minimal kernel providing only core services (IPC, basic scheduling, low-level memory management). All other services run in user space as separate processes.</p>
+        <ul>
+            <li><strong>Pros:</strong> Modular and easier to maintain, fault in one service doesn’t crash the kernel.</li>
+            <li><strong>Cons:</strong> Slower due to message passing between kernel and user-space services.</li>
+            <li><strong>Example OS:</strong> MINIX, QNX, L4, HURD.</li>
+        </ul>
+        <div class="diagram">
++----------------------------------+
+|         User Applications        |
++----------------------------------+
+|        System Services           |
+|  - File System                   |
+|  - Device Drivers                |
+|  - Network Stack                 |
++----------------------------------+
+|          Microkernel             |
+|  - IPC                           |
+|  - Scheduling                    |
+|  - Memory Management             |
++----------------------------------+
+|          Hardware Layer           |
++----------------------------------+
+        </div>
+    </div>
+
+    <div class="architecture">
+        <h2>3. Layered (Hierarchical) Architecture</h2>
+        <p><strong>Description:</strong> OS divided into layers; each layer uses only the layer below. Layer 0 = hardware, top layer = user interface.</p>
+        <ul>
+            <li><strong>Pros:</strong> Easy to debug and maintain, clear modularity.</li>
+            <li><strong>Cons:</strong> Slower (overhead passing through layers), rigid structure.</li>
+            <li><strong>Example OS:</strong> THE OS, Windows NT (pseudo-layered approach).</li>
+        </ul>
+        <div class="diagram">
+Layer 5: User Interface / Applications
+Layer 4: System Programs / Utilities
+Layer 3: OS Services (File System, I/O)
+Layer 2: OS Kernel (Process, Memory Management)
+Layer 1: Hardware Abstraction
+Layer 0: Physical Hardware
+        </div>
+    </div>
+
+    <div class="architecture">
+        <h2>4. Client-Server Architecture (Modern / Network OS)</h2>
+        <p><strong>Description:</strong> OS services implemented as servers. User programs are clients. Communication via IPC (local or network).</p>
+        <ul>
+            <li><strong>Pros:</strong> Modular, distributed, supports network transparency.</li>
+            <li><strong>Cons:</strong> Overhead due to server communication.</li>
+            <li><strong>Example OS:</strong> Mach, Windows NT (hybrid), modern distributed OSes.</li>
+        </ul>
+        <div class="diagram">
++-------------------------+
+|      User Applications  |
++-------------------------+
+|       Client Layer      |
++-------------------------+
+|      Server Layer       |
+|  - File Server          |
+|  - Device Server        |
+|  - Network Server       |
++-------------------------+
+|        Microkernel      |
+|  - IPC                  |
+|  - Scheduling           |
+|  - Memory Mgmt          |
++-------------------------+
+|        Hardware         |
++-------------------------+
+        </div>
+    </div>
+     <h1>OS Architecture Comparison</h1>
+
+    <table>
+        <tr>
+            <th>Architecture</th>
+            <th>Layering / Components</th>
+            <th>Example OS</th>
+        </tr>
+
+        <tr>
+            <td>Monolithic Kernel</td>
+            <td>
+<pre>+ User Applications
++ System Calls
++ Monolithic Kernel:
+    - Process Mgmt
+    - Memory Mgmt
+    - File System
+    - Device Drivers
++ Hardware</pre>
+            </td>
+            <td>Unix, Linux</td>
+        </tr>
+
+        <tr>
+            <td>Microkernel</td>
+            <td>
+<pre>+ User Applications
++ System Services (User Space):
+    - File System
+    - Device Drivers
+    - Network Stack
++ Microkernel:
+    - IPC
+    - Scheduling
+    - Memory Mgmt
++ Hardware</pre>
+            </td>
+            <td>MINIX, QNX</td>
+        </tr>
+
+        <tr>
+            <td>Layered Architecture</td>
+            <td>
+<pre>Layer 5: User Interface / Applications
+Layer 4: System Programs / Utilities
+Layer 3: OS Services (File System, I/O)
+Layer 2: OS Kernel (Process, Memory Mgmt)
+Layer 1: Hardware Abstraction
+Layer 0: Physical Hardware</pre>
+            </td>
+            <td>THE OS, Windows NT (pseudo)</td>
+        </tr>
+
+        <tr>
+            <td>Client-Server Architecture</td>
+            <td>
+<pre>+ User Applications
++ Client Layer
++ Server Layer:
+    - File Server
+    - Device Server
+    - Network Server
++ Microkernel:
+    - IPC
+    - Scheduling
+    - Memory Mgmt
++ Hardware</pre>
+            </td>
+            <td>Mach, Windows NT (hybrid)</td>
+        </tr>
+
+    </table>
+    <h1>Booting Process</h1>
+
+    <div class="section">
+        <h2>Definition</h2>
+        <p>Booting is the sequence of operations that the computer performs when it is switched on, to initialize hardware, load the OS, and get the system ready for user interaction.</p>
+        <ul>
+            <li><strong>Cold Boot (Hard Boot):</strong> Turning on from a completely powered-off state.</li>
+            <li><strong>Warm Boot (Soft Boot):</strong> Restarting the computer without turning off the power (e.g., using Restart).</li>
+        </ul>
+    </div>
+
+    <div class="section">
+        <h2>Steps in Booting Process</h2>
+        <h3>1. Power-On Self-Test (POST)</h3>
+        <ul>
+            <li>Performed by BIOS/UEFI firmware.</li>
+            <li>Checks essential hardware: RAM, CPU, keyboard, disk drives.</li>
+            <li>Signals errors via beeps or messages (e.g., “No keyboard detected”).</li>
+        </ul>
+
+        <h3>2. Loading the Bootloader</h3>
+        <ul>
+            <li>BIOS/UEFI searches storage devices for a bootable device.</li>
+            <li>Finds MBR or GPT on disk.</li>
+            <li>Loads the bootloader into memory, which then loads the OS kernel.</li>
+        </ul>
+
+        <h3>3. Loading the OS Kernel</h3>
+        <ul>
+            <li>Bootloader loads the kernel into memory.</li>
+            <li>Kernel initializes low-level hardware (CPU, memory, devices).</li>
+            <li>Switches CPU from real mode to protected mode.</li>
+        </ul>
+
+        <h3>4. System Initialization</h3>
+        <ul>
+            <li>Kernel initializes system services, device drivers, and memory management.</li>
+            <li>Mounts the root file system.</li>
+            <li>Starts essential background processes (daemons/services).</li>
+        </ul>
+
+        <h3>5. User-Level Initialization</h3>
+        <ul>
+            <li>OS starts login process or GUI.</li>
+            <li>Runs user-level programs (desktop, shell, etc.).</li>
+            <li>System is ready for normal operations.</li>
+        </ul>
+    </div>
+
+    <div class="section">
+        <h2>Textual Diagram of Booting Process</h2>
+        <div class="diagram">
+[Power ON]
+     |
+     v
+[POST - BIOS/UEFI]
+     |
+     v
+[Load Bootloader from MBR/GPT]
+     |
+     v
+[Bootloader loads OS Kernel]
+     |
+     v
+[Kernel Initialization]
+     |
+     v
+[Start System Processes/Daemons]
+     |
+     v
+[User Login / GUI]
+     |
+     v
+[Ready for Use]
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>Example (Linux System)</h2>
+        <div class="example">
+Power ON → BIOS/UEFI: Checks RAM, CPU, keyboard.<br>
+Bootloader (GRUB): Located on disk, shows OS options.<br>
+Kernel Load: Linux kernel /boot/vmlinuz loaded.<br>
+Init System (systemd): Starts background services like network, display manager.<br>
+Login Prompt / GUI Desktop: System is ready.
+        </div>
+    </div>
+     <h1>Multithreading vs Multiprocessing</h1>
+
+    <h2>1. Multithreading</h2>
+    <h3>Definition:</h3>
+    <p>A process is like a house. Threads are the people inside it. All threads share the same memory and resources of the process, but can execute independently.</p>
+
+    <h3>Characteristics:</h3>
+    <ul>
+        <li>Shares process resources (memory, files, etc.)</li>
+        <li>Lightweight (creating a thread is faster than creating a process)</li>
+        <li>Communication between threads is easy</li>
+        <li>A crash in one thread can affect the entire process</li>
+    </ul>
+
+    <h3>Example (Textual Diagram):</h3>
+    <pre>
+Process A
+│
+├── Thread 1 ──> Task: Read user input
+├── Thread 2 ──> Task: Process data
+└── Thread 3 ──> Task: Display output
+    </pre>
+
+    <h3>Simple Code Example (Python):</h3>
+    <pre><code>import threading
+import time
+
+def task(name):
+    for i in range(3):
+        print(f"{name} is running")
+        time.sleep(1)
+
+# Creating threads
+t1 = threading.Thread(target=task, args=("Thread 1",))
+t2 = threading.Thread(target=task, args=("Thread 2",))
+
+t1.start()
+t2.start()
+
+t1.join()
+t2.join()
+print("All threads completed")</code></pre>
+
+    <p><strong>Explanation:</strong> Two threads run simultaneously inside the same process, sharing memory and resources.</p>
+
+    <h2>2. Multiprocessing</h2>
+    <h3>Definition:</h3>
+    <p>Multiple processes running independently. Each has its own memory space and resources. Communication is done via IPC (Inter-process communication).</p>
+
+    <h3>Characteristics:</h3>
+    <ul>
+        <li>Each process has its own memory</li>
+        <li>Heavyweight (creating a process is slower than a thread)</li>
+        <li>Safer (one process crashing doesn’t affect others)</li>
+        <li>Communication is more complex (pipes, queues, shared memory)</li>
+    </ul>
+
+    <h3>Example (Textual Diagram):</h3>
+    <pre>
+CPU Core 1 ──> Process A ──> Task 1
+CPU Core 2 ──> Process B ──> Task 2
+CPU Core 3 ──> Process C ──> Task 3
+    </pre>
+
+    <h3>Simple Code Example (Python):</h3>
+    <pre><code>from multiprocessing import Process
+import time
+
+def task(name):
+    for i in range(3):
+        print(f"{name} is running")
+        time.sleep(1)
+
+# Creating processes
+p1 = Process(target=task, args=("Process 1",))
+p2 = Process(target=task, args=("Process 2",))
+
+p1.start()
+p2.start()
+
+p1.join()
+p2.join()
+print("All processes completed")</code></pre>
+
+    <p><strong>Explanation:</strong> Two independent processes run simultaneously, each in its own memory space. Crashing one does not affect the other.</p>
+
+    <h2>3. Key Differences</h2>
+    <table>
+        <tr>
+            <th>Feature</th>
+            <th>Multithreading</th>
+            <th>Multiprocessing</th>
+        </tr>
+        <tr>
+            <td>Memory</td>
+            <td>Shared within process</td>
+            <td>Separate memory per process</td>
+        </tr>
+        <tr>
+            <td>Creation Time</td>
+            <td>Faster</td>
+            <td>Slower</td>
+        </tr>
+        <tr>
+            <td>Communication</td>
+            <td>Easy (shared memory)</td>
+            <td>Hard (IPC required)</td>
+        </tr>
+        <tr>
+            <td>Crash Effect</td>
+            <td>Can crash entire process</td>
+            <td>One process crash does not affect others</td>
+        </tr>
+        <tr>
+            <td>Resource Overhead</td>
+            <td>Low</td>
+            <td>High</td>
+        </tr>
+        <tr>
+            <td>Example Use</td>
+            <td>GUI apps, Web servers</td>
+            <td>Heavy computations, parallel processing</td>
+        </tr>
+    </table>
+<h1>Process States (In-Depth)</h1>
+
+    <h2>1. Process States</h2>
+
+    <h3>a) New</h3>
+    <p>Process is being created. The OS allocates resources like memory, PCB, I/O info. Not yet admitted to the ready queue.</p>
+    <div class="state-example">
+        Example: A user launches <code>gedit</code> on Linux. The process is created and enters the <strong>New</strong> state.
+    </div>
+
+    <h3>b) Ready</h3>
+    <p>Process is loaded into memory and waiting for CPU. All resources except CPU are available. Stored in ready queue.</p>
+    <div class="state-example">
+        Example: <code>gedit</code> is ready to run, waiting its turn while <code>firefox</code> uses the CPU.
+    </div>
+
+    <h3>c) Running</h3>
+    <p>Process is executing instructions on CPU. Only one process per CPU core can run at a time (unless multi-threaded core).</p>
+    <ul>
+        <li>Transitions to <strong>Waiting</strong> if it requests I/O</li>
+        <li>Transitions to <strong>Ready</strong> if preempted by higher priority</li>
+    </ul>
+    <div class="state-example">
+        Example: <code>gedit</code> is actively being typed into. CPU executes its instructions.
+    </div>
+
+    <h3>d) Waiting / Blocked</h3>
+    <p>Process is waiting for an event (usually I/O) to complete. Cannot use CPU until the event occurs. Blocked queue keeps track.</p>
+    <div class="state-example">
+        Example: <code>gedit</code> tries to save a file on a network drive. The process waits for disk I/O.
+    </div>
+
+    <h3>e) Terminated / Exit</h3>
+    <p>Process has completed execution. OS cleans up resources (memory, PCB, I/O). Process is removed from process table.</p>
+    <div class="state-example">
+        Example: User closes <code>gedit</code>. Process finishes and terminates.
+    </div>
+
+    <h2>2. Process State Transitions (Textual Diagram)</h2>
+    <pre>
+          +----------------+
+          |      New       |
+          +--------+-------+
+                   |
+                   v
+          +--------+-------+
+          |      Ready     |<--------------------+
+          +--------+-------+                     |
+           |       ^                             |
+           |       | (time slice / preemption)  |
+           v       |                             |
+      +----+-------+-----+                       |
+      |      Running     |                       |
+      +----+-------+-----+                       |
+           |       |                             |
+           |       v                             |
+           |   +---+-----+                       |
+           |   | Waiting |-----------------------+
+           |   +---------+
+           v
+      +----+-------+
+      | Terminated |
+      +------------+
+    </pre>
+
+    <h3>Transitions Explained</h3>
+    <ul>
+        <li><strong>New → Ready:</strong> Process admitted to memory, waiting for CPU.</li>
+        <li><strong>Ready → Running:</strong> Scheduler assigns CPU.</li>
+        <li><strong>Running → Waiting:</strong> Process requests I/O or event.</li>
+        <li><strong>Waiting → Ready:</strong> I/O or event completes; process rejoins ready queue.</li>
+        <li><strong>Running → Ready:</strong> Preemption (time slice expired or higher priority process).</li>
+        <li><strong>Running → Terminated:</strong> Process finishes execution.</li>
+    </ul>
+
+    <h2>3. Example Scenario</h2>
+    <p>User opens Text Editor (<code>gedit</code>):</p>
+    <ul>
+        <li>State: <strong>New → Ready</strong></li>
+        <li>CPU scheduler picks it → <strong>Ready → Running</strong></li>
+        <li>User types and saves a file (requires I/O) → <strong>Running → Waiting</strong></li>
+        <li>Disk operation completes → <strong>Waiting → Ready</strong></li>
+        <li>CPU picks it again → <strong>Ready → Running</strong></li>
+        <li>User closes editor → <strong>Running → Terminated</strong></li>
+    </ul>
+    <h1>Process Control Block (PCB)</h1>
+
+    <h2>1. What is a PCB?</h2>
+    <p>A <strong>Process Control Block (PCB)</strong> is a data structure used by the OS to store all information about a process. It is created when a process is created and deleted when the process terminates.</p>
+
+    <h3>Purpose:</h3>
+    <ul>
+        <li>Allows the OS to manage processes, schedule them, and resume execution after preemption.</li>
+        <li>Think of it as a passport + memory card + report card for a process.</li>
+    </ul>
+
+    <h2>2. Components of PCB</h2>
+    <table>
+        <tr>
+            <th>Component</th>
+            <th>Description</th>
+        </tr>
+        <tr>
+            <td>Process ID (PID)</td>
+            <td>Unique identifier for each process.</td>
+        </tr>
+        <tr>
+            <td>Process State</td>
+            <td>New, Ready, Running, Waiting, Terminated.</td>
+        </tr>
+        <tr>
+            <td>Program Counter (PC)</td>
+            <td>Address of the next instruction to execute.</td>
+        </tr>
+        <tr>
+            <td>CPU Registers</td>
+            <td>Accumulator, index registers, general-purpose registers.</td>
+        </tr>
+        <tr>
+            <td>CPU Scheduling Info</td>
+            <td>Priority, pointers to scheduling queues, etc.</td>
+        </tr>
+        <tr>
+            <td>Memory Management Info</td>
+            <td>Base &amp; limit registers, page tables, segment tables.</td>
+        </tr>
+        <tr>
+            <td>Accounting Info</td>
+            <td>CPU time used, time limits, job number, etc.</td>
+        </tr>
+        <tr>
+            <td>I/O Status Info</td>
+            <td>List of open files, I/O devices allocated to the process.</td>
+        </tr>
+        <tr>
+            <td>Pointer to Parent/Child Processes</td>
+            <td>For process hierarchy management.</td>
+        </tr>
+    </table>
+
+    <h2>3. Textual Diagram of PCB</h2>
+    <pre>
++---------------------------+
+| Process Control Block (PCB) |
++---------------------------+
+| PID: 101                  |
+| State: Ready              |
+| Program Counter: 0x00402A |
+| CPU Registers:            |
+|   AX=0x01  BX=0x00  CX=0x05 |
+| Priority: 3               |
+| Memory Info:              |
+|   Base=0x1000  Limit=0x1FFF |
+| Page Table Ptr: 0x3000    |
+| I/O Devices: Keyboard, Printer |
+| Open Files: file1.txt, file2.txt |
+| Accounting: CPU Time=25ms |
+| Parent PID: 50            |
+| Child PIDs: 102, 103      |
++---------------------------+
+    </pre>
+
+    <h2>4. Example Scenario</h2>
+    <p>Suppose you launch a text editor (e.g., Notepad):</p>
+    <ul>
+        <li>OS creates a PCB for Notepad.</li>
+        <li>Assigns PID = 101, state = Ready, program counter points to first instruction of Notepad.</li>
+        <li>Registers are saved as Notepad is loaded into memory.</li>
+        <li>Scheduler picks it, state becomes Running.</li>
+        <li>User switches to a browser → <strong>context switch</strong> occurs: Notepad’s PCB is updated (registers saved, state = Ready).</li>
+    </ul>
+    <h1>Types of Scheduling in OS (In-Depth)</h1>
+
+    <p>Scheduling is how the OS decides which process gets CPU and when. Based on frequency and scope, scheduling is classified into three main types:</p>
+
+    <h2>1. Long-Term Scheduling</h2>
+    <p><strong>Purpose:</strong> Controls which processes are admitted into the system from the job pool (or disk) into main memory.</p>
+    <p><strong>Frequency:</strong> Infrequent (minutes or hours).</p>
+    <p><strong>Goal:</strong> Maintain a good degree of multiprogramming. Too many processes → memory thrashing; too few → CPU idle.</p>
+    <p><strong>Effect:</strong> Decides overall system throughput.</p>
+    <p><strong>Example:</strong> A batch system receives 100 jobs. The long-term scheduler picks 5-10 jobs at a time to load into memory for execution.</p>
+    <p><strong>Characteristics:</strong></p>
+    <ul>
+        <li>Selects processes from job pool → ready queue.</li>
+        <li>May delay low-priority or heavy jobs.</li>
+        <li>Mostly used in batch systems, rarely in interactive systems.</li>
+    </ul>
+    <pre>
+Job Pool (Disk) 
+      |
+      v
++-------------------+
+| Long-Term Scheduler|
++-------------------+
+      |
+      v
+  Ready Queue (Memory)
+    </pre>
+
+    <h2>2. Medium-Term Scheduling</h2>
+    <p><strong>Purpose:</strong> Temporarily removes or suspends a process from memory to improve CPU/IO utilization.</p>
+    <p><strong>Frequency:</strong> Moderate, as system load changes.</p>
+    <p><strong>Goal:</strong> Balance load and improve performance.</p>
+    <p><strong>Mechanism:</strong></p>
+    <ul>
+        <li>Suspends process → moves from Ready/Running → Secondary Storage (Suspended)</li>
+        <li>Resumes process later → moves back Suspended → Ready Queue</li>
+    </ul>
+    <p><strong>Example:</strong> System has 10 processes in memory. 7 are CPU-bound, 3 are I/O-bound. To avoid CPU congestion, OS suspends 2 CPU-bound processes to disk and later resumes them.</p>
+    <pre>
+Ready Queue (Memory)
+      |
+      v
++--------------------+
+| Medium-Term Scheduler|
++--------------------+
+      |
+      v
+Suspended Processes (Disk)
+    </pre>
+
+    <h2>3. Short-Term Scheduling (CPU Scheduling)</h2>
+    <p><strong>Purpose:</strong> Decide which process in the ready queue gets CPU next.</p>
+    <p><strong>Frequency:</strong> Very high (milliseconds).</p>
+    <p><strong>Goal:</strong> Optimize CPU utilization, response time, waiting time, and throughput.</p>
+    <p><strong>Mechanism:</strong> Preemptive or Non-preemptive.</p>
+    <p><strong>Example:</strong></p>
+    <p>Ready Queue: P1, P2, P3<br>CPU picks P1 → executes for 5ms → P2 → executes for 3ms, etc.</p>
+    <p>Algorithm used can be FCFS, SJF, RR, Priority, etc.</p>
+    <pre>
+Ready Queue
+     |
+     v
++----------------+
+| Short-Term     |
+| Scheduler (CPU)|
++----------------+
+     |
+     v
+  CPU Execution
+     |
+     v
+Waiting/I/O or Terminated
+    </pre>
+
+    <h2>Combined Scheduling Flow (All Types)</h2>
+    <pre>
+Job Pool (Disk)
+      |
+      v
++-------------------+
+| Long-Term Scheduler|
++-------------------+
+      |
+      v
+  Ready Queue (Memory) <------------------+
+      |                                   |
+      v                                   |
++------------------+                      |
+| Short-Term CPU    |                      |
+| Scheduler         |                      |
++------------------+                      |
+      |                                   |
+      v                                   |
+Running Process ---> Waiting/Blocked ---->|
+      |
+      v
+   Terminated
+      ^
+      |
++-------------------+
+| Medium-Term        |
+| Scheduler          |
++-------------------+
+    </pre>
+    <p><strong>Explanation of Flow:</strong></p>
+    <ul>
+        <li>Long-term scheduler controls admission of jobs.</li>
+        <li>Short-term scheduler chooses which ready process runs next.</li>
+        <li>Medium-term scheduler temporarily suspends/resumes processes to optimize memory/CPU utilization.</li>
+    </ul>
+
+    <h2>2. Scheduling Criteria (In-Depth)</h2>
+    <p>When the OS schedules processes, it doesn’t just pick randomly. It tries to optimize performance according to these metrics:</p>
+
+    <h3>1. CPU Utilization</h3>
+    <p><strong>Definition:</strong> The fraction of time the CPU is busy.</p>
+    <p><strong>Goal:</strong> Keep CPU as close to 100% busy as possible.</p>
+    <p><strong>Formula:</strong></p>
+    <pre>
+CPU Utilization = (CPU Busy Time / Total Time) × 100%
+    </pre>
+    <p><strong>Example:</strong> CPU busy for 80 ms in a total of 100 ms → CPU Utilization = 80%</p>
+
+    <h3>2. Throughput</h3>
+    <p><strong>Definition:</strong> Number of processes completed per unit time.</p>
+    <p><strong>Goal:</strong> Maximize the number of jobs finished.</p>
+    <p><strong>Example:</strong> 10 processes finished in 50 ms → Throughput = 0.2 processes/ms</p>
+
+    <h3>3. Turnaround Time (TAT)</h3>
+    <p><strong>Definition:</strong> Total time taken for a process from submission → completion.</p>
+    <pre>
+TAT = Completion Time - Arrival Time
+    </pre>
+    <p><strong>Example:</strong></p>
+    <table>
+        <tr>
+            <th>Process</th>
+            <th>Arrival</th>
+            <th>Completion</th>
+            <th>TAT = C-A</th>
+        </tr>
+        <tr>
+            <td>P1</td>
+            <td>0</td>
+            <td>10</td>
+            <td>10</td>
+        </tr>
+        <tr>
+            <td>P2</td>
+            <td>2</td>
+            <td>15</td>
+            <td>13</td>
+        </tr>
+        <tr>
+            <td>P3</td>
+            <td>4</td>
+            <td>20</td>
+            <td>16</td>
+        </tr>
+    </table>
+    <p>Average TAT = (10+13+16)/3 = 13</p>
+
+    <h3>4. Waiting Time (WT)</h3>
+    <pre>
+WT = TAT - Burst Time
+    </pre>
+    <p><strong>Example:</strong></p>
+    <table>
+        <tr>
+            <th>Process</th>
+            <th>TAT</th>
+            <th>Burst</th>
+            <th>WT = TAT - Burst</th>
+        </tr>
+        <tr>
+            <td>P1</td>
+            <td>10</td>
+            <td>5</td>
+            <td>5</td>
+        </tr>
+        <tr>
+            <td>P2</td>
+            <td>13</td>
+            <td>4</td>
+            <td>9</td>
+        </tr>
+        <tr>
+            <td>P3</td>
+            <td>16</td>
+            <td>8</td>
+            <td>8</td>
+        </tr>
+    </table>
+    <p>Average WT = 7.33</p>
+
+    <h3>5. Response Time</h3>
+    <pre>
+Response Time = Time first CPU allocated - Arrival Time
+    </pre>
+    <p><strong>Example:</strong> P1 arrives at 0, gets CPU at 2 → Response time = 2 ms</p>
+
+    <h3>6. Fairness</h3>
+    <p>Ensures no process starves. All processes eventually get CPU. Algorithms like Round Robin are fair; SJF non-preemptive can starve long processes.</p>
+
+    <h3>7. Balancing Criteria</h3>
+    <p>Usually, OS tries to balance multiple criteria:</p>
+    <ul>
+        <li>Max CPU utilization</li>
+        <li>Max throughput</li>
+        <li>Min average turnaround & waiting time</li>
+        <li>Reasonable response time for interactive processes</li>
+    </ul>
+
+    <pre>
+      +----------------------+
+      | Scheduling Criteria  |
+      +----------+-----------+
+                 |
+  +--------------+--------------+
+  |              |              |
+CPU Util.    Turnaround Time   Waiting Time
+  |              |              |
+Throughput    Response Time    Fairness
+    </pre>
+
+    <p>CPU Utilization & Throughput → system efficiency<br>
+       Turnaround & Waiting Time → process efficiency<br>
+       Response Time → user satisfaction<br>
+       Fairness → prevents starvation</p>
+
+    <h2>3.1 First-Come, First-Served (FCFS) Scheduling</h2>
+    <p><strong>Definition:</strong> The process that arrives first in the ready queue gets the CPU first. Non-preemptive.</p>
+    <p><strong>Characteristics:</strong></p>
+    <ul>
+        <li>Non-preemptive – no switching until process finishes.</li>
+        <li>Queue-based – works like FIFO.</li>
+        <li>Fair – every process gets CPU in order of arrival.</li>
+        <li>Drawbacks – can cause convoy effect.</li>
+    </ul>
+    <p><strong>Process States in FCFS:</strong> New → Ready Queue → CPU → Terminated</p>
+
+    <p><strong>Example:</strong></p>
+    <table>
+        <tr><th>Process</th><th>Arrival Time (ms)</th><th>Burst Time (ms)</th></tr>
+        <tr><td>P1</td><td>0</td><td>5</td></tr>
+        <tr><td>P2</td><td>1</td><td>3</td></tr>
+        <tr><td>P3</td><td>2</td><td>8</td></tr>
+        <tr><td>P4</td><td>3</td><td>6</td></tr>
+    </table>
+
+    <pre>
+Time: 0    5    8    16   22
+       | P1 | P2 | P3 | P4 |
+    </pre>
+
+    <p><strong>Turnaround Time (TAT):</strong></p>
+    <table>
+        <tr><th>Process</th><th>Completion</th><th>Arrival</th><th>TAT = C-A</th></tr>
+        <tr><td>P1</td><td>5</td><td>0</td><td>5</td></tr>
+        <tr><td>P2</td><td>8</td><td>1</td><td>7</td></tr>
+        <tr><td>P3</td><td>16</td><td>2</td><td>14</td></tr>
+        <tr><td>P4</td><td>22</td><td>3</td><td>19</td></tr>
+    </table>
+    <p>Average TAT = 11.25 ms</p>
+
+    <p><strong>Waiting Time (WT):</strong></p>
+    <table>
+        <tr><th>Process</th><th>TAT</th><th>Burst</th><th>WT = TAT - BT</th></tr>
+        <tr><td>P1</td><td>5</td><td>5</td><td>0</td></tr>
+        <tr><td>P2</td><td>7</td><td>3</td><td>4</td></tr>
+        <tr><td>P3</td><td>14</td><td>8</td><td>6</td></tr>
+        <tr><td>P4</td><td>19</td><td>6</td><td>13</td></tr>
+    </table>
+    <p>Average WT = 5.75</p>
+
+    <pre>
+          +----------------+
+          | New Processes  |
+          +--------+-------+
+                   |
+                   v
+            +------+-------+
+            | Ready Queue  |   <- FIFO order: P1, P2, P3, P4
+            +------+-------+
+                   |
+                   v
+               +---+---+
+               |  CPU  |
+               +---+---+
+                   |
+        +----------+----------+
+        |                     |
+        v                     v
+   Waiting (I/O)           Terminated
+    </pre>
+
+    <h2>3.2 Shortest Job First (SJF) Scheduling</h2>
+    <p><strong>Definition:</strong> Selects process with smallest burst time next.</p>
+    <p>Two types: Non-preemptive SJF, Preemptive SJF (SRTF)</p>
+    <p><strong>Characteristics:</strong></p>
+    <ul>
+        <li>Minimizes average waiting time</li>
+        <li>Can lead to starvation for longer processes</li>
+        <li>Best if burst times known in advance</li>
+    </ul>
+
+    <h3>Non-Preemptive SJF Example</h3>
+    <table>
+        <tr><th>Process</th><th>Arrival</th><th>Burst</th></tr>
+        <tr><td>P1</td><td>0</td><td>6</td></tr>
+        <tr><td>P2</td><td>2</td><td>8</td></tr>
+        <tr><td>P3</td><td>4</td><td>7</td></tr>
+        <tr><td>P4</td><td>6</td><td>3</td></tr>
+    </table>
+    <pre>
+Gantt Chart: 0    6    9    16   24
+             | P1 | P4 | P3 | P2 |
+Average TAT = 10.75, Average WT = 4.75
+    </pre>
+
+    <h3>Preemptive SJF (SRTF)</h3>
+    <p>Similar table. CPU may preempt running process if a shorter burst arrives. Gantt Chart example:</p>
+    <pre>
+0   6   9   16   24
+| P1 | P4 | P3 | P2 |
+    </pre>
+
+    <pre>
+         +----------------+
+         | New Process    |
+         +--------+-------+
+                  |
+                  v
+           +------+-------+
+           | Ready Queue  |
+           | (Sort by BT) |  <-- Smallest burst time at front
+           +------+-------+
+                  |
+                  v
+             +----+----+
+             | CPU      |
+             +----+----+
+                  |
+        +---------+----------+
+        |                    |
+      Waiting (I/O)        Terminated
+        |
+        +------------------+
+                  |
+                  v
+            Back to Ready Queue
+    </pre>
+
+    <h2>3.3 Round Robin (RR) Scheduling</h2>
+    <p><strong>Definition:</strong> Preemptive, each process gets fixed time quantum.</p>
+    <p><strong>Key Features:</strong></p>
+    <ul>
+        <li>Preemptive</li>
+        <li>Time Quantum (q)</li>
+        <li>Ready Queue – circular</li>
+        <li>Fairness</li>
+    </ul>
+    <p><strong>Example:</strong></p>
+    <table>
+        <tr><th>Process</th><th>Arrival</th><th>Burst</th></tr>
+        <tr><td>P1</td><td>0</td><td>5</td></tr>
+        <tr><td>P2</td><td>1</td><td>3</td></tr>
+        <tr><td>P3</td><td>2</td><td>8</td></tr>
+        <tr><td>P4</td><td>3</td><td>6</td></tr>
+    </table>
+    <p>Time Quantum: 4 units</p>
+    <pre>
+Gantt Chart: 0    4    7    11   15   16   20
+             | P1 | P2 | P3 | P4 | P1 | P3 | P4 |
+Average TAT = 14, Average WT = 8.5 (calculated from example)
+    </pre>
+
+    <pre>
+       +----------------+
+       | Ready Queue    | <--- Circular queue
+       +--------+-------+
+                |
+                v
+          +-----+-----+
+          | CPU        |
+          +-----+-----+
+                |
+        +-------+--------+
+        |                |
+      Finish            Time Quantum Expired
+        |                   |
+        v                   v
+   Terminated          Back to Ready Queue
+    </pre>
+
+    <h2>3.4 Priority Scheduling</h2>
+    <p><strong>Definition:</strong> Each process assigned priority. CPU to highest priority process.</p>
+    <ul>
+        <li>Preemptive: Higher priority process can preempt running.</li>
+        <li>Non-preemptive: Running process continues.</li>
+        <li>Starvation can occur; aging used to prevent.</li>
+    </ul>
+
+    <h3>Example (Non-Preemptive)</h3>
+    <table>
+        <tr><th>Process</th><th>Arrival</th><th>Burst</th><th>Priority (1=highest)</th></tr>
+        <tr><td>P1</td><td>0</td><td>10</td><td>3</td></tr>
+        <tr><td>P2</td><td>1</td><td>1</td><td>1</td></tr>
+        <tr><td>P3</td><td>2</td><td>2</td><td>4</td></tr>
+        <tr><td>P4</td><td>3</td><td>1</td><td>2</td></tr>
+    </table>
+    <pre>
+Gantt Chart: 0    10   11   12   14
+             | P1 | P2 | P4 | P3 |
+Average TAT = 10.25, Average WT = 6.75
+    </pre>
+
+    <h3>Example (Preemptive)</h3>
+    <pre>
+t=0 → P1 starts (priority 3)
+t=1 → P2 arrives (priority 1) → preempts P1 → P2 runs
+t=3 → P4 arrives (priority 2) → preempts P1
+Execution Timeline: 0    1   2   3   4   13
+| P1 | P2 | P4 | P1 |
+    </pre>
+
+    <pre>
+         +----------------+
+         | New Process    |
+         +--------+-------+
+                  |
+                  v
+           +------+-------+
+           | Ready Queue  | <-----+
+           +------+-------+      |
+     (Pick highest priority)      |
+                  |              |
+                  v              |
+             +----+----+         |
+             | CPU      |         |
+             +----+----+         |
+                  |              |
+       +----------+----------+   |
+       |                     |   |
+       v                     v   |
+   I/O / Waiting           Terminated
+    </pre>
+    <h1>Multilevel Queue (MLQ) Scheduling</h1>
+
+    <h2>1. Concept</h2>
+    <ul>
+        <li>Processes are divided into different queues based on priority, type, or behavior.</li>
+        <li>Each queue has its own scheduling algorithm.</li>
+        <li>Examples of queues:
+            <ul>
+                <li>Foreground/Interactive → Round Robin</li>
+                <li>Background/Batch → FCFS</li>
+            </ul>
+        </li>
+        <li>No movement between queues (non-preemptive between queues).</li>
+        <li>CPU is allocated to queues based on priority of queues (higher priority queue first).</li>
+    </ul>
+
+    <h2>2. Scheduling within MLQ</h2>
+    <p>If CPU is free, it first looks at highest priority queue. Within a queue, the queue’s own scheduling algorithm decides the process.</p>
+
+    <table>
+        <tr><th>Queue</th><th>Scheduling</th><th>Processes</th></tr>
+        <tr><td>Q1 (High)</td><td>RR q=4</td><td>P1, P2</td></tr>
+        <tr><td>Q2 (Medium)</td><td>FCFS</td><td>P3, P4</td></tr>
+        <tr><td>Q3 (Low)</td><td>FCFS</td><td>P5</td></tr>
+    </table>
+
+    <p>Assume burst times:</p>
+    <table>
+        <tr><th>Process</th><th>Burst</th></tr>
+        <tr><td>P1</td><td>5</td></tr>
+        <tr><td>P2</td><td>3</td></tr>
+        <tr><td>P3</td><td>8</td></tr>
+        <tr><td>P4</td><td>6</td></tr>
+        <tr><td>P5</td><td>4</td></tr>
+    </table>
+
+    <p>Execution order:</p>
+    <ul>
+        <li>Q1 first: P1 and P2 get RR → timeline: P1(4) P2(3) P1(1)</li>
+        <li>Q2 next: P3, P4 FCFS → timeline: P3(8) P4(6)</li>
+        <li>Q3 last: P5 → timeline: P5(4)</li>
+    </ul>
+
+    <pre>
+Textual Gantt Chart:
+Time: 0 4 8 9 17 23 27
+      |P1|P2|P1|P3|P4|P5|
+    </pre>
+
+    <p>Simple but rigid: no movement between queues.</p>
+
+    <hr>
+
+    <h1>Multilevel Feedback Queue (MLFQ) Scheduling</h1>
+
+    <h2>1. Concept</h2>
+    <ul>
+        <li>Improvement over MLQ: allows process movement between queues based on behavior.</li>
+        <li>Interactive / short CPU bursts → higher priority queue.</li>
+        <li>CPU-bound / long bursts → move to lower priority queue.</li>
+        <li>OS uses aging to prevent starvation.</li>
+        <li>Rules (Typical):
+            <ul>
+                <li>New process → highest priority queue.</li>
+                <li>If it uses up its time quantum → move to lower priority queue.</li>
+                <li>If it waits too long in lower queue → move to higher queue (aging).</li>
+            </ul>
+        </li>
+        <li>Allows mix of priority and time-sharing.</li>
+    </ul>
+
+    <h2>2. Example</h2>
+
+    <table>
+        <tr><th>Queue</th><th>Priority</th><th>Time Quantum</th><th>Algorithm</th></tr>
+        <tr><td>Q1</td><td>High</td><td>4</td><td>RR</td></tr>
+        <tr><td>Q2</td><td>Medium</td><td>8</td><td>RR</td></tr>
+        <tr><td>Q3</td><td>Low</td><td>FCFS</td><td>FCFS</td></tr>
+    </table>
+
+    <p>Processes and bursts:</p>
+    <table>
+        <tr><th>Process</th><th>Arrival</th><th>Burst</th></tr>
+        <tr><td>P1</td><td>0</td><td>5</td></tr>
+        <tr><td>P2</td><td>1</td><td>12</td></tr>
+        <tr><td>P3</td><td>2</td><td>6</td></tr>
+        <tr><td>P4</td><td>3</td><td>8</td></tr>
+    </table>
+
+    <p>Step by step execution:</p>
+    <ul>
+        <li>t=0 → P1 enters Q1 → executes 4 units → remaining 1 → demoted to Q2.</li>
+        <li>t=1 → P2 enters Q1 → executes 4 units → remaining 8 → demoted to Q2.</li>
+        <li>t=2 → P3 enters Q1 → executes 4 units → remaining 2 → demoted to Q2.</li>
+        <li>t=3 → P4 enters Q1 → executes 4 units → remaining 4 → demoted to Q2.</li>
+    </ul>
+
+    <p>Now Q1 is empty, Q2 has P1(1), P2(8), P3(2), P4(4) in RR with q=8:</p>
+    <pre>
+Execution continues in Q2: P1(1), P2(8), P3(2), P4(4) → finally all finish.
+
+Textual Gantt Chart:
+0 4 8 12 16 17 25 27 31
+|P1|P2|P3|P4|P1|P2|P3|P4|
+    </pre>
+
+    <p>Shows promotion/demotion between queues. Ensures interactive processes get fast response, CPU-bound are slowed down.</p>
+
+    <h2>3. Textual Diagram of MLFQ</h2>
+    <pre>
+       +----------------+
+       | New Processes  |
+       +--------+-------+
+                |
+                v
+       +--------+--------+
+       |  Q1 (High Pri)  |  <-- RR, q1
+       +--------+--------+
+                |
+                v
+       +--------+--------+
+       |  Q2 (Med Pri)   |  <-- RR, q2
+       +--------+--------+
+                |
+                v
+       +--------+--------+
+       |  Q3 (Low Pri)   |  <-- FCFS
+       +--------+--------+
+                |
+                v
+            Terminated
+    </pre>
+
+    <p>Demotion: process moves down if it exceeds time quantum.</p>
+    <p>Promotion (aging): process moves up if it waits too long.</p>
+
+    <h2>Summary</h2>
+    <ul>
+        <li>MLQ → fixed queue per process type, no movement.</li>
+        <li>MLFQ → dynamic, uses aging and demotion/promotion → better for interactive + CPU-bound mix.</li>
+        <li>Both combine priority scheduling and time-sharing.</li>
+    </ul>
+    <h1>5. Context Switching (In Depth)</h1>
+
+<p>
+    When the CPU switches from one process (or thread) to another, it must save the old one’s state and load the new one’s state.
+    This operation is called <strong>context switching</strong>.
+</p>
+
+<p>It is overhead because the CPU is doing administrative work instead of executing user code.</p>
+
+<h2>What Exactly Is “Context”?</h2>
+<p>Context is everything required to resume a process later as if nothing happened. It includes:</p>
+
+<h3>A. CPU State</h3>
+<ul>
+    <li>Program Counter (PC)</li>
+    <li>General-purpose registers (R0, R1, ...)</li>
+    <li>Stack pointer</li>
+    <li>Flags</li>
+</ul>
+
+<h3>B. Memory Management Info</h3>
+<ul>
+    <li>Page Table Base Register (PTBR)</li>
+    <li>Segment table info</li>
+</ul>
+
+<h3>C. Accounting / Scheduling Info</h3>
+<ul>
+    <li>Priority</li>
+    <li>CPU burst estimate</li>
+    <li>Process state</li>
+</ul>
+
+<p>All of this is stored in the <strong>Process Control Block (PCB)</strong>.</p>
+
+<h2>When Does a Context Switch Occur?</h2>
+<ul>
+    <li><strong>Interrupts</strong>
+        <ul>
+            <li>Timer interrupt</li>
+            <li>I/O interrupt</li>
+        </ul>
+    </li>
+    <li><strong>System calls</strong> (e.g., read(), write(), blocking calls)</li>
+    <li><strong>Preemption</strong> when another process becomes higher priority</li>
+    <li><strong>Voluntary yield</strong> when a process waits</li>
+</ul>
+
+<h2>Flow of a Context Switch</h2>
+
+<h3>Simple Diagram</h3>
+<pre>
+[Process P1 Running]
+        |
+        |  Timer Interrupt
+        v
+[Save P1 Context → PCB(P1)]
+        |
+        |  Scheduler chooses P2
+        v
+[Load P2 Context ← PCB(P2)]
+        |
+        v
+[Process P2 Running]
+</pre>
+
+<h3>Detailed Cycle Visualization</h3>
+<pre>
+                   INTERRUPT / EVENT
+                          |
+                          v
+              +----------------------+
+              |    Running Process   |
+              +----------------------+
+                        |
+                        | Save registers, PC, stack pointer
+                        v
+              +----------------------+
+              |    PCB of Process    |
+              +----------------------+
+                        |
+                        | Scheduler picks next process
+                        v
+              +----------------------+
+              | Load PCB of next P   |
+              +----------------------+
+                        |
+                        v
+              +----------------------+
+              |   Next Process Run   |
+              +----------------------+
+</pre>
+
+<h2>Detailed Example of Context Switching</h2>
+
+<p>Assume:</p>
+<ul>
+    <li>P1: Running computation</li>
+    <li>P2: Ready in queue</li>
+</ul>
+
+<h3>Initial State</h3>
+<ul>
+    <li>CPU is executing P1</li>
+    <li>P2 is in Ready Queue</li>
+</ul>
+
+<h3>Event</h3>
+<p>A timer interrupt occurs because P1’s time quantum expires.</p>
+
+<h3>Steps</h3>
+<ol>
+    <li><strong>Interrupt triggers kernel mode</strong><br>Control moves to the OS interrupt handler.</li>
+    <li><strong>Save P1’s CPU state</strong>
+        <pre>
+PC = 2004
+R1 = 10
+R2 = 19
+SP = 0x7FFE
+Flags = 0101
+        </pre>
+    </li>
+    <li>P1 state changes from Running → Ready</li>
+    <li><strong>Scheduler picks next process (P2)</strong></li>
+    <li><strong>Load P2’s context</strong>
+        <pre>
+PC = 500
+R1 = 3
+R2 = 8
+SP = 0x8123
+Flags = 1000
+        </pre>
+    </li>
+    <li>Switch to user mode and resume execution of P2 at PC = 500</li>
+</ol>
+
+<h3>Timeline Diagram</h3>
+<pre>
+TIME T0:
+CPU → [P1 Running]
+Ready Queue → [P2]
+
+TIME T1:
+Timer interrupt → Save P1 → PCB(P1)
+
+TIME T2:
+Scheduler picks next → P2
+
+TIME T3:
+Load PCB(P2)
+
+TIME T4:
+CPU → [P2 Running]
+Ready Queue → [P1]
+</pre>
+
+<h2>Overhead of Context Switching</h2>
+<p>No process makes progress during the switch.</p>
+
+<p>Overhead depends on:</p>
+<ul>
+    <li>CPU architecture (register count, TLB behavior)</li>
+    <li>OS design (monolithic vs microkernel)</li>
+    <li>Cache effects (loss of locality)</li>
+</ul>
+
+<p>Microkernels have more context switches and hence higher overhead.</p>
+
+<h2>Why Context Switching Matters</h2>
+<ul>
+    <li>Enables multitasking</li>
+    <li>Enables time-sharing systems</li>
+    <li>Keeps UI responsive</li>
+</ul>
+
+<p>However:</p>
+<ul>
+    <li>If time quantum is too small → too many switches, performance drops.</li>
+    <li>If time quantum is too large → poor responsiveness, unfair scheduling.</li>
+</ul>
+<h1>6. Threads (In Depth)</h1>
+
+    <p>A thread is the smallest unit of CPU execution.  
+    A process can have one or multiple threads sharing the same resources.</p>
+
+    <p>Think of a process as a house, and threads as people inside it.  
+    They share the same rooms (memory), but each has their own backpack (stack, registers).</p>
+
+    <h2>1. Why Threads?</h2>
+    <ul>
+        <li>Processes are expensive to create and switch.</li>
+        <li>Threads are lightweight and allow:</li>
+        <ul>
+            <li>Faster context switching</li>
+            <li>Better responsiveness</li>
+            <li>Parallelism on multicore CPUs</li>
+            <li>Easy task breakdown (UI thread, I/O thread, compute thread)</li>
+        </ul>
+    </ul>
+
+    <h2>2. Threads vs Processes</h2>
+    <table>
+        <tr>
+            <th>Feature</th>
+            <th>Process</th>
+            <th>Thread</th>
+        </tr>
+        <tr>
+            <td>Memory</td>
+            <td>Separate address space</td>
+            <td>Shared address space of process</td>
+        </tr>
+        <tr>
+            <td>Creation</td>
+            <td>Slow, heavy</td>
+            <td>Fast, lightweight</td>
+        </tr>
+        <tr>
+            <td>Communication</td>
+            <td>IPC required</td>
+            <td>Direct sharing (easy but risky)</td>
+        </tr>
+        <tr>
+            <td>Crash Effect</td>
+            <td>Independent</td>
+            <td>One thread crash kills whole process</td>
+        </tr>
+    </table>
+
+    <h2>3. Components of a Thread</h2>
+    <p>Each thread has:</p>
+    <ul>
+        <li>Program counter</li>
+        <li>CPU registers</li>
+        <li>Stack</li>
+        <li>Thread ID</li>
+    </ul>
+    <p>All threads in a process share:</p>
+    <ul>
+        <li>Code section</li>
+        <li>Data section</li>
+        <li>Heap</li>
+        <li>Open files</li>
+    </ul>
+
+    <h2>4. Types of Threads</h2>
+
+    <h3>1. User-Level Threads (ULT)</h3>
+    <ul>
+        <li>Managed by user-level library</li>
+        <li>Fast creation/switching</li>
+        <li>Problem: if one blocks, all block</li>
+    </ul>
+
+    <h3>2. Kernel-Level Threads (KLT)</h3>
+    <ul>
+        <li>Managed by OS</li>
+        <li>True parallelism</li>
+        <li>More overhead than ULT</li>
+    </ul>
+
+    <h3>3. Hybrid Threads</h3>
+    <ul>
+        <li>Combines advantages of both</li>
+    </ul>
+
+    <h2>5. Thread Models</h2>
+    <h3>1. One-to-One Model</h3>
+    <p>Each user thread maps to one kernel thread.</p>
+
+    <h3>2. Many-to-One Model</h3>
+    <p>Multiple user threads mapped to a single kernel thread.</p>
+
+    <h3>3. Many-to-Many Model</h3>
+    <p>User threads mapped to equal or fewer kernel threads.</p>
+
+    <h2>6. Context Switching Between Threads</h2>
+    <p>Thread context switch is cheaper because:</p>
+    <ul>
+        <li>No change in address space</li>
+        <li>No heavy page table reload</li>
+        <li>No major TLB flush</li>
+    </ul>
+
+    <h2>7. Thread Life Cycle</h2>
+    <pre>
+          +-----------+
+          |   New     |
+          +-----------+
+                |
+                v
+          +-----------+
+          |   Ready   |
+          +-----------+
+         /      \
+        v        v
++-----------+  +-----------+
+| Running   |->| Blocked   |
++-----------+  +-----------+
+        ^            |
+        |            v
+        +------------+
+          (Event Occurs)
+
+                |
+                v
+          +-----------+
+          |Terminated |
+          +-----------+
+    </pre>
+
+    <h2>8. Real Example: Multithreading in C</h2>
+    <pre>
+#include &lt;stdio.h&gt;
+#include &lt;pthread.h&gt;
+
+void* print_numbers(void* arg) {
+    for (int i = 1; i <= 5; i++) {
+        printf("Thread %d prints: %d\n", *((int*)arg), i);
+    }
+    return NULL;
+}
+
+int main() {
+    pthread_t t1, t2;
+    int id1 = 1, id2 = 2;
+
+    pthread_create(&t1, NULL, print_numbers, &id1);
+    pthread_create(&t2, NULL, print_numbers, &id2);
+
+    pthread_join(t1, NULL);
+    pthread_join(t2, NULL);
+
+    return 0;
+}
+    </pre>
+
+    <p><strong>Explanation:</strong> Two threads run the same function. Their outputs interleave depending on the scheduler.</p>
+
+    <h2>9. Classic Example: Web Browser</h2>
+    <p>A browser commonly uses multiple threads:</p>
+    <ul>
+        <li>UI handling</li>
+        <li>Rendering engine</li>
+        <li>Networking</li>
+        <li>JavaScript execution</li>
+    </ul>
+<h1>8. Process Creation & Termination (In Depth)</h1>
+
+<p>A process doesn’t just magically appear; the OS has to assemble it like a DIY kit. Same thing when it dies.</p>
+
+<h2>A. PROCESS CREATION</h2>
+
+<h3>When does a process get created?</h3>
+<ul>
+    <li>System boot</li>
+    <li>User starts a program</li>
+    <li>One process explicitly creates another</li>
+    <li>Batch jobs submitted</li>
+    <li>Server spawns a worker process</li>
+</ul>
+
+<h3>Parent and Child Processes</h3>
+<p>When a process creates another, you get a parent-child relationship. This forms a process tree.</p>
+
+<h2>B. Methods of Process Creation (UNIX Example)</h2>
+
+<h3>1. <code>fork()</code></h3>
+<p>Creates a duplicate of the parent process.</p>
+
+<p>Child receives:</p>
+<ul>
+    <li>Copy of parent memory image</li>
+    <li>Copy of registers</li>
+    <li>New PID</li>
+    <li>Same program counter</li>
+</ul>
+
+<h4>Fork Example (Pseudo-code)</h4>
+<pre>
+pid = fork();
+if (pid == 0) {
+    // Child process
+    printf("Child executing...\n");
+} else {
+    // Parent process
+    printf("Parent executing...\n");
+}
+</pre>
+
+<p>After fork():</p>
+<ul>
+    <li>Both parent and child resume next instruction</li>
+    <li>Child gets pid = 0</li>
+    <li>Parent gets child's PID</li>
+</ul>
+
+<h3>2. <code>exec()</code> family</h3>
+<p>Used by a child to replace its memory with a new program.</p>
+
+<pre>
+execl("/bin/ls", "ls", "-l", NULL);
+</pre>
+
+<p>Child becomes <code>ls</code> entirely but keeps same PID.</p>
+
+<h3>3. Combining <code>fork() + exec()</code></h3>
+
+<pre>
+Parent
+   |
+   | fork()
+   v
+-----------------------------------------
+|             |                          |
+Parent continues      Child created       |
+                      calls exec()       |
+                      to run new program |
+-----------------------------------------
+</pre>
+
+<h2>C. Textual Diagram: Process Creation Path</h2>
+
+<pre>
+         New Process Request
+                   |
+                   v
+        --------------------------
+        |  Allocate PCB          |
+        |  Allocate memory       |
+        |  Inherit attributes    |
+        --------------------------
+                   |
+                   v
+             READY STATE
+                   |
+                   v
+           Short-term Scheduler
+                   |
+                   v
+               RUNNING
+</pre>
+
+<h2>D. PROCESS TERMINATION</h2>
+
+<h3>1. Normal Termination (Voluntary)</h3>
+<ul>
+    <li>Process finishes & calls <code>exit()</code> or returns from main()</li>
+</ul>
+
+<p>OS does:</p>
+<ul>
+    <li>Frees resources</li>
+    <li>Writes exit status</li>
+    <li>Deletes PCB</li>
+</ul>
+
+<h3>2. Abnormal Termination (Involuntary)</h3>
+<ul>
+    <li>Illegal memory access</li>
+    <li>Division by zero</li>
+    <li>I/O failure</li>
+    <li>Segmentation fault</li>
+</ul>
+
+<p>Common UNIX signals:</p>
+<ul>
+    <li>SIGKILL</li>
+    <li>SIGSEGV</li>
+    <li>SIGTERM</li>
+</ul>
+
+<h3>3. Parent Terminating Child</h3>
+<ul>
+    <li>Child exceeded resources</li>
+    <li>No longer needed</li>
+    <li>Parent itself terminating</li>
+</ul>
+
+<h3>4. Zombie Processes</h3>
+<p>Child finished; parent didn’t collect exit status using <code>wait()</code>. PCB lingers.</p>
+
+<h3>5. Orphan Processes</h3>
+<p>Parent dies before child. Adopted by <code>init</code> (PID 1).</p>
+
+<h2>Textual Diagram: Process Termination</h2>
+
+<h3>Normal Termination</h3>
+<pre>
+Running
+   |
+   | exit() called
+   v
+------------------------------------
+| Close files                      |
+| Free memory                      |
+| Release I/O devices              |
+| Set exit status                  |
+------------------------------------
+   |
+   v
+Terminated
+</pre>
+
+<h3>Abnormal Termination</h3>
+<pre>
+Running
+   |
+   | Illegal operation / Signal
+   v
+-------------------------------
+| OS kills process            |
+| Cleanup resources           |
+-------------------------------
+   |
+   v
+Terminated
+</pre>
+
+<h2>Full Life Cycle Text Diagram</h2>
+
+<pre>
+           NEW
+            |
+            v
+          READY
+            |
+            v
+         RUNNING
+        /        \
+       /          \
+  Waiting        Exit/Termination
+       \             |
+        \            v
+         ---------------
+         | Resources   |
+         | Freed       |
+         ---------------
+</pre>
+<h1>1. Why Synchronization Exists (In Depth)</h1>
+    <p>
+        When multiple processes or threads execute concurrently, they often access shared resources such as memory, files, variables, or buffers.
+        If two processes try to update the same data at the same time, the final result depends on who gets CPU time first.
+    </p>
+    <p><strong>That unpredictable outcome is called a <em>race condition</em>.</strong></p>
+    <p>Synchronization exists to stop that chaos.</p>
+    <p><strong>Key Idea:</strong> Without synchronization, processes interleave in random ways, corrupting shared data.</p>
+
+    <h2>2. The Problem: Race Condition</h2>
+    <p>A race condition happens when:</p>
+    <ul>
+        <li>Two or more processes</li>
+        <li>Access and modify shared data</li>
+        <li>And the final result depends on the order of execution, which the OS cannot guarantee</li>
+    </ul>
+    <p>Basically: Whoever “wins the race” to the shared data determines the final output.</p>
+
+    <h2>3. Example (Classic Bank Account Problem)</h2>
+    <p>Suppose the shared variable is a bank balance:</p>
+    <pre>balance = 1000</pre>
+    <p>Two processes run at the same time:</p>
+    <ul>
+        <li>Process P1: Deposit 500</li>
+        <li>Process P2: Withdraw 300</li>
+    </ul>
+    <p>Expected correct outcome:</p>
+    <pre>1000 + 500 - 300 = 1200</pre>
+
+    <h2>4. How Instructions Actually Execute</h2>
+    <p>Updating a shared variable is not one step. It’s multiple machine-level operations:</p>
+    <ol>
+        <li>Read balance from memory into CPU register</li>
+        <li>Modify it</li>
+        <li>Write it back to memory</li>
+    </ol>
+    <p>Now watch what happens when these interleave badly.</p>
+
+    <h2>5. Textual Diagram (Timeline of Disaster)</h2>
+    <div class="diagram">
+<pre>
+Uncontrolled Interleaving (Race Condition):
+
+Initial balance = 1000
+Time --->
+
+P1: READ balance (1000)
+P2: READ balance (1000)
+P1: ADD 500 (1000 + 500 = 1500)
+P2: SUB 300 (1000 - 300 = 700)
+P1: WRITE balance = 1500
+P2: WRITE balance = 700      << overwritten!!
+
+Final balance = 700
+(The correct value should have been 1200)
+</pre>
+    </div>
+
+    <h2>6. Textual Diagram (Critical Section Concept)</h2>
+    <p>To stop processes from interfering with each other, each must enter its critical section safely.</p>
+    <div class="diagram">
+<pre>
+        +---------------------------+
+        |     Shared Resource       |
+        |   (critical section)      |
+        +---------------------------+
+               ^           ^
+              /             \
+          P1 waits       P2 waits
+           until          until
+        section is free  section is free
+
+Goal: Only ONE process should be in this box at a time.
+</pre>
+    </div>
+
+    <h2>7. What Synchronization Ensures</h2>
+    <p>Synchronization prevents:</p>
+    <ul>
+        <li class="check">✔ Race conditions</li>
+        <li class="check">✔ Inconsistent memory updates</li>
+        <li class="check">✔ Corrupted files</li>
+        <li class="check">✔ Deadlocks (with proper design)</li>
+        <li class="check">✔ Starvation (with fair scheduling)</li>
+    </ul>
+    <p>It enforces:</p>
+    <ul>
+        <li><strong>Mutual Exclusion:</strong> Only one process can access the shared resource at a time.</li>
+        <li><strong>Order and Coordination:</strong> Processes don’t trip over each other like confused penguins.</li>
+        <li><strong>Data Integrity:</strong> Shared data stays correct.</li>
+    </ul>
+
+    <h2>8. Why OS Care About This</h2>
+    <p>Modern systems run:</p>
+    <ul>
+        <li>Multi-core CPUs</li>
+        <li>Multi-threaded applications</li>
+        <li>Millions of shared operations concurrently</li>
+    </ul>
+    <p>Without synchronization, chaos ensues, data gets corrupted, and users get angry emails. So yes, the OS cares a lot.</p>
+    <h1>Critical Section and Process Synchronization</h1>
+
+    <h2>1. What is a Critical Section?</h2>
+    <p>A critical section (CS) is a part of a process where it accesses shared resources (like variables, files, or devices) that must not be concurrently accessed by other processes.</p>
+    <p>If two processes enter their CS simultaneously, it can lead to <strong>race conditions</strong> — the final result depends on timing and is unpredictable.</p>
+
+    <h2>2. Requirements for Correct Synchronization</h2>
+    <ul>
+        <li><strong>Mutual Exclusion:</strong> Only one process can execute its critical section at a time.</li>
+        <li><strong>Progress:</strong> If no process is in the critical section, and some want to enter, one must be allowed without unnecessary delay.</li>
+        <li><strong>Bounded Waiting:</strong> Every process must have a limit on the number of times other processes can enter CS before it gets its turn. Prevents starvation.</li>
+    </ul>
+
+    <h2>3. Structure of Process Execution</h2>
+    <p>Process execution can be divided as:</p>
+    <pre>
+Entry Section --> Critical Section --> Exit Section --> Remainder Section
+    </pre>
+    <ul>
+        <li><strong>Entry Section:</strong> Code to request permission to enter CS.</li>
+        <li><strong>Critical Section:</strong> Code accessing shared resources.</li>
+        <li><strong>Exit Section:</strong> Code to release permission after CS.</li>
+        <li><strong>Remainder Section:</strong> Code that does not require CS.</li>
+    </ul>
+
+    <h3>Textual Diagram:</h3>
+    <pre>
+Process 1                 Process 2
+-----------               -----------
+Entry Section ------------> Waiting (if P1 in CS)
+Critical Section <---------> Critical Section (mutual exclusion ensures no overlap)
+Exit Section  ------------> Entry Section
+Remainder Section          Remainder Section
+    </pre>
+
+    <h2>4. Example</h2>
+    <p>Two processes P1 and P2 updating a shared variable counter:</p>
+    <pre>
+int counter = 0;
+
+// Critical Section
+counter = counter + 1;
+    </pre>
+
+    <p><strong>Without proper synchronization:</strong></p>
+    <pre>
+P1 reads counter = 0
+P2 reads counter = 0
+P1 increments -> counter = 1
+P2 increments -> counter = 1
+
+Expected result: 2
+Actual result: 1 (Race Condition)
+    </pre>
+
+    <h2>5. Solving the Problem: Peterson’s Algorithm (2 processes)</h2>
+    <pre>
+int turn;
+bool flag[2];
+
+P0:
+    flag[0] = true;
+    turn = 1;
+    while (flag[1] && turn == 1); // Wait
+    counter = counter + 1;         // Critical Section
+    flag[0] = false;               // Remainder Section
+
+P1:
+    flag[1] = true;
+    turn = 0;
+    while (flag[0] && turn == 0); // Wait
+    counter = counter + 1;        // Critical Section
+    flag[1] = false;              // Remainder Section
+    </pre>
+
+    <p><strong>How it works:</strong></p>
+    <ul>
+        <li>flag[i] indicates that process i wants to enter CS.</li>
+        <li>turn resolves priority if both want to enter simultaneously.</li>
+        <li>Ensures mutual exclusion, progress, and bounded waiting.</li>
+    </ul>
+
+    <h3>Textual Flow Diagram for Two Processes</h3>
+    <pre>
+P0 wants CS      P1 wants CS
+    |                 |
+flag[0]=true         flag[1]=true
+turn=1               turn=0
+while(flag[1] && turn==1)  <-- waiting if P1 has priority
+    |
+Enter CS --------> Enter CS (only one enters at a time)
+counter++
+Exit CS ---------> Exit CS
+flag[0]=false      flag[1]=false
+Remainder Section  Remainder Section
+    </pre>
+
+    <h3>Timeline Diagram: Process Synchronization (Two Processes)</h3>
+    <pre>
+Time →
+P0:  | Entry |   Critical Section   | Exit | Remainder | Entry | Critical Section | Exit | Remainder |
+P1:  |       | Waiting (if P0 in CS) |      |           | Entry | Critical Section | Exit | Remainder |
+    </pre>
+
+    <h3>Step-by-Step Scenario</h3>
+    <pre>
+Both P0 and P1 want to enter CS
+P0 sets flag[0] = true, turn = 1
+P1 sets flag[1] = true, turn = 0
+
+Peterson’s algorithm ensures only one enters CS.
+
+If P0 enters CS first:
+    P1 waits until P0 sets flag[0] = false
+
+Exit CS and let the other process enter
+P0 finishes CS, sets flag[0] = false
+P1 now enters CS
+
+Remainder Section
+Both processes can do independent work before trying to enter CS again
+    </pre>
+
+    <h3>Time Table Representation</h3>
+    <table>
+        <tr>
+            <th>Time →</th>
+            <th>t0</th>
+            <th>t1</th>
+            <th>t2</th>
+            <th>t3</th>
+            <th>t4</th>
+            <th>t5</th>
+        </tr>
+        <tr>
+            <td>P0</td>
+            <td>Entry</td>
+            <td>CS</td>
+            <td>CS</td>
+            <td>Exit</td>
+            <td>Remainder</td>
+            <td>Entry</td>
+        </tr>
+        <tr>
+            <td>P1</td>
+            <td>Entry</td>
+            <td>Wait</td>
+            <td>Wait</td>
+            <td>Wait</td>
+            <td>Entry</td>
+            <td>CS</td>
+        </tr>
+    </table>
+
+    <p><strong>Legend:</strong></p>
+    <ul>
+        <li>CS = Critical Section</li>
+        <li>Wait = Waiting for the other process</li>
+        <li>Entry/Exit = Entering or leaving CS</li>
+    </ul>
+
+    <p>Explanation: At t1–t2, P0 is in CS, P1 waits. At t3, P0 exits, P1 can now enter CS. This ensures <strong>mutual exclusion, progress, and bounded waiting</strong>.</p>
+    <h1>Peterson’s Algorithm (Two Processes)</h1>
+
+<h2>Purpose</h2>
+<p>Solve the Critical Section Problem for two processes using only software (no hardware locks).</p>
+
+<h2>Problem Recap</h2>
+<p>Two processes share a resource. If both enter the critical section (CS) simultaneously, it leads to inconsistent data. Peterson’s algorithm ensures:</p>
+<ul>
+    <li><strong>Mutual Exclusion:</strong> Only one process in CS.</li>
+    <li><strong>Progress:</strong> If no process is in CS, one waiting process can enter.</li>
+    <li><strong>Bounded Waiting:</strong> Each process eventually enters CS.</li>
+</ul>
+
+<h2>Algorithm Variables</h2>
+<pre>
+int turn;          // whose turn is it? 0 or 1
+bool flag[2];      // flag[i] = true means process i wants to enter CS
+</pre>
+
+<h2>Process Code</h2>
+
+<h3>Process 0 (P0)</h3>
+<pre>
+flag[0] = true;            // I want to enter CS
+turn = 1;                  // Let the other go first if it wants
+while (flag[1] && turn == 1); // Wait if P1 wants in and it's P1's turn
+// CRITICAL SECTION
+flag[0] = false;           // Leaving CS
+// REMAINDER SECTION
+</pre>
+
+<h3>Process 1 (P1)</h3>
+<pre>
+flag[1] = true;      
+turn = 0;            
+while (flag[0] && turn == 0); 
+// CRITICAL SECTION
+flag[1] = false;     
+// REMAINDER SECTION
+</pre>
+
+<h2>Step-by-Step Explanation</h2>
+<ul>
+    <li><strong>Intent to Enter:</strong> Each process sets flag[i] = true, signaling desire to enter CS.</li>
+    <li><strong>Give Turn to Other:</strong> The turn variable allows the other process to go first if it also wants in.</li>
+    <li><strong>Wait Loop:</strong> <code>while(flag[j] && turn == j);</code> – wait if the other process wants CS and it’s their turn.</li>
+    <li><strong>Critical Section:</strong> Process safely executes shared resource operations.</li>
+    <li><strong>Exit CS:</strong> Set flag[i] = false, letting the other process know it can enter.</li>
+</ul>
+
+<h2>Textual Diagram</h2>
+<pre>
+          P0                          P1
+          |                           |
+Set flag[0]=true                  Set flag[1]=true
+          |                           |
+Set turn = 1                       Set turn = 0
+          |                           |
+Check: flag[1] && turn == 1 ? ---> Wait
+          |                           |
+If condition false ---> Enter CS  <--- If condition false, Enter CS
+          |                           |
+Critical Section executed      Critical Section executed
+          |                           |
+flag[0] = false                   flag[1] = false
+          |                           |
+Remainder Section               Remainder Section
+</pre>
+
+<hr>
+
+<h1>Bakery Algorithm (n Processes)</h1>
+
+<h2>Purpose</h2>
+<p>Solve the critical section problem for n processes without using special hardware instructions.</p>
+<p>Inspired by a bakery: every customer takes a ticket and waits for their number to be called.</p>
+
+<h2>Key Idea</h2>
+<ul>
+    <li>Each process takes a number before entering its critical section.</li>
+    <li>Process with the smallest number enters first.</li>
+    <li>If two processes have same number, the one with smaller index goes first.</li>
+    <li>After leaving CS, process resets its number to 0.</li>
+</ul>
+
+<h2>Algorithm (Step by Step)</h2>
+<p>Assume n processes: P0, P1, … P(n-1)</p>
+
+<h3>Shared Variables</h3>
+<pre>
+choosing[i] – boolean, true if process i is choosing its number
+number[i]   – integer, stores the number assigned to process i
+</pre>
+
+<h3>Step 1: Choosing a Number</h3>
+<pre>
+choosing[i] = true;
+number[i] = 1 + max(number[0..n-1]); // Pick next highest number
+choosing[i] = false;
+</pre>
+
+<h3>Step 2: Waiting for Your Turn</h3>
+<pre>
+for (j = 0; j &lt; n; j++) {
+    while (choosing[j]);  
+    while (number[j] != 0 &amp;&amp; (number[j] &lt; number[i] || 
+           (number[j] == number[i] &amp;&amp; j &lt; i)));
+}
+</pre>
+
+<h3>Step 3: Enter Critical Section</h3>
+<pre>
+// Critical Section code here
+</pre>
+
+<h3>Step 4: Leave Critical Section</h3>
+<pre>
+number[i] = 0; // Reset number
+</pre>
+
+<h2>Textual Diagram Example (3 Processes: P0, P1, P2)</h2>
+<h3>Step 1: All processes choose numbers</h3>
+<pre>
+P0: choosing[0] = true  -> number[0] = 3 -> choosing[0] = false
+P1: choosing[1] = true  -> number[1] = 1 -> choosing[1] = false
+P2: choosing[2] = true  -> number[2] = 2 -> choosing[2] = false
+</pre>
+
+<h3>Step 2: Wait for Turn</h3>
+<pre>
+P0 waits: number[1] &lt; number[0] => wait
+P1 waits: nobody has smaller number => enter CS
+P2 waits: number[1] &lt; number[2] => wait
+</pre>
+
+<h3>Step 3: Critical Section</h3>
+<pre>
+CS Order: P1 → P2 → P0
+</pre>
+
+<h3>Step 4: Leave CS</h3>
+<pre>
+P1: number[1] = 0
+P2: number[2] = 0
+P0: number[0] = 0
+</pre>
+
+<h2>Explanation of Flow</h2>
+<ul>
+    <li>P1 has the smallest number (1) → enters CS first.</li>
+    <li>P2 has the next number (2) → enters second.</li>
+    <li>P0 has the largest number (3) → enters last.</li>
+    <li>Once a process leaves, its number resets → allows next process to proceed.</li>
+</ul>
+
+<h2>Properties</h2>
+<ul>
+    <li><strong>Mutual Exclusion:</strong> Only one process enters CS at a time.</li>
+    <li><strong>Progress:</strong> If no one is in CS, some process enters.</li>
+    <li><strong>Bounded Waiting:</strong> Each process will eventually get in.</li>
+</ul>
+<h1>Hardware Solutions for Mutual Exclusion</h1>
+
+    <h2>1. Why Hardware Solutions?</h2>
+    <p>
+        Software-only solutions (like Peterson’s Algorithm) work only for two processes or in idealized conditions. 
+        Real CPUs and multiprocessing systems can mess things up with interrupts and preemption.
+    </p>
+    <p>
+        Hardware solutions provide <strong>atomic operations</strong>—operations that cannot be interrupted. 
+        This guarantees mutual exclusion at the hardware level.
+    </p>
+
+    <h2>2. Key Hardware Instructions</h2>
+
+    <h3>a) Test-and-Set Instruction</h3>
+    <p><strong>Definition:</strong> An atomic instruction that reads a memory location and sets it in a single uninterruptible step.</p>
+    <p><strong>Syntax (pseudo-code):</strong></p>
+    <pre>
+function TestAndSet(lock):
+    old_value = lock
+    lock = 1
+    return old_value
+    </pre>
+    <p>
+        - If <code>lock</code> was 0 (free), the process sets it to 1 and enters the critical section.<br>
+        - If <code>lock</code> was 1 (locked), the process waits (busy waiting).
+    </p>
+    <p><strong>Example:</strong></p>
+    <pre>
+lock = 0  // initially free
+
+process P1:
+    while TestAndSet(lock) == 1:
+        // busy wait
+    // critical section
+    lock = 0  // release lock
+
+process P2:
+    while TestAndSet(lock) == 1:
+        // busy wait
+    // critical section
+    lock = 0  // release lock
+    </pre>
+
+    <p><strong>Textual Diagram:</strong></p>
+    <pre>
+Process P1          Memory Lock          Process P2
+-----------         ------------        -----------
+                  TestAndSet(lock)
+---------------->  lock=0 -> 1
+Process enters CS
+
+Process P2 tries TestAndSet(lock)
+---------------->  lock=1 -> 1
+Process P2 waits (spins)
+
+P1 finishes and sets lock=0, then P2 succeeds.
+    </pre>
+
+    <h3>b) Swap Instruction</h3>
+    <p><strong>Definition:</strong> Atomically swaps the values of a register and a memory location. Another way to implement locks.</p>
+    <p><strong>Syntax (pseudo-code):</strong></p>
+    <pre>
+function Swap(register, memory_location):
+    temp = memory_location
+    memory_location = register
+    register = temp
+    </pre>
+
+    <p><strong>Example (Binary Lock):</strong></p>
+    <pre>
+lock = 0  // initially free
+
+process P1:
+    R = 1
+    while Swap(R, lock) == 1:
+        R = 1
+        // busy wait
+    // critical section
+    lock = 0  // release lock
+    </pre>
+
+    <p><strong>Textual Diagram:</strong></p>
+    <pre>
+Process P1 Reg=1          Memory Lock          Process P2 Reg=1
+-----------------         ------------        -----------------
+Swap(Reg, lock)            lock=0 -> 1
+Reg gets 0, lock=1         Process enters CS
+
+Process P2 Swap(Reg, lock)
+Reg gets 1, lock remains 1
+Process waits (spins)
+    </pre>
+
+    <h3>c) Why Hardware Solutions are Better</h3>
+    <ul>
+        <li>Works on multiprocessor systems.</li>
+        <li>Prevents race conditions at the instruction level.</li>
+        <li>Can be combined with software constructs (like semaphores) to avoid busy waiting.</li>
+    </ul>
+    <p><strong>Downside:</strong> Busy waiting burns CPU cycles. Better approaches use blocking locks (mutexes/semaphores) on top of these instructions.</p>
+<h1>Spinlock</h1>
+    <p>A spinlock is a lock where a process repeatedly checks (spins) until the lock becomes available.</p>
+    <ul>
+        <li>No sleeping; the process keeps “spinning” in a loop.</li>
+        <li>Simple, low overhead for very short critical sections.</li>
+        <li>Mostly used in multiprocessor systems, where waiting is expected to be brief.</li>
+    </ul>
+
+    <h2>Properties</h2>
+    <ul>
+        <li>Mutual Exclusion: Only one process can enter the critical section.</li>
+        <li>Busy Waiting: CPU cycles are wasted while waiting.</li>
+        <li>Fast Lock Acquisition: No context switch required for short waits.</li>
+        <li>Not ideal for long waits: Wastes CPU if critical section is long.</li>
+    </ul>
+
+    <h2>Spinlock Implementation (Pseudo-C)</h2>
+    <pre>
+int lock = 0; // 0 = free, 1 = locked
+
+void acquire_spinlock(int *lock) {
+    while (__sync_lock_test_and_set(lock, 1)) {
+        // Busy wait (spin) until lock becomes 0
+    }
+}
+
+void release_spinlock(int *lock) {
+    *lock = 0; // Release the lock
+}
+    </pre>
+    <p><code>__sync_lock_test_and_set</code> is an atomic instruction in C to prevent race conditions while checking and setting the lock.</p>
+
+    <h2>Example Scenario</h2>
+    <p>Two processes, P1 and P2, want to access a shared variable.</p>
+    <p>Initial State: lock = 0 (free)</p>
+
+    <h3>Step-by-Step Execution</h3>
+    <ul>
+        <li>Time 0: P1 and P2 want to enter CS</li>
+        <li>P1 acquires lock -> lock = 1 -> enters CS</li>
+        <li>P2 attempts lock -> lock = 1 -> spins</li>
+        <li>Time 3: P1 exits CS -> releases lock -> P2 acquires lock</li>
+        <li>Time 5: P2 exits CS -> lock = 0</li>
+    </ul>
+
+    <h3>Textual Timeline Diagram</h3>
+    <table>
+        <tr><th>Time</th><th>P1</th><th>P2</th><th>Lock</th></tr>
+        <tr><td>0</td><td>Try Lock</td><td>Try Lock</td><td>0</td></tr>
+        <tr><td>1</td><td>Acquired</td><td>Spin</td><td>1</td></tr>
+        <tr><td>2</td><td>In CS</td><td>Spin</td><td>1</td></tr>
+        <tr><td>3</td><td>Release</td><td>Acquire</td><td>0→1</td></tr>
+        <tr><td>4</td><td></td><td>In CS</td><td>1</td></tr>
+        <tr><td>5</td><td></td><td>Release</td><td>0</td></tr>
+    </table>
+
+    <h2>Pros of Spinlock</h2>
+    <ul>
+        <li>Simple and fast for short critical sections.</li>
+        <li>No context switching overhead.</li>
+        <li>Works well in multiprocessor environments.</li>
+    </ul>
+
+    <h2>Cons of Spinlock</h2>
+    <ul>
+        <li>Wastes CPU if wait is long.</li>
+        <li>Not suitable for single-core systems where the waiting process blocks the CPU needed by the lock holder.</li>
+        <li>Can cause priority inversion if higher-priority process keeps spinning.</li>
+    </ul>
+
+    <h1>Mutex (Mutual Exclusion Lock)</h1>
+    <p>A mutex ensures only one thread or process can access a critical section at a time.</p>
+    <ul>
+        <li>Unlike a spinlock, if a process cannot acquire a mutex, it goes to sleep instead of wasting CPU cycles.</li>
+        <li>Mutex = mutual exclusion + proper CPU usage.</li>
+    </ul>
+
+    <h2>Properties of a Mutex</h2>
+    <ul>
+        <li>Mutual Exclusion: Only one process/thread can hold the mutex at a time.</li>
+        <li>Blocking: Processes that cannot acquire the mutex are blocked (sleep), not busy-waiting.</li>
+        <li>Ownership: The thread/process that locks the mutex must unlock it.</li>
+        <li>Prevent Race Conditions: Ensures shared data integrity.</li>
+    </ul>
+
+    <h2>Mutex Operations</h2>
+    <ul>
+        <li><code>mutex_lock(&mutex)</code>: Acquire the mutex. If already locked, calling process sleeps.</li>
+        <li><code>mutex_unlock(&mutex)</code>: Release the mutex. Wakes up one waiting process (if any).</li>
+    </ul>
+
+    <h2>Example (C-like Pseudocode)</h2>
+    <pre>
+int counter = 0;
+pthread_mutex_t lock = PTHREAD_MUTEX_INITIALIZER;
+
+void* thread1() {
+    pthread_mutex_lock(&lock);  // acquire mutex
+    counter += 1;                // critical section
+    printf("T1: Counter = %d\n", counter);
+    pthread_mutex_unlock(&lock); // release mutex
+}
+
+void* thread2() {
+    pthread_mutex_lock(&lock);  // acquire mutex
+    counter += 10;               // critical section
+    printf("T2: Counter = %d\n", counter);
+    pthread_mutex_unlock(&lock); // release mutex
+}
+    </pre>
+
+    <h3>Textual Diagram (Timeline)</h3>
+    <table>
+        <tr><th>Time</th><th>T1 Action</th><th>T2 Action</th><th>Counter</th><th>Mutex</th></tr>
+        <tr><td>0</td><td>Lock mutex</td><td>Wait (blocked)</td><td>0</td><td>Locked by T1</td></tr>
+        <tr><td>1</td><td>Increment counter</td><td>Waiting</td><td>1</td><td>Locked by T1</td></tr>
+        <tr><td>2</td><td>Print counter</td><td>Waiting</td><td>1</td><td>Locked by T1</td></tr>
+        <tr><td>3</td><td>Unlock mutex</td><td>Acquire mutex</td><td>1</td><td>Locked by T2</td></tr>
+        <tr><td>4</td><td>-</td><td>Increment counter</td><td>11</td><td>Locked by T2</td></tr>
+        <tr><td>5</td><td>-</td><td>Print counter</td><td>11</td><td>Locked by T2</td></tr>
+        <tr><td>6</td><td>-</td><td>Unlock mutex</td><td>11</td><td>Unlocked</td></tr>
+    </table>
+
+    <p>Explanation: T1 acquires the mutex first, updates the counter. T2 waits until T1 releases the mutex. No race condition occurs; final counter = 11.</p>
+</body>
+<h1>Semaphores in Operating Systems</h1>
+
+<h2>1. What is a Semaphore?</h2>
+<p>A semaphore is an integer variable shared among processes and used to control access to shared resources. It ensures mutual exclusion and can manage multiple resources.</p>
+
+<h3>Types of Semaphores</h3>
+<ul>
+    <li><strong>Binary Semaphore (Mutex)</strong>: Only 0 or 1. Ensures one process accesses a resource at a time.</li>
+    <li><strong>Counting Semaphore</strong>: Can have any non-negative integer. Used for multiple identical resources.</li>
+</ul>
+
+<h2>2. Operations on Semaphore</h2>
+<p>Semaphores have two atomic operations (cannot be interrupted):</p>
+
+<table>
+    <tr><th>Operation</th><th>Meaning</th></tr>
+    <tr><td>wait(S) or P(S)</td><td>Decrement S. If S &lt; 0, the process is blocked.</td></tr>
+    <tr><td>signal(S) or V(S)</td><td>Increment S. If S &le; 0, wake up a blocked process.</td></tr>
+</table>
+<p><strong>Atomic:</strong> Once a process starts an operation, no other process can intervene until it finishes.</p>
+
+<h2>3. How Semaphores Work (Textual Diagram)</h2>
+<p>Example: 2 processes (P1, P2) and a semaphore S = 1 for a printer. Only one can print at a time.</p>
+<pre>
+Initial: S = 1 (printer available)
+
+Process P1 wants printer:
+  wait(S) -> S = 0
+  P1 uses printer
+
+Process P2 wants printer:
+  wait(S) -> S = 0 - 1 = -1 -> P2 blocked
+
+P1 finishes printing:
+  signal(S) -> S = -1 + 1 = 0
+  P2 unblocked -> wait(S) decrements S = -1
+  P2 uses printer
+</pre>
+
+<p><strong>Explanation:</strong></p>
+<ul>
+    <li>S = 1 → resource free</li>
+    <li>S = 0 → resource taken</li>
+    <li>S &lt; 0 → number of processes waiting</li>
+</ul>
+
+<pre>
+Time → 
+       P1             P2
+S=1   wait(S)
+S=0   ----------> in critical section
+S=-1                wait(S) blocked
+S=0   signal(S)
+S=-1   ----------> P2 enters critical section
+</pre>
+
+<h2>Binary Semaphore: Overview</h2>
+<p>A binary semaphore can take only two values: 0 or 1. It ensures mutual exclusion (mutex).</p>
+<ul>
+    <li>Value = 1 → Resource free</li>
+    <li>Value = 0 → Resource occupied</li>
+</ul>
+
+<h3>Operations</h3>
+<ul>
+    <li>wait() / P() → Attempt to enter critical section. If value = 1, decrement and proceed; if 0, block.</li>
+    <li>signal() / V() → Leave critical section. Increment value; wake up blocked process (if any).</li>
+</ul>
+
+<h3>Behavior Table</h3>
+<table>
+    <tr><th>Process Action</th><th>Semaphore Value</th><th>Outcome</th></tr>
+    <tr><td>wait()</td><td>1 → 0</td><td>Enters critical section</td></tr>
+    <tr><td>wait()</td><td>0 → 0</td><td>Blocked, waits</td></tr>
+    <tr><td>signal()</td><td>0 → 1</td><td>Resource released, waiting process allowed</td></tr>
+    <tr><td>signal()</td><td>1 → 1</td><td>No effect, still free</td></tr>
+</table>
+
+<h3>Example: Two Processes Sharing Printer</h3>
+<pre>
+Binary semaphore: mutex = 1
+
+Process P1:
+wait(mutex)
+// Critical Section: P1 prints
+signal(mutex)
+
+Process P2:
+wait(mutex)
+// Critical Section: P2 prints
+signal(mutex)
+</pre>
+
+<p><strong>Textual Timeline Diagram:</strong></p>
+<pre>
+Time → 
+P1:  wait(mutex) -----------------|
+      [Printing]                   |
+      signal(mutex) ---------------|
+                                  
+P2:  wait(mutex) -------X          |
+      [Blocked]         |          |
+      [Printing]        |          |
+      signal(mutex) ----|----------
+</pre>
+
+<h2>Counting Semaphore – Overview</h2>
+<p>A counting semaphore allows multiple instances of a resource to be managed concurrently.</p>
+<ul>
+    <li>Value ≥ 0 → number of available resources</li>
+    <li>Value &lt; 0 → number of processes waiting</li>
+</ul>
+
+<h3>Operations</h3>
+<ul>
+    <li>wait(P / down / decrement):
+<pre>
+wait(semaphore S):
+    S = S - 1
+    if S &lt; 0:
+        block the process
+</pre>
+    </li>
+    <li>signal(V / up / increment):
+<pre>
+signal(semaphore S):
+    S = S + 1
+    if S &le; 0:
+        wake up a blocked process
+</pre>
+    </li>
+</ul>
+
+<h3>Conceptual Example</h3>
+<p>3 printers shared among multiple processes. Initialize S = 3.</p>
+<pre>
+Process P1 wants printer:
+    wait(S) → S = 2
+    P1 uses printer
+
+Process P2 wants printer:
+    wait(S) → S = 1
+    P2 uses printer
+
+Process P3 wants printer:
+    wait(S) → S = 0
+    P3 uses printer
+
+Process P4 wants printer:
+    wait(S) → S = -1
+    P4 waits in queue
+
+P1 finishes printing:
+    signal(S) → S = 0
+    P4 wakes up and gets printer
+</pre>
+
+<h3>C Example – Counting Semaphore</h3>
+<pre>
+#include &lt;stdio.h&gt;
+#include &lt;pthread.h&gt;
+#include &lt;semaphore.h&gt;
+#include &lt;unistd.h&gt;
+
+#define NUM_PRINTERS 3
+#define NUM_PROCESSES 5
+
+sem_t printerSemaphore;
+
+void* process(void* arg) {
+    int id = *(int*)arg;
+
+    printf("Process %d wants a printer\n", id);
+    sem_wait(&printerSemaphore); // wait(P)
+    printf("Process %d got a printer\n", id);
+    sleep(2); // simulate printing
+    printf("Process %d released the printer\n", id);
+    sem_post(&printerSemaphore); // signal(V)
+
+    return NULL;
+}
+
+int main() {
+    pthread_t processes[NUM_PROCESSES];
+    int ids[NUM_PROCESSES];
+
+    sem_init(&printerSemaphore, 0, NUM_PRINTERS); // Counting semaphore
+
+    for (int i = 0; i &lt; NUM_PROCESSES; i++) {
+        ids[i] = i+1;
+        pthread_create(&processes[i], NULL, process, &ids[i]);
+    }
+
+    for (int i = 0; i &lt; NUM_PROCESSES; i++)
+        pthread_join(processes[i], NULL);
+
+    sem_destroy(&printerSemaphore);
+    return 0;
+}
+</pre>
+
+<p><strong>Explanation:</strong></p>
+<ul>
+    <li><code>sem_init(&printerSemaphore, 0, NUM_PRINTERS)</code> → initialize counting semaphore with 3 resources.</li>
+    <li><code>sem_wait()</code> → decrement semaphore or block if none available.</li>
+    <li><code>sem_post()</code> → increment semaphore and wake up waiting process.</li>
+</ul>
+<h1>OS Synchronization Problems</h1>
+
+<h2>1. Producer-Consumer Problem</h2>
+<p><strong>Problem Statement:</strong></p>
+<ul>
+    <li>Producer: Generates data and puts it into a buffer.</li>
+    <li>Consumer: Takes data from the buffer and processes it.</li>
+</ul>
+<p><strong>Constraints:</strong></p>
+<ul>
+    <li>Buffer has finite size.</li>
+    <li>Producer waits if buffer is full.</li>
+    <li>Consumer waits if buffer is empty.</li>
+    <li>Mutual exclusion on buffer.</li>
+</ul>
+
+<h3>Solution Using Semaphores</h3>
+<p>Semaphores:</p>
+<ul>
+    <li>mutex → binary semaphore for mutual exclusion.</li>
+    <li>full → counting semaphore, initialized to 0.</li>
+    <li>empty → counting semaphore, initialized to buffer size N.</li>
+</ul>
+
+<h4>Producer Algorithm</h4>
+<pre>
+produce_item();
+wait(empty);       // Check for free slot
+wait(mutex);       // Enter critical section
+add_item_to_buffer(item);
+signal(mutex);     // Exit critical section
+signal(full);      // Increment full count
+</pre>
+
+<h4>Consumer Algorithm</h4>
+<pre>
+wait(full);        // Check for available item
+wait(mutex);       // Enter critical section
+remove_item_from_buffer(item);
+signal(mutex);     // Exit critical section
+signal(empty);     // Increment empty count
+consume_item(item);
+</pre>
+
+<h4>Textual Diagram</h4>
+<pre>
+Buffer: [ _ , _ , _ , _ , _ ]  // Initially empty
+Producer ---> | | | | | |  ---> Consumer
+
+Step 1: Producer adds item1
+Buffer: [ 1 , _ , _ , _ , _ ]
+Step 2: Producer adds item2
+Buffer: [ 1 , 2 , _ , _ , _ ]
+Step 3: Consumer removes item1
+Buffer: [ _ , 2 , _ , _ , _ ]
+</pre>
+
+<h2>2. Readers-Writers Problem</h2>
+<p><strong>Problem Statement:</strong></p>
+<ul>
+    <li>Shared resource (e.g., database).</li>
+    <li>Readers: Can read simultaneously.</li>
+    <li>Writers: Exclusive access, no readers while writing.</li>
+</ul>
+
+<h3>Semaphore-Based Solution</h3>
+<p>Variables:</p>
+<ul>
+    <li>readcount → number of active readers.</li>
+    <li>mutex → protects readcount.</li>
+    <li>wrt → allows exclusive writer access.</li>
+</ul>
+
+<h4>Reader Pseudocode</h4>
+<pre>
+// Reader process
+wait(mutex);
+readcount++;
+if (readcount == 1) wait(wrt);  // first reader locks writer
+signal(mutex);
+
+read_data();
+
+wait(mutex);
+readcount--;
+if (readcount == 0) signal(wrt); // last reader releases writer
+signal(mutex);
+</pre>
+
+<h4>Writer Pseudocode</h4>
+<pre>
+// Writer process
+wait(wrt);
+write_data();
+signal(wrt);
+</pre>
+
+<h4>Textual Timeline Example</h4>
+<pre>
+Time -->
+R1: |---Reading---|
+R2:     |---Reading---|
+W1:           |---Writing---|
+</pre>
+
+<h2>3. Dining Philosophers Problem</h2>
+<p><strong>Scenario:</strong></p>
+<ul>
+    <li>5 philosophers around a circular table.</li>
+    <li>Each needs 2 forks (left & right) to eat.</li>
+    <li>Goal: Mutual exclusion, no starvation, avoid deadlocks.</li>
+</ul>
+
+<h4>Textual Diagram</h4>
+<pre>
+         P0
+       /    \
+     F0      F4
+     |        |
+P1---F1      F3---P4
+ |                |
+P2---------------P3
+         F2
+</pre>
+
+<h4>Naive Solution</h4>
+<pre>
+Pick left fork
+Pick right fork
+Eat
+Put down forks
+// Deadlock possible if all pick left fork simultaneously
+</pre>
+
+<h4>Semaphore-Based Solution</h4>
+<pre>
+do {
+    think();
+    wait(fork[i]);           // Pick left
+    wait(fork[(i+1)%5]);     // Pick right
+    eat();
+    signal(fork[i]);          // Release left
+    signal(fork[(i+1)%5]);    // Release right
+} while(1);
+</pre>
+
+<h4>Deadlock-Free Strategy</h4>
+<pre>
+// Odd-Even Philosopher Rule
+if (i % 2 == 0) {         // Even
+    wait(fork[(i+1)%5]);  // Right
+    wait(fork[i]);         // Left
+} else {                   // Odd
+    wait(fork[i]);         // Left
+    wait(fork[(i+1)%5]);   // Right
+}
+</pre>
+
+<h2>4. Sleeping Barber Problem</h2>
+<p><strong>Scenario:</strong></p>
+<ul>
+    <li>1 barber, N waiting chairs.</li>
+    <li>Customers arrive randomly.</li>
+    <li>Barber sleeps if no customers.</li>
+    <li>Customers leave if waiting chairs full.</li>
+</ul>
+
+<h4>Semaphores Used</h4>
+<ul>
+    <li>waitingCustomers → counts waiting customers, initially 0.</li>
+    <li>barberReady → signals barber availability, initially 0.</li>
+    <li>mutex → exclusive access to waiting chairs.</li>
+</ul>
+
+<h4>Barber Process</h4>
+<pre>
+while (true) {
+    wait(waitingCustomers);  // Sleep if no customers
+    wait(mutex);             // Access chairs
+    // Decrement waiting count
+    signal(mutex);
+    // Cut hair
+    signal(barberReady);     // Signal customer barber is ready
+}
+</pre>
+
+<h4>Customer Process</h4>
+<pre>
+wait(mutex);
+if (waiting < N) {           // Chair available
+    waiting++;
+    signal(waitingCustomers); // Notify barber
+    signal(mutex);
+    wait(barberReady);        // Wait for barber to finish
+    // Get haircut
+} else {
+    // No chair available, leave
+    signal(mutex);
+}
+</pre>
+
+<h4>Textual Diagram</h4>
+<pre>
+Barber Chair       Waiting Room
++-----------+      +---+---+---+
+| Barber    |      | C1| C2| C3|
+| cutting   |      +---+---+---+
+| hair      |  
++-----------+  
+
+States:
+1. No customers -> Barber sleeps
+2. Customer C1 arrives -> wakes barber -> gets haircut
+3. Customer C2 arrives -> sits waiting
+4. Customer C3 arrives -> sits waiting
+5. Customer C4 arrives -> no free chair -> leaves
+6. Barber finishes C1 -> next customer C2 moves to barber chair
+</pre>
+<h1>Monitor in Operating System</h1>
+
+<h2>1. What is a Monitor?</h2>
+<p>A monitor is a high-level synchronization construct that:</p>
+<ul>
+    <li>Encapsulates shared data.</li>
+    <li>Encapsulates procedures (functions) that operate on that data.</li>
+    <li>Ensures that only one process executes a procedure at a time.</li>
+</ul>
+<p>Think of it as a class in programming but with built-in locks. You don’t manually lock anything; the monitor does it for you.</p>
+
+<h3>Key Points:</h3>
+<ul>
+    <li>Mutual exclusion is automatic for all procedures in a monitor.</li>
+    <li>Condition variables are used to wait or signal events inside the monitor.</li>
+    <li>Reduces complexity compared to semaphores.</li>
+</ul>
+
+<h2>2. Condition Variables</h2>
+<p>A monitor uses condition variables to handle waiting processes. They support two operations:</p>
+<ul>
+    <li><strong>wait()</strong>: Process goes to sleep inside the monitor until some condition occurs.</li>
+    <li><strong>signal()</strong>: Wakes up one waiting process (if any).</li>
+</ul>
+<p>Think of condition variables as “doors” inside the monitor: if you can’t pass, you wait; if the door opens, someone signals you.</p>
+
+<h2>3. Textual Diagram</h2>
+<pre>
+-------------------------------------
+|            MONITOR                |
+|-----------------------------------|
+|  Shared Data: balance, buffer, ...|
+|-----------------------------------|
+|  Procedure1()                     |
+|  Procedure2()                     |
+|  Procedure3()                     |
+|-----------------------------------|
+|  Condition Variables:             |
+|     cond1, cond2                  |
+-------------------------------------
+</pre>
+<p>Explanation:</p>
+<ul>
+    <li>Only one process can execute any procedure at a time.</li>
+    <li>Processes can wait on <strong>cond1</strong> or <strong>cond2</strong> if some condition is not met.</li>
+    <li>When the condition changes, another process can be signaled to proceed.</li>
+</ul>
+
+<h2>4. Example: Producer-Consumer using Monitor</h2>
+<pre>
+monitor BoundedBuffer {
+    const int n = 5;
+    int buffer[n];
+    int count = 0, in = 0, out = 0;
+    condition full, empty;
+
+    procedure insert(item) {
+        if (count == n)
+            wait(full);          // buffer full, wait
+        buffer[in] = item;
+        in = (in + 1) % n;
+        count++;
+        signal(empty);           // notify consumer
+    }
+
+    procedure remove() {
+        if (count == 0)
+            wait(empty);         // buffer empty, wait
+        item = buffer[out];
+        out = (out + 1) % n;
+        count--;
+        signal(full);            // notify producer
+        return item;
+    }
+};
+</pre>
+
+<p><strong>How it works:</strong></p>
+<ul>
+    <li>Only one producer or consumer can be inside <strong>insert()</strong> or <strong>remove()</strong> at a time.</li>
+    <li>Producers wait if buffer is full, consumers wait if empty.</li>
+    <li><strong>signal()</strong> wakes up the waiting processes as needed.</li>
+</ul>
+
+<h2>5. Advantages of Monitors</h2>
+<ul>
+    <li>Simpler than semaphores for complex problems.</li>
+    <li>Automatic mutual exclusion.</li>
+    <li>Clearer structure for shared data and operations.</li>
+    <li>Avoids common errors like forgetting to release a semaphore.</li>
+</ul>
+<h1>Deadlock in Operating Systems</h1>
+
+<h2>1. What is a Deadlock?</h2>
+<p>A deadlock in operating systems is a situation where two or more processes are blocked forever, each waiting for a resource held by another process. In other words, processes are stuck in a circular wait, and none can proceed.</p>
+<p>Analogy: Two people holding doors for each other and refusing to let go.</p>
+
+<ul>
+    <li>Occurs in multiprogramming systems with shared resources.</li>
+    <li>Processes cannot proceed until they acquire the resources they are waiting for.</li>
+    <li>Different from starvation: starvation may eventually allow progress, deadlock guarantees none.</li>
+</ul>
+
+<h2>2. Necessary Conditions for Deadlock (Coffman Conditions)</h2>
+<p>All four conditions must be true simultaneously for a deadlock:</p>
+
+<ul>
+    <li><strong>Mutual Exclusion:</strong> Only one process can use a resource at a time.</li>
+    <li><strong>Hold and Wait:</strong> A process holding at least one resource can request additional resources.</li>
+    <li><strong>No Preemption:</strong> Resources cannot be forcibly taken; they must be released voluntarily.</li>
+    <li><strong>Circular Wait:</strong> A circular chain exists where each process waits for a resource held by the next process.</li>
+</ul>
+
+<h2>3. Simple Example</h2>
+<p>Scenario: Two processes (P1, P2) and two resources (R1, R2).</p>
+
+<pre>
+P1 holds R1 and requests R2
+P2 holds R2 and requests R1
+→ Deadlock occurs
+</pre>
+
+<h3>Textual Resource Allocation Diagram (RAG)</h3>
+<pre>
+P1 --> R2   (P1 is requesting R2)
+R1 --> P1   (R1 is allocated to P1)
+
+P2 --> R1   (P2 is requesting R1)
+R2 --> P2   (R2 is allocated to P2)
+
+Cycle: P1 → R2 → P2 → R1 → P1 → deadlock
+</pre>
+
+<h3>Real-Life Analogy</h3>
+<p>Two people at a narrow bridge:</p>
+<ul>
+    <li>Person A waits for B to move.</li>
+    <li>Person B waits for A to move.</li>
+    <li>Neither can cross → deadlock.</li>
+</ul>
+
+<h2>4. Coffman Conditions Explained with Examples</h2>
+
+<h3>4.1 Mutual Exclusion</h3>
+<p>Resource can be used by only one process at a time. Sharable resources do not satisfy this condition.</p>
+<pre>
+Example:
+Printer R1 can be used by only one process.
+
+P1 ---> R1  (allocated)
+P2 ---> R1  (requesting)
+</pre>
+
+<h3>4.2 Hold and Wait</h3>
+<p>Process holds at least one resource while requesting others.</p>
+<pre>
+Example:
+P1 ---> R1  (holds)
+P1 ---> R2  (requests)
+P2 ---> R2  (holds)
+P2 ---> R3  (requests)
+</pre>
+
+<h3>4.3 No Preemption</h3>
+<p>Resources cannot be forcibly taken from a process; they must be released voluntarily.</p>
+<pre>
+Example:
+P1 ---> R1  (holds, cannot preempt)
+P2 ---> R1  (requests)
+</pre>
+
+<h3>4.4 Circular Wait</h3>
+<p>Processes form a cycle, each waiting for a resource held by the next.</p>
+<table>
+<tr><th>Process</th><th>Holds</th><th>Requests</th></tr>
+<tr><td>P1</td><td>R1</td><td>R2</td></tr>
+<tr><td>P2</td><td>R2</td><td>R3</td></tr>
+<tr><td>P3</td><td>R3</td><td>R1</td></tr>
+</table>
+<pre>
+P1 ---> R2
+P2 ---> R3
+P3 ---> R1
+R1 ---> P1
+R2 ---> P2
+R3 ---> P3
+
+Cycle exists → Deadlock occurs
+</pre>
+
+<h3>Summary of Conditions</h3>
+<ul>
+    <li>Mutual Exclusion: resources not sharable</li>
+    <li>Hold & Wait: processes hold resources while waiting for more</li>
+    <li>No Preemption: resources cannot be forcibly taken</li>
+    <li>Circular Wait: cycle in wait-for graph</li>
+</ul>
+
+<h2>5. Resource Allocation Graph (RAG)</h2>
+<p>A directed graph representing:</p>
+<ul>
+    <li>Processes holding resources</li>
+    <li>Processes requesting resources</li>
+</ul>
+
+<h3>Components</h3>
+<ul>
+    <li>Processes: circles (P1, P2…)</li>
+    <li>Resources: squares (R1, R2…)</li>
+    <li>Edges:
+        <ul>
+            <li>Request Edge: Process → Resource</li>
+            <li>Assignment Edge: Resource → Process</li>
+        </ul>
+    </li>
+</ul>
+
+<h3>Deadlock Detection in RAG</h3>
+<ul>
+    <li>Single instance resource: cycle → deadlock</li>
+    <li>Multiple instances: cycle may or may not → deadlock</li>
+    <li>No cycle → definitely no deadlock</li>
+</ul>
+
+<h3>Example (Single-Instance)</h3>
+<pre>
+Processes: P1, P2
+Resources: R1, R2
+
+P1 requests R2
+R2 assigned to P2
+P2 requests R1
+R1 assigned to P1
+
+Cycle detected → Deadlock exists
+</pre>
+
+<h3>Multi-Instance Resource Note</h3>
+<pre>
+Example: R1 has 2 instances
+P1 holds 1, requests 1
+P2 holds 1, requests 1
+Even with a cycle, both may eventually get a resource → no deadlock
+</pre>
+<h1>4. Handling Deadlocks</h1>
+<p>There are three main strategies for handling deadlocks:</p>
+<ul>
+    <li>Deadlock Prevention</li>
+    <li>Deadlock Avoidance</li>
+    <li>Deadlock Detection and Recovery</li>
+</ul>
+
+<h2>Deadlock Prevention</h2>
+<p>Idea: Ensure that at least one of the four Coffman conditions never holds. Breaking even one prevents deadlock.</p>
+
+<h3>1. Mutual Exclusion</h3>
+<p>Definition: A resource is non-shareable; only one process can use it at a time.</p>
+<p>Prevention: Hard to eliminate for devices like printers. Usually unavoidable.</p>
+
+<h3>2. Hold and Wait</h3>
+<p>Problem: A process holding some resources requests additional resources and may wait indefinitely.</p>
+<p>Prevention Strategies:</p>
+<ul>
+    <li>Request all resources at once at the beginning.</li>
+    <li>If resources aren’t available, release all held resources and try again later.</li>
+</ul>
+<p>Example:</p>
+<pre>
+Resources: R1, R2
+P1 wants R1 & R2 -> requests both
+If both not available -> P1 waits holding nothing
+Deadlock prevented
+</pre>
+<pre>
+Time T0: P1 requests R1 and R2
+Available: R1,R2
+Allocation: P1 gets both
+No waiting, no deadlock
+
+Time T1: P2 requests R1 and R2
+Available: 0
+P2 waits
+</pre>
+
+<h3>3. No Preemption</h3>
+<p>Problem: Resources cannot be forcibly taken from a process.</p>
+<p>Prevention: OS can preempt resources.</p>
+<pre>
+Before Preemption:
+P1 -> holds R1, requests R2
+P2 -> holds nothing, requests R1
+R1 held by P1 -> P2 waits
+
+After Preemption:
+OS takes R1 from P1 -> allocates to P2
+P2 finishes -> releases R1,R2
+P1 resumes -> acquires R1,R2 -> finishes
+</pre>
+
+<h3>4. Circular Wait Prevention</h3>
+<p>Problem: Processes form a cycle waiting for resources.</p>
+<p>Prevention: Impose total ordering on resources.</p>
+<pre>
+Resource Order: R1 -> R2 -> R3
+P1: requests R1 -> R2
+P2: requests R2 -> R3
+P3: requests R1 -> R3
+No circular wait possible
+</pre>
+
+<h3>Summary of Deadlock Prevention</h3>
+<table>
+<tr><th>Coffman Condition</th><th>How Prevented</th></tr>
+<tr><td>Mutual Exclusion</td><td>Mostly unavoidable</td></tr>
+<tr><td>Hold & Wait</td><td>Require all resources at once</td></tr>
+<tr><td>No Preemption</td><td>OS can preempt resources</td></tr>
+<tr><td>Circular Wait</td><td>Impose total ordering on resources</td></tr>
+</table>
+
+<h2>Deadlock Avoidance</h2>
+<p>OS never allows the system to enter an unsafe state.</p>
+<p>Safe state: At least one sequence exists where all processes can finish.</p>
+<p>Unsafe state: No guarantee; deadlock may occur.</p>
+
+<h3>Banker’s Algorithm</h3>
+<p>OS acts like a banker lending resources:</p>
+<ul>
+    <li>Max: maximum resources a process may request</li>
+    <li>Allocation: currently allocated resources</li>
+    <li>Need: remaining resources = Max - Allocation</li>
+    <li>Available: currently free resources</li>
+</ul>
+
+<p>Example:</p>
+<table>
+<tr><th>Process</th><th>Max</th><th>Allocated</th><th>Need = Max-Allocated</th></tr>
+<tr><td>P1</td><td>7</td><td>4</td><td>3</td></tr>
+<tr><td>P2</td><td>5</td><td>2</td><td>3</td></tr>
+<tr><td>P3</td><td>3</td><td>2</td><td>1</td></tr>
+</table>
+<p>Available = 10 - (4+2+2) = 2</p>
+
+<pre>
+Step 1: P2 requests 1
+Available = 2 -> request 1 -> can grant
+New Allocation P2 = 3, Need P2 = 2
+Step 2: Safe sequence check
+Available = 1
+P3 Need=1 <= Available -> P3 executes -> releases 3 -> Available=4
+P1 Need=3 <= Available -> P1 executes -> releases 7 -> Available=11
+P2 Need=2 <= Available -> P2 executes -> releases 5 -> Available=16
+
+Safe sequence exists -> request granted
+</pre>
+
+<h2>Deadlock Detection & Recovery</h2>
+
+<h3>Detection</h3>
+<p>Single instance per resource: Use Wait-for Graph (WFG)</p>
+<ul>
+    <li>Nodes = Processes</li>
+    <li>Edge P1 -> P2 if P1 waits for resource held by P2</li>
+    <li>Cycle → deadlock</li>
+</ul>
+
+<p>Multiple instances per resource: Track allocated, maximum, available; check safe sequence</p>
+
+<h3>Recovery</h3>
+<ul>
+    <li>Process Termination: Abort all or some processes</li>
+    <li>Resource Preemption: Temporarily take resources, possibly rollback</li>
+    <li>Combination: Abort some, preempt some</li>
+</ul>
+
+<h3>Example Scenario</h3>
+<table>
+<tr><th>Process</th><th>Holds</th><th>Requests</th></tr>
+<tr><td>P1</td><td>R1</td><td>R2</td></tr>
+<tr><td>P2</td><td>R2</td><td>R3</td></tr>
+<tr><td>P3</td><td>R3</td><td>R1</td></tr>
+</table>
+
+<pre>
+Resource Allocation Graph:
+P1 --> R2
+P2 --> R3
+P3 --> R1
+R1 --> P1
+R2 --> P2
+R3 --> P3
+
+Observation: Cycle exists -> Deadlock detected
+</pre>
+
+<h3>Recovery Example</h3>
+<pre>
+Option A: Terminate P3
+R3 freed
+P2 acquires R3 -> finishes -> releases R2
+P1 acquires R2 -> finishes
+
+Option B: Preempt Resources
+Preempt R1 from P1 -> give to P3
+P3 completes -> releases R3 -> P2 completes -> P1 completes
+</pre>
+
+<p>Key Notes:</p>
+<ul>
+    <li>Detection algorithms run periodically or on demand</li>
+    <li>Recovery trade-offs: aborting processes is costly; preemption may require rollback</li>
+    <li>Wait-for graphs simplify detection in single-instance resources</li>
+</ul>
+<h1>Starvation in Operating Systems</h1>
+
+<h2>Definition</h2>
+<p>Starvation (also called indefinite blocking) occurs when a process waits indefinitely to get a required resource because other higher-priority processes keep taking it. It mostly happens in priority scheduling systems. Low-priority processes may never get CPU time if high-priority processes keep arriving. Starvation is different from deadlock, because in starvation, progress is still possible for some processes, just unfairly delayed.</p>
+
+<h2>Causes of Starvation</h2>
+<ul>
+    <li><strong>Priority Scheduling:</strong> Higher priority processes preempt lower ones.</li>
+    <li><strong>Resource Allocation:</strong> Resources always allocated to "important" requests.</li>
+    <li><strong>Non-preemptive Scheduling with Biased Policies:</strong> Some processes are always skipped.</li>
+</ul>
+
+<h2>Example</h2>
+<table>
+    <tr><th>Process</th><th>Priority</th><th>Burst Time</th></tr>
+    <tr><td>P1</td><td>1</td><td>5 ms</td></tr>
+    <tr><td>P2</td><td>2</td><td>3 ms</td></tr>
+    <tr><td>P3</td><td>3</td><td>2 ms</td></tr>
+</table>
+<p>Lower number → higher priority. CPU uses preemptive priority scheduling.</p>
+
+<p>Execution Scenario:</p>
+<pre>
+P1 arrives → runs first (highest priority)
+P2 arrives → lower priority than P1 → waits
+P3 arrives → lower priority than P1 → waits
+New P1 processes keep arriving → P2 and P3 never get CPU
+</pre>
+
+<p><strong>Conclusion:</strong> P2 and P3 are starving because higher-priority processes dominate the CPU.</p>
+
+<pre>
+Time → 
+| P1 | P1 | P1 | P1 | P1(new) | P1(new) | ...
+P2 & P3 keep waiting indefinitely
+</pre>
+
+<h2>How to Prevent Starvation</h2>
+<ul>
+    <li><strong>Aging:</strong> Gradually increase priority of waiting processes, allowing low-priority processes to eventually get CPU.</li>
+    <li><strong>Fair Scheduling:</strong> Algorithms like Round Robin or FCFS ensure all processes get a turn.</li>
+    <li><strong>Dynamic Priority Adjustment:</strong> Change priorities based on wait time or resource usage.</li>
+</ul>
+
+<hr>
+
+<h1>Aging in OS</h1>
+
+<h2>Definition</h2>
+<p>Aging is a technique used in priority scheduling to gradually increase the priority of a process the longer it waits in the ready queue. Goal is to prevent starvation of low-priority processes. The longer a process waits, the higher its priority becomes, eventually allowing it to execute.</p>
+
+<h2>How Aging Works</h2>
+<ul>
+    <li>Each process has a priority value (lower number = higher priority or vice versa).</li>
+    <li>While waiting in the ready queue, a process’s priority is incrementally adjusted over time.</li>
+    <li>Eventually, the low-priority process becomes high enough priority to preempt others.</li>
+</ul>
+
+<h2>Example</h2>
+<table>
+    <tr><th>Process</th><th>Initial Priority</th><th>Burst Time</th></tr>
+    <tr><td>P1</td><td>1</td><td>5 ms</td></tr>
+    <tr><td>P2</td><td>2</td><td>3 ms</td></tr>
+    <tr><td>P3</td><td>5</td><td>2 ms</td></tr>
+</table>
+
+<p>Without aging, P1 keeps arriving → P3 may never get CPU → starvation.</p>
+
+<p>With aging, each time P3 waits, its priority improves:</p>
+<table>
+    <tr><th>Waiting Time</th><th>Priority of P3</th></tr>
+    <tr><td>0 ms</td><td>5</td></tr>
+    <tr><td>1 ms</td><td>4</td></tr>
+    <tr><td>2 ms</td><td>3</td></tr>
+    <tr><td>3 ms</td><td>2 → can preempt P2 or P1</td></tr>
+    <tr><td>4 ms</td><td>1 → guaranteed CPU</td></tr>
+</table>
+
+<pre>
+Scenario: P1 keeps arriving every 1 ms, P3 is aging
+Time → 0   1   2   3   4   5   6
+P1     |P1|P1|P1|P1|P1|
+P3     waiting → aging ↑ priority
+P2     |   |P2|P2|
+</pre>
+
+<h2>Key Points</h2>
+<ul>
+    <li>Aging solves starvation without harming high-priority processes too much.</li>
+    <li>Requires dynamic priority adjustment by OS.</li>
+    <li>Can be implemented in preemptive or non-preemptive scheduling.</li>
+</ul>
+
+<hr>
+
+<h1>Fair Scheduling in OS</h1>
+
+<h2>Definition</h2>
+<p>Fair scheduling is a CPU scheduling strategy where all processes get an equitable share of CPU, preventing starvation and ensuring no process is favored indefinitely. Focuses on fairness rather than just efficiency.</p>
+
+<h2>Goals</h2>
+<ul>
+    <li>Avoid starvation of low-priority processes.</li>
+    <li>Ensure responsiveness for interactive processes.</li>
+    <li>Balance CPU usage across all running processes.</li>
+    <li>Respect priority without indefinitely blocking lower-priority tasks.</li>
+</ul>
+
+<h2>Types / Examples</h2>
+<ul>
+    <li><strong>Round Robin (RR):</strong> Every process gets a fixed time quantum in a circular queue. No process can hog CPU forever.</li>
+    <li><strong>Weighted Fair Queuing (WFQ):</strong> Each process has a weight (share) of CPU time. Higher-weight processes get proportionally more CPU, but low-weight processes still get some.</li>
+    <li><strong>Completely Fair Scheduler (CFS) in Linux:</strong> Each process is assigned virtual runtime; CPU given to the process with least virtual runtime.</li>
+</ul>
+
+<h2>Example – Round Robin</h2>
+<table>
+    <tr><th>Process</th><th>Burst Time</th></tr>
+    <tr><td>P1</td><td>5 ms</td></tr>
+    <tr><td>P2</td><td>3 ms</td></tr>
+    <tr><td>P3</td><td>4 ms</td></tr>
+</table>
+<p>Time Quantum: 2 ms</p>
+
+<pre>
+Time → 0    2    4    6    8    10   12   14   15   16   17
+        | P1 | P2 | P3 | P1 | P2 | P3 | P1 | P3 | P1 |
+</pre>
+
+<h2>Advantages</h2>
+<ul>
+    <li>No starvation – every process eventually runs.</li>
+    <li>Predictable behavior – easier to analyze system performance.</li>
+    <li>Responsive to interactive tasks – small processes get timely CPU slices.</li>
+</ul>
+
+<h2>Disadvantages</h2>
+<ul>
+    <li>Context switching overhead – more frequent switching reduces efficiency.</li>
+    <li>Not always optimal for throughput – fairness may reduce overall CPU utilization.</li>
+</ul>
+
+<hr>
+
+<h1>Dynamic Priority Adjustment (DPA) in OS</h1>
+
+<h2>Definition</h2>
+<p>Dynamic Priority Adjustment (DPA) is a technique where a process’s priority changes over time, usually to prevent starvation and improve fairness in CPU scheduling. Unlike static priority scheduling, DPA adapts based on process behavior.</p>
+
+<h2>Mechanism</h2>
+<ul>
+    <li>Initial Priority Assignment – Processes are given initial priorities.</li>
+    <li>Priority Update Rule – Periodically or after events (like waiting), priorities are updated. Example: New Priority = Old Priority + α × Waiting Time.</li>
+    <li>Scheduling Decision – CPU always picks process with highest effective priority.</li>
+</ul>
+
+<h2>Example</h2>
+<table>
+    <tr><th>Process</th><th>Initial Priority</th><th>Burst Time</th></tr>
+    <tr><td>P1</td><td>1</td><td>4 ms</td></tr>
+    <tr><td>P2</td><td>2</td><td>3 ms</td></tr>
+    <tr><td>P3</td><td>3</td><td>2 ms</td></tr>
+</table>
+
+<pre>
+Scenario Without DPA:
+0 ms: CPU picks P1
+P2 & P3 keep waiting → starvation
+
+Scenario With DPA (Aging):
+Every unit of waiting time, priority of waiting processes increases
+0 ms: CPU picks P1 (priority 1)
+1 ms: P2 waiting → priority 1 → CPU picks P2 next
+2 ms: CPU continues P2
+3 ms: CPU picks P3 (priority increased)
+</pre>
+
+<h2>Key Points</h2>
+<ul>
+    <li>Dynamic priority adjustment is OS’s anti-starvation mechanism.</li>
+    <li>Implemented in multilevel queue scheduling, priority queues with aging, or Linux CFS variant.</li>
+    <li>Helps balance high-priority responsiveness with fairness.</li>
+</ul>
+<h1>1. Basic Concepts of Memory Management</h1>
+    <p>Memory management is all about how the OS controls the computer’s memory—allocating, tracking, and freeing memory for programs efficiently while avoiding conflicts.</p>
+
+    <h2>a) Memory Hierarchy</h2>
+    <p>Memory in a computer is organized in layers, based on speed and cost:</p>
+    <table>
+        <tr><th>Level</th><th>Example</th><th>Speed</th><th>Size</th><th>Cost</th></tr>
+        <tr><td>1</td><td>CPU Registers</td><td>Fastest</td><td>Very small</td><td>Expensive</td></tr>
+        <tr><td>2</td><td>Cache</td><td>Very fast</td><td>Small</td><td>Expensive</td></tr>
+        <tr><td>3</td><td>RAM (Main memory)</td><td>Fast</td><td>Medium</td><td>Moderate</td></tr>
+        <tr><td>4</td><td>Disk (HDD/SSD)</td><td>Slow</td><td>Large</td><td>Cheap</td></tr>
+    </table>
+    <p>Observation: OS tries to keep frequently used data in faster memory.</p>
+
+    <h2>Logical vs Physical Address</h2>
+    <h3>1. Definitions</h3>
+    <table>
+        <tr><th>Term</th><th>Meaning</th></tr>
+        <tr><td>Logical Address (Virtual Address)</td><td>The address generated by a program or CPU. The program “thinks” it is accessing this address.</td></tr>
+        <tr><td>Physical Address</td><td>The actual location in RAM where the data resides. Determined by the OS/MMU.</td></tr>
+    </table>
+    <p><strong>Key Point:</strong> Programs never directly access physical memory. The Memory Management Unit (MMU) translates logical → physical addresses.</p>
+
+    <h3>2. Address Space</h3>
+    <h4>Logical Address Space</h4>
+    <p>Range of addresses a process can use, controlled by OS/MMU.</p>
+    <p>Example: 0x0000 → 0xFFFF (0 → 65535)</p>
+
+    <h4>Physical Address Space</h4>
+    <p>Range of actual RAM addresses.</p>
+    <p>Example: 0x1000 → 0x1FFFF</p>
+
+    <h3>3. How Translation Works</h3>
+    <p>MMU uses a base register (or page table in paging) to map logical → physical addresses.</p>
+    <pre>
+Physical Address = Logical Address + Base Address of Process in RAM
+    </pre>
+
+    <h3>4. Example (Contiguous Allocation)</h3>
+    <p>Given: Process A allocated from physical memory 3000–4999, logical address 0–1999</p>
+    <pre>
+Physical Address = Logical Address + 3000
+Logical 0   → Physical 3000
+Logical 100 → Physical 3100
+Logical 1999 → Physical 4999
+    </pre>
+    <p><strong>Textual Diagram:</strong></p>
+    <pre>
+Logical Address (Process View)
+0     100     1999
+|------|-------|
+Process thinks memory starts at 0
+
+MMU Mapping + Base = 3000
+Physical Address
+3000  3100     4999
+|------|-------|
+Actual RAM location
+    </pre>
+
+    <h3>5. Example (Paging / Non-Contiguous Allocation)</h3>
+    <p>Process pages: Page0, Page1, Page2 → Memory frames: Frame3, Frame7, Frame2</p>
+    <table>
+        <tr><th>Page</th><th>Frame</th></tr>
+        <tr><td>0</td><td>3</td></tr>
+        <tr><td>1</td><td>7</td></tr>
+        <tr><td>2</td><td>2</td></tr>
+    </table>
+    <p>Logical Page1, Offset=50 → Physical Frame7 * FrameSize + 50</p>
+    <pre>
+Logical Address (Page:Offset)
+Page0 | Page1 | Page2
+0     | 1     | 2
+Offset 0-999
+
+MMU / Page Table Mapping
+Page0 → Frame3
+Page1 → Frame7
+Page2 → Frame2
+
+Physical Address (Frame*1000 + offset)
+Frame3 → 3000-3999
+Frame7 → 7000-7999
+Frame2 → 2000-2999
+    </pre>
+
+    <h3>6. Key Points</h3>
+    <ul>
+        <li>Logical address = what program sees</li>
+        <li>Physical address = actual RAM</li>
+        <li>MMU ensures memory protection → no process can directly access another process’s memory</li>
+        <li>Paging and segmentation make translation flexible and efficient</li>
+    </ul>
+
+    <h2>Memory Allocation Techniques</h2>
+    <p>Memory allocation refers to how the OS assigns blocks of memory to processes.</p>
+
+    <h3>A. Fixed (Static) Partitioning</h3>
+    <p>Memory divided into fixed-size partitions at boot. Each partition holds one process.</p>
+    <ul>
+        <li>Pros: Simple</li>
+        <li>Cons: Wastes memory if process < partition (internal fragmentation), cannot adjust to changing sizes</li>
+    </ul>
+    <p>Example: RAM = 100 KB, 5 partitions of 20 KB each.</p>
+    <pre>
+Process P1 = 18 KB → allocated in 20 KB → 2 KB wasted
+Process P2 = 25 KB → cannot fit → wait/reject
+    </pre>
+    <p>Textual Diagram:</p>
+    <pre>
+Memory (100 KB)
++---------+---------+---------+---------+---------+
+|  P1     |  P2     |  P3     |  P4     |  P5     |
+| 18 KB   |  ?      |  ?      |  ?      |  ?      |
+| 2 KB wasted |   |   |   |   |
++---------+---------+---------+---------+---------+
+    </pre>
+
+    <h3>B. Dynamic (Variable) Partitioning</h3>
+    <p>Memory allocated per process size, not fixed partitions.</p>
+    <ul>
+        <li>Pros: Reduces internal fragmentation</li>
+        <li>Cons: Leads to external fragmentation (gaps between allocated blocks)</li>
+    </ul>
+    <pre>
+RAM = 100 KB
+P1=25 → allocated at start
+P2=35 → next
+P3=15 → next
+P2 finishes → frees 35 KB
+P4=40 → cannot fit → external fragmentation
+    </pre>
+    <p>Textual Diagram:</p>
+    <pre>
+Memory (100 KB)
++--------+---------+--------+------------------+
+| P1(25) | P2(35)  | P3(15)| Free(25+?)      |
++--------+---------+--------+------------------+
+
+After P2 finishes:
++--------+---------+--------+------------------+
+| P1(25) | Free(35)| P3(15)| Free(25?)       |
++--------+---------+--------+------------------+
+P4(40) cannot fit → External fragmentation
+    </pre>
+
+    <h3>C. Contiguous vs Non-Contiguous Allocation</h3>
+    <h4>1. Contiguous Allocation</h4>
+    <ul>
+        <li>Process stored in single contiguous block</li>
+        <li>Simple address calculation</li>
+        <li>Problem: External fragmentation</li>
+    </ul>
+    <h4>2. Non-Contiguous Allocation</h4>
+    <ul>
+        <li>Process divided into multiple chunks (pages/segments)</li>
+        <li>Solves fragmentation, more flexible</li>
+        <li>Used in paging & segmentation</li>
+    </ul>
+
+    <h3>D. Comparison Table</h3>
+    <table>
+        <tr>
+            <th>Feature</th><th>Fixed Partitioning</th><th>Dynamic Partitioning</th><th>Non-Contiguous Allocation</th>
+        </tr>
+        <tr>
+            <td>Partition size</td><td>Fixed</td><td>Variable</td><td>N/A</td>
+        </tr>
+        <tr>
+            <td>Internal Fragmentation</td><td>Yes</td><td>No</td><td>Minimal</td>
+        </tr>
+        <tr>
+            <td>External Fragmentation</td><td>No</td><td>Yes</td><td>No</td>
+        </tr>
+        <tr>
+            <td>Complexity</td><td>Low</td><td>Medium</td><td>High</td>
+        </tr>
+        <tr>
+            <td>Example</td><td>Old mainframes</td><td>Modern OS</td><td>Paging/Segmentation</td>
+        </tr>
+    </table>
+    <h1>Paging (Non-Contiguous Memory Allocation)</h1>
+
+<h2>Problem it Solves</h2>
+<p>Contiguous allocation often leads to external fragmentation. Paging avoids this by breaking memory into fixed-size blocks (pages/frames).</p>
+
+<h2>Key Terms</h2>
+<ul>
+    <li><strong>Frame:</strong> Fixed-size block of physical memory (RAM).</li>
+    <li><strong>Page:</strong> Fixed-size block of logical (process) memory, same size as frame.</li>
+    <li><strong>Page Table:</strong> Maps logical page numbers to physical frame numbers.</li>
+</ul>
+<p>Important: Page size = Frame size (Typical: 4KB, 8KB).</p>
+
+<h2>How it Works</h2>
+<ol>
+    <li>Divide process into pages.</li>
+    <li>Divide physical memory into frames.</li>
+    <li>Load pages into any free frames in RAM.</li>
+    <li>Maintain a page table mapping logical to physical addresses.</li>
+</ol>
+<pre>
+Logical Address = Page Number + Page Offset
+Physical Address = Frame Number + Page Offset
+</pre>
+
+<h2>Address Translation Example</h2>
+<p>Given:</p>
+<ul>
+    <li>Page size = 1 KB (1024 bytes)</li>
+    <li>Process size = 4 KB → 4 pages (0,1,2,3)</li>
+    <li>Physical memory = 8 KB → 8 frames (0–7)</li>
+</ul>
+
+<table>
+    <tr><th>Page No</th><th>Frame No</th></tr>
+    <tr><td>0</td><td>5</td></tr>
+    <tr><td>1</td><td>2</td></tr>
+    <tr><td>2</td><td>6</td></tr>
+    <tr><td>3</td><td>1</td></tr>
+</table>
+
+<p>Question: Physical address of logical address 2500?</p>
+<pre>
+Page Number = 2500 / 1024 = 2
+Page Offset = 2500 % 1024 = 452
+Frame Number = PageTable[2] = 6
+Physical Address = 6 * 1024 + 452 = 6664
+</pre>
+
+<h2>Textual Diagram of Paging</h2>
+<pre>
+Process (Logical Memory)
++-------+-------+-------+-------+
+| Page0 | Page1 | Page2 | Page3 |
++-------+-------+-------+-------+
+
+Physical Memory (RAM)
+Frame0 Frame1 Frame2 Frame3 Frame4 Frame5 Frame6 Frame7
++------+ +------+ +------+ +------+ +------+ +------+ +------+ +------+
+|      | |      | |Page1 | |      | |      | |Page0 | |Page2 | |Page3 |
++------+ +------+ +------+ +------+ +------+ +------+ +------+ +------+
+
+Page Table
++---------+-----------+
+| PageNo  | FrameNo   |
++---------+-----------+
+| 0       | 5         |
+| 1       | 2         |
+| 2       | 6         |
+| 3       | 1         |
++---------+-----------+
+</pre>
+
+<h2>Advantages</h2>
+<ul>
+    <li>No external fragmentation</li>
+    <li>Easy to allocate non-contiguous memory</li>
+    <li>Supports virtual memory easily</li>
+</ul>
+
+<h2>Disadvantages</h2>
+<ul>
+    <li>Page table overhead (large processes → large tables)</li>
+    <li>Internal fragmentation (last page may not fill entire frame)</li>
+</ul>
+
+<hr>
+
+<h1>Segmentation</h1>
+
+<p>Segmentation divides a program into logical segments of varying sizes:</p>
+<ul>
+    <li>Code</li>
+    <li>Data</li>
+    <li>Stack</li>
+    <li>Heap</li>
+    <li>Libraries</li>
+</ul>
+
+<p>Segments are variable-sized. Each segment has a segment number and offset. The OS maintains a segment table storing the base and limit of each segment.</p>
+
+<h2>Address Structure</h2>
+<pre>
+Logical Address = <Segment Number, Offset>
+Physical Address = Base of Segment + Offset
+</pre>
+
+<h2>Example</h2>
+<table>
+    <tr><th>Segment</th><th>Size (bytes)</th><th>Base Address</th></tr>
+    <tr><td>Code</td><td>200</td><td>1000</td></tr>
+    <tr><td>Data</td><td>300</td><td>1200</td></tr>
+    <tr><td>Stack</td><td>100</td><td>1500</td></tr>
+</table>
+
+<table>
+    <tr><th>Logical Address</th><th>Physical Address / Result</th></tr>
+    <tr><td>(0,50)</td><td>1000 + 50 = 1050 ✅</td></tr>
+    <tr><td>(1,250)</td><td>1200 + 250 = 1450 ✅</td></tr>
+    <tr><td>(2,120)</td><td>Offset > limit → Segmentation Fault ❌</td></tr>
+</table>
+
+<h2>Textual Diagram</h2>
+<pre>
+Segment 0: Code [0-199]
++--------------------+
+Segment 1: Data [0-299]
++------------------------+
+Segment 2: Stack [0-99]
++------------------+
+
+Physical Memory Mapping:
+1000 -> Code
+1200 -> Data
+1500 -> Stack
+</pre>
+
+<h2>Advantages of Segmentation</h2>
+<ul>
+    <li>Reflects logical view of program</li>
+    <li>Easier to grow/shrink segments independently</li>
+    <li>Provides protection (code read-only, stack read-write)</li>
+</ul>
+
+<h2>Disadvantages</h2>
+<ul>
+    <li>External fragmentation possible</li>
+    <li>Segment table overhead</li>
+</ul>
+
+<hr>
+
+<h1>Virtual Memory (VM)</h1>
+
+<p>Virtual memory gives each process the illusion of a large, contiguous memory space, even if physical RAM is smaller.</p>
+
+<h2>Purpose</h2>
+<ul>
+    <li>Run programs larger than RAM</li>
+    <li>Process isolation</li>
+    <li>Simplifies memory allocation and multitasking</li>
+</ul>
+
+<h2>How It Works</h2>
+<ul>
+    <li>Logical memory divided into pages</li>
+    <li>Physical memory divided into frames</li>
+    <li>Page table maps virtual pages to physical frames</li>
+    <li>Page fault occurs if a page is not in RAM; OS loads it from disk</li>
+</ul>
+
+<h2>Textual Diagram</h2>
+<pre>
+Logical Memory (Process)      Page Table       Physical Memory (RAM)
+-----------------------------  ----------       --------------------
+Page 0  | Code                Frame 1  ------> Frame 1 | Code (Page 0)
+Page 1  | Data                Frame 2  ------> Frame 2 | Data (Page 1)
+Page 2  | Stack               Not in RAM ---> Page fault, load to Frame 3
+Page 3  | Heap                Not in RAM ---> Wait/replacement
+Page 4  | Globals             Not in RAM ---> Wait/replacement
+</pre>
+
+<h2>Example Scenario</h2>
+<p>Program needs 20 KB, but RAM has only 12 KB free:</p>
+<ul>
+    <li>Load first 3 pages into RAM</li>
+    <li>Remaining pages stay on disk</li>
+    <li>OS swaps pages in/out as program accesses them</li>
+</ul>
+
+<h2>Advantages</h2>
+<ul>
+    <li>Run programs larger than RAM</li>
+    <li>Efficient use of physical memory</li>
+    <li>Process isolation and protection</li>
+</ul>
+
+<h2>Disadvantages</h2>
+<ul>
+    <li>Page faults stall CPU</li>
+    <li>Excessive paging → Thrashing, system becomes very slow</li>
+</ul>
+ <h1>Page Replacement Algorithms (In Depth)</h1>
+    <p>When virtual memory is used, sometimes the page a process needs isn’t in RAM. The OS must replace an existing page. The strategy used is called a page replacement algorithm.</p>
+
+    <h2>1. FIFO Page Replacement Algorithm</h2>
+    <p><strong>Definition:</strong> Replaces the page that has been in memory the longest when a new page needs to be loaded and memory is full.</p>
+    <ul>
+        <li>Easy to implement with a queue</li>
+        <li>Can suffer from Belady’s anomaly</li>
+        <li>Uses a first-in, first-out queue of pages</li>
+    </ul>
+
+    <h3>Example</h3>
+    <p>Page reference string: 7, 0, 1, 2, 0, 3, 0, 4, 2, 3, 0, 3, 2<br>
+    Number of frames: 3</p>
+    <table>
+        <tr><th>Step</th><th>Reference</th><th>Frames</th><th>Page Fault?</th></tr>
+        <tr><td>1</td><td>7</td><td>7</td><td>Yes</td></tr>
+        <tr><td>2</td><td>0</td><td>7 0</td><td>Yes</td></tr>
+        <tr><td>3</td><td>1</td><td>7 0 1</td><td>Yes</td></tr>
+        <tr><td>4</td><td>2</td><td>2 0 1</td><td>Yes</td></tr>
+        <tr><td>5</td><td>0</td><td>2 0 1</td><td>No</td></tr>
+        <tr><td>6</td><td>3</td><td>3 0 1</td><td>Yes</td></tr>
+        <tr><td>7</td><td>0</td><td>3 0 1</td><td>No</td></tr>
+        <tr><td>8</td><td>4</td><td>4 0 1</td><td>Yes</td></tr>
+        <tr><td>9</td><td>2</td><td>2 4 1</td><td>Yes</td></tr>
+        <tr><td>10</td><td>3</td><td>3 2 1</td><td>Yes</td></tr>
+        <tr><td>11</td><td>0</td><td>0 3 2</td><td>Yes</td></tr>
+        <tr><td>12</td><td>3</td><td>3 0 2</td><td>No</td></tr>
+        <tr><td>13</td><td>2</td><td>2 3 0</td><td>No</td></tr>
+    </table>
+    <p>Total Page Faults: 9</p>
+
+    <pre>
+Textual Diagram:
+Step:      1  2  3  4  5  6  7  8  9 10 11 12 13
+Ref:       7  0  1  2  0  3  0  4  2  3  0  3  2
+Frames:
+           7
+           7 0
+           7 0 1
+           2 0 1
+           2 0 1
+           3 0 1
+           3 0 1
+           4 0 1
+           2 4 1
+           3 2 1
+           0 3 2
+           3 0 2
+           2 3 0
+    </pre>
+
+    <h2>2. Optimal (OPT) Page Replacement</h2>
+    <p>Replace the page that will not be used for the longest time in the future. Cannot be implemented in real OS; used as benchmark.</p>
+
+    <h3>Step-by-Step Example</h3>
+    <p>Page reference string: 7, 0, 1, 2, 0, 3, 0, 4, 2, 3, 0, 3, 2<br>Frames = 3</p>
+    <pre>
+Step 1: Reference 7 → Page fault → Frames: [7]
+Step 2: Reference 0 → Page fault → Frames: [7, 0]
+Step 3: Reference 1 → Page fault → Frames: [7, 0, 1]
+Step 4: Reference 2 → Page fault → Replace 1 (used farthest) → Frames: [7, 0, 2]
+Step 5: Reference 0 → In memory → No fault → Frames: [7, 0, 2]
+Step 6: Reference 3 → Page fault → Replace 7 → Frames: [3, 0, 2]
+Step 7: Reference 0 → In memory → No fault → Frames: [3, 0, 2]
+Step 8: Reference 4 → Page fault → Replace 2 → Frames: [3, 0, 4]
+    </pre>
+
+    <p><strong>OPT Rule:</strong> Replace page used farthest in future or not used again.</p>
+
+    <h2>3. LRU (Least Recently Used)</h2>
+    <p>Replace the page that was used longest time ago. Approximates OPT and practical in real OS.</p>
+
+    <h3>Implementation</h3>
+    <ul>
+        <li>Counter: Track last access time of each page</li>
+        <li>Stack: Move accessed page to top; bottom is LRU</li>
+    </ul>
+
+    <h3>Example</h3>
+    <table>
+        <tr><th>Step</th><th>Page</th><th>Frames (After Step)</th><th>Page Fault?</th><th>Explanation</th></tr>
+        <tr><td>1</td><td>7</td><td>7</td><td>Yes</td><td>First page loaded</td></tr>
+        <tr><td>2</td><td>0</td><td>7 0</td><td>Yes</td><td>Empty frame available</td></tr>
+        <tr><td>3</td><td>1</td><td>7 0 1</td><td>Yes</td><td>Empty frame available</td></tr>
+        <tr><td>4</td><td>2</td><td>2 0 1</td><td>Yes</td><td>LRU = 7 → replaced</td></tr>
+        <tr><td>5</td><td>0</td><td>2 0 1</td><td>No</td><td>0 already in memory</td></tr>
+        <tr><td>6</td><td>3</td><td>3 0 1</td><td>Yes</td><td>LRU = 2 → replaced</td></tr>
+        <tr><td>7</td><td>0</td><td>3 0 1</td><td>No</td><td>0 in memory</td></tr>
+        <tr><td>8</td><td>4</td><td>4 0 1</td><td>Yes</td><td>LRU = 3 → replaced</td></tr>
+        <tr><td>9</td><td>2</td><td>2 0 4</td><td>Yes</td><td>LRU = 1 → replaced</td></tr>
+        <tr><td>10</td><td>3</td><td>3 2 0</td><td>Yes</td><td>LRU = 4 → replaced</td></tr>
+        <tr><td>11</td><td>0</td><td>0 3 2</td><td>No</td><td>0 in memory</td></tr>
+        <tr><td>12</td><td>3</td><td>3 0 2</td><td>No</td><td>3 in memory</td></tr>
+        <tr><td>13</td><td>2</td><td>2 3 0</td><td>No</td><td>2 in memory</td></tr>
+    </table>
+    <p>Total Page Faults: 9</p>
+
+    <pre>
+Textual Diagram:
+Step:    1  2  3  4  5  6  7  8  9 10 11 12 13
+Ref:     7  0  1  2  0  3  0  4  2  3  0  3  2
+Frames:
+         7
+         7 0
+         7 0 1
+         2 0 1
+         2 0 1
+         3 0 1
+         3 0 1
+         4 0 1
+         2 0 4
+         3 2 0
+         0 3 2
+         3 0 2
+         2 3 0
+    </pre>
+
+    <h2>4. Clock (Second Chance) Algorithm</h2>
+    <p>Approximation of LRU. Pages in memory arranged in circular queue. Each page has reference bit.</p>
+
+    <h3>Steps</h3>
+    <ul>
+        <li>Access page → set reference bit = 1</li>
+        <li>Page fault → check page pointed by clock hand</li>
+        <li>Ref bit = 0 → replace page</li>
+        <li>Ref bit = 1 → set 0, move pointer, repeat</li>
+    </ul>
+
+    <h3>Example</h3>
+    <p>Page reference string: 1, 2, 3, 2, 4, 1, 5, 2<br>Frames = 3</p>
+    <pre>
+Step 1: 1 → fault → Frames: [1*] Pointer->1
+Step 2: 2 → fault → Frames: [1*,2*] Pointer->1
+Step 3: 3 → fault → Frames: [1*,2*,3*] Pointer->1
+Step 4: 2 → hit → Frames: [1*,2*,3*] Pointer->1
+Step 5: 4 → fault
+  Check 1* → 0
+  Check 2* → 0
+  Check 3* → 0
+  Replace 1 → Frames: [4*,2,3] Pointer->2
+Step 6: 1 → fault → Replace 2 → Frames: [4*,1*,3] Pointer->3
+Step 7: 5 → fault → Replace 3 → Frames: [4*,1*,5*] Pointer->4
+Step 8: 2 → fault
+  4* → 0
+  1* → 0
+  5* → 0
+  Replace 4 → Frames: [2*,1,5] Pointer->1
+    </pre>
+
+    <p><strong>Legend:</strong> * = reference bit = 1</p>
+    <p>Clock algorithm gives a second chance to recently used pages. Efficient, low overhead, widely used in real OS.</p>
+    <h1>Fragmentation in Memory Management</h1>
+
+<p>Fragmentation occurs when memory is used inefficiently, causing wasted space that cannot be used by other processes. It comes in two main types:</p>
+
+<h2>1. Internal Fragmentation</h2>
+<p><strong>Definition:</strong> Internal fragmentation occurs when a memory block allocated to a process is larger than what the process actually needs, leaving unused memory inside the allocated block.</p>
+
+<p>Occurs mostly in fixed-size allocation schemes like Fixed Partitions or Paging.</p>
+
+<h3>Why it happens</h3>
+<ul>
+    <li>Memory divided into fixed-size units (pages or blocks).</li>
+    <li>If a process requires less than allocated, leftover space is wasted.</li>
+</ul>
+
+<h3>Example 1: Fixed Partition</h3>
+<p>Memory blocks = 100 KB each, Process P1 = 230 KB</p>
+<p>OS allocates 3 blocks = 300 KB</p>
+<p>Internal fragmentation = 300 - 230 = 70 KB</p>
+
+<pre>
+Memory Blocks (100 KB each)
++---------+---------+---------+
+| Block 1 | Block 2 | Block 3 |
+| 100 KB  | 100 KB  | 100 KB  |
++---------+---------+---------+
+Process P1 occupies 230 KB
+Unused inside last block = 70 KB (Internal Fragmentation)
+</pre>
+
+<h3>Example 2: Paging</h3>
+<p>Page size = 4 KB, Process size = 10 KB</p>
+<p>Number of pages = ceil(10 / 4) = 3 → Memory allocated = 12 KB</p>
+<p>Internal fragmentation = 12 - 10 = 2 KB</p>
+
+<pre>
+Pages (4 KB each)
++-----+-----+-----+
+| 4KB | 4KB | 4KB |
++-----+-----+-----+
+Process occupies 3 pages → Wasted memory in last page = 2 KB
+</pre>
+
+<p><strong>Key Points:</strong></p>
+<ul>
+    <li>Internal fragmentation is inside allocated blocks.</li>
+    <li>Cannot be used by other processes.</li>
+    <li>Paging reduces external fragmentation but internal fragmentation remains.</li>
+</ul>
+
+<h2>2. External Fragmentation</h2>
+<p><strong>Definition:</strong> Free memory is split into small non-contiguous blocks between allocated memory. Total free memory may be enough for a process, but no single contiguous block is large enough.</p>
+
+<h3>Why it happens</h3>
+<ul>
+    <li>Dynamic allocation with variable-sized memory chunks.</li>
+    <li>Freed memory over time is scattered → large processes may not fit.</li>
+</ul>
+
+<h3>Example</h3>
+<p>Total memory = 1000 KB</p>
+
+<pre>
+Step 1: Allocate processes
+P1=200 KB, P2=300 KB, P3=100 KB
+
+Memory layout:
+| P1=200 | P2=300 | P3=100 | Free=400 |
+
+Step 2: Process termination
+P2 terminates → 300 KB free
+
+Memory layout:
+| P1=200 | Free=300 | P3=100 | Free=400 |
+
+Step 3: Allocate new process P4 = 350 KB
+Total free = 700 KB, largest contiguous = 400 KB
+Cannot allocate in Free=300, allocation depends on OS compaction
+</pre>
+
+<p><strong>Key Points:</strong></p>
+<ul>
+    <li>External fragmentation is wasted space between allocated blocks.</li>
+    <li>Cannot be used by large processes unless OS compacts memory.</li>
+    <li>Paging eliminates external fragmentation.</li>
+    <li>Segmentation suffers external fragmentation but is better for modular programs.</li>
+</ul>
+
+<h1>Memory Protection</h1>
+
+<p>Memory protection ensures:</p>
+<ul>
+    <li>Processes cannot access memory of others without permission.</li>
+    <li>OS memory remains safe.</li>
+    <li>Prevents bugs or security violations like buffer overflows.</li>
+</ul>
+
+<h2>1. Base and Limit Registers</h2>
+<p>Each process has:</p>
+<ul>
+    <li>Base register → Starting physical address</li>
+    <li>Limit register → Size of memory allocated</li>
+</ul>
+
+<p>CPU checks access: if address &lt; base OR address ≥ base + limit → violation, else access allowed</p>
+
+<p>Example:</p>
+<ul>
+    <li>P1: Base=1000, Limit=500 (addresses 1000–1499)</li>
+    <li>P2: Base=2000, Limit=400 (addresses 2000–2399)</li>
+</ul>
+
+<pre>
+Physical Memory
+--------------------------------------------------
+| 0 -  999  | OS Kernel (Protected)              |
+--------------------------------------------------
+|1000-1499  | Process P1                         |
+--------------------------------------------------
+|1500-1999  | Free/Other processes               |
+--------------------------------------------------
+|2000-2399  | Process P2                         |
+--------------------------------------------------
+|2400+      | Free/Other processes               |
+--------------------------------------------------
+</pre>
+
+<h2>2. Segmentation</h2>
+<p>Memory divided into segments: code, data, stack.</p>
+<p>Each segment has base & limit checked at access.</p>
+
+<pre>
+Process P1 Segments
+-------------------------
+| Code  | 1000 - 1299   |
+| Data  | 1300 - 1399   |
+| Stack | 1400 - 1449   |
+-------------------------
+</pre>
+
+<h2>3. Paging with Protection Bits</h2>
+<p>Each page table entry has protection bits: R/W/X (Read/Write/Execute)</p>
+
+<pre>
+Page Table
+-----------------------------------
+| Page # | Frame # | Protection    |
+|   0    |  10     | RX            |
+|   1    |  11     | RW            |
+|   2    |  12     | RWX           |
+-----------------------------------
+</pre>
+
+<h2>4. Hardware Support</h2>
+<p>MMU (Memory Management Unit) checks every memory access. Violations cause trap/exception handled by OS.</p>
+
+<h2>5. Summary Table</h2>
+<table>
+    <tr>
+        <th>Mechanism</th>
+        <th>How It Works</th>
+        <th>Pros</th>
+        <th>Cons</th>
+    </tr>
+    <tr>
+        <td>Base & Limit</td>
+        <td>Check access against base & limit</td>
+        <td>Simple</td>
+        <td>Fixed partitions</td>
+    </tr>
+    <tr>
+        <td>Segmentation</td>
+        <td>Access per segment with bounds</td>
+        <td>Logical separation</td>
+        <td>External fragmentation</td>
+    </tr>
+    <tr>
+        <td>Paging + Protection Bits</td>
+        <td>Each page has R/W/X bit</td>
+        <td>Fine-grained protection</td>
+        <td>Table overhead</td>
+    </tr>
+</table>
+<h1>1. File (In Depth)</h1>
+
+<h2>Definition</h2>
+<p>
+A file is a named, logical collection of related data stored on secondary storage and managed by the operating system.
+</p>
+<p>
+Logical means the OS pretends the mess of disk blocks is a clean, continuous thing. A comforting lie.
+</p>
+
+<h2>Why Files Exist</h2>
+
+<p><strong>Without files:</strong></p>
+<ul>
+    <li>Data would be raw blocks with no meaning</li>
+    <li>Users would need to remember disk addresses (enjoy that)</li>
+    <li>No protection, no sharing, no structure</li>
+</ul>
+
+<p><strong>Files give:</strong></p>
+<ul>
+    <li>Abstraction (hide hardware chaos)</li>
+    <li>Persistence (data survives power-off)</li>
+    <li>Protection (permissions)</li>
+    <li>Sharing (multiple users, controlled damage)</li>
+</ul>
+
+<h2>File Attributes (Metadata)</h2>
+<p>Stored by the OS, not by your imagination.</p>
+
+<table>
+    <tr>
+        <th>Attribute</th>
+        <th>Meaning</th>
+    </tr>
+    <tr>
+        <td>Name</td>
+        <td>Human-readable identifier</td>
+    </tr>
+    <tr>
+        <td>Identifier</td>
+        <td>Unique internal ID (inode number in UNIX)</td>
+    </tr>
+    <tr>
+        <td>Type</td>
+        <td>Text, binary, executable</td>
+    </tr>
+    <tr>
+        <td>Location</td>
+        <td>Disk block pointers</td>
+    </tr>
+    <tr>
+        <td>Size</td>
+        <td>Current file size</td>
+    </tr>
+    <tr>
+        <td>Protection</td>
+        <td>Read / Write / Execute</td>
+    </tr>
+    <tr>
+        <td>Owner</td>
+        <td>User and group</td>
+    </tr>
+    <tr>
+        <td>Time stamps</td>
+        <td>Created, Modified, Accessed</td>
+    </tr>
+</table>
+
+<h2>File Structure (Logical View)</h2>
+
+<p><strong>Example File: marks.txt</strong></p>
+
+<pre>
+RollNo  Marks
+101     85
+102     90
+103     78
+</pre>
+
+<p>
+To you, it looks like plain text.<br>
+To the OS, it’s a crime scene of blocks and pointers.
+</p>
+
+<h3>Logical vs Physical View</h3>
+
+<pre>
+Logical View (What User Sees)
++-------------------+
+| marks.txt         |
+|-------------------|
+| RollNo  Marks     |
+| 101     85        |
+| 102     90        |
+| 103     78        |
++-------------------+
+
+Clean. Civilized. Optimistic.
+</pre>
+
+<pre>
+Physical View (What Disk Actually Stores)
+
+Assume block size = 4 KB
+
+Disk Blocks
+-----------
+[ Block 40 ] --> RollNo Marks 101 85
+[ Block 73 ] --> 102 90
+[ Block 105 ] --> 103 78
+
+Not contiguous. Not polite. Not your problem because the OS lies for you.
+</pre>
+
+<h2>File Control Block (FCB)</h2>
+
+<p>The OS tracks each file using an FCB.</p>
+
+<pre>
++--------------------------------+
+| File Control Block (FCB)        |
++--------------------------------+
+| File Name   : marks.txt        |
+| File Type   : Text             |
+| Size        : 120 bytes        |
+| Owner       : user1            |
+| Permissions : rw-r--r--        |
+| Timestamps  :                  |
+|   Created   : 10-03-2025       |
+|   Modified  : 12-03-2025       |
+| Block Pointers:                |
+|   -> 40 -> 73 -> 105           |
++--------------------------------+
+</pre>
+
+<p>
+In UNIX, this is called an inode.<br>
+Filename lives in the directory, inode lives elsewhere. Yes, it’s weird on purpose.
+</p>
+
+<h2>File Access Example (Step-by-Step)</h2>
+
+<p><strong>Operation:</strong> <code>open("marks.txt")</code></p>
+
+<ul>
+    <li>OS searches directory for marks.txt</li>
+    <li>Finds inode number</li>
+    <li>Loads inode (FCB) into memory</li>
+    <li>Checks permissions</li>
+    <li>Creates entry in Open File Table</li>
+    <li>Returns file descriptor</li>
+</ul>
+
+<p>
+Now the program can read or write without panicking.
+</p>
+
+<h2>Types of Files (OS View)</h2>
+
+<h3>1. Text Files</h3>
+<ul>
+    <li>Human-readable</li>
+    <li>Example: .txt, .c</li>
+</ul>
+
+<h3>2. Binary Files</h3>
+<ul>
+    <li>Machine-readable</li>
+    <li>Example: .exe, .bin</li>
+</ul>
+
+<h3>3. Executable Files</h3>
+<ul>
+    <li>Contain instructions</li>
+    <li>Example: ELF (Linux), EXE (Windows)</li>
+</ul>
+
+<h2>File Naming Examples</h2>
+
+<ul>
+    <li>UNIX: report.txt (case-sensitive)</li>
+    <li>Windows: Report.txt ≠ report.txt? Nope. Windows shrugs.</li>
+</ul>
+
+<h2>Key Exam Traps</h2>
+<ul>
+    <li>File name ≠ file metadata</li>
+    <li>Directory stores file name + inode number, not file data</li>
+    <li>File is logical; disk blocks are physical</li>
+    <li>File size ≠ allocated space (fragmentation exists)</li>
+</ul>
+
+<h1>File Operations (In Depth)</h1>
+
+<p>
+File operations are system-level actions provided by the OS to manipulate files.
+Applications don’t touch disks directly. They ask the OS nicely via system calls.
+</p>
+
+<h2>1. Create File</h2>
+
+<ul>
+    <li>OS checks directory permissions</li>
+    <li>Allocates a File Control Block (FCB / inode)</li>
+    <li>Adds an entry in the directory</li>
+    <li>Initializes metadata (size = 0, timestamps)</li>
+</ul>
+
+<pre>
+Directory Table
+-------------------------
+data.txt  --->  inode 105
+
+Inode 105
+-------------------------
+Size: 0
+Owner: user
+Permissions: rw-
+Block pointers: NULL
+</pre>
+
+<p>File exists. Empty. Judgment-free.</p>
+
+<h2>2. Open File</h2>
+
+<pre>
+fd = open("data.txt", O_RDWR);
+</pre>
+
+<pre>
+Process Table            Open File Table
+-------------            ----------------
+PID 101                  FD 3 -> inode 105
+FD 3 ------------------> Mode: RW
+                          Offset: 0
+                          Ref Count: 1
+</pre>
+
+<h2>3. Read File</h2>
+
+<pre>
+read(fd, buffer, 20);
+</pre>
+
+<pre>
+File (Disk)
+-----------------------
+| H | e | l | l | o | ...
+
+            ↓
+        OS Buffer
+
+            ↓
+Process Memory
+-----------------------
+| H | e | l | l | o |
+</pre>
+
+<p>Offset after read: 20 bytes</p>
+
+<h2>4. Write File</h2>
+
+<pre>
+write(fd, "HELLO", 5);
+</pre>
+
+<pre>
+Process Memory
+-----------------
+| H | E | L | L | O |
+
+            ↓
+
+File Blocks
+-----------------
+| H | E | L | L | O |
+</pre>
+
+<h2>5. Append File</h2>
+
+<pre>
+open("data.txt", O_APPEND);
+write(fd, "WORLD", 5);
+</pre>
+
+<pre>
+Before:
+| H | E | L | L | O |
+
+After Append:
+| H | E | L | L | O | W | O | R | L | D |
+</pre>
+
+<h2>6. Seek (Reposition)</h2>
+
+<pre>
+lseek(fd, 10, SEEK_SET);
+</pre>
+
+<pre>
+| A | B | C | D | E | F | G | H | I | J | K |
+                     ^
+</pre>
+
+<h2>7. Close File</h2>
+
+<pre>
+close(fd);
+</pre>
+
+<pre>
+Open File Table
+-----------------
+FD 3 -> inode 105  (Ref Count = 0)
+→ Entry removed
+</pre>
+
+<h2>8. Delete File</h2>
+
+<pre>
+delete("data.txt");
+</pre>
+
+<pre>
+Directory Table
+-----------------
+(data.txt entry removed)
+
+Free Block List
+-----------------
+Block 201 → FREE
+</pre>
+
+<h2>9. Truncate File</h2>
+
+<pre>
+truncate("data.txt", 0);
+</pre>
+
+<pre>
+Before:
+| D | A | T | A |
+
+After:
+(empty file)
+
+Inode:
+Size: 0
+Blocks: released
+</pre>
+
+<h2>Summary Table (Exam Gold)</h2>
+
+<table>
+    <tr>
+        <th>Operation</th>
+        <th>Data Affected</th>
+        <th>Metadata Affected</th>
+    </tr>
+    <tr>
+        <td>Create</td>
+        <td>No</td>
+        <td>Yes</td>
+    </tr>
+    <tr>
+        <td>Open</td>
+        <td>No</td>
+        <td>Yes</td>
+    </tr>
+    <tr>
+        <td>Read</td>
+        <td>No</td>
+        <td>Offset</td>
+    </tr>
+    <tr>
+        <td>Write</td>
+        <td>Yes</td>
+        <td>Size, Offset</td>
+    </tr>
+    <tr>
+        <td>Append</td>
+        <td>Yes</td>
+        <td>Size</td>
+    </tr>
+    <tr>
+        <td>Seek</td>
+        <td>No</td>
+        <td>Offset</td>
+    </tr>
+    <tr>
+        <td>Close</td>
+        <td>No</td>
+        <td>No</td>
+    </tr>
+    <tr>
+        <td>Delete</td>
+        <td>Yes</td>
+        <td>Yes</td>
+    </tr>
+    <tr>
+        <td>Truncate</td>
+        <td>Yes</td>
+        <td>Yes</td>
+    </tr>
+</table>
+<h1>Sequential Access Method</h1>
+
+<h2>Definition</h2>
+<p>
+Sequential access means data in a file is accessed in a fixed order, from beginning to end.
+You read the next record only after reading the current one. No skipping ahead like an impatient human.
+</p>
+<p>Think of it as a queue, not a shortcut.</p>
+
+<h2>How It Works (Mechanism)</h2>
+<ul>
+    <li>File pointer starts at the beginning of the file.</li>
+    <li>Each <code>read()</code> or <code>write()</code> operation:
+        <ul>
+            <li>Accesses the current record</li>
+            <li>Automatically moves the file pointer to the next record</li>
+        </ul>
+    </li>
+    <li>To reach record <em>n</em>, you must read records 1 → 2 → ... → n-1.</li>
+</ul>
+<p>The OS enforces order. Your wishes are irrelevant.</p>
+
+<h2>Operations Allowed</h2>
+<ul>
+    <li><strong>read_next()</strong> – Reads the current record and advances pointer.</li>
+    <li><strong>write_next()</strong> – Writes data at the current position and moves forward.</li>
+    <li><strong>rewind()</strong> – Moves file pointer back to the beginning.</li>
+    <li><strong>skip(n)</strong> – Skips n records by reading them internally.</li>
+</ul>
+<p>No “jump to record 57” nonsense.</p>
+
+<h2>Textual Diagram</h2>
+<pre>
+File Stored on Disk
+| R1 | R2 | R3 | R4 | R5 | R6 |
+
+File Pointer Movement
+Start
+  ↓
+| R1 | R2 | R3 | R4 | R5 | R6 |
+  ↑
+Read R1 → pointer moves to R2
+
+| R1 | R2 | R3 | R4 | R5 | R6 |
+       ↑
+Read R2 → pointer moves to R3
+
+| R1 | R2 | R3 | R4 | R5 | R6 |
+            ↑
+Read R3 → pointer moves to R4
+</pre>
+
+<p>
+To reach R5, you must pass through R1–R4.<br>
+No exceptions. No shortcuts. No mercy.
+</p>
+
+<h2>Example (Real World)</h2>
+
+<h3>Example 1: Text File Reading</h3>
+<pre>
+log.txt
+--------
+Entry 1
+Entry 2
+Entry 3
+Entry 4
+</pre>
+
+<p>Program behavior:</p>
+<pre>
+open(log.txt)
+read → Entry 1
+read → Entry 2
+read → Entry 3
+read → Entry 4
+EOF
+</pre>
+
+<p>This is classic sequential access. Logs love this because logs enjoy order.</p>
+
+<h3>Example 2: Magnetic Tape (Classic Example)</h3>
+<pre>
+[TAPE] → | R1 | R2 | R3 | R4 | R5 |
+</pre>
+
+<p>
+To read R4, the tape must physically pass:<br>
+R1 → R2 → R3 → R4
+</p>
+
+<p>Ancient? Yes. Still asked in exams? Absolutely.</p>
+
+<h2>Characteristics</h2>
+<table>
+    <tr>
+        <th>Aspect</th>
+        <th>Sequential Access</th>
+    </tr>
+    <tr>
+        <td>Access Order</td>
+        <td>Fixed, linear</td>
+    </tr>
+    <tr>
+        <td>Pointer Movement</td>
+        <td>Automatic</td>
+    </tr>
+    <tr>
+        <td>Random Access</td>
+        <td>Not allowed</td>
+    </tr>
+    <tr>
+        <td>Access Time</td>
+        <td>Depends on position</td>
+    </tr>
+    <tr>
+        <td>Storage Devices</td>
+        <td>Tape, files</td>
+    </tr>
+</table>
+
+<h2>Advantages</h2>
+<ul>
+    <li>Simple to implement</li>
+    <li>Low overhead</li>
+    <li>Efficient for batch processing</li>
+    <li>Ideal for large files read once</li>
+</ul>
+<p>Basically, minimal drama.</p>
+
+<h2>Disadvantages</h2>
+<ul>
+    <li>Slow for searching</li>
+    <li>Inefficient if you need random records</li>
+    <li>Re-reading required for updates in middle</li>
+</ul>
+<p>Sequential access does not care about your impatience.</p>
+
+<h2>Use Cases</h2>
+<ul>
+    <li>Log files</li>
+    <li>Text files</li>
+    <li>Media streaming</li>
+    <li>Backup files</li>
+    <li>Compiler input files</li>
+</ul>
+
+<p>Anything that flows forward and never looks back.</p>
+<h1>Direct (Random) Access Method</h1>
+
+<h2>Definition</h2>
+<p>
+Direct access allows a file to be accessed non-sequentially. You can jump straight to any block or record without reading everything before it.
+</p>
+<p>
+In other words, the OS stops forcing you to read page 1 just to get page 900. Progress.
+</p>
+
+<h2>How It Works</h2>
+<ul>
+    <li>The file is divided into fixed-size blocks or records.</li>
+    <li>Each block has a relative block number.</li>
+    <li>The OS computes the physical location using:</li>
+</ul>
+<pre>
+Physical Address = Starting Address + (Block Number × Block Size)
+</pre>
+<p>No wandering. No guessing. Math happens, data appears.</p>
+
+<h2>When Direct Access Is Used</h2>
+<ul>
+    <li>Databases</li>
+    <li>Binary files</li>
+    <li>Large structured files</li>
+    <li>Any application that says “give me record 512” and expects it now</li>
+</ul>
+<p>Sequential access would be painfully slow here, and nobody has time for that.</p>
+
+<h2>File Structure Assumption</h2>
+<ul>
+    <li>Fixed-length records</li>
+    <li>Known block size</li>
+    <li>Stable file layout</li>
+</ul>
+<p>If records are variable length, this method sulks and stops cooperating.</p>
+
+<h2>Step-by-Step Example</h2>
+<pre>
+Assume:
+Block size = 100 bytes
+File starts at disk address 1000
+You want Block 4 (0-based indexing)
+
+Calculation:
+Physical Address = 1000 + (4 × 100)
+                 = 1400
+</pre>
+<p>The OS jumps straight to address 1400 and reads the block. No previous blocks touched. No wasted effort. Efficiency achieved.</p>
+
+<h2>Textual Diagram</h2>
+<pre>
+File Stored on Disk
+Disk Address →
+-------------------------------------------------
+| Block 0 | Block 1 | Block 2 | Block 3 | Block 4 |
+-------------------------------------------------
+  1000     1100      1200      1300      1400
+
+Accessing Block 4
+Request → Read Block 4
+            |
+            v
+Jump directly to Disk Address 1400
+
+Everything before Block 4 is politely ignored.
+</pre>
+
+<h2>Comparison with Sequential Access (Reality Check)</h2>
+<pre>
+Sequential Access:
+Read Block 0 → Block 1 → Block 2 → Block 3 → Block 4
+Slow. Inefficient. Historically accurate.
+
+Direct Access:
+Jump → Block 4
+Modern. Sensible. Slightly arrogant.
+</pre>
+
+<h2>Advantages</h2>
+<ul>
+    <li>Fast access to any part of the file</li>
+    <li>Ideal for large files</li>
+    <li>Essential for databases</li>
+</ul>
+
+<h2>Disadvantages</h2>
+<ul>
+    <li>Works best with fixed-size records</li>
+    <li>More complex file management</li>
+    <li>Fragmentation can hurt performance</li>
+</ul>
+<p>Nothing is perfect. Especially not storage.</p>
+
+<h2>Real-World Example (Database)</h2>
+<pre>
+A student database:
+Each record = 200 bytes
+Want student record #250
+
+Address = Start + (250 × 200)
+</pre>
+<p>The database goes straight there. This is why databases don’t use sequential access unless they enjoy suffering.</p>
+<h1>Indexed Access Method (Deep Dive)</h1>
+
+<h2>What Indexed Access Actually Means</h2>
+<p>Indexed access is a file access method where:</p>
+<ul>
+    <li>A separate index is maintained for a file.</li>
+    <li>The index contains pointers to data blocks.</li>
+    <li>To access any record, the OS:
+        <ul>
+            <li>Looks up the index</li>
+            <li>Follows the pointer</li>
+            <li>Jumps directly to the required block</li>
+        </ul>
+    </li>
+</ul>
+<p>No sequential wandering. No “please wait while I scan the universe”.</p>
+
+<h2>Why Indexed Access Exists</h2>
+<p>Sequential access is fine until:</p>
+<ul>
+    <li>Files get large</li>
+    <li>Random access is needed</li>
+    <li>Performance starts embarrassing you</li>
+</ul>
+<p>Indexed access solves this by giving the file a map.</p>
+
+<h2>Basic Structure</h2>
+<p>An indexed file consists of:</p>
+<ul>
+    <li>Index Block(s) – stores pointers</li>
+    <li>Data Blocks – actual file contents</li>
+</ul>
+<p>Each entry in the index corresponds to:</p>
+<ul>
+    <li>A record number, key, or logical block</li>
+    <li>The physical address of the data block</li>
+</ul>
+
+<h2>Simple Example</h2>
+<p>Assume:</p>
+<ul>
+    <li>Block size = 1 KB</li>
+    <li>File size = 6 KB</li>
+    <li>File has 6 data blocks</li>
+    <li>One index block can store all pointers</li>
+</ul>
+
+<p>File: <strong>student.dat</strong></p>
+<pre>
+Record No  Data
+0          Student A
+1          Student B
+2          Student C
+3          Student D
+4          Student E
+5          Student F
+</pre>
+
+<h3>Textual Diagram (Single-Level Index)</h3>
+<pre>
+            INDEX BLOCK
+        -------------------
+        | 0 → Block 14   |
+        | 1 → Block 9    |
+        | 2 → Block 23   |
+        | 3 → Block 7    |
+        | 4 → Block 30   |
+        | 5 → Block 18   |
+        -------------------
+
+              |
+              | (jump directly)
+              v
+
+DATA BLOCKS ON DISK
+
+Block 7   → Record 3 (Student D)
+Block 9   → Record 1 (Student B)
+Block 14  → Record 0 (Student A)
+Block 18  → Record 5 (Student F)
+Block 23  → Record 2 (Student C)
+Block 30  → Record 4 (Student E)
+</pre>
+
+<p>Want Record 4?</p>
+<ul>
+    <li>Go to index entry 4</li>
+    <li>Jump to Block 30</li>
+    <li>Done. No scanning, no drama.</li>
+</ul>
+
+<h2>How Access Works (Step-by-Step)</h2>
+<ul>
+    <li>OS reads index block into memory</li>
+    <li>Index[i] gives block number</li>
+    <li>OS directly accesses that disk block</li>
+</ul>
+<p>Time complexity: O(1) access (ignoring disk latency). Which is the whole point.</p>
+
+<h2>Multi-Level Indexed Access</h2>
+<p>Because files don’t politely stay small.</p>
+
+<h3>Problem</h3>
+<p>Index block has limited size. Large files need more pointers than one index block can store.</p>
+
+<h3>Solution</h3>
+<p>Use multi-level indexing.</p>
+
+<h3>Two-Level Index Diagram</h3>
+<pre>
+                 MASTER INDEX
+               -----------------
+               | 0 → Index A   |
+               | 1 → Index B   |
+               -----------------
+                     |
+        --------------------------------
+        |                              |
+        v                              v
+
+   INDEX BLOCK A                  INDEX BLOCK B
+ -----------------              -----------------
+ | 0 → Block 5  |              | 0 → Block 20 |
+ | 1 → Block 6  |              | 1 → Block 21 |
+ -----------------              -----------------
+
+DATA BLOCKS
+Block 5  → Data
+Block 6  → Data
+Block 20 → Data
+Block 21 → Data
+</pre>
+
+<p>Access path: Master Index → Index Block → Data Block</p>
+<p>More steps, but still way faster than sequential.</p>
+
+<h2>Comparison with Allocation Methods</h2>
+<table>
+    <tr>
+        <th>Indexed Access</th>
+        <th>Indexed Allocation</th>
+    </tr>
+    <tr>
+        <td>Access method</td>
+        <td>Storage method</td>
+    </tr>
+    <tr>
+        <td>Logical view</td>
+        <td>Physical layout</td>
+    </tr>
+    <tr>
+        <td>Uses index for access</td>
+        <td>Uses index to store blocks</td>
+    </tr>
+    <tr>
+        <td>Seen by user</td>
+        <td>Handled by OS internally</td>
+    </tr>
+</table>
+<p>They sound the same because humans enjoy confusion.</p>
+
+<h2>Advantages</h2>
+<ul>
+    <li>Fast random access</li>
+    <li>No external fragmentation</li>
+    <li>Supports both sequential and direct access</li>
+</ul>
+
+<h2>Disadvantages</h2>
+<ul>
+    <li>Extra space for index blocks</li>
+    <li>Small files waste space</li>
+    <li>Index block must be accessed first</li>
+</ul>
+<p>Nothing in OS is free. Not even concepts.</p>
+
+<h2>Real-World Usage</h2>
+<ul>
+    <li>Database systems</li>
+    <li>File systems using i-nodes (UNIX)</li>
+    <li>Large structured files</li>
+</ul>
+<p>Yes, this is why i-nodes exist.</p>
+<h1>Single-Level Directory</h1>
+
+<h2>Definition</h2>
+<p>All files are contained in a single directory. There is no hierarchy. Every file has a unique name within this directory.</p>
+
+<h2>Who uses it?</h2>
+<p>Old operating systems like MS-DOS initially used something similar. Rarely used in modern systems due to obvious limitations.</p>
+
+<h2>Characteristics</h2>
+<ul>
+    <li><strong>Single Directory:</strong> All files of all users reside in the same directory.</li>
+    <li><strong>Unique Filenames:</strong> No two files can have the same name, otherwise there’s a conflict.</li>
+    <li><strong>Simple Implementation:</strong> Directory is usually implemented as a table of file names and pointers to file metadata (like location on disk, file length, timestamps).</li>
+</ul>
+
+<h2>Limitation</h2>
+<ul>
+    <li>Name conflicts if multiple users use the same filenames.</li>
+    <li>Poor scalability: large number of files makes search slow.</li>
+    <li>No grouping or organization.</li>
+</ul>
+
+<h2>Directory Table Structure</h2>
+<table>
+    <tr>
+        <th>File Name</th>
+        <th>File Pointer / Metadata</th>
+    </tr>
+    <tr><td>File1</td><td>Block #2</td></tr>
+    <tr><td>File2</td><td>Block #10</td></tr>
+    <tr><td>File3</td><td>Block #25</td></tr>
+</table>
+
+<p>
+<strong>Explanation:</strong><br>
+File Name → Name of the file<br>
+File Pointer / Metadata → Points to starting block of file on disk or contains file metadata (size, timestamps, etc.)
+</p>
+
+<h2>Example</h2>
+<p>Suppose three users in a system save the following files:</p>
+<ul>
+    <li>Abhi saves <strong>notes.txt</strong></li>
+    <li>Kumar saves <strong>project.doc</strong></li>
+    <li>Ravi saves <strong>notes.txt</strong></li>
+</ul>
+
+<p>
+Problem: Both Abhi and Ravi want <strong>notes.txt</strong> → Conflict occurs! Directory must enforce unique names, so one of them must rename the file.
+</p>
+
+<h2>Textual Diagram</h2>
+<pre>
+Single-Level Directory
+
+Directory Table:
++----------------+----------------+
+| File Name      | File Pointer   |
++----------------+----------------+
+| notes.txt      | Block 5        |
+| project.doc    | Block 12       |
+| report.pdf     | Block 20       |
++----------------+----------------+
+</pre>
+
+<p>All files are in one directory, and the file pointer tells the OS where the actual file data resides on disk.</p>
+
+<h2>Advantages</h2>
+<ul>
+    <li>Simple to implement</li>
+    <li>Easy to access file (no hierarchy to traverse)</li>
+</ul>
+
+<h2>Disadvantages</h2>
+<ul>
+    <li>File name conflicts</li>
+    <li>Difficult to manage for multiple users</li>
+    <li>Searching becomes slow with many files</li>
+    <li>No grouping or logical organization</li>
+</ul>
+<h1>Two-Level Directory Structure</h1>
+
+<h2>Definition</h2>
+<p>
+A two-level directory has one directory per user plus a master directory.
+</p>
+<ul>
+    <li><strong>Master directory:</strong> Keeps a list of all users.</li>
+    <li><strong>User directory:</strong> Each user has their own directory that contains only that user’s files.</li>
+</ul>
+<p>
+This solves the problem of name conflicts that occur in a single-level directory.  
+No more “file.txt” wars between users.
+</p>
+
+<h2>Structure</h2>
+<pre>
+Master Directory
+|
+|--- User1 Directory
+|     |--- file1
+|     |--- file2
+|
+|--- User2 Directory
+      |--- file1
+      |--- file3
+</pre>
+
+<h2>Textual Explanation</h2>
+<ul>
+    <li>The Master Directory acts like a table of users.</li>
+    <li>Each user has a separate User Directory.</li>
+    <li>Files of different users can have the same name because each user has an independent namespace.</li>
+</ul>
+
+<h2>Example</h2>
+<p>Suppose we have two users: Alice and Bob.</p>
+<ul>
+    <li>Alice has files: <code>report.txt</code>, <code>data.csv</code></li>
+    <li>Bob has files: <code>report.txt</code>, <code>summary.docx</code></li>
+</ul>
+
+<pre>
+Master Directory
+|
+|--- Alice
+|     |--- report.txt
+|     |--- data.csv
+|
+|--- Bob
+      |--- report.txt
+      |--- summary.docx
+</pre>
+
+<p>Both Alice and Bob can have <code>report.txt</code> without any conflict.</p>
+<p>Accessing a file requires first specifying the user, then the file.</p>
+
+<h2>Advantages</h2>
+<ul>
+    <li>Solves name conflict problem.</li>
+    <li>Keeps user files separate, easier management.</li>
+    <li>Simple to implement.</li>
+</ul>
+
+<h2>Disadvantages</h2>
+<ul>
+    <li>Users cannot share files directly.</li>
+    <li>Searching files across users requires scanning all user directories.</li>
+</ul>
+<h1>Tree-Structured Directory</h1>
+
+<p>A tree-structured directory organizes files and directories hierarchically.</p>
+<p>Each user or application can have subdirectories.</p>
+<p>Allows files with the same name in different directories.</p>
+<p>Provides pathnames to access files uniquely.</p>
+<p>It’s essentially a family tree for files, but less drama and no inheritance disputes.</p>
+
+<h2>Key Points</h2>
+
+<h3>Root Directory</h3>
+<ul>
+    <li>The topmost directory, usually <code>/</code> in Unix or <code>C:\</code> in Windows.</li>
+    <li>Every other directory is a descendant of root.</li>
+</ul>
+
+<h3>Subdirectories</h3>
+<ul>
+    <li>Directories under the root or other directories.</li>
+    <li>Can contain files or more directories.</li>
+</ul>
+
+<h3>Pathnames</h3>
+<ul>
+    <li><strong>Absolute path:</strong> Starts from root<br>
+        Example: <code>/home/Abhi/Documents/report.txt</code>
+    </li>
+    <li><strong>Relative path:</strong> Starts from current directory<br>
+        Example: <code>Documents/report.txt</code> (if you are in <code>/home/Abhi</code>)
+    </li>
+</ul>
+
+<h3>Unique File Identification</h3>
+<ul>
+    <li>Each file is uniquely identified by its path.</li>
+    <li>Same file name can exist in different directories without conflict.</li>
+</ul>
+
+<h2>Textual Diagram Example</h2>
+<pre>
+Root (/)
+│
+├── home/
+│   ├── Abhi/
+│   │   ├── Documents/
+│   │   │   ├── report.txt
+│   │   │   └── notes.doc
+│   │   └── Pictures/
+│   │       ├── pic1.jpg
+│   │       └── pic2.png
+│   └── Guest/
+│       └── readme.txt
+│
+└── etc/
+    ├── config.conf
+    └── hosts
+</pre>
+
+<h2>Accessing Files</h2>
+
+<h3>Absolute Path</h3>
+<p>
+report.txt → <code>/home/Abhi/Documents/report.txt</code>
+</p>
+
+<h3>Relative Path (if current directory is <code>/home/Abhi</code>)</h3>
+<p>
+Documents/notes.doc
+</p>
+
+<h2>Advantages</h2>
+<ul>
+    <li>Supports hierarchy for better organization.</li>
+    <li>Allows files with same names in different directories.</li>
+    <li>Easy to implement relative and absolute paths.</li>
+</ul>
+
+<h2>Disadvantages</h2>
+<ul>
+    <li>Traversal can be slow if tree is very deep.</li>
+    <li>Moving directories may require updating paths.</li>
+</ul>
+<h1>Acyclic Graph Directory (AGD)</h1>
+
+<h2>Definition</h2>
+<p>
+An Acyclic Graph Directory is an extension of a tree-structured directory that allows shared files or directories while avoiding cycles.
+</p>
+
+<h2>Why “acyclic”?</h2>
+<p>
+To prevent infinite loops when traversing directories.
+</p>
+
+<h2>Use Case</h2>
+<p>
+Multiple users or directories need access to the same file without duplicating it.
+</p>
+
+<h2>Features</h2>
+<ul>
+    <li><strong>Shared files/directories:</strong> A file can appear in multiple directories using links (hard links).</li>
+    <li><strong>No cycles:</strong> Traversing the directory graph will never loop endlessly.</li>
+    <li><strong>Parent pointers:</strong> Each node (file or directory) has pointers to its parent(s).</li>
+</ul>
+
+<h2>Components</h2>
+<ul>
+    <li><strong>Directory nodes:</strong> Store name, type, and pointers to files/subdirectories.</li>
+    <li><strong>File nodes:</strong> Store metadata and data pointers.</li>
+    <li><strong>Links:</strong> Multiple directories can point to the same file node.</li>
+</ul>
+
+<h2>Example Scenario</h2>
+<p>
+Suppose we have users Alice and Bob. Both want access to a shared file <code>report.txt</code>.
+</p>
+
+<h3>Textual Directory Structure (Tree → Acyclic Graph)</h3>
+<pre>
+Root
+│
+├── Alice
+│   ├── report.txt  ----┐
+│   └── notes.txt       │
+│                        │
+├── Bob                  │
+│   └── report.txt <────┘  (shared with Alice)
+│
+└── Public
+    └── report.txt <────┘  (also shared)
+</pre>
+
+<p>
+<code>report.txt</code> is shared among Alice, Bob, and Public.  
+Each directory has a pointer to the same file node, not a copy.  
+Traversal is safe because there are no cycles.
+</p>
+
+<h2>Advantages</h2>
+<ul>
+    <li>Saves disk space (no duplicate files).</li>
+    <li>Allows multiple users to access the same file easily.</li>
+    <li>Traversal algorithms remain safe.</li>
+</ul>
+
+<h2>Disadvantages</h2>
+<ul>
+    <li>More complex management for deletion and updates.</li>
+    <li>If one link deletes the file, the system must check if others still reference it.</li>
+    <li>Access rights must be carefully managed for shared files.</li>
+</ul>
+
+<h2>Textual Representation with Pointers</h2>
+<pre>
+Directory Node: Alice
+  └── File Pointer → report.txt (inode#101)
+
+Directory Node: Bob
+  └── File Pointer → report.txt (inode#101)
+
+Directory Node: Public
+  └── File Pointer → report.txt (inode#101)
+</pre>
+
+<p><code>inode#101</code> holds file metadata and data blocks.</p>
+<p>Deleting <code>Alice/report.txt</code> does not delete the actual file unless all pointers are gone.</p>
+<h1>1. What is Contiguous Allocation?</h1>
+
+<p>In contiguous allocation, each file occupies a set of consecutive blocks on the disk.<br>
+So, if a file needs 5 blocks, the OS finds 5 free blocks in a row and assigns them to the file.</p>
+
+<h2>Key Idea:</h2>
+<p>Start block + length = file location on disk</p>
+<p>Easy to calculate, simple to implement</p>
+
+<h2>Pros:</h2>
+<ul>
+    <li>Simple and easy to manage</li>
+    <li>Fast sequential access</li>
+    <li>Supports direct access easily (compute address: start + offset)</li>
+</ul>
+
+<h2>Cons:</h2>
+<ul>
+    <li>External fragmentation: free space may be scattered</li>
+    <li>File size must be known in advance, or resizing requires moving blocks</li>
+    <li>Wastes space if reserved blocks are not used</li>
+</ul>
+
+<h1>2. File Allocation Table (Conceptual)</h1>
+
+<p>We usually store in the File Control Block (FCB):</p>
+
+<table>
+    <tr><th>Attribute</th><th>Description</th></tr>
+    <tr><td>File name</td><td>"data.txt"</td></tr>
+    <tr><td>Start block</td><td>10</td></tr>
+    <tr><td>Length (blocks)</td><td>5</td></tr>
+</table>
+
+<p>So if someone asks where the 3rd block of the file is, we just do:</p>
+<pre>Block = Start + (3 - 1) = 12</pre>
+
+<h1>3. Example</h1>
+
+<p>Suppose:</p>
+<ul>
+    <li>Disk has 20 blocks numbered 0–19</li>
+    <li>Free blocks: all initially free</li>
+    <li>File A needs 5 blocks</li>
+    <li>File B needs 3 blocks</li>
+    <li>File C needs 4 blocks</li>
+</ul>
+
+<h2>Allocation Table:</h2>
+
+<table>
+    <tr><th>File</th><th>Start Block</th><th>Length</th><th>Blocks Allocated</th></tr>
+    <tr><td>A</td><td>0</td><td>5</td><td>0 1 2 3 4</td></tr>
+    <tr><td>B</td><td>5</td><td>3</td><td>5 6 7</td></tr>
+    <tr><td>C</td><td>8</td><td>4</td><td>8 9 10 11</td></tr>
+</table>
+
+<h2>Textual Disk Layout Diagram</h2>
+<pre>
+Disk Blocks: 0  1  2  3  4  5  6  7  8  9 10 11 12 13 14 15 16 17 18 19
+Files:       A  A  A  A  A  B  B  B  C  C  C  C  Free Free Free Free Free Free Free Free
+</pre>
+
+<p>Each file occupies consecutive blocks.<br>
+Any new file must find a large enough consecutive space.</p>
+
+<h2>Accessing Blocks</h2>
+
+<h3>Sequential Access:</h3>
+<p>Easy: just read blocks in order from start to start + length</p>
+
+<h3>Direct Access:</h3>
+<p>Compute the block address directly:</p>
+<pre>Address of nth block = Start Block + (n-1)</pre>
+
+<p>Example: To access the 3rd block of File C:</p>
+<pre>Start = 8, n = 3 → Block = 8 + 3 - 1 = 10</pre>
+
+<h2>Problems Illustrated</h2>
+<p>Suppose File D needs 6 blocks. After A, B, C are allocated:</p>
+<ul>
+    <li>Free blocks left = 12 13 14 15 16 17 18 19 → total 8 blocks</li>
+    <li>If 6 consecutive blocks are free → okay, allocate</li>
+    <li>If free blocks are scattered (say some blocks in middle are used) → cannot allocate easily → external fragmentation</li>
+</ul>
+
+
 </body>
 </html>

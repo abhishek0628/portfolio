@@ -4,8 +4,1780 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+     
+body {
+    font-family: "Segoe UI", Roboto, Arial, sans-serif;
+    background: #ffffff; /* white background */
+    color: #000000;      /* black text */
+    margin: 0;
+    padding: 20px;
+    line-height: 1.7;
+}
+
+/* Container */
+.container {
+    max-width: 1000px;
+    margin: auto;
+    padding: 40px;
+}
+
+/* Headings */
+h1, h2, h3 {
+    color: #000000; /* black headings */
+    margin-top: 30px;
+}
+
+h1 {
+    font-size: 2.5rem;
+    border-bottom: 2px solid #000000;
+    padding-bottom: 10px;
+}
+
+h2 {
+    font-size: 1.9rem;
+}
+
+h3 {
+    font-size: 1.4rem;
+    color: #000000;
+}
+
+/* Paragraphs and lists */
+p {
+    font-size: 1.05rem;
+    margin: 15px 0;
+}
+
+ul, ol {
+    margin-left: 25px;
+    margin-bottom: 15px;
+}
+
+li {
+    margin: 8px 0;
+}
+
+/* Boxes for examples or notes */
+.box, .example {
+    background: #f0f0f0; /* light gray background */
+    border-left: 5px solid #000000;
+    padding: 20px;
+    margin: 25px 0;
+    border-radius: 6px;
+    color: #000000;
+}
+
+/* Code and diagram blocks */
+.diagram, .code, pre {
+    background: #e5e5e5; /* slightly darker gray for code/diagrams */
+    padding: 20px;
+    font-family: "Courier New", monospace;
+    white-space: pre;
+    border-radius: 6px;
+    margin: 20px 0;
+    color: #000000;
+    overflow-x: auto;
+}
+
+code {
+    font-family: monospace;
+    background-color: #f4f4f4;
+    padding: 2px 4px;
+    border-radius: 4px;
+    color: #000000;
+}
+
+/* Tables */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+}
+
+table th, table td {
+    border: 1px solid #cccccc;
+    padding: 10px;
+    text-align: left;
+    color: #000000;
+}
+
+table th {
+    background: #e0e0e0;
+    color: #000000;
+}
+
+/* Highlighted text */
+.highlight {
+    color: #ff6600; /* orange for highlights */
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 20px;
+    color: #ffffff;
+    background-color: #000000; /* black footer background */
+    margin-top: 20px;
+}
+
+    </style>
 </head>
 <body>
-    dbms
+    <h1>Why DBMS Exists</h1>
+
+    <div class="point">
+        <h2>1. Data Consistency</h2>
+        <p>
+            A DBMS ensures that data stored across the system remains uniform and correct. 
+            Without it, multiple users or applications might create conflicting or mismatched data.
+        </p>
+    </div>
+
+    <div class="point">
+        <h2>2. Data Integrity</h2>
+        <p>
+            A DBMS enforces rules and constraints so that only valid and meaningful data is inserted into the database. 
+            This prevents errors and maintains correctness throughout the lifecycle of the data.
+        </p>
+    </div>
+
+    <div class="point">
+        <h2>3. Data Security</h2>
+        <p>
+            It provides controlled access to data through authentication, authorization, and permissions. 
+            Only authorized users can view or modify specific parts of the database, protecting sensitive information.
+        </p>
+    </div>
+
+    <div class="point">
+        <h2>4. Concurrency Control</h2>
+        <p>
+            A DBMS enables multiple users to access and modify data simultaneously without interfering with one another. 
+            It handles locking, synchronization, and isolation to prevent problems like lost updates or inconsistent reads.
+        </p>
+    </div>
+
+    <div class="point">
+        <h2>5. Backup and Recovery</h2>
+        <p>
+            In case of system failure, crash, or data corruption, the DBMS can restore the database to a consistent state. 
+            It maintains logs, checkpoints, and recovery procedures to ensure data safety.
+        </p>
+    </div>
+        <h1>External Level (View Level) – In Depth</h1>
+
+    <p>The <strong>External Level</strong> is the topmost level in the DBMS architecture. It’s all about what the user actually sees and interacts with. Think of it like the window on your phone—you see the app icons and content, but you don’t care how the OS manages memory behind the scenes.</p>
+
+    <h2>Purpose</h2>
+
+    <h3>User-Specific Views</h3>
+    <p>Each user or application may have a different view of the database depending on their role.</p>
+    <ul>
+        <li><strong>Student:</strong> sees only their personal grades.</li>
+        <li><strong>Teacher:</strong> sees grades of all students in their class.</li>
+        <li><strong>Admin:</strong> sees every grade, user info, and audit logs.</li>
+    </ul>
+
+    <h3>Data Security and Privacy</h3>
+    <p>By exposing only necessary data, sensitive information is protected.</p>
+    <ul>
+        <li>Example: Student can’t see another student’s grades.</li>
+    </ul>
+
+    <h3>Simplifies User Interaction</h3>
+    <p>Users interact with a simplified subset of the database rather than the full complex schema.</p>
+    <ul>
+        <li>Only relevant attributes and tables are visible.</li>
+    </ul>
+
+    <h2>Characteristics</h2>
+    <ul>
+        <li><strong>Multiple External Views:</strong> One database can have many external views. Each view corresponds to a specific user group or application.</li>
+        <li><strong>Derived or Virtual Data:</strong> External views can include derived data, e.g., total marks or averages, without storing it physically.</li>
+        <li><strong>Hides Complexity:</strong> Internal details of table structures, storage, or indexes are hidden. Users just see a clean, simple view.</li>
+    </ul>
+
+    <h2>Implementation</h2>
+    <h3>Views in SQL</h3>
+    <p>Most external views are implemented using SQL Views.</p>
+    <code>
+    CREATE VIEW student_view AS<br>
+    SELECT student_id, name, marks<br>
+    FROM student_marks;
+    </code>
+    <p>Only shows required columns.</p>
+
+    <h3>Access Control</h3>
+    <p>Permissions can be applied on views to restrict access.</p>
+    <code>
+    GRANT SELECT ON student_view TO student_role;
+    </code>
+
+    <h2>Advantages</h2>
+    <ul>
+        <li><strong>Security:</strong> Protects sensitive information.</li>
+        <li><strong>Simplicity:</strong> Users see only what they need.</li>
+        <li><strong>Customizability:</strong> Different users see different subsets of the data.</li>
+        <li><strong>Consistency:</strong> Changes in conceptual or internal schema can be hidden, as long as the view definition is updated.</li>
+    </ul>
+
+    <h2>Example in Real Life</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Role</th>
+                <th>Data Visible</th>
+                <th>Data Hidden</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Student</td>
+                <td>Name, Roll No, Marks</td>
+                <td>Other students’ marks, salaries</td>
+            </tr>
+            <tr>
+                <td>Teacher</td>
+                <td>Marks of all students in class</td>
+                <td>Salary info, student passwords</td>
+            </tr>
+            <tr>
+                <td>Admin</td>
+                <td>All data</td>
+                <td>Internal storage details</td>
+            </tr>
+        </tbody>
+    </table>
+<h1>Conceptual Level (Logical Level) – In Depth</h1>
+
+<p>The conceptual level is the global logical view of the entire database. It acts as a bridge between the <strong>external level</strong> (user views) and the <strong>internal level</strong> (physical storage), defining what the database <em>is</em> without worrying about how it’s stored.</p>
+
+<h2>Key Points</h2>
+
+<h3>1. Database-Wide View</h3>
+<ul>
+    <li>Represents the <strong>entire database</strong>, unlike the external level which is user-specific.</li>
+    <li>All entities, attributes, and relationships are defined <strong>once</strong> at this level.</li>
+</ul>
+
+<h3>2. Defines the Logical Structure</h3>
+<ul>
+    <li><strong>Entities:</strong> Main “things” the database stores (e.g., Student, Course, Employee).</li>
+    <li><strong>Attributes:</strong> Properties of entities (e.g., Student(Name, RollNo, DOB)).</li>
+    <li><strong>Relationships:</strong> Associations between entities (e.g., Enrolls(Student, Course)).</li>
+    <li><strong>Constraints:</strong> Rules for data consistency:
+        <ul>
+            <li>Primary key: Unique identifier for an entity.</li>
+            <li>Foreign key: Enforces referential integrity.</li>
+            <li>Domain constraints: Type, range, or format of attributes.</li>
+            <li>Entity integrity: Primary key cannot be null.</li>
+            <li>Referential integrity: Foreign key must match primary key in referenced table.</li>
+        </ul>
+    </li>
+</ul>
+
+<h3>3. Hides Physical Storage Details</h3>
+<ul>
+    <li>Users and applications don’t know how data is physically stored (heap files, B+ trees, indexes).</li>
+    <li>Physical storage can change without affecting the conceptual level.</li>
+</ul>
+
+<h3>4. Supports Multiple External Views</h3>
+<ul>
+    <li>External views are mapped to the logical schema.</li>
+    <li>Changes to an external view don’t require changing the conceptual level.</li>
+</ul>
+
+<h3>5. Single Source of Truth</h3>
+<ul>
+    <li>All applications and users refer to this central schema.</li>
+    <li>Logical changes (like adding entities or relationships) are made here.</li>
+</ul>
+
+<h2>Example: University Database</h2>
+
+<h3>Entities</h3>
+<table>
+    <tr>
+        <th>Entity</th>
+        <th>Attributes</th>
+    </tr>
+    <tr>
+        <td>Student</td>
+        <td>StudentID, Name, DOB</td>
+    </tr>
+    <tr>
+        <td>Course</td>
+        <td>CourseID, CourseName</td>
+    </tr>
+    <tr>
+        <td>Instructor</td>
+        <td>InstructorID, Name, Dept</td>
+    </tr>
+</table>
+
+<h3>Relationships</h3>
+<table>
+    <tr>
+        <th>Relationship</th>
+        <th>Type</th>
+    </tr>
+    <tr>
+        <td>Enroll(StudentID, CourseID)</td>
+        <td>Many-to-Many</td>
+    </tr>
+    <tr>
+        <td>Teaches(InstructorID, CourseID)</td>
+        <td>One-to-Many</td>
+    </tr>
+</table>
+
+<h3>Constraints</h3>
+<ul>
+    <li>StudentID → Primary Key</li>
+    <li>CourseID → Primary Key</li>
+    <li>InstructorID → Primary Key</li>
+    <li>Enroll.StudentID → Foreign Key referencing Student.StudentID</li>
+    <li>Enroll.CourseID → Foreign Key referencing Course.CourseID</li>
+</ul>
+
+<p>Applications/users only see their own data (<strong>external level</strong>), while the DBMS maintains the full logical structure (<strong>conceptual level</strong>).</p>
+
+<h2>Why it Matters</h2>
+<ul>
+    <li><strong>Logical Data Independence:</strong> Modify tables, attributes, or relationships without breaking user applications.</li>
+    <li><strong>Centralized Control:</strong> Easier enforcement of constraints and data integrity.</li>
+    <li><strong>Query Optimization:</strong> DBMS uses the conceptual schema to generate efficient access plans.</li>
+</ul>
+<h1>Internal Level (Physical Level) – In Depth</h1>
+    <p>The internal level defines how data is physically stored and accessed on storage media (like HDDs, SSDs). It’s completely hidden from users and even most developers; it’s DBMS territory.</p>
+
+    <h2>1. Physical Storage of Data</h2>
+    <ul>
+        <li>Data is stored in <strong>files on disk</strong>, divided into <strong>pages/blocks</strong>.</li>
+        <li>Each page stores a certain number of <strong>rows (tuples)</strong>.</li>
+        <li>Pages are the unit of <strong>I/O operations</strong>; DBMS reads/writes in page-sized chunks.</li>
+        <li><strong>Row layout</strong> can include:
+            <ul>
+                <li>Fixed-length fields (integers, dates)</li>
+                <li>Variable-length fields (VARCHAR)</li>
+                <li>Null indicators</li>
+                <li>Pointers for internal indexing</li>
+            </ul>
+        </li>
+        <li>Example: A table row might take <code>100 bytes</code>; multiple rows are packed into a <code>4 KB page</code>.</li>
+    </ul>
+
+    <h2>2. Index Structures</h2>
+    <ul>
+        <li><strong>B+ Trees:</strong>
+            <ul>
+                <li>Balanced tree; keeps data sorted.</li>
+                <li>Leaf nodes store actual data or pointers to data.</li>
+                <li>Supports range queries efficiently.</li>
+            </ul>
+        </li>
+        <li><strong>Hashing:</strong>
+            <ul>
+                <li>Maps key values to a location using a hash function.</li>
+                <li>Best for equality searches.</li>
+                <li>Collision handling: chaining or open addressing.</li>
+            </ul>
+        </li>
+        <li><strong>Bitmap Indexes:</strong>
+            <ul>
+                <li>Efficient for columns with low cardinality (few unique values).</li>
+                <li>Uses bit vectors for presence/absence of values.</li>
+            </ul>
+        </li>
+    </ul>
+
+    <h2>3. Storage Optimization</h2>
+    <ul>
+        <li><strong>Compression:</strong> Stores repetitive data efficiently to reduce disk space.</li>
+        <li><strong>Clustering:</strong> Stores related rows together to minimize disk reads.</li>
+        <li><strong>Partitioning:</strong> Splits a table across files/disks for faster access or maintenance.</li>
+    </ul>
+
+    <h2>4. Physical Access Methods</h2>
+    <ul>
+        <li><strong>Sequential Scan:</strong> Reads pages one by one (slow, simple).</li>
+        <li><strong>Indexed Access:</strong> Uses indexes to jump directly to relevant rows.</li>
+        <li><strong>Direct Access (Hashing):</strong> Computes the address of the data directly via a hash function.</li>
+    </ul>
+
+    <h2>5. Data Integrity & Recovery</h2>
+    <ul>
+        <li>DBMS stores <strong>transaction logs, checkpoints, and backup metadata</strong>.</li>
+        <li>Ensures data can be reconstructed even if hardware fails.</li>
+        <li>Handles <strong>concurrency control</strong> at the page/row level.</li>
+    </ul>
+
+    <h2>Example in Practice</h2>
+    <p>Suppose you have a <strong>Students</strong> table:</p>
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Marks</th>
+        </tr>
+        <tr>
+            <td>1</td>
+            <td>Abhi</td>
+            <td>95</td>
+        </tr>
+    </table>
+    <p>Internally:</p>
+    <ul>
+        <li>Stored in a <code>4 KB page</code> on disk.</li>
+        <li>ID field is fixed-length (4 bytes), Name is variable-length, Marks is 2 bytes.</li>
+        <li>A B+ tree index on ID points directly to the page containing the row.</li>
+        <li>Compression reduces repeated strings (“CS” for department) into code.</li>
+    </ul>
+  <h1>Why it exists</h1>
+
+    <h2>1. Data Abstraction (Hiding Complexity)</h2>
+    <p>Data abstraction hides internal details of the database from users and developers so they only see what they need.</p>
+
+    <h3>Why it Matters</h3>
+    <ul>
+        <li>Without abstraction, every user must know physical storage details (pages, blocks, files).</li>
+        <li>Different users may need different views of the same database.</li>
+        <li>Developers can operate on a logical model instead of raw storage.</li>
+    </ul>
+
+    <h3>Levels of Data Abstraction</h3>
+    <ul>
+        <li><strong>Physical Level:</strong> How data is stored on disk (files, indexes, pages).<br>
+            <div class="example">Example: Row 45 of Employee table is stored in page 7, block 3 of disk 2.</div>
+        </li>
+        <li><strong>Logical (Conceptual) Level:</strong> Defines entities, attributes, relationships, constraints.<br>
+            <div class="example">Example: Employee table has attributes Emp_ID, Name, Salary. Department relationships defined.</div>
+        </li>
+        <li><strong>View (External) Level:</strong> What users/applications actually see.<br>
+            <div class="example">Example: HR sees Employee with Salary; Payroll sees Employee with Bank_Account but not Personal_Address.</div>
+        </li>
+    </ul>
+
+    <h3>Benefits</h3>
+    <ul>
+        <li>Applications work independently of physical details.</li>
+        <li>Simplifies development and prevents mistakes.</li>
+    </ul>
+
+    <h2>2. Data Independence (Freedom to Change Without Breaking Things)</h2>
+    <p>Data independence allows changes at one level without affecting other levels.</p>
+
+    <h3>a) Logical Data Independence</h3>
+    <p>Ability to change the logical/conceptual schema without affecting external/user views.</p>
+    <ul>
+        <li>Why: Database structures evolve over time.</li>
+        <li>Examples:
+            <div class="example">Adding Date_of_Birth column → existing reports and views remain valid.</div>
+            <div class="example">Changing Department relationship 1:1 → 1:N → external views unaffected.</div>
+        </li>
+    </ul>
+
+    <h3>b) Physical Data Independence</h3>
+    <p>Ability to change physical storage without affecting logical/conceptual schema.</p>
+    <ul>
+        <li>Why: Storage strategies improve over time.</li>
+        <li>Examples:
+            <div class="example">Switch from heap files to B+ tree indexes → queries stay the same.</div>
+            <div class="example">Move data from HDD to SSD → applications query Employee the same way.</div>
+        </li>
+    </ul>
+
+    <h3>Importance</h3>
+    <ul>
+        <li>Logical independence protects applications from schema changes.</li>
+        <li>Physical independence protects applications from storage/optimization changes.</li>
+        <li>Together, they improve flexibility, maintainability, and reduce maintenance cost.</li>
+    </ul>
+
+    <h2>In Short</h2>
+    <p>The three-level architecture exists to separate what the user sees from how data is stored, giving:</p>
+    <ul>
+        <li><strong>Abstraction:</strong> Users don’t need low-level details.</li>
+        <li><strong>Independence:</strong> Changes at one level don’t break other levels.</li>
+    </ul>
+     <h2>Hierarchical Model</h2>
+    <h3>Structure:</h3>
+    <p>Tree-like (parent → child relationships).</p>
+
+    <h3>How it Works:</h3>
+    <ul>
+        <li>Each child has only one parent.</li>
+        <li>Data is organized in levels, starting from a single root.</li>
+    </ul>
+
+    <h3>Pros:</h3>
+    <ul>
+        <li>Fast for simple queries because the path from root to child is direct.</li>
+        <li>Intuitive and easy to understand for naturally hierarchical data (e.g., folders, org charts).</li>
+    </ul>
+
+    <h3>Cons:</h3>
+    <ul>
+        <li>Difficult to reorganize or modify the hierarchy once established.</li>
+        <li>Redundancy occurs if a child logically belongs to multiple parents.</li>
+    </ul>
+
+    <h3>Example:</h3>
+    <div class="example">
+        Company Database<br>
+        ├─ Departments<br>
+        │   ├─ Employee A<br>
+        │   └─ Employee B<br>
+        └─ Departments<br>
+            ├─ Employee C<br>
+            └─ Employee D
+    </div>
+
+    <h2>Network Model</h2>
+    <h3>Structure:</h3>
+    <p>Graph-based. Data is stored as records (nodes) connected via links (edges).</p>
+
+    <h3>How it Works:</h3>
+    <ul>
+        <li>A child can have multiple parents.</li>
+        <li>Navigation is done using pointers or references between records.</li>
+    </ul>
+
+    <h3>Pros:</h3>
+    <ul>
+        <li>Handles many-to-many relationships naturally.</li>
+        <li>Flexible: can represent complex structures.</li>
+        <li>Efficient for queries if navigation paths are known.</li>
+    </ul>
+
+    <h3>Cons:</h3>
+    <ul>
+        <li>Complex implementation compared to hierarchical or relational models.</li>
+        <li>Queries require manual navigation of pointers, making them harder to write and maintain.</li>
+    </ul>
+
+    <h3>Example:</h3>
+    <div class="example">
+        University Database:<br>
+        Students ↔ Courses<br>
+        Student1 ────> CourseA<br>
+               │<br>
+               └──> CourseB<br>
+        Student2 ────> CourseA
+    </div>
+
+    <h2>Object-Based Model</h2>
+    <h3>Structure:</h3>
+    <p>Data is represented as objects, similar to OOP languages. Each object has:</p>
+    <ul>
+        <li><strong>Attributes:</strong> Data members (like variables)</li>
+        <li><strong>Methods:</strong> Functions or operations the object can perform</li>
+    </ul>
+
+    <h3>How it Works:</h3>
+    <ul>
+        <li>Objects are stored directly in the database.</li>
+        <li>Relationships can be represented as references or pointers between objects.</li>
+        <li>Supports inheritance (e.g., "Vehicle" can be a parent of "Car" and "Bike").</li>
+    </ul>
+
+    <h3>Advantages:</h3>
+    <ul>
+        <li>Handles complex data types (images, videos, spatial data).</li>
+        <li>Encapsulation: data and methods are together, logic moves with the data.</li>
+        <li>Integrates with object-oriented programming languages.</li>
+    </ul>
+
+    <h3>Disadvantages:</h3>
+    <ul>
+        <li>Not as widely supported as relational databases.</li>
+        <li>Queries can be harder because SQL is table-based, not object-based.</li>
+        <li>Sometimes requires special query languages like OQL.</li>
+    </ul>
+
+    <h3>Example:</h3>
+    <div class="example">
+        Class: Car<br>
+        Attributes: color, engineType, numDoors<br>
+        Methods: start(), stop(), accelerate()<br>
+        Database could store multiple Car objects, each with its own attributes and behavior.
+    </div>
+    <h1>Relational Model Basics</h1>
+
+<h2>1. Table (Relation)</h2>
+<p>A table is a collection of rows and columns.</p>
+<ul>
+    <li><strong>Rows</strong> represent individual records (tuples).</li>
+    <li><strong>Columns</strong> represent attributes (fields).</li>
+</ul>
+
+<h3>Example: Students Table</h3>
+<table>
+    <tr>
+        <th>StudentID</th>
+        <th>Name</th>
+        <th>Dept</th>
+        <th>Age</th>
+    </tr>
+    <tr>
+        <td>101</td>
+        <td>Abhishek</td>
+        <td>CSE</td>
+        <td>20</td>
+    </tr>
+    <tr>
+        <td>102</td>
+        <td>Priya</td>
+        <td>ECE</td>
+        <td>21</td>
+    </tr>
+    <tr>
+        <td>103</td>
+        <td>Rahul</td>
+        <td>ME</td>
+        <td>22</td>
+    </tr>
+</table>
+
+<h2>2. Tuple</h2>
+<p>A tuple is a single row in a table. Example: <code>(101, Abhishek, CSE, 20)</code></p>
+
+<h2>3. Attribute</h2>
+<p>An attribute is a column in a table. Each attribute has a <strong>domain</strong> of permissible values.</p>
+<p>Example: Attribute <code>Age</code>, Domain: <code>{0, 1, 2, …, 120}</code></p>
+
+<h2>4. Domain</h2>
+<p>Defines all possible values an attribute can have. Ensures data integrity.</p>
+<p>Example: Attribute <code>Dept</code>, Domain: <code>{CSE, ECE, ME, CE}</code></p>
+
+<h2>5. Relation Schema vs Relation Instance</h2>
+<ul>
+    <li><strong>Relation Schema:</strong> Defines structure (attributes + domains). <br>
+        Example: <code>Students(StudentID, Name, Dept, Age)</code>
+    </li>
+    <li><strong>Relation Instance:</strong> Actual data at a point in time. <br>
+        Example: The three rows in the Students table above.
+    </li>
+</ul>
+
+<h2>6. Properties of Relational Tables</h2>
+<ul>
+    <li>No duplicate tuples.</li>
+    <li>Each column has a unique name.</li>
+    <li>Values are atomic.</li>
+    <li>Order of rows and columns is not significant.</li>
+</ul>
+
+<h1>Keys in Relational Model</h1>
+
+<h2>1. Super Key</h2>
+<p>Any set of attributes that uniquely identifies a tuple.</p>
+<p>Example: <code>{StudentID}</code> or <code>{StudentID, Name}</code></p>
+
+<h2>2. Candidate Key</h2>
+<p>Minimal super key (cannot remove any attribute without losing uniqueness).</p>
+<p>Example: <code>{StudentID}</code>, <code>{Email}</code></p>
+
+<h2>3. Primary Key (PK)</h2>
+<p>Chosen candidate key to uniquely identify tuples. Cannot be NULL.</p>
+<p>Example: <code>StudentID</code></p>
+
+<h3>Composite Primary Key</h3>
+<p>Example: <code>Enrollment(StudentID, CourseID)</code></p>
+
+<h2>4. Alternate Key</h2>
+<p>Candidate key not selected as primary key. Example: <code>Email</code></p>
+
+<h2>5. Foreign Key (FK)</h2>
+<p>References primary key in another table. Enforces relationships.</p>
+<pre>
+Table: Students(StudentID, Name, DeptID)
+Table: Departments(DeptID, DeptName)
+Students.DeptID → FK referencing Departments.DeptID
+</pre>
+
+<h2>6. Unique Key</h2>
+<p>Ensures column(s) have unique values. Can be NULL.</p>
+
+<h2>7. Composite Key</h2>
+<p>Combining 2+ attributes to uniquely identify a tuple.</p>
+<p>Example: <code>Enrollment(StudentID, CourseID)</code> PK</p>
+
+<h2>8. Summary Table of Keys</h2>
+<table>
+    <tr>
+        <th>Key Type</th>
+        <th>Description</th>
+        <th>Can Be NULL?</th>
+        <th>Single/Composite</th>
+    </tr>
+    <tr>
+        <td>Super Key</td>
+        <td>Uniquely identifies a tuple</td>
+        <td>Yes</td>
+        <td>Single/Composite</td>
+    </tr>
+    <tr>
+        <td>Candidate Key</td>
+        <td>Minimal super key</td>
+        <td>No</td>
+        <td>Single/Composite</td>
+    </tr>
+    <tr>
+        <td>Primary Key</td>
+        <td>Chosen candidate key</td>
+        <td>No</td>
+        <td>Single/Composite</td>
+    </tr>
+    <tr>
+        <td>Alternate Key</td>
+        <td>Candidate key not selected as PK</td>
+        <td>No</td>
+        <td>Single/Composite</td>
+    </tr>
+    <tr>
+        <td>Foreign Key</td>
+        <td>References PK in another table</td>
+        <td>Yes</td>
+        <td>Single/Composite</td>
+    </tr>
+    <tr>
+        <td>Unique Key</td>
+        <td>Ensures uniqueness (not PK)</td>
+        <td>Yes</td>
+        <td>Single/Composite</td>
+    </tr>
+    <tr>
+        <td>Composite Key</td>
+        <td>Made of multiple attributes</td>
+        <td>Depends</td>
+        <td>Composite</td>
+    </tr>
+</table>
+
+<h1>Integrity Constraints</h1>
+
+<h2>1. Domain Constraints</h2>
+<p>Attribute values must be from defined domain.</p>
+<pre>
+CREATE TABLE Students (
+    StudentID INT,
+    Name VARCHAR(50),
+    Age INT CHECK (Age >= 0 AND Age <= 120)
+);
+</pre>
+
+<h2>2. Entity Integrity</h2>
+<p>Primary key cannot be NULL.</p>
+<pre>
+CREATE TABLE Students (
+    StudentID INT PRIMARY KEY,
+    Name VARCHAR(50)
+);
+</pre>
+
+<h2>3. Referential Integrity</h2>
+<p>Foreign key values must exist in referenced PK or be NULL.</p>
+<pre>
+CREATE TABLE Departments (
+    DeptID INT PRIMARY KEY,
+    DeptName VARCHAR(50)
+);
+
+CREATE TABLE Students (
+    StudentID INT PRIMARY KEY,
+    Name VARCHAR(50),
+    DeptID INT,
+    FOREIGN KEY (DeptID) REFERENCES Departments(DeptID)
+);
+</pre>
+<p>Actions on Delete/Update: CASCADE, SET NULL, RESTRICT/NO ACTION</p>
+
+<h2>4. Key Constraints</h2>
+<p>Ensures uniqueness:</p>
+<ul>
+    <li>PRIMARY KEY</li>
+    <li>CANDIDATE KEY</li>
+    <li>UNIQUE</li>
+</ul>
+
+<h2>5. Additional Constraints</h2>
+<ul>
+    <li><strong>NOT NULL:</strong> Attribute must have value</li>
+    <li><strong>CHECK:</strong> Custom rules</li>
+    <li><strong>DEFAULT:</strong> Automatic value if none provided</li>
+</ul>
+<pre>
+CREATE TABLE Students (
+    StudentID INT PRIMARY KEY,
+    Name VARCHAR(50) NOT NULL,
+    Age INT DEFAULT 18 CHECK (Age >= 0)
+);
+</pre>
+
+<h2>Summary Table of Integrity Constraints</h2>
+<table>
+    <tr>
+        <th>Constraint Type</th>
+        <th>What it Ensures</th>
+        <th>SQL Keyword / Example</th>
+    </tr>
+    <tr>
+        <td>Domain Constraint</td>
+        <td>Valid values for an attribute</td>
+        <td>CHECK, VARCHAR, INT</td>
+    </tr>
+    <tr>
+        <td>Entity Integrity</td>
+        <td>Primary key not NULL</td>
+        <td>PRIMARY KEY</td>
+    </tr>
+    <tr>
+        <td>Referential Integrity</td>
+        <td>Foreign key references valid row</td>
+        <td>FOREIGN KEY ... REFERENCES ...</td>
+    </tr>
+    <tr>
+        <td>Key Constraint</td>
+        <td>Uniqueness of tuples</td>
+        <td>PRIMARY KEY, UNIQUE</td>
+    </tr>
+    <tr>
+        <td>Not Null</td>
+        <td>Attribute must have value</td>
+        <td>NOT NULL</td>
+    </tr>
+    <tr>
+        <td>Default</td>
+        <td>Automatic value if not provided</td>
+        <td>DEFAULT 0</td>
+    </tr>
+</table>
+ <h1>Relational Algebra (RA) In Depth</h1>
+    <p>Relational Algebra is a procedural query language: you tell the DBMS what operations to perform and in what order, not how to execute them.</p>
+    <ul>
+        <li>Works on relations (tables)</li>
+        <li>Produces a relation as a result</li>
+        <li>Foundation for SQL <code>SELECT</code> statements</li>
+    </ul>
+
+    <h2>1. Basic Operations (Set-Oriented)</h2>
+    <h3>a) Selection (σ)</h3>
+    <p>Purpose: Pick rows that satisfy a condition</p>
+    <p>Notation: <code>σ_condition(Relation)</code></p>
+    <div class="example">
+        Example: Get all CSE students<br>
+        <code>σ Dept='CSE' (Students)</code>
+    </div>
+
+    <h3>b) Projection (π)</h3>
+    <p>Purpose: Pick specific columns</p>
+    <p>Notation: <code>π_column_list(Relation)</code></p>
+    <div class="example">
+        Example: Names of all students<br>
+        <code>π Name (Students)</code>
+    </div>
+
+    <h3>c) Union ( ∪ )</h3>
+    <p>Purpose: Combine tuples from two relations with same attributes</p>
+    <p>Condition: Relations must be union-compatible (same number of columns and domains)</p>
+    <div class="example">
+        Example: Students in CSE ∪ Students in ECE
+    </div>
+
+    <h3>d) Set Difference ( − )</h3>
+    <p>Purpose: Tuples in one relation but not in another</p>
+    <div class="example">
+        Example: Students not in CSE<br>
+        <code>Students − σ Dept='CSE' (Students)</code>
+    </div>
+
+    <h3>e) Intersection ( ∩ )</h3>
+    <p>Purpose: Tuples common to two relations</p>
+    <div class="example">
+        Example: Students enrolled in both CourseA and CourseB
+    </div>
+
+    <h3>f) Cartesian Product ( × )</h3>
+    <p>Purpose: Combine every tuple of one relation with every tuple of another</p>
+    <div class="example">
+        Example: Students × Courses → All possible student-course pairs<br>
+        Use: Often as a step before join
+    </div>
+
+    <h2>2. Join Operations (Combining Tables)</h2>
+    <h3>a) Theta Join (θ-join)</h3>
+    <p>Combines two relations based on a condition</p>
+    <p>Notation: <code>R ⨝_condition S</code></p>
+    <div class="example">
+        Example:<br>
+        <code>Students ⨝ Students.Dept = Departments.DeptName Departments</code>
+    </div>
+
+    <h3>b) Equi-Join</h3>
+    <p>Special case of theta join where the condition is equality</p>
+    <p>Same as most foreign key joins in SQL</p>
+
+    <h3>c) Natural Join</h3>
+    <p>Joins two tables automatically using common attributes and removes duplicate columns</p>
+    <div class="example">
+        Example:<br>
+        <code>Students ⨝ Departments (on Dept column)</code>
+    </div>
+
+    <h3>d) Outer Join</h3>
+    <p>Includes tuples with no match in the other table</p>
+    <ul>
+        <li>Left Outer Join</li>
+        <li>Right Outer Join</li>
+        <li>Full Outer Join</li>
+    </ul>
+
+    <h2>3. Division ( ÷ )</h2>
+    <p>Used when you want tuples that are related to all tuples in another relation</p>
+    <div class="example">
+        Example: Find students who have taken all courses offered by CSE<br>
+        <code>Students ÷ Courses_CSE</code>
+    </div>
+
+    <h2>4. Renaming ( ρ )</h2>
+    <p>Give a temporary name to a relation or attributes</p>
+    <p>Notation: <code>ρ new_name(Relation)</code></p>
+    <p>Helps in complex queries, especially with joins</p>
+
+    <h2>5. Example: Combining Operations</h2>
+    <p>Question: Find the names of students in CSE department enrolled in ‘DBMS’ course.</p>
+    <p>Relations:</p>
+    <ul>
+        <li>Students(StudentID, Name, Dept)</li>
+        <li>Enrollment(StudentID, CourseID)</li>
+        <li>Courses(CourseID, CourseName)</li>
+    </ul>
+
+    <ol>
+        <li>Select DBMS course<br>
+            <code>σ CourseName='DBMS'(Courses)</code>
+        </li>
+        <li>Join with Enrollment<br>
+            <code>Enrollment ⨝ Courses.CourseID = Enrollment.CourseID (σ CourseName='DBMS'(Courses))</code>
+        </li>
+        <li>Join with Students in CSE<br>
+            <code>σ Dept='CSE'(Students) ⨝ Enrollment ⨝ Courses...</code>
+        </li>
+        <li>Project Names<br>
+            <code>π Name(...)</code>
+        </li>
+    </ol>
+    <h1>Normalization in Depth (DBMS)</h1>
+    <p>Normalization is a process in DBMS to organize tables and reduce redundancy, avoiding anomalies in insert, update, and delete operations.</p>
+    <p>We go step by step, each step is called a normal form (NF). Higher NFs usually build on lower NFs.</p>
+
+    <h2>1NF – First Normal Form</h2>
+    <p><strong>Rule:</strong> Each column must contain atomic values, and each record must be unique. No repeating groups or arrays. Each table must have a primary key.</p>
+    <div class="example">
+        <strong>Not 1NF:</strong><br>
+        StudentID | Name | Courses<br>
+        101 | Abhi | CSE, Math<br>
+        102 | Ravi | Physics
+    </div>
+    <div class="example">
+        <strong>Convert to 1NF:</strong><br>
+        StudentID | Name | Course<br>
+        101 | Abhi | CSE<br>
+        101 | Abhi | Math<br>
+        102 | Ravi | Physics<br>
+        <span class="check">✅ Atomic values, unique rows</span>
+    </div>
+
+    <h2>2NF – Second Normal Form</h2>
+    <p><strong>Rule:</strong> Must be in 1NF and every non-key attribute must depend on the whole primary key, not part of it.</p>
+    <div class="example">
+        <strong>1NF table:</strong><br>
+        StudentID | Course | Instructor<br>
+        101 | CSE | Prof A<br>
+        101 | Math | Prof B<br>
+        102 | Physics | Prof C<br>
+        <em>Primary Key = (StudentID, Course)</em>
+    </div>
+    <div class="example">
+        <strong>Convert to 2NF:</strong><br>
+        <em>Table 1: Student-Course</em><br>
+        StudentID | Course<br>
+        101 | CSE<br>
+        101 | Math<br>
+        102 | Physics<br><br>
+        <em>Table 2: Course-Instructor</em><br>
+        Course | Instructor<br>
+        CSE | Prof A<br>
+        Math | Prof B<br>
+        Physics | Prof C<br>
+        <span class="check">✅ No partial dependency</span>
+    </div>
+
+    <h2>3NF – Third Normal Form</h2>
+    <p><strong>Rule:</strong> Must be in 2NF, and no transitive dependency exists.</p>
+    <div class="example">
+        <strong>Example:</strong><br>
+        StudentID | Course | Instructor | Dept<br>
+        101 | CSE | Prof A | CSE<br>
+        102 | Math | Prof B | Math
+    </div>
+    <div class="example">
+        <strong>Convert to 3NF:</strong><br>
+        <em>Table 1: Student-Course</em><br>
+        StudentID | Course<br>
+        101 | CSE<br>
+        102 | Math<br><br>
+        <em>Table 2: Course-Instructor</em><br>
+        Course | Instructor<br>
+        CSE | Prof A<br>
+        Math | Prof B<br><br>
+        <em>Table 3: Instructor-Dept</em><br>
+        Instructor | Dept<br>
+        Prof A | CSE<br>
+        Prof B | Math<br>
+        <span class="check">✅ No transitive dependency left</span>
+    </div>
+
+    <h2>BCNF – Boyce-Codd Normal Form</h2>
+    <p><strong>Rule:</strong> Every determinant must be a candidate key.</p>
+    <div class="example">
+        <strong>Example:</strong><br>
+        Course | Instructor | Room<br>
+        CSE | Prof A | R101<br>
+        Math | Prof B | R102<br>
+        <em>Instructor → Room violates BCNF</em>
+    </div>
+    <div class="example">
+        <strong>Convert to BCNF:</strong><br>
+        <em>Table 1: Instructor-Room</em><br>
+        Instructor | Room<br>
+        Prof A | R101<br>
+        Prof B | R102<br><br>
+        <em>Table 2: Course-Instructor</em><br>
+        Course | Instructor<br>
+        CSE | Prof A<br>
+        Math | Prof B<br>
+        <span class="check">✅ BCNF achieved</span>
+    </div>
+
+    <h2>4NF – Fourth Normal Form</h2>
+    <p><strong>Rule:</strong> Must be in BCNF and have no multi-valued dependencies.</p>
+    <div class="example">
+        <strong>Example:</strong><br>
+        StudentID | Hobby | Language<br>
+        101 | Music | English<br>
+        101 | Sports | English<br>
+        101 | Music | Spanish<br>
+        101 | Sports | Spanish
+    </div>
+    <div class="example">
+        <strong>Convert to 4NF:</strong><br>
+        <em>Table 1: Student-Hobby</em><br>
+        StudentID | Hobby<br>
+        101 | Music<br>
+        101 | Sports<br><br>
+        <em>Table 2: Student-Language</em><br>
+        StudentID | Language<br>
+        101 | English<br>
+        101 | Spanish<br>
+        <span class="check">✅ Multi-valued dependencies removed</span>
+    </div>
+
+    <h2>5NF – Fifth Normal Form / Project-Join Normal Form</h2>
+    <p><strong>Rule:</strong> Must be in 4NF and cannot be further decomposed without losing data. Deals with join dependencies.</p>
+    <div class="example">
+        <strong>Example:</strong><br>
+        Supplier | Part | Project<br>
+        S1 | P1 | J1<br>
+        S1 | P2 | J1<br>
+        S2 | P1 | J1
+    </div>
+    <div class="example">
+        <strong>Convert to 5NF:</strong><br>
+        <em>Tables:</em><br>
+        Supplier-Part<br>
+        Supplier-Project<br>
+        Part-Project<br>
+        <span class="check">✅ No redundancy after joins</span>
+    </div>
+
+    <h2>TL;DR Table</h2>
+    <table>
+        <tr>
+            <th>NF</th>
+            <th>Rule</th>
+            <th>Fixes</th>
+        </tr>
+        <tr>
+            <td>1NF</td>
+            <td>Atomic values</td>
+            <td>Repeating groups → rows</td>
+        </tr>
+        <tr>
+            <td>2NF</td>
+            <td>No partial dependency</td>
+            <td>Split table based on composite key</td>
+        </tr>
+        <tr>
+            <td>3NF</td>
+            <td>No transitive dependency</td>
+            <td>Split attributes dependent indirectly</td>
+        </tr>
+        <tr>
+            <td>BCNF</td>
+            <td>Every determinant is a candidate key</td>
+            <td>Resolve dependency on non-key</td>
+        </tr>
+        <tr>
+            <td>4NF</td>
+            <td>No multi-valued dependency</td>
+            <td>Split independent multi-valued columns</td>
+        </tr>
+        <tr>
+            <td>5NF</td>
+            <td>No join dependency violations</td>
+            <td>Decompose to avoid redundancy</td>
+        </tr>
+    </table>
+    <h1>Transactions & Concurrency Control</h1>
+
+    <h2>1. Transactions</h2>
+    <p>A transaction is a logical unit of work that must be fully completed or fully rolled back.</p>
+
+    <h3>ACID Properties</h3>
+    <ul>
+        <li><strong>Atomicity:</strong> All or nothing. Example: Transfer $100 from A to B → both debit and credit must succeed.</li>
+        <li><strong>Consistency:</strong> Moves database from one valid state to another. Example: Total money in system remains same after transfer.</li>
+        <li><strong>Isolation:</strong> Transactions appear independent. Example: Concurrent transfers don’t interfere.</li>
+        <li><strong>Durability:</strong> Committed changes survive crashes. Example: Changes persist even if server dies after commit.</li>
+    </ul>
+
+    <h2>2. Concurrency Problems</h2>
+    <ul>
+        <li><strong>Lost Update:</strong> Two transactions update the same data → one update lost.</li>
+        <li><strong>Dirty Read:</strong> Transaction reads uncommitted changes of another.</li>
+        <li><strong>Unrepeatable Read:</strong> Data changes between two reads in the same transaction.</li>
+        <li><strong>Phantom Read:</strong> A set of rows changes due to another transaction.</li>
+    </ul>
+
+    <h2>3. Locks</h2>
+    <p>Locks restrict access to database objects to ensure consistency.</p>
+
+    <h3>A. Based on Access Mode</h3>
+    <ul>
+        <li><strong>Shared Lock (S-Lock / Read Lock):</strong> Multiple transactions can read concurrently.</li>
+        <li><strong>Exclusive Lock (X-Lock / Write Lock):</strong> Only one transaction can read/write.</li>
+        <li><strong>Update Lock (U-Lock):</strong> Starts as shared, converts to exclusive when writing.</li>
+    </ul>
+
+    <h3>B. Based on Granularity</h3>
+    <ul>
+        <li>Row-level: High concurrency, more overhead.</li>
+        <li>Page-level: Medium concurrency, less overhead.</li>
+        <li>Table-level: Simple, poor concurrency.</li>
+        <li>Database-level: Rare, mostly for maintenance.</li>
+    </ul>
+
+    <h3>C. Other Lock Types</h3>
+    <ul>
+        <li>Intent Locks: IS (Intent Shared), IX (Intent Exclusive)</li>
+        <li>Bucket/Key Locks: In indexed structures like B+ trees</li>
+        <li>Predicate/Range Locks: Prevent phantom reads</li>
+    </ul>
+
+    <h3>Lock Compatibility Matrix</h3>
+    <table>
+        <tr>
+            <th>Held Lock</th>
+            <th>Requested Shared</th>
+            <th>Requested Exclusive</th>
+        </tr>
+        <tr>
+            <td>Shared</td>
+            <td>Yes</td>
+            <td>No</td>
+        </tr>
+        <tr>
+            <td>Exclusive</td>
+            <td>No</td>
+            <td>No</td>
+        </tr>
+    </table>
+
+    <h2>4. Two-Phase Locking (2PL)</h2>
+    <p>Ensures conflict-serializability of transactions by following a strict lock acquisition/release protocol.</p>
+
+    <h3>Phases of 2PL</h3>
+    <ul>
+        <li><strong>Growing Phase:</strong> Acquire locks; cannot release.</li>
+        <li><strong>Shrinking Phase:</strong> Release locks; cannot acquire new locks.</li>
+    </ul>
+
+    <h3>Types/Variants of 2PL</h3>
+    <table>
+        <tr>
+            <th>Variant</th>
+            <th>Description</th>
+            <th>Pros/Cons</th>
+        </tr>
+        <tr>
+            <td>Basic 2PL</td>
+            <td>Growing then shrinking phase</td>
+            <td>Simple, serializable, can deadlock</td>
+        </tr>
+        <tr>
+            <td>Strict 2PL</td>
+            <td>Hold exclusive locks until commit</td>
+            <td>Prevents cascading rollbacks</td>
+        </tr>
+        <tr>
+            <td>Rigorous 2PL</td>
+            <td>Hold all locks until commit</td>
+            <td>Prevents cascading rollbacks, ensures strict serializability, lowers concurrency</td>
+        </tr>
+        <tr>
+            <td>Conservative 2PL</td>
+            <td>Acquire all locks upfront</td>
+            <td>Prevents deadlocks, low concurrency</td>
+        </tr>
+    </table>
+
+    <h3>Deadlocks</h3>
+    <p>Transactions can wait indefinitely for each other:</p>
+    <ul>
+        <li><strong>Detection & Recovery:</strong> Wait-for graph → abort one transaction</li>
+        <li><strong>Prevention:</strong> Acquire locks in predefined order or use Conservative 2PL</li>
+    </ul>
+
+    <h3>Example Timeline</h3>
+    <table>
+        <tr>
+            <th>Time</th>
+            <th>Action T1</th>
+            <th>Action T2</th>
+        </tr>
+        <tr>
+            <td>t1</td>
+            <td>Lock A (X)</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>t2</td>
+            <td>Update A</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>t3</td>
+            <td></td>
+            <td>Lock B (X)</td>
+        </tr>
+        <tr>
+            <td>t4</td>
+            <td>Lock B (X) → wait</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>t5</td>
+            <td>Unlock A</td>
+            <td>Lock A (X) → wait</td>
+        </tr>
+    </table>
+
+    <h3>Advantages & Disadvantages</h3>
+    <ul>
+        <li><strong>Advantages:</strong> Guarantees serializability, provides isolation, easy to implement</li>
+        <li><strong>Disadvantages:</strong> Can cause deadlocks, reduces concurrency, overhead for lock management</li>
+    </ul>
+    <h1>Timestamp-Based Protocol (TSP)</h1>
+
+    <h2>1. Overview</h2>
+    <p>Each transaction is assigned a unique timestamp when it begins. Smaller timestamp → older transaction. Timestamps establish a logical order among transactions. The protocol ensures that all conflicting operations are executed in timestamp order, maintaining conflict-serializability without traditional locks.</p>
+
+    <h2>2. Key Concepts</h2>
+    <ul>
+        <li><strong>TS(Ti)</strong> → timestamp of transaction <em>Ti</em>.</li>
+        <li>Used to decide priority when conflicts arise.</li>
+        <li><strong>RTS(X)</strong>: Largest timestamp of transactions that have successfully read X.</li>
+        <li><strong>WTS(X)</strong>: Largest timestamp of transactions that have successfully written X.</li>
+    </ul>
+
+    <h2>3. Rules of Timestamp Ordering Protocol</h2>
+    <h3>A. Read Rule</h3>
+    <p>Transaction <em>Ti</em> wants to read X:</p>
+    <ul>
+        <li>If TS(Ti) &lt; WTS(X) → abort Ti and restart.</li>
+        <li>Else → allow read. Update RTS(X) = max(RTS(X), TS(Ti)).</li>
+    </ul>
+
+    <h3>B. Write Rule</h3>
+    <p>Transaction <em>Ti</em> wants to write X:</p>
+    <ul>
+        <li>If TS(Ti) &lt; RTS(X) → abort Ti.</li>
+        <li>If TS(Ti) &lt; WTS(X) → abort Ti.</li>
+        <li>Else → allow write. Update WTS(X) = TS(Ti).</li>
+    </ul>
+
+    <h3>C. Commit</h3>
+    <p>When Ti commits, changes are permanent. If aborted → restart with a new timestamp.</p>
+
+    <h2>4. Advantages</h2>
+    <ul>
+        <li>Deadlock-free (no waiting, no circular wait).</li>
+        <li>Guarantees serializability.</li>
+        <li>Simple conceptually (no complicated locks).</li>
+    </ul>
+
+    <h2>5. Disadvantages / Challenges</h2>
+    <ul>
+        <li>Frequent aborts under high contention → starvation of older transactions.</li>
+        <li>Overhead of maintaining RTS and WTS for each data item.</li>
+        <li>Long transactions more likely to be aborted.</li>
+    </ul>
+
+    <h2>6. Example</h2>
+    <table>
+        <tr>
+            <th>Transaction</th>
+            <th>Timestamp</th>
+        </tr>
+        <tr>
+            <td>T1</td>
+            <td>1</td>
+        </tr>
+        <tr>
+            <td>T2</td>
+            <td>2</td>
+        </tr>
+    </table>
+
+    <p>Data item X initially = 100, RTS(X)=0, WTS(X)=0.</p>
+
+    <div class="example-step">
+        <h3>Step 1: T2 reads X</h3>
+        <p>TS(T2)=2, WTS(X)=0 → allowed. Update RTS(X) = max(0,2)=2.</p>
+    </div>
+
+    <div class="example-step">
+        <h3>Step 2: T1 tries to write X</h3>
+        <p>TS(T1)=1 &lt; RTS(X)=2 → abort T1.</p>
+    </div>
+
+    <div class="example-step">
+        <h3>Step 3: T3 writes X</h3>
+        <p>TS(T3)=3, checks: 3 &lt; RTS(X)? No, 3 &lt; WTS(X)? No → allowed. Update WTS(X)=3.</p>
+    </div>
+
+    <div class="example-step">
+        <h3>Step 4: T2 writes X</h3>
+        <p>TS(T2)=2, checks: 2 &lt; RTS(X)? No, 2 &lt; WTS(X)=3 → abort T2.</p>
+    </div>
+
+    <div class="example-step">
+        <h3>Step 5: T1 restarts (TS=4)</h3>
+        <p>TS(T1)=4 → can write X. WTS(X)=4.</p>
+    </div>
+
+    <h2>7. Key Points from Example</h2>
+    <ul>
+        <li>Older transactions may be aborted to maintain serializability.</li>
+        <li>RTS and WTS are crucial to decide aborts.</li>
+        <li>No locks, no waiting → deadlock-free.</li>
+        <li>Frequent conflicts → multiple aborts possible → starvation risk.</li>
+    </ul>
+
+    <h2>8. Variations</h2>
+    <ul>
+        <li><strong>Thomas Write Rule:</strong> Ignore obsolete writes instead of aborting → reduces unnecessary aborts.</li>
+        <li>Hybrid approaches combine timestamp ordering with locks to reduce aborts.</li>
+    </ul>
+ <h1>Database Serializability</h1>
+
+    <h2>1. What is Serializability?</h2>
+    <p>
+        Serializability is a property of a schedule (sequence of transactions) that ensures concurrent execution of transactions is correct, i.e., it produces the same result as if the transactions were executed serially (one after another).  
+        Even if transactions run at the same time, the final database state is as if they ran one by one.
+    </p>
+
+    <h2>2. Why is it needed?</h2>
+    <p>Without serializability, concurrent transactions can produce incorrect results.</p>
+    <div class="example">
+        <pre>
+Transaction T1      Transaction T2
+Read A              Read A
+A = A + 100         A = A * 2
+Write A             Write A
+        </pre>
+        <p>Concurrent execution without control may lead to wrong value of A.</p>
+    </div>
+
+    <h2>3. Types of Serializability</h2>
+
+    <h3>a) Conflict Serializability (CSR)</h3>
+    <ul>
+        <li>Two schedules are conflict-equivalent if:
+            <ul>
+                <li>They involve the same operations.</li>
+                <li>The order of conflicting operations is preserved.</li>
+            </ul>
+        </li>
+        <li>Conflicting operations:
+            <ul>
+                <li>From different transactions</li>
+                <li>Access the same data item</li>
+                <li>At least one is a write</li>
+            </ul>
+        </li>
+        <li>Steps to check CSR:
+            <ol>
+                <li>List transactions and operations.</li>
+                <li>Identify conflicts (RW, WR, WW).</li>
+                <li>Build Precedence Graph (Nodes = Transactions, Edge T1 → T2 if T1 has a conflicting op before T2).</li>
+                <li>Check for cycles: No cycle → CSR, Cycle → Not CSR.</li>
+            </ol>
+        </li>
+    </ul>
+
+    <div class="example">
+        <pre>
+T1: R(A), W(A), R(B), W(B)
+T2: R(A), W(A)
+
+Schedule S: R1(A) R2(A) W1(A) W2(A) R1(B) W1(B)
+
+Conflicts:
+R1(A) & W2(A) → T1 → T2
+W1(A) & R2(A) → T1 → T2
+W1(A) & W2(A) → T1 → T2
+
+Graph: T1 → T2, No cycles → CSR
+Serial schedule: T1 → T2
+        </pre>
+    </div>
+
+    <h3>b) View Serializability (VSR)</h3>
+    <ul>
+        <li>A schedule is view serializable if it is <strong>view equivalent</strong> to some serial schedule.</li>
+        <li>Conditions for each data item:
+            <ul>
+                <li><strong>Initial Read:</strong> First read sees the same initial value.</li>
+                <li><strong>Updated Read:</strong> Reads of written values match the serial schedule.</li>
+                <li><strong>Final Write:</strong> Final writes match the serial schedule.</li>
+            </ul>
+        </li>
+        <li>VSR is more general than CSR: Every CSR schedule is VSR, but not vice versa.</li>
+    </ul>
+
+    <div class="example">
+        <pre>
+T1: R(A), W(A)
+T2: R(A), W(A)
+
+Schedule S1:
+1 T1 R(A)
+2 T2 R(A)
+3 T2 W(A)
+4 T1 W(A)
+
+Conflict Serializability: Cycle exists → Not CSR
+View Serializability: All conditions hold → VSR
+Serial schedule equivalent: T2 → T1
+        </pre>
+    </div>
+
+    <h2>4. Types of Schedules</h2>
+    <ul>
+        <li><strong>Serial schedule:</strong> Transactions execute one after another.</li>
+        <li><strong>Non-serial schedule:</strong> Transactions interleave.</li>
+        <li><strong>Serializable schedule:</strong> Non-serial but equivalent to some serial schedule.</li>
+    </ul>
+
+    <h2>5. Recoverable & Cascadeless Schedules</h2>
+    <ul>
+        <li><strong>Recoverable:</strong> A transaction commits only after all transactions whose changes it read have committed.</li>
+        <li><strong>Cascadeless:</strong> A stricter form; transactions read only committed data to avoid cascading rollbacks.</li>
+    </ul>
+
+    <h2>6. Practical Implementation</h2>
+    <ul>
+        <li><strong>Two-Phase Locking (2PL):</strong> Ensures conflict serializability
+            <ul>
+                <li>Growing phase: acquire locks</li>
+                <li>Shrinking phase: release locks</li>
+            </ul>
+        </li>
+        <li><strong>Timestamp ordering:</strong> Ensures serializability without locks.</li>
+    </ul>
+
+    <div class="note">
+        <strong>TL;DR:</strong> Serializability = concurrent execution behaves like serial execution.  
+        CSR → No cycles in precedence graph.  
+        VSR → Reads and final writes match some serial schedule.  
+        2PL & timestamp ordering enforce it.
+    </div>
+    <h1>DBMS & ER Model Notes</h1>
+
+<h2>1. Entity</h2>
+<p>An <strong>entity</strong> is a real-world object or concept about which data is stored in a database.</p>
+
+<h3>Types of Entities</h3>
+<ul>
+    <li><strong>Physical Objects:</strong> Tangible things that exist in reality. <em>Examples:</em> Student, Car, Employee</li>
+    <li><strong>Conceptual Things:</strong> Abstract concepts or events. <em>Examples:</em> Course, Department, Project</li>
+</ul>
+
+<h3>Entity Type</h3>
+<p>A collection of entities that share the same attributes (like a class of entities).</p>
+
+<table>
+    <tr>
+        <th>Entity Type</th>
+        <th>Entities</th>
+    </tr>
+    <tr>
+        <td>Student</td>
+        <td>Alice, Bob, Charlie</td>
+    </tr>
+</table>
+
+<h3>Attributes of Entity</h3>
+<ul>
+    <li>StudentID – Unique identifier</li>
+    <li>Name – Full name</li>
+    <li>Age – Derived from DateOfBirth</li>
+    <li>PhoneNumbers – Multivalued attribute</li>
+</ul>
+
+<h2>2. Attributes in ER Model</h2>
+
+<h3>1. Simple (Atomic) Attribute</h3>
+<p>Cannot be divided further; holds a single value.</p>
+<p><em>Examples:</em> StudentID, Age, Salary</p>
+<p class="diagram">ER Diagram: Oval with attribute name</p>
+
+<h3>2. Composite Attribute</h3>
+<p>Can be divided into smaller meaningful subparts.</p>
+<p><em>Examples:</em> FullName = {FirstName, LastName}, Address = {Street, City, State, ZIP}</p>
+<p class="diagram">ER Diagram: Oval connected to sub-ovals</p>
+
+<h3>3. Derived Attribute</h3>
+<p>Value calculated from other attributes, not necessarily stored.</p>
+<p><em>Examples:</em> Age from DateOfBirth, TotalMarks from Marks1+Marks2+Marks3</p>
+<p class="diagram">ER Diagram: Dashed oval</p>
+
+<h3>4. Multivalued Attribute</h3>
+<p>Can have multiple values for the same entity.</p>
+<p><em>Examples:</em> PhoneNumbers, LanguagesKnown</p>
+<p class="diagram">ER Diagram: Double oval</p>
+<p><strong>Implementation in Relational DB:</strong> Separate table</p>
+
+<h3>5. Key Attribute</h3>
+<p>Uniquely identifies an entity; forms the primary key.</p>
+<p><em>Examples:</em> StudentID, EmployeeID</p>
+<p class="diagram">ER Diagram: Oval with underline</p>
+
+<h3>6. Optional vs. Mandatory Attributes</h3>
+<ul>
+    <li><strong>Mandatory:</strong> Must have a value (cannot be null). Example: DateOfBirth</li>
+    <li><strong>Optional:</strong> May or may not have a value. Example: MiddleName</li>
+</ul>
+
+<h2>3. Relationship</h2>
+<p>A relationship connects two or more entities to show how they interact or are associated.</p>
+<p class="diagram">ER Diagram: Diamond shape</p>
+
+<h3>Types of Relationships</h3>
+
+<h4>a) One-to-One (1:1)</h4>
+<p>Each entity in A relates to exactly one entity in B, and vice versa.</p>
+<p><em>Example:</em> Employee ↔ ParkingSpace</p>
+<p>Implementation: Foreign key in either table; tables may be merged.</p>
+
+<h4>b) One-to-Many (1:N)</h4>
+<p>One entity in A relates to many entities in B.</p>
+<p><em>Example:</em> Department → Employee</p>
+<p>Implementation: Foreign key on many-side table (Employee table has DepartmentID)</p>
+
+<h4>c) Many-to-Many (M:N)</h4>
+<p>Many entities in A relate to many in B.</p>
+<p><em>Example:</em> Student ↔ Course</p>
+<p>Implementation: Junction table with foreign keys from both entities; can include relationship attributes like Grade</p>
+
+<h3>Degree of a Relationship</h3>
+<ul>
+    <li>Unary / Recursive: Entity relates to itself. Example: Employee manages Employee</li>
+    <li>Binary: Two entities. Example: Student ↔ Course</li>
+    <li>Ternary / Higher-order: Three or more entities. Example: Supplier supplies Part to Project</li>
+</ul>
+
+<h3>Optionality / Participation Constraints</h3>
+<ul>
+    <li><strong>Total Participation:</strong> All entities must participate (double line). Example: Every Employee belongs to a Department</li>
+    <li><strong>Partial Participation:</strong> Some entities may participate (single line). Example: Some employees have ParkingSpace</li>
+</ul>
+
+<h3>Attributes of Relationships</h3>
+<p>Relationships can have attributes. Example: EnrollmentDate, Grade for Student ↔ Course relationship</p>
+
+<h2>4. Keys in Relational Model</h2>
+
+<table>
+    <tr>
+        <th>Key Type</th>
+        <th>Description</th>
+        <th>Example</th>
+    </tr>
+    <tr>
+        <td>Super Key</td>
+        <td>Any unique identifier, may have extra attributes</td>
+        <td>{StudentID, Email}</td>
+    </tr>
+    <tr>
+        <td>Candidate Key</td>
+        <td>Minimal super key</td>
+        <td>{StudentID}, {Email}</td>
+    </tr>
+    <tr>
+        <td>Primary Key</td>
+        <td>Chosen candidate key, cannot be NULL</td>
+        <td>StudentID</td>
+    </tr>
+    <tr>
+        <td>Alternate Key</td>
+        <td>Candidate keys not chosen as primary</td>
+        <td>Email</td>
+    </tr>
+    <tr>
+        <td>Foreign Key</td>
+        <td>References primary key in another table</td>
+        <td>Enrollment.StudentID → Student.StudentID</td>
+    </tr>
+    <tr>
+        <td>Composite Key</td>
+        <td>Primary key made of multiple attributes</td>
+        <td>(EmployeeID, DependentName)</td>
+    </tr>
+    <tr>
+        <td>Partial Key</td>
+        <td>Weak entity attribute used with owner’s key</td>
+        <td>DependentName in Dependent table</td>
+    </tr>
+</table>
+
+<h2>5. Participation Constraints</h2>
+
+<h3>Types</h3>
+<ul>
+    <li><strong>Total Participation:</strong> Every entity must participate. Example: Employee → Department. DB implication: FK cannot be NULL</li>
+    <li><strong>Partial Participation:</strong> Some entities may not participate. Example: Employee → ParkingSpace. DB implication: FK can be NULL</li>
+</ul>
+
+<h3>Total Participation in Weak Entities</h3>
+<p>Weak entities always have total participation with their owner. Example: Dependent → Employee</p>
+
+<h3>Why Participation Constraints Matter</h3>
+<ul>
+    <li>Enforces business rules at the data model level</li>
+    <li>Determines FK nullability</li>
+    <li>Influences relationship design and referential integrity</li>
+</ul>
+<h1>SQL Overview</h1>
+
+    <h2>What is SQL?</h2>
+    <p>Structured Query Language (SQL) is the standard language to interact with relational databases. You use it to create, read, update, delete, and manage data.</p>
+
+    <h2>Categories of SQL Commands</h2>
+    <ul>
+        <li><strong>DDL (Data Definition Language)</strong>: CREATE, ALTER, DROP, TRUNCATE</li>
+        <li><strong>DML (Data Manipulation Language)</strong>: SELECT, INSERT, UPDATE, DELETE</li>
+        <li><strong>DCL (Data Control Language)</strong>: GRANT, REVOKE</li>
+        <li><strong>TCL (Transaction Control Language)</strong>: COMMIT, ROLLBACK, SAVEPOINT</li>
+    </ul>
+
+    <h2>Key SQL Concepts</h2>
+    <ul>
+        <li><strong>Tables:</strong> Columns = attributes, Rows = records</li>
+        <li><strong>Keys:</strong> Primary Key, Foreign Key, Candidate Key, Unique Key</li>
+        <li><strong>Constraints:</strong> NOT NULL, UNIQUE, CHECK, DEFAULT, FOREIGN KEY</li>
+    </ul>
+
+    <h2>DDL Examples</h2>
+    <pre>
+-- Create a database
+CREATE DATABASE CompanyDB;
+
+-- Create a table
+CREATE TABLE Employee (
+    EmpID INT PRIMARY KEY,
+    Name VARCHAR(50) NOT NULL,
+    Age INT,
+    Department VARCHAR(30),
+    Salary DECIMAL(10,2),
+    JoiningDate DATE
+);
+
+-- Add a column
+ALTER TABLE Employee ADD Email VARCHAR(50);
+
+-- Delete table
+DROP TABLE Employee;
+
+-- Remove all rows
+TRUNCATE TABLE Employee;
+    </pre>
+
+    <h2>DML Examples</h2>
+    <pre>
+-- Insert rows
+INSERT INTO Students (ID, Name, Age, Branch)
+VALUES (1, 'Abhishek', 21, 'CSE');
+
+-- Update rows
+UPDATE Students
+SET Age = 22
+WHERE Name = 'Abhishek';
+
+-- Delete rows
+DELETE FROM Students
+WHERE ID = 3;
+
+-- Select data
+SELECT Name, Age
+FROM Students
+WHERE Age > 20
+ORDER BY Age DESC;
+    </pre>
+
+    <h2>DCL Examples</h2>
+    <pre>
+-- Grant permissions
+GRANT SELECT ON employees TO abhishek;
+
+-- Revoke permissions
+REVOKE SELECT ON employees FROM abhishek;
+    </pre>
+
+    <h2>Transactions (TCL)</h2>
+    <pre>
+START TRANSACTION;
+
+-- SQL operations
+UPDATE accounts SET balance = balance - 500 WHERE acc_no = 101;
+UPDATE accounts SET balance = balance + 500 WHERE acc_no = 102;
+
+COMMIT;  -- Save changes
+ROLLBACK; -- Undo changes
+
+-- Savepoint
+SAVEPOINT step1;
+ROLLBACK TO step1;
+    </pre>
+
+    <h2>Notes</h2>
+    <div class="note">
+        DDL commands auto-commit, affecting schema. DML commands can be rolled back if within a transaction. Transactions ensure ACID properties: Atomicity, Consistency, Isolation, Durability.
+    </div>
 </body>
 </html>
