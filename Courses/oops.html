@@ -2,10 +2,3267 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Object-Oriented Programming (OOPS)</title>
+    <style>
+        body {
+    font-family: "Segoe UI", Roboto, Arial, sans-serif;
+    background: #ffffff; /* white background */
+    color: #000000;      /* black text */
+    margin: 0;
+    padding: 20px;
+    line-height: 1.7;
+}
+
+/* Container */
+.container {
+    max-width: 1000px;
+    margin: auto;
+    padding: 40px;
+}
+
+/* Headings */
+h1, h2, h3 {
+    color: #000000; /* black headings */
+    margin-top: 30px;
+}
+
+h1 {
+    font-size: 2.5rem;
+    border-bottom: 2px solid #000000;
+    padding-bottom: 10px;
+}
+
+h2 {
+    font-size: 1.9rem;
+}
+
+h3 {
+    font-size: 1.4rem;
+    color: #000000;
+}
+
+/* Paragraphs and lists */
+p {
+    font-size: 1.05rem;
+    margin: 15px 0;
+}
+
+ul, ol {
+    margin-left: 25px;
+    margin-bottom: 15px;
+}
+
+li {
+    margin: 8px 0;
+}
+
+/* Boxes for examples or notes */
+.box, .example {
+    background: #f0f0f0; /* light gray background */
+    border-left: 5px solid #000000;
+    padding: 20px;
+    margin: 25px 0;
+    border-radius: 6px;
+    color: #000000;
+}
+
+/* Code and diagram blocks */
+.diagram, .code, pre {
+    background: #e5e5e5; /* slightly darker gray for code/diagrams */
+    padding: 20px;
+    font-family: "Courier New", monospace;
+    white-space: pre;
+    border-radius: 6px;
+    margin: 20px 0;
+    color: #000000;
+    overflow-x: auto;
+}
+
+code {
+    font-family: monospace;
+    background-color: #f4f4f4;
+    padding: 2px 4px;
+    border-radius: 4px;
+    color: #000000;
+}
+
+/* Tables */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+}
+
+table th, table td {
+    border: 1px solid #cccccc;
+    padding: 10px;
+    text-align: left;
+    color: #000000;
+}
+
+table th {
+    background: #e0e0e0;
+    color: #000000;
+}
+
+/* Highlighted text */
+.highlight {
+    color: #ff6600; /* orange for highlights */
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 20px;
+    color: #ffffff;
+    background-color: #000000; /* black footer background */
+    margin-top: 20px;
+}
+
+    </style>
 </head>
 <body>
-    oops
+
+<h1>Object-Oriented Programming (OOPS)</h1>
+
+<h2>Definition</h2>
+<p>
+OOPS is a programming paradigm based on the concept of objects, which bundle data
+(attributes) and methods (functions) together.
+</p>
+<p>
+Instead of writing programs as a long list of instructions, OOPS models software
+like the real world: things with properties and behavior.
+</p>
+
+<h2>Core Concepts of OOPS</h2>
+
+<h2>Class (In Depth)</h2>
+
+<h3>Definition</h3>
+<p>
+A class is a user-defined data type that acts as a blueprint for creating objects.
+</p>
+
+<p>It defines:</p>
+<ul>
+    <li>Data members (variables → state)</li>
+    <li>Member functions (methods → behavior)</li>
+</ul>
+
+<h2>Data Members (Variables → State)</h2>
+
+<h3>Definition</h3>
+<p>
+Data members are variables declared inside a class that store the state of an object.
+</p>
+
+<p>They represent:</p>
+<ul>
+    <li>What an object is</li>
+    <li>What it currently contains</li>
+    <li>Its condition at a given time</li>
+</ul>
+
+<p><strong>In short:</strong></p>
+<p>👉 Methods do things.<br>
+👉 Data members remember things.</p>
+
+<h3>Why “State” Matters</h3>
+<p>
+An object without state is just a very enthusiastic function.
+</p>
+
+<p>State answers questions like:</p>
+<ul>
+    <li>What is the balance right now?</li>
+    <li>What is the speed at this moment?</li>
+    <li>Is the account active or blocked?</li>
+</ul>
+
+<p>
+That information is stored in data members.
+</p>
+
+<h3>Basic Example</h3>
+
+<p><strong>Class with Data Members (C++)</strong></p>
+<pre>
+class Car {
+public:
+    string brand;
+    int speed;
+};
+</pre>
+
+<p>Here:</p>
+<ul>
+    <li><code>brand</code> and <code>speed</code> are data members</li>
+    <li>They describe the state of a <code>Car</code> object</li>
+</ul>
+
+<h3>Object State</h3>
+<pre>
+Car c1;
+c1.brand = "Tesla";
+c1.speed = 80;
+</pre>
+
+<p><strong>State of c1:</strong></p>
+<ul>
+    <li>brand = Tesla</li>
+    <li>speed = 80</li>
+</ul>
+
+<p><strong>Another object:</strong></p>
+<pre>
+Car c2;
+c2.brand = "BMW";
+c2.speed = 120;
+</pre>
+
+<h2>Types of Data Members</h2>
+
+<h2>Instance Data Members (Non-Static)</h2>
+
+<h3>Definition</h3>
+<p>
+Instance data members are non-static variables declared inside a class that belong
+to each individual object of that class.
+</p>
+
+<p>Every object gets:</p>
+<ul>
+    <li>Its own copy</li>
+    <li>Its own memory</li>
+    <li>Its own state</li>
+</ul>
+
+<p>
+If objects were people, instance data members would be their personal memories.
+Not shared. Not synced. Not your problem.
+</p>
+
+<h3>Key Characteristics</h3>
+<ul>
+    <li>Object-specific</li>
+    <li>Each object has separate values</li>
+    <li>Memory allocated per object</li>
+    <li>Created when object is created</li>
+    <li>Destroyed when object is destroyed</li>
+    <li>Define object state</li>
+    <li>Describe current condition of an object</li>
+    <li>Accessed using object name</li>
+</ul>
+
+<pre>
+obj.variable;
+</pre>
+
+<p>
+Default initialized:
+</p>
+<ul>
+    <li>Built-in types: garbage values (C++)</li>
+    <li>Objects: default constructor called</li>
+</ul>
+
+<h3>Basic Example</h3>
+
+<p><strong>Class with Instance Data Members</strong></p>
+<pre>
+class Student {
+public:
+    int roll;
+    float marks;
+};
+</pre>
+
+<p><strong>Object Creation</strong></p>
+<pre>
+Student s1;
+Student s2;
+</pre>
+
+<p><strong>Assigning Values</strong></p>
+<pre>
+s1.roll = 1;
+s1.marks = 90.5;
+
+s2.roll = 2;
+s2.marks = 82.0;
+</pre>
+
+<p><strong>Object States</strong></p>
+<ul>
+    <li>s1 → roll=1, marks=90.5</li>
+    <li>s2 → roll=2, marks=82.0</li>
+</ul>
+
+<p>
+Same class. Same variables. Completely different states. As intended.
+</p>
+
+<h3>Memory Visualization (Conceptual)</h3>
+
+<p><strong>Assume:</strong></p>
+<ul>
+    <li>int = 4 bytes</li>
+    <li>float = 4 bytes</li>
+</ul>
+
+<p><strong>Each Student object:</strong></p>
+<ul>
+    <li>roll → 4 bytes</li>
+    <li>marks → 4 bytes</li>
+    <li>Total → 8 bytes</li>
+</ul>
+
+<p><strong>Two objects:</strong></p>
+<ul>
+    <li>s1 → 8 bytes</li>
+    <li>s2 → 8 bytes</li>
+    <li>Total → 16 bytes</li>
+</ul>
+
+<p>
+Class itself? Consumes zero runtime memory for instance data members.
+</p>
+
+<h2>Instance Data Members with Access Control</h2>
+
+<p><strong>Recommended: Private Instance Data Members</strong></p>
+<pre>
+class Account {
+private:
+    double balance;
+
+public:
+    void deposit(double amt) {
+        if (amt > 0)
+            balance += amt;
+    }
+
+    double getBalance() {
+        return balance;
+    }
+};
+</pre>
+
+<h3>Why?</h3>
+<ul>
+    <li>Prevents direct modification</li>
+    <li>Protects object state</li>
+    <li>Enforces rules</li>
+</ul>
+
+<h2>Initialization of Instance Data Members</h2>
+
+<h3>Using Constructor</h3>
+<pre>
+class Rectangle {
+    int length;
+    int breadth;
+
+public:
+    Rectangle(int l, int b) {
+        length = l;
+        breadth = b;
+    }
+};
+</pre>
+
+<pre>
+Rectangle r1(10, 5);
+Rectangle r2(4, 6);
+</pre>
+
+<p>
+Each object stores its own length and breadth.
+</p>
+
+<h2>Instance vs Static Data Members</h2>
+
+<table>
+    <tr>
+        <th>Instance (Non-Static)</th>
+        <th>Static</th>
+    </tr>
+    <tr>
+        <td>One copy per object</td>
+        <td>One copy per class</td>
+    </tr>
+    <tr>
+        <td>Defines object state</td>
+        <td>Defines class state</td>
+    </tr>
+    <tr>
+        <td>Accessed via object</td>
+        <td>Accessed via class</td>
+    </tr>
+    <tr>
+        <td>Memory per object</td>
+        <td>Shared memory</td>
+    </tr>
+</table>
+
+<h2>Static Data Members (In Depth)</h2>
+
+<h3>Definition</h3>
+<p>
+A static data member is a class variable that is:
+</p>
+<ul>
+    <li>Shared by all objects of the class</li>
+    <li>Allocated once, not per object</li>
+    <li>Used to store class-level state</li>
+</ul>
+
+<p>
+There is exactly one copy, no matter how many objects exist.
+</p>
+
+<h3>Why Static Data Members Exist</h3>
+<p>
+Because some information should belong to the class as a whole, not to individual objects.
+</p>
+
+<p>Examples:</p>
+<ul>
+    <li>Number of objects created</li>
+    <li>Common interest rate</li>
+    <li>Shared configuration values</li>
+    <li>Global counters (but disciplined)</li>
+</ul>
+
+<h3>Basic Example (C++)</h3>
+<pre>
+#include &lt;iostream&gt;
+using namespace std;
+
+class Student {
+public:
+    static int count;
+
+    Student() {
+        count++;
+    }
+};
+
+int Student::count = 0;
+
+int main() {
+    Student s1, s2, s3;
+    cout &lt;&lt; Student::count;
+}
+</pre>
+
+<p><strong>Output</strong></p>
+<pre>
+3
+</pre>
+
+<h3>What Happened</h3>
+<ul>
+    <li>count is created once</li>
+    <li>Every object increments the same variable</li>
+    <li>Accessed using ClassName::variable</li>
+</ul>
+
+<h3>Memory Behavior (Important)</h3>
+<pre>
+Class Student
+ ├── static int count  → ONE copy
+ ├── s1 → no copy of count
+ ├── s2 → no copy of count
+ └── s3 → no copy of count
+</pre>
+
+<p>
+Objects do not store static members inside themselves.
+</p>
+
+<h2>Declaration vs Definition (C++ Quirk)</h2>
+
+<p><strong>Inside class (declaration)</strong></p>
+<pre>
+static int count;
+</pre>
+
+<p><strong>Outside class (definition)</strong></p>
+<pre>
+int Student::count = 0;
+</pre>
+
+<p>
+Without this, the linker throws a tantrum.
+</p>
+
+<h2>Accessing Static Data Members</h2>
+
+<p><strong>Recommended</strong></p>
+<pre>
+Student::count
+</pre>
+
+<p><strong>Also Possible (but dumb)</strong></p>
+<pre>
+s1.count
+</pre>
+
+<p>
+Same memory. More confusion.
+</p>
+
+<h2>Static vs Non-Static Data Members</h2>
+
+<table>
+    <tr>
+        <th>Feature</th>
+        <th>Static</th>
+        <th>Non-Static</th>
+    </tr>
+    <tr>
+        <td>Memory</td>
+        <td>One copy</td>
+        <td>One per object</td>
+    </tr>
+    <tr>
+        <td>Belongs to</td>
+        <td>Class</td>
+        <td>Object</td>
+    </tr>
+    <tr>
+        <td>Accessed via</td>
+        <td>Class name</td>
+        <td>Object</td>
+    </tr>
+    <tr>
+        <td>Lifetime</td>
+        <td>Entire program</td>
+        <td>Object lifetime</td>
+    </tr>
+    <tr>
+        <td>Memory allocated</td>
+        <td>Once</td>
+        <td>On object creation</td>
+    </tr>
+</table>
+
+<h3>Example: Common Interest Rate</h3>
+<pre>
+class BankAccount {
+public:
+    static float interestRate;
+    float balance;
+
+    void calculateInterest() {
+        balance += balance * interestRate;
+    }
+};
+
+float BankAccount::interestRate = 0.05;
+</pre>
+
+<p>
+All accounts use the same interest rate.
+</p>
+
+<h3>Example: Object Counter (Classic Interview Trap)</h3>
+<pre>
+class Counter {
+    static int cnt;
+
+public:
+    Counter() { cnt++; }
+    static int getCount() { return cnt; }
+};
+
+int Counter::cnt = 0;
+
+Counter a, b, c;
+cout &lt;&lt; Counter::getCount();
+</pre>
+
+<p><strong>Output:</strong> 3</p>
+
+<h2>Static Data Members + Static Functions</h2>
+
+<p>
+Static functions can access only static members.
+</p>
+
+<p>
+Because they don’t belong to any object.
+</p>
+
+<pre>
+class Demo {
+    static int x;
+
+public:
+    static void show() {
+        cout &lt;&lt; x;
+    }
+};
+
+int Demo::x = 10;
+</pre>
+
+<h2>Java Note</h2>
+<p>
+In Java:
+</p>
+<ul>
+    <li>Static data members belong to the class</li>
+    <li>No separate definition outside class</li>
+    <li>Loaded when class is loaded</li>
+</ul>
+
+<pre>
+class Student {
+    static int count = 0;
+}
+</pre>
+<h1>Member Functions (Methods → Behavior)</h1>
+
+    <h2>Definition</h2>
+    <p>
+        A <strong>member function</strong> is a function that is declared inside a class
+        and defines the behavior of the objects of that class.
+    </p>
+
+    <ul>
+        <li>Operates on the data members of the same class</li>
+        <li>Can access <strong>private</strong>, <strong>protected</strong>, and <strong>public</strong> members</li>
+        <li>Invoked using an object (mostly)</li>
+    </ul>
+
+    <h2>Why Member Functions Exist</h2>
+    <p>
+        Because letting random functions mess with object data is how bugs are born.
+    </p>
+
+    <p>Member functions:</p>
+    <ul>
+        <li>Control how data is accessed or modified</li>
+        <li>Implement object behavior</li>
+        <li>Enforce encapsulation</li>
+        <li>Keep logic close to the data it manipulates</li>
+    </ul>
+
+    <h2>Basic Structure</h2>
+
+    <h3>Syntax (C++)</h3>
+    <pre>
+class ClassName {
+    return_type function_name(parameters) {
+        // function body
+    }
+};
+    </pre>
+
+    <h2>Example 1: Simple Member Function</h2>
+
+    <h3>Class Definition</h3>
+    <pre>
+class Calculator {
+public:
+    int add(int a, int b) {
+        return a + b;
+    }
+};
+    </pre>
+
+    <h3>Usage</h3>
+    <pre>
+Calculator c;
+cout << c.add(10, 20);
+    </pre>
+
+    <h3>Explanation</h3>
+    <ul>
+        <li><code>add()</code> is a member function</li>
+        <li>Called using object <code>c</code></li>
+        <li>Can directly work with class data (if any)</li>
+    </ul>
+
+    <h2>Member Function Access to Data Members</h2>
+
+    <h3>Example</h3>
+    <pre>
+class BankAccount {
+private:
+    double balance;
+
+public:
+    void deposit(double amount) {
+        balance += amount;   // direct access to private data
+    }
+
+    double getBalance() {
+        return balance;
+    }
+};
+    </pre>
+
+    <p>Here:</p>
+    <ul>
+        <li><code>balance</code> is <strong>private</strong></li>
+        <li>Still accessible inside member functions</li>
+        <li>External code can’t touch it directly (good)</li>
+    </ul>
+
+    <h2>Types of Member Functions</h2>
+    <p>
+        (You can extend this section with constructors, destructors, const member functions,
+        inline functions, static member functions, etc.)
+    </p>
+<h1>1. Instance Member Functions (In Depth)</h1>
+
+    <h2>Definition</h2>
+    <p>
+        An <strong>instance member function</strong> is a function that:
+    </p>
+    <ul>
+        <li>Belongs to a specific object of a class</li>
+        <li>Operates on instance (non-static) data members</li>
+        <li>Is called using an object</li>
+    </ul>
+
+    <p><strong>In short:</strong> No object → no meaningful instance function call.</p>
+
+    <h2>Why They Matter</h2>
+    <p>
+        Objects have state, and instance member functions define what can be done with that state.
+    </p>
+    <ul>
+        <li>Read object data</li>
+        <li>Modify object data</li>
+        <li>Represent object behavior</li>
+        <li>Enforce encapsulation</li>
+    </ul>
+
+    <h2>Basic Syntax (C++)</h2>
+    <pre>
+class ClassName {
+public:
+    return_type function_name(parameters);
+};
+    </pre>
+
+    <p>Called as:</p>
+    <pre>
+object.function_name(arguments);
+    </pre>
+
+    <h2>Simple Example</h2>
+
+    <h3>Class Definition</h3>
+    <pre>
+class Person {
+private:
+    string name;
+    int age;
+
+public:
+    void setData(string n, int a) {
+        name = n;
+        age = a;
+    }
+
+    void display() {
+        cout << name << " " << age << endl;
+    }
+};
+    </pre>
+
+    <h3>Usage</h3>
+    <pre>
+Person p1;
+p1.setData("Abhishek", 21);
+p1.display();
+    </pre>
+
+    <h2>What’s Actually Happening</h2>
+    <ul>
+        <li><code>p1</code> is an object</li>
+        <li><code>setData()</code> and <code>display()</code> are instance member functions</li>
+        <li>They operate on <code>p1</code>'s copy of <code>name</code> and <code>age</code></li>
+        <li>Each object has its own separate data</li>
+    </ul>
+
+    <h2>Proof: Each Object Has Its Own State</h2>
+    <pre>
+Person p1, p2;
+
+p1.setData("A", 20);
+p2.setData("B", 22);
+
+p1.display();  // A 20
+p2.display();  // B 22
+    </pre>
+
+    <p>Same functions. Different data.</p>
+
+    <h2>Access to Private Members</h2>
+    <p>
+        Instance member functions can directly access private data members.
+    </p>
+
+    <pre>
+class Account {
+private:
+    double balance;
+
+public:
+    void deposit(double amt) {
+        balance += amt;
+    }
+
+    void withdraw(double amt) {
+        if (amt <= balance)
+            balance -= amt;
+    }
+};
+    </pre>
+
+    <p>
+        External code cannot access <code>balance</code>, but instance member functions can.
+    </p>
+
+    <h2><code>this</code> Pointer in Instance Member Functions</h2>
+    <p>
+        Every instance member function has an implicit pointer called <code>this</code>.
+    </p>
+    <ul>
+        <li><code>this</code> points to the current object</li>
+        <li>Used to resolve name conflicts</li>
+    </ul>
+
+    <h3>Example</h3>
+    <pre>
+class Box {
+    int length;
+
+public:
+    void setLength(int length) {
+        this->length = length;
+    }
+};
+    </pre>
+
+    <h2>Calling Instance Member Functions</h2>
+
+    <h3>1. Using Object</h3>
+    <pre>
+obj.function();
+    </pre>
+
+    <h3>2. Using Pointer to Object</h3>
+    <pre>
+Box* b = new Box();
+b->setLength(10);
+    </pre>
+
+    <h2>Instance vs Static Member Functions</h2>
+
+    <table border="1" cellpadding="5">
+        <tr>
+            <th>Instance Member Function</th>
+            <th>Static Member Function</th>
+        </tr>
+        <tr>
+            <td>Called using object</td>
+            <td>Called using class</td>
+        </tr>
+        <tr>
+            <td>Can access instance variables</td>
+            <td>Cannot access instance variables</td>
+        </tr>
+        <tr>
+            <td>Has <code>this</code> pointer</td>
+            <td>No <code>this</code> pointer</td>
+        </tr>
+        <tr>
+            <td>Object-specific behavior</td>
+            <td>Class-level behavior</td>
+        </tr>
+    </table>
+
+    <h2>Memory Perspective (Important)</h2>
+    <ul>
+        <li>Only one copy of the function exists</li>
+        <li>Shared by all objects</li>
+        <li>Operates on different data via <code>this</code></li>
+    </ul>
+
+    <h2>Common Mistakes</h2>
+    <ul>
+        <li>Calling instance functions without an object</li>
+        <li>Accessing instance variables from static functions</li>
+        <li>Forgetting to initialize objects</li>
+        <li>Confusing instance and static member functions</li>
+    </ul>
+    <h1>Static Member Functions (In Depth)</h1>
+
+    <h2>Definition</h2>
+    <p>
+        A <strong>static member function</strong> is a function that belongs to the class itself,
+        not to any particular object.
+    </p>
+    <p>
+        It can be called without creating an object and operates only on
+        <strong>static data members</strong> of the class.
+    </p>
+
+    <h2>Why Static Member Functions Exist</h2>
+    <p>Because sometimes behavior is:</p>
+    <ul>
+        <li>Related to a class concept</li>
+        <li>Not tied to any single object</li>
+        <li>The same for everyone, forever</li>
+    </ul>
+    <p>
+        Creating objects just to call such behavior would be ceremonial nonsense.
+    </p>
+
+    <h2>Key Characteristics</h2>
+    <ul>
+        <li>Declared using the <code>static</code> keyword</li>
+        <li>Belongs to the class, not objects</li>
+        <li>Called using class name</li>
+        <li>Can access:
+            <ul>
+                <li>Static data members</li>
+            </ul>
+        </li>
+        <li>Cannot access:
+            <ul>
+                <li>Non-static (instance) data members</li>
+                <li><code>this</code> pointer (no object exists)</li>
+            </ul>
+        </li>
+    </ul>
+
+    <h2>Basic Syntax (C++)</h2>
+    <pre>
+class ClassName {
+public:
+    static return_type function_name(parameters);
+};
+    </pre>
+
+    <h2>Example 1: Static Function with Static Data Member</h2>
+    <pre>
+#include &lt;iostream&gt;
+using namespace std;
+
+class Counter {
+private:
+    static int count;
+
+public:
+    Counter() {
+        count++;
+    }
+
+    static int getCount() {
+        return count;
+    }
+};
+
+// static member initialization
+int Counter::count = 0;
+
+int main() {
+    Counter c1, c2, c3;
+
+    cout &lt;&lt; Counter::getCount();
+}
+    </pre>
+
+    <h3>Explanation</h3>
+    <ul>
+        <li><code>count</code> is shared by all objects</li>
+        <li><code>getCount()</code> accesses only static data</li>
+        <li>No object needed to call <code>getCount()</code></li>
+        <li><strong>Output:</strong> 3</li>
+    </ul>
+
+    <h2>Example 2: Static Member Function Without Objects</h2>
+    <pre>
+class MathUtils {
+public:
+    static int max(int a, int b) {
+        return (a > b) ? a : b;
+    }
+};
+
+int main() {
+    cout &lt;&lt; MathUtils::max(10, 20);
+}
+    </pre>
+
+    <p>
+        No objects harmed in the making of this function call.
+    </p>
+
+    <h2>Why Static Functions Can’t Access Non-Static Members</h2>
+    <ul>
+        <li>Non-static members belong to objects</li>
+        <li>Static functions belong to the class</li>
+        <li>No object → no instance data → no access</li>
+    </ul>
+
+    <p>This will fail:</p>
+    <pre>
+static void show() {
+    cout &lt;&lt; x;   // ERROR if x is non-static
+}
+    </pre>
+
+    <p>
+        Compiler is not confused. The programmer is.
+    </p>
+
+    <h2>Static Member Function vs Instance Member Function</h2>
+    <table border="1" cellpadding="6">
+        <tr>
+            <th>Static Member Function</th>
+            <th>Instance Member Function</th>
+        </tr>
+        <tr>
+            <td>Belongs to class</td>
+            <td>Belongs to object</td>
+        </tr>
+        <tr>
+            <td>Called using class name</td>
+            <td>Called using object</td>
+        </tr>
+        <tr>
+            <td>No <code>this</code> pointer</td>
+            <td>Has <code>this</code> pointer</td>
+        </tr>
+        <tr>
+            <td>Access only static data</td>
+            <td>Access all members</td>
+        </tr>
+        <tr>
+            <td>No object required</td>
+            <td>Object required</td>
+        </tr>
+    </table>
+
+    <h2>Static Member Functions in Java (Quick Comparison)</h2>
+    <pre>
+class MathUtils {
+    static int square(int x) {
+        return x * x;
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        System.out.println(MathUtils.square(5));
+    }
+}
+    </pre>
+
+    <p>
+        Same idea. Different syntax. Same exam question.
+    </p>
+
+    <h2>Real-World Analogy</h2>
+    <p>
+        Think of a company policy.
+    </p>
+    <ul>
+        <li>Same for all employees</li>
+        <li>Doesn’t depend on any one employee</li>
+        <li>Accessed through the company, not a person</li>
+    </ul>
+    <p>
+        That’s a static member function.
+    </p>
+
+    <h2>Common Exam Traps</h2>
+    <ul>
+        <li>Static functions cannot be virtual</li>
+        <li>Cannot use <code>this</code></li>
+        <li>Can be overloaded</li>
+        <li>Can be defined outside the class</li>
+        <li>Only one copy exists in memory</li>
+    </ul>
+<h1>Inline Member Functions</h1>
+
+    <h2>Definition</h2>
+    <p>
+        An <strong>inline member function</strong> is a member function where the compiler
+        replaces the function call with the actual function code at compile time.
+    </p>
+
+    <p>
+        <strong>Translation:</strong><br>
+        No jumping to another memory location. The code is pasted right there.
+        Faster execution, bigger executable. Nothing in life is free.
+    </p>
+
+    <h2>Why Inline Functions Exist</h2>
+    <p>Function calls have overhead:</p>
+    <ul>
+        <li>Stack setup</li>
+        <li>Parameter passing</li>
+        <li>Return address handling</li>
+    </ul>
+
+    <p>
+        For small, frequently used functions, this overhead is stupidly expensive
+        compared to the work done.
+    </p>
+
+    <p>
+        Inline functions reduce this overhead.
+    </p>
+
+    <h2>How Inline Member Functions Are Defined</h2>
+
+    <h3>Method 1: Defined Inside the Class (Automatically Inline)</h3>
+    <pre>
+class Math {
+public:
+    int square(int x) {
+        return x * x;
+    }
+};
+    </pre>
+
+    <p>
+        Functions defined inside the class are <strong>implicitly inline</strong>.
+    </p>
+
+    <h3>Method 2: Using inline Keyword</h3>
+    <pre>
+class Math {
+public:
+    inline int cube(int x);
+};
+
+inline int Math::cube(int x) {
+    return x * x * x;
+}
+    </pre>
+
+    <p>
+        The <code>inline</code> keyword tells the compiler your intention.
+        The compiler may still ignore you. It’s a suggestion, not a command.
+    </p>
+
+    <h2>Example: Inline vs Non-Inline</h2>
+
+    <h3>Non-Inline Function</h3>
+    <pre>
+class Test {
+public:
+    int add(int a, int b);
+};
+
+int Test::add(int a, int b) {
+    return a + b;
+}
+    </pre>
+
+    <p>
+        Each call involves function call overhead.
+    </p>
+
+    <h3>Inline Version</h3>
+    <pre>
+class Test {
+public:
+    inline int add(int a, int b) {
+        return a + b;
+    }
+};
+    </pre>
+
+    <p>
+        Function body replaces the call site.
+    </p>
+
+    <h2>Conceptual Execution</h2>
+
+    <h3>Without Inline</h3>
+    <pre>
+main()
+ └── call add()
+      └── execute add()
+           └── return
+    </pre>
+
+    <h3>With Inline</h3>
+    <pre>
+main()
+ └── (a + b) inserted directly
+    </pre>
+
+    <p>
+        No call. No return. Less drama.
+    </p>
+
+    <h2>Advantages of Inline Member Functions</h2>
+    <ul>
+        <li>Faster execution for small functions</li>
+        <li>Eliminates function call overhead</li>
+        <li>Useful in performance-critical code</li>
+    </ul>
+
+    <h2>Disadvantages</h2>
+    <ul>
+        <li>Increases code size</li>
+        <li>Bad for large functions</li>
+        <li>Too many inline functions can hurt cache performance</li>
+        <li>Compiler may ignore inline request anyway</li>
+    </ul>
+
+    <h2>When Inline Is a Bad Idea</h2>
+    <ul>
+        <li>Large or complex functions</li>
+        <li>Recursive functions</li>
+        <li>Functions with loops or heavy logic</li>
+        <li>Virtual functions (usually not inlined)</li>
+    </ul>
+    <h1>Const Member Functions (In Depth)</h1>
+
+    <h2>Definition</h2>
+    <p>
+        A <strong>const member function</strong> is a member function that guarantees it will
+        <strong>not modify the data members</strong> of the object on which it is called.
+    </p>
+
+    <p>
+        It is declared by placing <code>const</code> after the function parameter list.
+    </p>
+
+    <h2>Syntax</h2>
+    <pre>
+return_type function_name(parameters) const;
+    </pre>
+
+    <p>
+        Yes, the position matters. Put <code>const</code> anywhere else and the compiler will
+        stare at you in silence.
+    </p>
+
+    <h2>Why Const Member Functions Exist</h2>
+    <p>Because:</p>
+    <ul>
+        <li>Read-only operations should stay read-only</li>
+        <li>The compiler can enforce safety</li>
+        <li>You can call them on <code>const</code> objects</li>
+    </ul>
+
+    <p>
+        Without them, <code>const</code> objects would be decorative paperweights.
+    </p>
+
+    <h2>Basic Example</h2>
+    <pre>
+class Student {
+    int roll;
+    float marks;
+
+public:
+    Student(int r, float m) {
+        roll = r;
+        marks = m;
+    }
+
+    int getRoll() const {
+        return roll;     // allowed
+    }
+
+    float getMarks() const {
+        return marks;    // allowed
+    }
+};
+    </pre>
+
+    <h3>What’s Happening</h3>
+    <ul>
+        <li><code>getRoll()</code> and <code>getMarks()</code> are const member functions</li>
+        <li>They promise not to change <code>roll</code> or <code>marks</code></li>
+        <li>The compiler enforces this promise</li>
+    </ul>
+
+    <h2>What You CANNOT Do Inside a Const Member Function</h2>
+    <pre>
+int getRoll() const {
+    roll = 10;   // ❌ compile-time error
+    return roll;
+}
+    </pre>
+
+    <p>
+        Any attempt to modify data members leads to immediate rejection. No negotiation.
+    </p>
+
+    <h2>Const Objects and Const Member Functions</h2>
+
+    <h3>Example</h3>
+    <pre>
+const Student s(1, 95.0);
+
+cout << s.getRoll();   // ✔ allowed
+    </pre>
+
+    <h3>But this?</h3>
+    <pre>
+s.setRoll(5);  // ❌ not allowed
+    </pre>
+
+    <p>Because:</p>
+    <ul>
+        <li>Const objects can call only const member functions</li>
+        <li>Non-const functions might modify data</li>
+    </ul>
+
+    <h2>Const vs Non-Const Member Functions</h2>
+
+    <table border="1" cellpadding="8" cellspacing="0">
+        <tr>
+            <th>Feature</th>
+            <th>Const Function</th>
+            <th>Non-Const Function</th>
+        </tr>
+        <tr>
+            <td>Can modify data</td>
+            <td>❌ No</td>
+            <td>✔ Yes</td>
+        </tr>
+        <tr>
+            <td>Callable on const object</td>
+            <td>✔ Yes</td>
+            <td>❌ No</td>
+        </tr>
+        <tr>
+            <td>Used for</td>
+            <td>Read-only operations</td>
+            <td>Update operations</td>
+        </tr>
+    </table>
+
+    <h2>Overloading with Const Member Functions</h2>
+    <p>
+        Yes, you can overload functions based on <code>const</code>.
+    </p>
+
+    <pre>
+class Demo {
+public:
+    void show() {
+        cout << "Non-const version";
+    }
+
+    void show() const {
+        cout << "Const version";
+    }
+};
+    </pre>
+
+    <h3>Behavior</h3>
+    <pre>
+Demo d;
+const Demo cd;
+
+d.show();    // calls non-const
+cd.show();   // calls const
+    </pre>
+
+    <p>
+        The compiler chooses based on object const-ness. No emotions involved.
+    </p>
+
+    <h2>Mutable Keyword (The Escape Hatch)</h2>
+    <p>
+        If a data member must change even in a const function, mark it <code>mutable</code>.
+    </p>
+
+    <pre>
+class Logger {
+    mutable int accessCount;
+
+public:
+    Logger() : accessCount(0) {}
+
+    void log() const {
+        accessCount++;   // allowed
+        cout << "Log called";
+    }
+};
+    </pre>
+
+    <p>
+        Use this carefully. Overusing <code>mutable</code> defeats the whole point of <code>const</code>.
+    </p>
+
+    <h2>Const Member Functions and Pointers</h2>
+    <p>Inside a const member function:</p>
+    <ul>
+        <li><code>this</code> becomes <code>const ClassName*</code></li>
+        <li>The object is treated as read-only</li>
+        <li>That’s why modification is blocked</li>
+    </ul>
+
+    <h2>Why Examiners Love This Topic</h2>
+    <p>Because it tests:</p>
+    <ul>
+        <li>Understanding of const correctness</li>
+        <li>Object safety</li>
+        <li>Compiler-enforced design discipline</li>
+    </ul>
+
+    <p>
+        And because students forget the <code>const</code> and lose marks for no reason.
+    </p>
+
+    <h2>Key Takeaways</h2>
+    <ul>
+        <li>Declared using <code>const</code> at the end</li>
+        <li>Prevents modification of object data</li>
+        <li>Required for const objects</li>
+        <li>Improves safety and readability</li>
+        <li>Can be overloaded</li>
+        <li><code>mutable</code> allows controlled exceptions</li>
+    </ul>
+<h1>Virtual Member Functions (Runtime Polymorphism)</h1>
+
+    <h2>Definition</h2>
+    <p>
+        A <strong>virtual member function</strong> is a class member function that is
+        declared using the <code>virtual</code> keyword and is overridden in a derived class.
+    </p>
+
+    <p>
+        The function call is resolved <strong>at runtime</strong> based on the type of object
+        being pointed to, not the type of pointer.
+    </p>
+
+    <p>
+        This is known as <strong>runtime polymorphism</strong> or <strong>dynamic binding</strong>.
+    </p>
+
+    <h2>Why Virtual Functions Exist</h2>
+
+    <p>
+        Consider this situation:
+    </p>
+
+    <pre>
+Base* b = new Derived();
+b->show();   // without virtual → Base version runs
+    </pre>
+
+    <p>
+        Without virtual functions, the base class version is executed even though the object
+        is of the derived type. Virtual functions fix this design problem.
+    </p>
+
+    <h2>Basic Example</h2>
+
+    <h3>Code</h3>
+    <pre>
+#include &lt;iostream&gt;
+using namespace std;
+
+class Base {
+public:
+    virtual void show() {
+        cout &lt;&lt; "This is Base class show()" &lt;&lt; endl;
+    }
+};
+
+class Derived : public Base {
+public:
+    void show() {
+        cout &lt;&lt; "This is Derived class show()" &lt;&lt; endl;
+    }
+};
+
+int main() {
+    Base* b;
+    Derived d;
+    b = &d;
+    b->show();
+}
+    </pre>
+
+    <h3>Output</h3>
+    <pre>
+This is Derived class show()
+    </pre>
+
+    <h3>Explanation</h3>
+    <ul>
+        <li><code>b</code> is a base class pointer</li>
+        <li>It points to a derived class object</li>
+        <li>The function <code>show()</code> is virtual</li>
+        <li>Function call is resolved at runtime</li>
+        <li>The derived class version is executed</li>
+    </ul>
+
+    <p>
+        Without <code>virtual</code>, the base class version would run, leading to incorrect behavior.
+    </p>
+
+    <h2>Compile-Time vs Runtime Binding</h2>
+
+    <table border="1" cellpadding="6">
+        <tr>
+            <th>Feature</th>
+            <th>Compile-Time Binding</th>
+            <th>Runtime Binding</th>
+        </tr>
+        <tr>
+            <td>Binding Time</td>
+            <td>Compile time</td>
+            <td>Runtime</td>
+        </tr>
+        <tr>
+            <td>Function Type</td>
+            <td>Normal function</td>
+            <td>Virtual function</td>
+        </tr>
+        <tr>
+            <td>Pointer Type Matters</td>
+            <td>Yes</td>
+            <td>No</td>
+        </tr>
+        <tr>
+            <td>Object Type Matters</td>
+            <td>No</td>
+            <td>Yes</td>
+        </tr>
+    </table>
+
+    <h2>Real-World Analogy</h2>
+    <p>
+        A remote control (base class pointer) controlling different devices
+        (derived class objects). Same button, different behavior.
+    </p>
+
+    <h2>Using <code>override</code> Keyword</h2>
+
+    <p>
+        The <code>override</code> keyword ensures that a derived class function correctly
+        overrides a virtual function from the base class.
+    </p>
+
+    <pre>
+class Derived : public Base {
+public:
+    void show() override {
+        cout &lt;&lt; "Derived show";
+    }
+};
+    </pre>
+
+    <p>
+        If the function signature is incorrect, the compiler reports an error.
+    </p>
+
+    <h2>Virtual Destructors</h2>
+
+    <p>
+        If a base class contains any virtual function, its destructor should also be virtual.
+    </p>
+
+    <pre>
+class Base {
+public:
+    virtual ~Base() {
+        cout &lt;&lt; "Base destroyed";
+    }
+};
+    </pre>
+
+    <p>
+        Without a virtual destructor:
+    </p>
+    <ul>
+        <li>Memory leaks may occur</li>
+        <li>Undefined behavior is possible</li>
+    </ul>
+
+    <h2>How Virtual Functions Work Internally (Simplified)</h2>
+
+    <ul>
+        <li>Compiler creates a <strong>V-Table</strong> (Virtual Table)</li>
+        <li>Each object stores a <strong>vptr</strong> (virtual pointer)</li>
+        <li>The vptr points to the correct function table at runtime</li>
+    </ul>
+
+    <pre>
+Base* b
+   |
+   v
+[ Derived Object ]
+      |
+      v
+   V-Table → Derived::show()
+    </pre>
+
+    <h2>Rules of Virtual Functions</h2>
+    <ul>
+        <li>Declared using the <code>virtual</code> keyword</li>
+        <li>Usually accessed via base class pointer or reference</li>
+        <li>Binding happens at runtime</li>
+        <li>Supports polymorphism</li>
+        <li>Cannot be static</li>
+        <li>Constructors cannot be virtual</li>
+        <li>Destructors should be virtual</li>
+    </ul>
+
+    <h2>Common Mistakes</h2>
+    <ul>
+        <li>Forgetting <code>virtual</code> in the base class</li>
+        <li>Calling virtual functions using objects instead of pointers</li>
+        <li>Mismatched function signatures</li>
+        <li>Not using virtual destructors</li>
+    </ul>
+    <h1>Friend Function (Special Case in OOPS)</h1>
+
+    <h2>Definition</h2>
+    <p>
+        A <strong>friend function</strong> is a function that is <em>not</em> a member of a class,
+        but is allowed to access the private and protected members of that class.
+    </p>
+
+    <p>
+        It breaks encapsulation — <strong>legally</strong> — with permission.
+    </p>
+
+    <h2>Why Friend Functions Exist</h2>
+    <p>Because sometimes:</p>
+    <ul>
+        <li>Two classes need to cooperate closely</li>
+        <li>Operator overloading needs access to private data</li>
+        <li>Forcing everything to be a member function makes code worse</li>
+    </ul>
+
+    <p>
+        Friend functions exist for <strong>controlled trust</strong>, not chaos.
+    </p>
+
+    <h2>Key Characteristics</h2>
+    <ul>
+        <li>Declared inside a class using the <code>friend</code> keyword</li>
+        <li>Defined outside the class</li>
+        <li>Called like a normal function (not using object)</li>
+        <li>Can access private, protected, and public members</li>
+        <li>Friendship is not inherited</li>
+        <li>Friendship is not transitive</li>
+        <li>Friendship is not mutual</li>
+    </ul>
+
+    <h2>Basic Syntax</h2>
+    <pre>
+class ClassName {
+    friend return_type function_name(parameters);
+};
+    </pre>
+
+    <h2>Example 1: Simple Friend Function</h2>
+
+    <h3>Class Declaration</h3>
+    <pre>
+#include &lt;iostream&gt;
+using namespace std;
+
+class Sample {
+private:
+    int x;
+
+public:
+    Sample(int a) {
+        x = a;
+    }
+
+    friend void show(Sample s);
+};
+    </pre>
+
+    <h3>Friend Function Definition</h3>
+    <pre>
+void show(Sample s) {
+    cout &lt;&lt; "Value of x: " &lt;&lt; s.x &lt;&lt; endl;
+}
+    </pre>
+
+    <h3>Main Function</h3>
+    <pre>
+int main() {
+    Sample obj(10);
+    show(obj);
+}
+    </pre>
+
+    <h3>Explanation</h3>
+    <ul>
+        <li><code>show()</code> is not a member of <code>Sample</code></li>
+        <li>Still accesses private variable <code>x</code></li>
+        <li>Works because <code>Sample</code> explicitly declared it as friend</li>
+    </ul>
+
+    <h2>Example 2: Friend Function Accessing Multiple Objects</h2>
+    <pre>
+class Box {
+private:
+    int length;
+
+public:
+    Box(int l) {
+        length = l;
+    }
+
+    friend void compare(Box, Box);
+};
+
+void compare(Box b1, Box b2) {
+    if (b1.length &gt; b2.length)
+        cout &lt;&lt; "Box 1 is larger";
+    else
+        cout &lt;&lt; "Box 2 is larger";
+}
+    </pre>
+
+    <p>
+        Here, a non-member function compares private data of two objects cleanly.
+    </p>
+
+    <h2>Example 3: Friend Function for Operator Overloading</h2>
+    <pre>
+class Complex {
+    int real, imag;
+
+public:
+    Complex(int r, int i) {
+        real = r;
+        imag = i;
+    }
+
+    friend Complex operator+(Complex, Complex);
+};
+
+Complex operator+(Complex c1, Complex c2) {
+    return Complex(c1.real + c2.real,
+                   c1.imag + c2.imag);
+}
+    </pre>
+
+    <h3>Why Friend?</h3>
+    <ul>
+        <li>Operator needs access to private members</li>
+        <li>Making it a member would complicate symmetry</li>
+    </ul>
+
+    <h2>Friend Function vs Member Function</h2>
+    <table border="1" cellpadding="6">
+        <tr>
+            <th>Friend Function</th>
+            <th>Member Function</th>
+        </tr>
+        <tr>
+            <td>Not part of class</td>
+            <td>Part of class</td>
+        </tr>
+        <tr>
+            <td>No <code>this</code> pointer</td>
+            <td>Has <code>this</code> pointer</td>
+        </tr>
+        <tr>
+            <td>Called normally</td>
+            <td>Called using object</td>
+        </tr>
+        <tr>
+            <td>Can access private data</td>
+            <td>Can access private data</td>
+        </tr>
+        <tr>
+            <td>Breaks encapsulation</td>
+            <td>Supports encapsulation</td>
+        </tr>
+    </table>
+
+    <h2>Friend Class</h2>
+    <h3>Definition</h3>
+    <p>
+        A <strong>friend class</strong> can access private members of another class.
+    </p>
+
+    <pre>
+class A {
+    friend class B;
+private:
+    int x;
+};
+
+class B {
+public:
+    void show(A a) {
+        cout &lt;&lt; a.x;
+    }
+};
+    </pre>
+
+    <h2>Important Rules (Exam Favorites)</h2>
+    <ul>
+        <li>Friendship is one-way</li>
+        <li>Friendship is not inherited</li>
+        <li>Friendship is not transitive</li>
+        <li>Friend functions are not class members</li>
+        <li>Declared inside class, defined outside</li>
+    </ul>
+
+    <h2>When to Use Friend Functions</h2>
+    <ul>
+        <li>Operator overloading</li>
+        <li>Closely related classes</li>
+        <li>Performance-critical code</li>
+        <li>When getters/setters would be excessive</li>
+    </ul>
+
+    <h2>When NOT to Use Friend Functions</h2>
+    <ul>
+        <li>To avoid proper design</li>
+        <li>To bypass encapsulation lazily</li>
+        <li>When public methods can do the job</li>
+    </ul>
+
+    <p>
+        Friend functions are like admin access: powerful, dangerous, and remembered forever.
+    </p>
+    <h1>Access Specifiers in a Class (In Depth)</h1>
+
+    <h2>What They Are</h2>
+    <p>
+        <strong>Access specifiers</strong> control where class members can be accessed from.
+    </p>
+
+    <p>They answer one question only:</p>
+    <p><em>Who is allowed to touch this data or method?</em></p>
+
+    <p>
+        OOPS answer: <strong>Not everyone.</strong>
+    </p>
+
+    <h2>Types of Access Specifiers (C++ / Java)</h2>
+
+    <h3>1. private</h3>
+
+    <h4>Meaning</h4>
+    <ul>
+        <li>Accessible only inside the same class</li>
+        <li>NOT accessible from:
+            <ul>
+                <li>Objects</li>
+                <li>Derived classes</li>
+                <li>Other classes</li>
+            </ul>
+        </li>
+    </ul>
+
+    <h4>Purpose</h4>
+    <ul>
+        <li>Data hiding</li>
+        <li>Prevents accidental modification</li>
+        <li>Forces controlled access via methods</li>
+    </ul>
+
+    <h4>Example (C++)</h4>
+    <pre>
+class Account {
+private:
+    double balance;
+
+public:
+    void setBalance(double b) {
+        balance = b;
+    }
+
+    double getBalance() {
+        return balance;
+    }
+};
+
+int main() {
+    Account a;
+    a.setBalance(5000);
+    // a.balance = 7000;  ❌ ERROR: private member
+}
+    </pre>
+
+    <h4>Key Point</h4>
+    <ul>
+        <li>Default access specifier in C++ classes</li>
+        <li>Most data members should be private unless you enjoy bugs</li>
+    </ul>
+
+    <hr>
+
+    <h3>2. public</h3>
+
+    <h4>Meaning</h4>
+    <ul>
+        <li>Accessible from anywhere</li>
+        <li>Inside class</li>
+        <li>Outside class</li>
+        <li>Through objects</li>
+    </ul>
+
+    <h4>Purpose</h4>
+    <ul>
+        <li>Expose functionality</li>
+        <li>Define interface to the outside world</li>
+    </ul>
+
+    <h4>Example</h4>
+    <pre>
+class Student {
+public:
+    int roll;
+    void display() {
+        cout << roll;
+    }
+};
+
+int main() {
+    Student s;
+    s.roll = 10;   // Allowed
+    s.display();   // Allowed
+}
+    </pre>
+
+    <h4>Key Point</h4>
+    <ul>
+        <li>Methods that users are supposed to call go here</li>
+        <li>Public data members are usually a bad idea, but exams like simple examples</li>
+    </ul>
+
+    <hr>
+
+    <h3>3. protected</h3>
+
+    <h4>Meaning</h4>
+    <ul>
+        <li>Accessible:
+            <ul>
+                <li>Inside the same class</li>
+                <li>Inside derived (child) classes</li>
+            </ul>
+        </li>
+        <li>Not accessible through objects directly</li>
+    </ul>
+
+    <h4>Purpose</h4>
+    <ul>
+        <li>Used in inheritance</li>
+        <li>Allows child classes to use parent’s data safely</li>
+    </ul>
+
+    <h4>Example</h4>
+    <pre>
+class Base {
+protected:
+    int x;
+};
+
+class Derived : public Base {
+public:
+    void setX(int val) {
+        x = val;   // Allowed
+    }
+};
+
+int main() {
+    Derived d;
+    // d.x = 5;   ❌ ERROR
+}
+    </pre>
+
+    <h4>Key Point</h4>
+    <ul>
+        <li><code>protected</code> is for subclasses, not for the outside world</li>
+    </ul>
+
+    <hr>
+
+    <h2>Access Specifiers Comparison Table</h2>
+
+    <table border="1" cellpadding="8" cellspacing="0">
+        <tr>
+            <th>Specifier</th>
+            <th>Same Class</th>
+            <th>Derived Class</th>
+            <th>Outside Class</th>
+        </tr>
+        <tr>
+            <td>private</td>
+            <td>Yes</td>
+            <td>No</td>
+            <td>No</td>
+        </tr>
+        <tr>
+            <td>protected</td>
+            <td>Yes</td>
+            <td>Yes</td>
+            <td>No</td>
+        </tr>
+        <tr>
+            <td>public</td>
+            <td>Yes</td>
+            <td>Yes</td>
+            <td>Yes</td>
+        </tr>
+    </table>
+
+    <p><strong>Memorize this.</strong> Professors love this table more than their own slides.</p>
+
+    <hr>
+
+    <h2>Default Access Specifier</h2>
+
+    <h3>In C++</h3>
+    <pre>
+class Example {
+    int a;   // private by default
+};
+    </pre>
+
+    <h3>In Java</h3>
+    <ul>
+        <li>Default is <strong>package-private</strong></li>
+        <li>Accessible within the same package</li>
+    </ul>
+
+    <pre>
+class Example {
+    int a;   // package-private
+}
+    </pre>
+
+    <hr>
+
+    <h2>Why Access Specifiers Matter (Exam Gold)</h2>
+    <ul>
+        <li>Enforces encapsulation</li>
+        <li>Improves security</li>
+        <li>Prevents misuse of data</li>
+        <li>Makes code maintainable</li>
+        <li>Supports inheritance properly</li>
+    </ul>
+<h1>2. Object (In Depth)</h1>
+
+    <h2>What Is an Object?</h2>
+    <p>
+        An <strong>object</strong> is a runtime instance of a class.
+    </p>
+
+    <p>
+        If a class is the idea, the plan, the blueprint, then the object is the thing
+        that actually exists, eats memory, and causes bugs.
+    </p>
+
+    <p><strong>Formally:</strong></p>
+    <p>
+        An object represents a real-world entity and contains
+        <strong>state</strong>, <strong>behavior</strong>, and <strong>identity</strong>.
+    </p>
+
+    <h2>Three Characteristics of an Object</h2>
+
+    <h3>1. State</h3>
+    <p>
+        State refers to the current values of data members stored inside the object.
+    </p>
+
+    <p><strong>Example:</strong></p>
+    <pre>
+Student object
+id = 101
+name = "Abhishek"
+    </pre>
+
+    <p>
+        Each object has its own state.
+    </p>
+
+    <h3>2. Behavior</h3>
+    <p>
+        Behavior is defined by the methods the object can perform.
+    </p>
+
+    <p><strong>Example:</strong></p>
+    <pre>
+displayDetails()
+calculateGrade()
+    </pre>
+
+    <p>
+        Behavior is shared across all objects of the same class,
+        but acts on different data.
+    </p>
+
+    <h3>3. Identity</h3>
+    <p>
+        Identity uniquely distinguishes one object from another.
+    </p>
+
+    <p>
+        Even if two objects have the same data, they are not the same object in memory.
+    </p>
+
+    <pre>
+Student s1 = new Student();
+Student s2 = new Student();
+    </pre>
+
+    <p>
+        Same class. Different memory. Different identity.
+        No existential crisis, just pointers.
+    </p>
+
+    <h2>Memory Representation of an Object</h2>
+
+    <p>When an object is created:</p>
+    <ul>
+        <li>Memory is allocated in heap</li>
+        <li>Reference variable stores the address</li>
+    </ul>
+
+    <pre>
+Student s1 = new Student();
+
+Stack:              Heap:
+s1  -----------▶   [ Student Object ]
+                    id
+                    name
+                    methods
+    </pre>
+
+    <p>
+        Methods are shared, data is per object.
+        Efficient. Unlike group projects.
+    </p>
+
+    <h2>Object Creation Steps (Behind the Scenes)</h2>
+    <ol>
+        <li>Memory allocation</li>
+        <li>Constructor is called</li>
+        <li>Object is initialized</li>
+        <li>Reference returned</li>
+    </ol>
+
+    <pre>
+Student s = new Student();
+    </pre>
+
+    <h2>Example: Object in Java (Detailed)</h2>
+
+    <h3>Class Definition</h3>
+    <pre>
+class Student {
+    int id;
+    String name;
+
+    void display() {
+        System.out.println(id + " " + name);
+    }
+}
+    </pre>
+
+    <h3>Object Creation and Usage</h3>
+    <pre>
+public class Main {
+    public static void main(String[] args) {
+
+        Student s1 = new Student();
+        Student s2 = new Student();
+
+        s1.id = 1;
+        s1.name = "Abhishek";
+
+        s2.id = 2;
+        s2.name = "Rahul";
+
+        s1.display();
+        s2.display();
+    }
+}
+    </pre>
+
+    <h3>Output</h3>
+    <pre>
+1 Abhishek
+2 Rahul
+    </pre>
+
+    <p>
+        Same class. Two objects. Different states. No confusion.
+    </p>
+
+    <h2>Object vs Class (Quick Comparison)</h2>
+
+    <table border="1" cellpadding="8">
+        <tr>
+            <th>Class</th>
+            <th>Object</th>
+        </tr>
+        <tr>
+            <td>Blueprint</td>
+            <td>Real instance</td>
+        </tr>
+        <tr>
+            <td>No memory for data</td>
+            <td>Occupies memory</td>
+        </tr>
+        <tr>
+            <td>Logical entity</td>
+            <td>Physical entity</td>
+        </tr>
+        <tr>
+            <td>Defined once</td>
+            <td>Created many times</td>
+        </tr>
+    </table>
+
+    <h2>Object in Real-World Terms</h2>
+
+    <table border="1" cellpadding="8">
+        <tr>
+            <th>Real World</th>
+            <th>OOPS</th>
+        </tr>
+        <tr>
+            <td>House plan</td>
+            <td>Class</td>
+        </tr>
+        <tr>
+            <td>Actual house</td>
+            <td>Object</td>
+        </tr>
+        <tr>
+            <td>Room colors</td>
+            <td>State</td>
+        </tr>
+        <tr>
+            <td>Opening doors</td>
+            <td>Behavior</td>
+        </tr>
+    </table>
+
+    <h2>Key Exam Points (Write These)</h2>
+    <ul>
+        <li>Object is an instance of a class</li>
+        <li>Objects have state, behavior, and identity</li>
+        <li>Objects occupy memory at runtime</li>
+        <li>Multiple objects can be created from one class</li>
+    </ul>
+     <h1>3. Encapsulation (In Depth)</h1>
+
+    <h2>Definition</h2>
+    <p>
+        <strong>Encapsulation</strong> is the OOPS principle of bundling data (variables)
+        and the methods that operate on that data into a single unit (class) and
+        restricting direct access to the data.
+    </p>
+
+    <p><strong>In simple terms:</strong></p>
+    <blockquote>
+        “Mind your own variables.”
+    </blockquote>
+
+    <h2>Why Encapsulation Exists</h2>
+    <p>
+        Because letting anyone directly touch your data is how bugs, security holes,
+        and bad life decisions happen.
+    </p>
+
+    <p>Encapsulation:</p>
+    <ul>
+        <li>Protects data from accidental modification</li>
+        <li>Enforces controlled access</li>
+        <li>Makes code easier to maintain and debug</li>
+    </ul>
+
+    <h2>How Encapsulation Is Achieved</h2>
+    <p>Encapsulation is implemented using:</p>
+
+    <ul>
+        <li><strong>Access modifiers</strong>
+            <ul>
+                <li><code>private</code> → data hidden</li>
+                <li><code>public</code> → controlled access</li>
+                <li><code>protected</code> → limited inheritance access</li>
+            </ul>
+        </li>
+        <li><strong>Getter and Setter methods</strong>
+            <ul>
+                <li>Getters read data</li>
+                <li>Setters modify data safely</li>
+            </ul>
+        </li>
+    </ul>
+
+    <h2>Structure of Encapsulation</h2>
+    <pre>
++----------------------+
+|        Class         |
+|----------------------|
+| - private data       |
+|----------------------|
+| + public methods     |
++----------------------+
+    </pre>
+
+    <p><strong>External code:</strong></p>
+    <ul>
+        <li>Cannot touch private data</li>
+        <li>Must go through public methods</li>
+    </ul>
+
+    <h2>Example (Java)</h2>
+
+    <h3>Without Encapsulation (Bad Design)</h3>
+    <pre>
+class BankAccount {
+    public double balance;
+}
+
+public class Main {
+    public static void main(String[] args) {
+        BankAccount acc = new BankAccount();
+        acc.balance = -5000;   // Congrats, you’re broke illegally
+    }
+}
+    </pre>
+
+    <h4>Problem:</h4>
+    <ul>
+        <li>No validation</li>
+        <li>No security</li>
+        <li>Balance can become nonsense</li>
+    </ul>
+
+    <h3>With Encapsulation (Correct Design)</h3>
+    <pre>
+class BankAccount {
+    private double balance;
+
+    public void deposit(double amount) {
+        if (amount > 0) {
+            balance += amount;
+        }
+    }
+
+    public void withdraw(double amount) {
+        if (amount > 0 && amount <= balance) {
+            balance -= amount;
+        }
+    }
+
+    public double getBalance() {
+        return balance;
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        BankAccount acc = new BankAccount();
+        acc.deposit(5000);
+        acc.withdraw(2000);
+        System.out.println(acc.getBalance());
+    }
+}
+    </pre>
+
+    <h3>Key Points in This Example</h3>
+    <ul>
+        <li><code>balance</code> is private</li>
+        <li>Direct access is blocked</li>
+        <li>All updates go through rules</li>
+        <li>Invalid states are prevented</li>
+    </ul>
+
+    <p>
+        That’s encapsulation doing its job quietly, like a competent adult.
+    </p>
+
+    <h2>Encapsulation vs Data Hiding</h2>
+
+    <table border="1" cellpadding="8">
+        <tr>
+            <th>Aspect</th>
+            <th>Encapsulation</th>
+            <th>Data Hiding</th>
+        </tr>
+        <tr>
+            <td>Meaning</td>
+            <td>Wrapping data + methods</td>
+            <td>Restricting access</td>
+        </tr>
+        <tr>
+            <td>Achieved by</td>
+            <td>Classes</td>
+            <td>Access modifiers</td>
+        </tr>
+        <tr>
+            <td>Scope</td>
+            <td>Design principle</td>
+            <td>Implementation detail</td>
+        </tr>
+    </table>
+
+    <p>
+        Encapsulation uses data hiding, but they’re not the same thing.
+    </p>
+
+    <h2>Advantages of Encapsulation</h2>
+    <ul>
+        <li>Data security</li>
+        <li>Controlled modification</li>
+        <li>Easier debugging</li>
+        <li>Improved maintainability</li>
+        <li>Flexibility to change implementation without breaking code</li>
+    </ul>
+
+    <h2>Real-World Analogy</h2>
+    <p><strong>ATM Machine:</strong></p>
+    <ul>
+        <li>You don’t touch the bank database</li>
+        <li>You use buttons (methods)</li>
+        <li>Rules apply automatically</li>
+    </ul>
+
+    <p>
+        That’s encapsulation, not magic.
+    </p>
+    <h1>4. Abstraction (In Depth)</h1>
+
+    <h2>Definition</h2>
+    <p>
+        <strong>Abstraction</strong> is the process of hiding implementation details
+        and showing only essential features to the user.
+    </p>
+    <p>
+        In simple terms: You tell the user <em>what</em> an object can do,
+        not <em>how</em> it does it.
+    </p>
+
+    <h2>Why Abstraction Exists</h2>
+    <p>Without abstraction:</p>
+    <ul>
+        <li>Every user would need to understand internal logic</li>
+        <li>Code becomes tightly coupled</li>
+        <li>Maintenance becomes difficult</li>
+    </ul>
+
+    <p>With abstraction:</p>
+    <ul>
+        <li>Complexity is reduced</li>
+        <li>Code is flexible and extensible</li>
+        <li>Implementation can change without breaking users</li>
+    </ul>
+
+    <h2>Real-World Analogy: ATM Machine</h2>
+    <p>You see:</p>
+    <ul>
+        <li>Insert card</li>
+        <li>Enter PIN</li>
+        <li>Withdraw cash</li>
+    </ul>
+
+    <p>You don’t see:</p>
+    <ul>
+        <li>Bank servers</li>
+        <li>Encryption</li>
+        <li>Transaction validation</li>
+        <li>Balance consistency checks</li>
+    </ul>
+
+    <p>
+        These hidden operations represent abstraction.
+    </p>
+
+    <h2>How Abstraction Is Achieved (In OOPS)</h2>
+    <ol>
+        <li>Abstract Class</li>
+        <li>Interface</li>
+    </ol>
+
+    <h2>1. Abstract Class</h2>
+
+    <h3>What Is It?</h3>
+    <p>An abstract class:</p>
+    <ul>
+        <li>Cannot be instantiated</li>
+        <li>May contain abstract methods (no body)</li>
+        <li>May contain concrete methods (with body)</li>
+        <li>Provides partial abstraction</li>
+    </ul>
+
+    <h3>Syntax (Java)</h3>
+    <pre>
+abstract class Vehicle {
+    abstract void start();
+
+    void fuel() {
+        System.out.println("Fueling...");
+    }
+}
+    </pre>
+
+    <h3>Implementation</h3>
+    <pre>
+class Car extends Vehicle {
+    void start() {
+        System.out.println("Car starts with key");
+    }
+}
+    </pre>
+
+    <h3>Usage</h3>
+    <pre>
+Vehicle v = new Car();
+v.start();
+v.fuel();
+    </pre>
+
+    <h3>Key Points</h3>
+    <ul>
+        <li>Can have constructors</li>
+        <li>Can have instance variables</li>
+        <li>Supports inheritance</li>
+        <li>Abstract methods must be implemented by subclasses</li>
+    </ul>
+
+    <h2>2. Interface</h2>
+
+    <h3>What Is It?</h3>
+    <p>An interface:</p>
+    <ul>
+        <li>Achieves complete abstraction (conceptually)</li>
+        <li>Contains method declarations</li>
+        <li>Contains constants (public static final by default)</li>
+    </ul>
+
+    <h3>Syntax</h3>
+    <pre>
+interface Shape {
+    void draw();
+}
+    </pre>
+
+    <h3>Implementation</h3>
+    <pre>
+class Circle implements Shape {
+    public void draw() {
+        System.out.println("Drawing Circle");
+    }
+}
+    </pre>
+
+    <h3>Usage</h3>
+    <pre>
+Shape s = new Circle();
+s.draw();
+    </pre>
+
+    <h3>Key Points</h3>
+    <ul>
+        <li>No constructors</li>
+        <li>No instance variables</li>
+        <li>Supports multiple inheritance</li>
+        <li>Methods are public by default</li>
+    </ul>
+
+    <h2>Abstract Class vs Interface</h2>
+    <table border="1" cellpadding="5">
+        <tr>
+            <th>Feature</th>
+            <th>Abstract Class</th>
+            <th>Interface</th>
+        </tr>
+        <tr>
+            <td>Abstraction</td>
+            <td>Partial</td>
+            <td>Full</td>
+        </tr>
+        <tr>
+            <td>Methods</td>
+            <td>Abstract + Concrete</td>
+            <td>Abstract only</td>
+        </tr>
+        <tr>
+            <td>Variables</td>
+            <td>Instance variables allowed</td>
+            <td>Constants only</td>
+        </tr>
+        <tr>
+            <td>Multiple inheritance</td>
+            <td>No</td>
+            <td>Yes</td>
+        </tr>
+        <tr>
+            <td>Constructor</td>
+            <td>Yes</td>
+            <td>No</td>
+        </tr>
+    </table>
+
+    <h2>Example: Abstraction in a Payment System</h2>
+
+    <h3>Abstract Class</h3>
+    <pre>
+abstract class Payment {
+    abstract void pay(double amount);
+
+    void receipt() {
+        System.out.println("Payment successful");
+    }
+}
+    </pre>
+
+    <h3>Implementations</h3>
+    <pre>
+class CreditCard extends Payment {
+    void pay(double amount) {
+        System.out.println("Paid " + amount + " using Credit Card");
+    }
+}
+
+class UPI extends Payment {
+    void pay(double amount) {
+        System.out.println("Paid " + amount + " using UPI");
+    }
+}
+    </pre>
+
+    <h3>Usage</h3>
+    <pre>
+Payment p = new CreditCard();
+p.pay(500);
+p.receipt();
+    </pre>
+
+    <h2>Benefits of Abstraction</h2>
+    <ul>
+        <li>Reduces complexity</li>
+        <li>Improves code readability</li>
+        <li>Enhances maintainability</li>
+        <li>Allows loose coupling</li>
+        <li>Encourages scalable design</li>
+    </ul>
+
+    <h2>When to Use Abstraction</h2>
+    <ul>
+        <li>When multiple implementations share common behavior</li>
+        <li>When implementation may change in the future</li>
+        <li>When designing frameworks or APIs</li>
+    </ul>
+
+    <h2>Common Interview Traps</h2>
+    <p><strong>Q:</strong> Can an abstract class have a constructor?<br>
+       <strong>A:</strong> Yes.</p>
+
+    <p><strong>Q:</strong> Can an interface have method implementation?<br>
+       <strong>A:</strong> Java 8 onward supports default methods.</p>
+
+    <p><strong>Q:</strong> Difference between abstraction and encapsulation?</p>
+    <ul>
+        <li><strong>Abstraction:</strong> Hides implementation</li>
+        <li><strong>Encapsulation:</strong> Hides data</li>
+    </ul>
+<h1>5. Inheritance (In Depth)</h1>
+
+    <h2>Definition</h2>
+    <p>
+        <strong>Inheritance</strong> is an OOPS mechanism where one class acquires the
+        properties and behavior of another class.
+    </p>
+
+    <ul>
+        <li>Existing class → <strong>Parent / Base / Superclass</strong></li>
+        <li>New class → <strong>Child / Derived / Subclass</strong></li>
+        <li>Represents an <strong>IS-A</strong> relationship</li>
+    </ul>
+
+    <p>Examples:</p>
+    <ul>
+        <li>Dog IS-A Animal</li>
+        <li>Car IS-A Vehicle</li>
+        <li>Student IS-A Person</li>
+    </ul>
+
+    <p><strong>Note:</strong> Not “HAS-A”. That’s composition. Different headache.</p>
+
+    <h2>Why Inheritance Exists</h2>
+    <ul>
+        <li>Code reusability</li>
+        <li>Reduced redundancy</li>
+        <li>Easy maintenance</li>
+        <li>Supports polymorphism</li>
+        <li>Logical class hierarchy</li>
+    </ul>
+
+    <h2>Basic Syntax (Java Example)</h2>
+    <pre>
+class Parent {
+    int x = 10;
+
+    void show() {
+        System.out.println("Parent class method");
+    }
+}
+
+class Child extends Parent {
+    void display() {
+        System.out.println("Child class method");
+    }
+}
+    </pre>
+
+    <h3>Usage</h3>
+    <pre>
+Child obj = new Child();
+obj.show();     // inherited from Parent
+obj.display();  // Child’s own method
+    </pre>
+
+    <h2>Textual Diagram</h2>
+    <pre>
+        Parent
+       --------
+       + x
+       + show()
+           |
+           |
+       --------
+       Child
+       + display()
+    </pre>
+
+    <p>Child automatically gets <code>x</code> and <code>show()</code>.</p>
+
+    <h2>Types of Inheritance</h2>
+
+    <h3>1. Single Inheritance</h3>
+    <p>One child, one parent.</p>
+    <pre>
+Animal → Dog
+    </pre>
+
+    <pre>
+class Animal {
+    void eat() {
+        System.out.println("Eating");
+    }
+}
+
+class Dog extends Animal {
+    void bark() {
+        System.out.println("Barking");
+    }
+}
+    </pre>
+
+    <h3>2. Multilevel Inheritance</h3>
+    <p>Chain of inheritance.</p>
+    <pre>
+Animal → Mammal → Dog
+    </pre>
+
+    <pre>
+class Animal {
+    void eat() {}
+}
+
+class Mammal extends Animal {
+    void walk() {}
+}
+
+class Dog extends Mammal {
+    void bark() {}
+}
+    </pre>
+
+    <p>Dog gets <code>eat()</code>, <code>walk()</code>, and <code>bark()</code>.</p>
+
+    <h3>3. Hierarchical Inheritance</h3>
+    <pre>
+        Animal
+       /      \
+     Dog      Cat
+    </pre>
+
+    <pre>
+class Animal {
+    void eat() {}
+}
+
+class Dog extends Animal {
+    void bark() {}
+}
+
+class Cat extends Animal {
+    void meow() {}
+}
+    </pre>
+
+    <h3>4. Multiple Inheritance (via Interface in Java)</h3>
+    <p>
+        Java avoids multiple inheritance with classes to prevent ambiguity.
+    </p>
+
+    <pre>
+        Printable   Showable
+             \       /
+              \     /
+               Demo
+    </pre>
+
+    <pre>
+interface Printable {
+    void print();
+}
+
+interface Showable {
+    void show();
+}
+
+class Demo implements Printable, Showable {
+    public void print() {}
+    public void show() {}
+}
+    </pre>
+
+    <h3>5. Hybrid Inheritance</h3>
+    <p>
+        Combination of more than one type of inheritance.
+        Supported indirectly using interfaces.
+    </p>
+
+    <h2>Method Overriding (Run-Time Polymorphism)</h2>
+    <p>
+        Child class provides its own version of a parent class method.
+    </p>
+
+    <h3>Rules</h3>
+    <ul>
+        <li>Same method name</li>
+        <li>Same parameters</li>
+        <li>IS-A relationship</li>
+        <li>Decision made at runtime</li>
+    </ul>
+
+    <pre>
+class Animal {
+    void sound() {
+        System.out.println("Animal sound");
+    }
+}
+
+class Dog extends Animal {
+    @Override
+    void sound() {
+        System.out.println("Bark");
+    }
+}
+    </pre>
+
+    <h3>Execution</h3>
+    <pre>
+Animal a = new Dog();
+a.sound();   // Bark
+    </pre>
+
+    <p>
+        Compiler trusts the reference. JVM checks the object.
+    </p>
+
+    <h2>super Keyword</h2>
+    <p>Used to access:</p>
+    <ul>
+        <li>Parent class variables</li>
+        <li>Parent class methods</li>
+        <li>Parent class constructors</li>
+    </ul>
+
+    <pre>
+class Parent {
+    int x = 10;
+}
+
+class Child extends Parent {
+    int x = 20;
+
+    void show() {
+        System.out.println(super.x); // 10
+    }
+}
+    </pre>
+
+    <h2>Constructor Inheritance</h2>
+    <ul>
+        <li>Constructors are NOT inherited</li>
+        <li>Parent constructor is called first</li>
+    </ul>
+
+    <pre>
+class Parent {
+    Parent() {
+        System.out.println("Parent constructor");
+    }
+}
+
+class Child extends Parent {
+    Child() {
+        System.out.println("Child constructor");
+    }
+}
+    </pre>
+
+    <h3>Output</h3>
+    <pre>
+Parent constructor
+Child constructor
+    </pre>
+
+    <h2>Limitations of Inheritance</h2>
+    <ul>
+        <li>Tight coupling</li>
+        <li>Improper hierarchy causes complexity</li>
+        <li>Overuse leads to fragile design</li>
+        <li>Not suitable for every relationship</li>
+    </ul>
+
+    <p>
+        Use inheritance only for <strong>IS-A</strong>, not <strong>HAS-A</strong>.
+    </p>
+
+    <h2>Inheritance vs Composition</h2>
+
+    <table border="1" cellpadding="6">
+        <tr>
+            <th>Inheritance</th>
+            <th>Composition</th>
+        </tr>
+        <tr>
+            <td>IS-A</td>
+            <td>HAS-A</td>
+        </tr>
+        <tr>
+            <td>Strong coupling</td>
+            <td>Loose coupling</td>
+        </tr>
+        <tr>
+            <td>Compile-time</td>
+            <td>Runtime</td>
+        </tr>
+        <tr>
+            <td>Less flexible</td>
+            <td>More flexible</td>
+        </tr>
+    </table>
+
+    <h2>Real-World Example</h2>
+    <pre>
+Vehicle
+  |
+Car
+  |
+ElectricCar
+    </pre>
+
+    <ul>
+        <li>Vehicle → speed, fuel</li>
+        <li>Car → wheels, doors</li>
+        <li>ElectricCar → battery, charging</li>
+    </ul>
+
+    <p>
+        Each level adds behavior without rewriting everything.
+    </p>
+    <h1>Polymorphism in OOPS</h1>
+
+    <h2>Definition</h2>
+    <p>
+        <strong>Polymorphism</strong> means the ability of a single interface, method name,
+        or operation to behave differently based on the object or data it is acting upon.
+    </p>
+
+    <p><strong>In short:</strong></p>
+    <ul>
+        <li>One name → many forms</li>
+    </ul>
+
+    <h2>Why Polymorphism Exists</h2>
+
+    <p><strong>Without polymorphism:</strong></p>
+    <ul>
+        <li>You write separate functions for every case</li>
+        <li>Code becomes rigid and ugly</li>
+        <li>Extending functionality means rewriting old code</li>
+    </ul>
+
+    <p><strong>With polymorphism:</strong></p>
+    <ul>
+        <li>Code becomes flexible</li>
+        <li>Behavior can change at runtime</li>
+        <li>Programs follow the <strong>Open–Closed Principle</strong></li>
+    </ul>
+
+    <h2>Types of Polymorphism</h2>
+
+    <h3>1. Compile-Time Polymorphism</h3>
+    <p><strong>(Static Binding / Early Binding)</strong></p>
+    <ul>
+        <li>Resolved at compile time</li>
+        <li>Achieved by:
+            <ul>
+                <li>Method Overloading</li>
+                <li>Operator Overloading (C++)</li>
+            </ul>
+        </li>
+    </ul>
+
+    <h3>Method Overloading</h3>
+    <p>Same method name, different parameter list.</p>
+
+    <p><strong>Rules:</strong></p>
+    <ul>
+        <li>Number of parameters must differ OR</li>
+        <li>Type of parameters must differ</li>
+        <li>Return type alone cannot differentiate methods</li>
+    </ul>
+
+    <h4>Example (Java)</h4>
+    <pre>
+class Calculator {
+    int add(int a, int b) {
+        return a + b;
+    }
+
+    double add(double a, double b) {
+        return a + b;
+    }
+
+    int add(int a, int b, int c) {
+        return a + b + c;
+    }
+}
+    </pre>
+
+    <h4>Call Resolution</h4>
+    <pre>
+Calculator c = new Calculator();
+c.add(2, 3);        // add(int, int)
+c.add(2.5, 3.5);    // add(double, double)
+    </pre>
+
+    <p>✔ Decided before execution</p>
+
+    <h3>Operator Overloading (C++ only)</h3>
+    <pre>
+class Complex {
+public:
+    int real, imag;
+
+    Complex operator + (Complex c) {
+        Complex temp;
+        temp.real = real + c.real;
+        temp.imag = imag + c.imag;
+        return temp;
+    }
+};
+    </pre>
+
+    <p>
+        Java does not support operator overloading (except <code>+</code> for strings).
+        This is intentional.
+    </p>
+
+    <h3>2. Run-Time Polymorphism</h3>
+    <p><strong>(Dynamic Binding / Late Binding)</strong></p>
+
+    <ul>
+        <li>Resolved during execution</li>
+        <li>Achieved by:
+            <ul>
+                <li>Method Overriding</li>
+                <li>Inheritance</li>
+                <li>Base class reference pointing to derived object</li>
+            </ul>
+        </li>
+    </ul>
+
+    <h3>Method Overriding</h3>
+    <p>A subclass provides its own implementation of a method defined in the parent class.</p>
+
+    <p><strong>Rules:</strong></p>
+    <ul>
+        <li>Same method name</li>
+        <li>Same parameter list</li>
+        <li>IS-A relationship (inheritance)</li>
+        <li>Access level cannot be reduced</li>
+    </ul>
+
+    <h4>Example (Java)</h4>
+    <pre>
+class Animal {
+    void sound() {
+        System.out.println("Animal makes a sound");
+    }
+}
+
+class Dog extends Animal {
+    @Override
+    void sound() {
+        System.out.println("Dog barks");
+    }
+}
+
+class Cat extends Animal {
+    @Override
+    void sound() {
+        System.out.println("Cat meows");
+    }
+}
+    </pre>
+
+    <h4>Runtime Behavior</h4>
+    <pre>
+Animal a;
+
+a = new Dog();
+a.sound();   // Dog barks
+
+a = new Cat();
+a.sound();   // Cat meows
+    </pre>
+
+    <ul>
+        <li>✔ Method call decided at runtime</li>
+        <li>✔ Reference type does not decide behavior</li>
+        <li>✔ Object type does</li>
+    </ul>
+
+    <h2>Key Concept: Dynamic Method Dispatch</h2>
+    <p>
+        Dynamic Method Dispatch is the mechanism by which the JVM decides which overridden
+        method to call based on the actual object, not the reference.
+    </p>
+
+    <h2>Real-World Analogy</h2>
+    <pre>
+abstract class Payment {
+    abstract void pay();
+}
+
+class UPI extends Payment {
+    void pay() {
+        System.out.println("Paying using UPI");
+    }
+}
+
+class CreditCard extends Payment {
+    void pay() {
+        System.out.println("Paying using Credit Card");
+    }
+}
+    </pre>
+
+    <pre>
+Payment p;
+
+p = new UPI();
+p.pay();
+
+p = new CreditCard();
+p.pay();
+    </pre>
+
+    <p>
+        Same <code>pay()</code> call.<br>
+        Different behavior.<br>
+        No conditional logic required.
+    </p>
+
+    <h2>Compile-Time vs Run-Time Polymorphism</h2>
+
+    <table border="1" cellpadding="5">
+        <tr>
+            <th>Feature</th>
+            <th>Compile-Time</th>
+            <th>Run-Time</th>
+        </tr>
+        <tr>
+            <td>Binding</td>
+            <td>Early</td>
+            <td>Late</td>
+        </tr>
+        <tr>
+            <td>Method Resolution</td>
+            <td>Compile Time</td>
+            <td>Runtime</td>
+        </tr>
+        <tr>
+            <td>Flexibility</td>
+            <td>Less</td>
+            <td>More</td>
+        </tr>
+        <tr>
+            <td>Performance</td>
+            <td>Faster</td>
+            <td>Slightly Slower</td>
+        </tr>
+        <tr>
+            <td>Example</td>
+            <td>Overloading</td>
+            <td>Overriding</td>
+        </tr>
+    </table>
+
+    <h2>Advantages of Polymorphism</h2>
+    <ul>
+        <li>Loose coupling</li>
+        <li>Easy extensibility</li>
+        <li>Cleaner code</li>
+        <li>Supports abstraction</li>
+        <li>Reduces conditional logic</li>
+    </ul>
+
+    <h2>Common Mistakes Students Make</h2>
+    <ul>
+        <li>Thinking overloading is runtime polymorphism</li>
+        <li>Believing return type matters in overloading</li>
+        <li>Confusing reference type with object type</li>
+        <li>Trying to override static methods (they are hidden, not overridden)</li>
+    </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 </body>
 </html>

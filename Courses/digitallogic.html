@@ -1,0 +1,923 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Number Systems & Codes - Digital Logic</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            line-height: 1.6;
+            background: #fdfdfd;
+        }
+        h1, h2, h3 {
+            color: #2c3e50;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 10px 0;
+        }
+        th, td {
+            border: 1px solid #333;
+            padding: 8px;
+            text-align: center;
+        }
+        th {
+            background-color: #3498db;
+            color: white;
+        }
+        pre {
+            background-color: #f4f4f4;
+            padding: 10px;
+            border-left: 4px solid #2c3e50;
+            white-space: pre-wrap;
+        }
+        code {
+            background-color: #ecf0f1;
+            padding: 2px 4px;
+            border-radius: 3px;
+        }
+        .gate {
+            font-weight: bold;
+            color: #27ae60;
+        }
+        .truth-table th {
+            background-color: #2980b9;
+            color: white;
+        }
+        .note {
+            color: #b00000;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+<h1>1. Number Systems & Codes (Digital Logic)</h1>
+
+<h2>What is a Number System?</h2>
+<p>A number system defines:</p>
+<ul>
+    <li>Base (radix)</li>
+    <li>Symbols used</li>
+    <li>Positional weights</li>
+</ul>
+<p><strong>General form:</strong></p>
+<p>N = Σ (digit × base<sup>position</sup>)</p>
+
+<h2>Types of Number Systems</h2>
+<table>
+    <tr>
+        <th>System</th>
+        <th>Base</th>
+        <th>Symbols</th>
+    </tr>
+    <tr>
+        <td>Decimal</td>
+        <td>10</td>
+        <td>0–9</td>
+    </tr>
+    <tr>
+        <td>Binary</td>
+        <td>2</td>
+        <td>0, 1</td>
+    </tr>
+    <tr>
+        <td>Octal</td>
+        <td>8</td>
+        <td>0–7</td>
+    </tr>
+    <tr>
+        <td>Hexadecimal</td>
+        <td>16</td>
+        <td>0–9, A–F</td>
+    </tr>
+</table>
+
+<p>Machines use binary because transistors understand ON/OFF, not feelings.</p>
+
+<hr>
+
+<h2>Decimal → Binary Conversion</h2>
+<p><strong>Method:</strong> Repeated Division by 2</p>
+<p><strong>Example: 25<sub>10</sub> → Binary</strong></p>
+<pre>
+25 ÷ 2 = 12  remainder 1
+12 ÷ 2 = 6   remainder 0
+6  ÷ 2 = 3   remainder 0
+3  ÷ 2 = 1   remainder 1
+1  ÷ 2 = 0   remainder 1
+</pre>
+<p>Read remainders bottom to top → 25<sub>10</sub> = 11001<sub>2</sub></p>
+
+<h2>Binary → Decimal Conversion</h2>
+<p><strong>Example: 101101<sub>2</sub> → Decimal</strong></p>
+<pre>
+Position:  5   4   3   2   1   0
+Binary:    1   0   1   1   0   1
+Weight:   32  16   8   4   2   1
+</pre>
+<p>= 32 + 8 + 4 + 1 = 45<sub>10</sub></p>
+
+<h2>Binary → Octal</h2>
+<p><strong>Rule:</strong> Group 3 bits from right. Pad with zeros if needed.</p>
+<p>Example: 1101011<sub>2</sub></p>
+<pre>
+001 101 011 → 1 5 3 → 153<sub>8</sub>
+</pre>
+
+<h2>Binary → Hexadecimal</h2>
+<p><strong>Rule:</strong> Group 4 bits from right. Pad with zeros if needed.</p>
+<p>Example: 111011101<sub>2</sub></p>
+<pre>
+0001 1101 1101 → 1 D D → 1DD<sub>16</sub>
+</pre>
+
+<h2>Hexadecimal → Binary</h2>
+<p>Example: 2F<sub>16</sub></p>
+<pre>
+2 → 0010
+F → 1111
+2F<sub>16</sub> = 00101111<sub>2</sub>
+</pre>
+
+<h2>Binary Arithmetic</h2>
+<p><strong>Addition Example:</strong></p>
+<pre>
+   1011
+ + 0110
+ -------
+  10001
+</pre>
+
+<h2>1's and 2's Complement</h2>
+<h3>1's Complement</h3>
+<pre>
+Number:   010101
+1’s comp: 101010
+</pre>
+<h3>2's Complement</h3>
+<p>Steps: Take 1's complement → Add 1</p>
+<pre>
++18 → 00010010₂
+1’s → 11101101
++1 → 11101110 → -18
+</pre>
+
+<h2>Signed Binary Representation</h2>
+<p>For n bits: Range = -2<sup>n-1</sup> to 2<sup>n-1</sup>-1</p>
+<p>8-bit example: -128 to +127. MSB = 0 → positive, 1 → negative</p>
+
+<h2>Binary Codes</h2>
+<h3>BCD (Binary Coded Decimal)</h3>
+<table>
+<tr><th>Decimal</th><th>BCD</th></tr>
+<tr><td>0</td><td>0000</td></tr>
+<tr><td>5</td><td>0101</td></tr>
+<tr><td>9</td><td>1001</td></tr>
+</table>
+<p>Example: 59 → 0101 1001 (BCD). <span class="note">⚠️ Values 1010–1111 invalid in BCD.</span></p>
+
+<h3>Gray Code</h3>
+<p>Only 1 bit changes between consecutive numbers.</p>
+<p>Binary → Gray: MSB same, next bits = XOR(prev, current)</p>
+<pre>
+Binary: 1011
+Gray:   1110
+</pre>
+
+<h3>Excess-3 Code</h3>
+<p>Add 3 to each decimal digit, then convert to binary.</p>
+<pre>
+4 + 3 = 7 → 0111
+</pre>
+
+<h2>Parity Bit (Error Detection)</h2>
+<h3>Even Parity</h3>
+<pre>
+Data: 101011 → 1s = 4 → parity = 0
+</pre>
+<h3>Odd Parity</h3>
+<p>Total number of 1s = odd. Used for single-bit error detection.</p>
+
+<hr>
+<h1>Boolean Algebra</h1>
+<h2>Boolean Operations</h2>
+
+<h3 class="gate">AND (·)</h3>
+<p>1 only if all inputs 1</p>
+<table class="truth-table">
+<tr><th>A</th><th>B</th><th>A·B</th></tr>
+<tr><td>0</td><td>0</td><td>0</td></tr>
+<tr><td>0</td><td>1</td><td>0</td></tr>
+<tr><td>1</td><td>0</td><td>0</td></tr>
+<tr><td>1</td><td>1</td><td>1</td></tr>
+</table>
+
+<h3 class="gate">OR (+)</h3>
+<p>1 if any input 1</p>
+<table class="truth-table">
+<tr><th>A</th><th>B</th><th>A+B</th></tr>
+<tr><td>0</td><td>0</td><td>0</td></tr>
+<tr><td>0</td><td>1</td><td>1</td></tr>
+<tr><td>1</td><td>0</td><td>1</td></tr>
+<tr><td>1</td><td>1</td><td>1</td></tr>
+</table>
+
+<h3 class="gate">NOT (¯)</h3>
+<p>Inverts input</p>
+<table class="truth-table">
+<tr><th>A</th><th>Ā</th></tr>
+<tr><td>0</td><td>1</td></tr>
+<tr><td>1</td><td>0</td></tr>
+</table>
+
+<h2>Canonical SOP – Sum of Products</h2>
+<p>OR of minterms (rows where F = 1)</p>
+<pre>
+Truth Table:
+A B C | F
+0 0 0 | 0
+0 0 1 | 1
+0 1 0 | 0
+0 1 1 | 1
+1 0 0 | 0
+1 0 1 | 0
+1 1 0 | 1
+1 1 1 | 0
+
+Canonical SOP:
+F = ĀB̄C + ĀBC + ABC̄
+</pre>
+
+<h2>Canonical POS – Product of Sums</h2>
+<p>AND of maxterms (rows where F = 0)</p>
+<pre>
+Rows where F=0: 000,010,100,101,111
+F = (A + B + C)(A + B̄ + C)(Ā + B + C)(Ā + B + C̄)(Ā + B̄ + C̄)
+</pre>
+
+<h2>Converting Non-Canonical → Canonical</h2>
+<pre>
+F = A + BC
+Step 1: Expand missing vars: A = A(B + B̄)(C + C̄)
+Step 2: Expand BC: BC = (A + Ā)BC
+Step 3: Final Canonical SOP:
+F = ABC + ABC̄ + AB̄C + AB̄C̄ + ĀBC
+</pre>
+
+<h2>SOP vs POS Comparison</h2>
+<table>
+<tr>
+<th>Feature</th><th>SOP</th><th>POS</th>
+</tr>
+<tr><td>Built from</td><td>Minterms</td><td>Maxterms</td></tr>
+<tr><td>Output rows</td><td>F = 1</td><td>F = 0</td></tr>
+<tr><td>K-map usage</td><td>Group 1s</td><td>Group 0s</td></tr>
+<tr><td>Gate level</td><td>AND → OR</td><td>OR → AND</td></tr>
+</table>
+
+<h1>Sum of Products (SOP) – In Depth</h1>
+
+<h2>What SOP Is</h2>
+<p>SOP = <strong>OR of ANDs</strong></p>
+<ul>
+<li>Each AND term = minterm (one row where F=1)</li>
+<li>Output = 1 if any minterm is 1</li>
+<li>Also called Disjunctive Normal Form</li>
+</ul>
+
+<h2>SOP Steps (Step-by-Step)</h2>
+<p>Step 1: Identify rows where output = 1</p>
+<table class="truth-table">
+<tr><th>A</th><th>B</th><th>C</th><th>F</th></tr>
+<tr><td>0</td><td>0</td><td>0</td><td>0</td></tr>
+<tr><td>0</td><td>0</td><td>1</td><td>1</td></tr>
+<tr><td>0</td><td>1</td><td>0</td><td>0</td></tr>
+<tr><td>0</td><td>1</td><td>1</td><td>1</td></tr>
+<tr><td>1</td><td>0</td><td>0</td><td>0</td></tr>
+<tr><td>1</td><td>0</td><td>1</td><td>0</td></tr>
+<tr><td>1</td><td>1</td><td>0</td><td>1</td></tr>
+<tr><td>1</td><td>1</td><td>1</td><td>0</td></tr>
+</table>
+
+<p>Rows where F=1 → 001, 011, 110</p>
+
+<h3>Step 2: Write Minterms</h3>
+<table class="truth-table">
+<tr><th>Row</th><th>A</th><th>B</th><th>C</th><th>Minterm</th></tr>
+<tr><td>001</td><td>0</td><td>0</td><td>1</td><td>Ā·B̄·C</td></tr>
+<tr><td>011</td><td>0</td><td>1</td><td>1</td><td>Ā·B·C</td></tr>
+<tr><td>110</td><td>1</td><td>1</td><td>0</td><td>A·B·C̄</td></tr>
+</table>
+
+<h3>Step 3: Combine Minterms</h3>
+<pre>F = ĀB̄C + ĀBC + ABC̄ (Canonical SOP)</pre>
+
+<h3>Step 4: Simplify</h3>
+<pre>
+ĀB̄C + ĀBC = ĀC(B̄ + B) = ĀC
+Include third term: F = ĀC + ABC̄ (Simplified SOP)
+</pre>
+
+<h2>Textual Circuit Diagram</h2>
+<h3>Canonical SOP</h3>
+<pre>
+Ā ----\        Ā ----\
+B̄ ---- AND ----\      \
+C  ----/        OR ---- F
+Ā ----\        /
+B  ---- AND --/
+C  ----/
+A  ----\ 
+B  ---- AND 
+C̄ ----/
+</pre>
+
+<h3>Simplified SOP</h3>
+<pre>
+Ā ----\       A ----\
+C  ---- AND ----\    \
+                  OR ---- F
+A ----\       B ---- AND
+B  ---- AND ---/
+C̄ ----/
+</pre>
+
+<h2>Steps Recap</h2>
+<ol>
+<li>Write truth table</li>
+<li>Identify rows where output = 1</li>
+<li>Write minterms</li>
+<li>Combine using OR → Canonical SOP</li>
+<li>Simplify → Simplified SOP</li>
+<li>Draw circuit (AND → OR)</li>
+</ol>
+<h1>Product of Sums (POS) – In Depth</h1>
+
+<h2>1. Definition</h2>
+<p>POS is a Boolean expression written as a <strong>product (AND)</strong> of <strong>sums (ORs)</strong>.</p>
+<p>Each sum term (maxterm) corresponds to a row of the truth table where output = 0.</p>
+<p>Canonical POS includes all variables in each sum term.</p>
+
+<h2>2. Maxterms (Building Blocks of POS)</h2>
+<p>A maxterm is a sum (OR) of variables.</p>
+<p><strong>Rule for variables in maxterms:</strong></p>
+<ul>
+    <li>Variable = 0 → use uncomplemented (A)</li>
+    <li>Variable = 1 → use complemented (Ā)</li>
+</ul>
+
+<p><strong>Example Table:</strong></p>
+<table>
+<tr><th>A</th><th>B</th><th>C</th><th>Maxterm (M)</th></tr>
+<tr><td>0</td><td>0</td><td>0</td><td>(A + B + C)</td></tr>
+<tr><td>0</td><td>0</td><td>1</td><td>(A + B + C̄)</td></tr>
+<tr><td>0</td><td>1</td><td>0</td><td>(A + B̄ + C)</td></tr>
+<tr><td>0</td><td>1</td><td>1</td><td>(A + B̄ + C̄)</td></tr>
+<tr><td>1</td><td>0</td><td>0</td><td>(Ā + B + C)</td></tr>
+<tr><td>1</td><td>0</td><td>1</td><td>(Ā + B + C̄)</td></tr>
+<tr><td>1</td><td>1</td><td>0</td><td>(Ā + B̄ + C)</td></tr>
+<tr><td>1</td><td>1</td><td>1</td><td>(Ā + B̄ + C̄)</td></tr>
+</table>
+<p>Each row corresponds to a F = 0 condition.</p>
+
+<h2>3. POS Expression – Step by Step</h2>
+<p><strong>Example Problem:</strong></p>
+
+<p><strong>Truth Table for F(A,B,C):</strong></p>
+<table>
+<tr><th>A</th><th>B</th><th>C</th><th>F</th></tr>
+<tr><td>0</td><td>0</td><td>0</td><td>0</td></tr>
+<tr><td>0</td><td>0</td><td>1</td><td>1</td></tr>
+<tr><td>0</td><td>1</td><td>0</td><td>1</td></tr>
+<tr><td>0</td><td>1</td><td>1</td><td>0</td></tr>
+<tr><td>1</td><td>0</td><td>0</td><td>1</td></tr>
+<tr><td>1</td><td>0</td><td>1</td><td>0</td></tr>
+<tr><td>1</td><td>1</td><td>0</td><td>1</td></tr>
+<tr><td>1</td><td>1</td><td>1</td><td>1</td></tr>
+</table>
+
+<h3>Step 1: Identify rows where F = 0</h3>
+<p>Rows: 000 → M0, 011 → M3, 101 → M5</p>
+
+<h3>Step 2: Write maxterms for each row</h3>
+<ul>
+    <li>M0 = (A + B + C)</li>
+    <li>M3 = (A + B̄ + C̄)</li>
+    <li>M5 = (Ā + B + C̄)</li>
+</ul>
+
+<h3>Step 3: Form Product of Sums</h3>
+<p><strong>F = M0 · M3 · M5</strong></p>
+<p>F = (A + B + C) · (A + B̄ + C̄) · (Ā + B + C̄)</p>
+
+<h3>Step 4: Σ or Π Notation</h3>
+<p>F(A,B,C) = Π M(0,3,5)</p>
+
+<h2>4. Textual Diagram (POS Circuit)</h2>
+<pre>
+A ----\             /----\
+B ---- OR ----\     |    |
+C ----/         \   |    |
+                 AND ---- F
+A ----\         /   |
+B̄ ---- OR ----/    |
+C̄ ----/            |
+Ā ----\             |
+B ---- OR ----\      |
+C̄ ----/         \--/
+</pre>
+<p>Explanation:</p>
+<ul>
+    <li>Each OR gate = one maxterm</li>
+    <li>AND gate combines all maxterms</li>
+    <li>Output = F</li>
+</ul>
+
+<h2>5. POS vs SOP Recap</h2>
+<table>
+<tr><th>Feature</th><th>SOP</th><th>POS</th></tr>
+<tr><td>Base element</td><td>Minterm</td><td>Maxterm</td></tr>
+<tr><td>Row selection</td><td>F = 1</td><td>F = 0</td></tr>
+<tr><td>Expression</td><td>OR of ANDs</td><td>AND of ORs</td></tr>
+<tr><td>Gate realization</td><td>AND → OR</td><td>OR → AND</td></tr>
+</table>
+
+<h2>6. Converting SOP → POS (Optional Step)</h2>
+<p>Take canonical SOP and apply De Morgan’s law to get POS (useful for hardware implementation)</p>
+<p><strong>Example:</strong></p>
+<p>SOP: F = A·B + A·C</p>
+<p>POS: F = (A + B̄) · (A + C̄)</p>
+
+<h2>7. Key Points / Tips</h2>
+<ul>
+    <li>POS is naturally suited for F = 0 conditions.</li>
+    <li>Each term must contain all variables (canonical).</li>
+    <li>Always check complements carefully: 0 → uncomplemented, 1 → complemented.</li>
+    <li>Can be implemented using OR gates feeding an AND gate.</li>
+</ul>
+<h1>Logic Gates</h1>
+<p>Logic gates are the building blocks of digital circuits. They implement Boolean functions physically using electronics. Each gate takes binary inputs (0 or 1) and produces a binary output (0 or 1).</p>
+<p>We’ll cover basic gates, universal gates, and XOR/XNOR, with examples and textual diagrams.</p>
+
+<h2>1. AND Gate (·)</h2>
+<p><strong>Function:</strong> Output is 1 only if all inputs are 1.</p>
+<p><strong>Boolean Expression:</strong> Y = A·B</p>
+
+<table>
+<tr><th>A</th><th>B</th><th>Y = A·B</th></tr>
+<tr><td>0</td><td>0</td><td>0</td></tr>
+<tr><td>0</td><td>1</td><td>0</td></tr>
+<tr><td>1</td><td>0</td><td>0</td></tr>
+<tr><td>1</td><td>1</td><td>1</td></tr>
+</table>
+
+<pre>
+ A ----\
+        AND ---- Y
+ B ----/
+</pre>
+
+<p><strong>Example:</strong> A security system where the door opens only if both the correct PIN is entered and the fingerprint matches.</p>
+
+<h2>2. OR Gate (+)</h2>
+<p><strong>Function:</strong> Output is 1 if at least one input is 1.</p>
+<p><strong>Boolean Expression:</strong> Y = A + B</p>
+
+<table>
+<tr><th>A</th><th>B</th><th>Y = A+B</th></tr>
+<tr><td>0</td><td>0</td><td>0</td></tr>
+<tr><td>0</td><td>1</td><td>1</td></tr>
+<tr><td>1</td><td>0</td><td>1</td></tr>
+<tr><td>1</td><td>1</td><td>1</td></tr>
+</table>
+
+<pre>
+ A ----\
+        OR ---- Y
+ B ----/
+</pre>
+
+<p><strong>Example:</strong> A home alarm triggers if any sensor (door OR window) is tripped.</p>
+
+<h2>3. NOT Gate (Inverter)</h2>
+<p><strong>Function:</strong> Output is the complement of the input.</p>
+<p><strong>Boolean Expression:</strong> Y = ¬A</p>
+
+<table>
+<tr><th>A</th><th>Y = ¬A</th></tr>
+<tr><td>0</td><td>1</td></tr>
+<tr><td>1</td><td>0</td></tr>
+</table>
+
+<pre>
+ A ----|>o---- Y
+</pre>
+
+<p><strong>Example:</strong> If a light is off (0), output = 1 to turn on a buzzer.</p>
+
+<h2>4. NAND Gate (NOT + AND)</h2>
+<p><strong>Function:</strong> Output is 1 if AND condition is NOT true.</p>
+<p><strong>Boolean Expression:</strong> Y = ¬(A·B)</p>
+
+<table>
+<tr><th>A</th><th>B</th><th>Y = ¬(A·B)</th></tr>
+<tr><td>0</td><td>0</td><td>1</td></tr>
+<tr><td>0</td><td>1</td><td>1</td></tr>
+<tr><td>1</td><td>0</td><td>1</td></tr>
+<tr><td>1</td><td>1</td><td>0</td></tr>
+</table>
+
+<pre>
+ A ----\
+        AND ----|>o---- Y
+ B ----/
+</pre>
+
+<p><strong>Note:</strong> Universal gate – you can make any logic circuit using only NAND gates.</p>
+
+<h2>5. NOR Gate (NOT + OR)</h2>
+<p><strong>Function:</strong> Output is 1 only if all inputs are 0.</p>
+<p><strong>Boolean Expression:</strong> Y = ¬(A + B)</p>
+
+<table>
+<tr><th>A</th><th>B</th><th>Y = ¬(A+B)</th></tr>
+<tr><td>0</td><td>0</td><td>1</td></tr>
+<tr><td>0</td><td>1</td><td>0</td></tr>
+<tr><td>1</td><td>0</td><td>0</td></tr>
+<tr><td>1</td><td>1</td><td>0</td></tr>
+</table>
+
+<pre>
+ A ----\
+        OR ----|>o---- Y
+ B ----/
+</pre>
+
+<p><strong>Note:</strong> Another universal gate.</p>
+
+<h2>6. XOR Gate (Exclusive OR)</h2>
+<p><strong>Function:</strong> Output is 1 only if inputs are different.</p>
+<p><strong>Boolean Expression:</strong> Y = A⊕B = A¬B + ¬AB</p>
+
+<table>
+<tr><th>A</th><th>B</th><th>Y = A⊕B</th></tr>
+<tr><td>0</td><td>0</td><td>0</td></tr>
+<tr><td>0</td><td>1</td><td>1</td></tr>
+<tr><td>1</td><td>0</td><td>1</td></tr>
+<tr><td>1</td><td>1</td><td>0</td></tr>
+</table>
+
+<pre>
+ A ----\
+        XOR ---- Y
+ B ----/
+</pre>
+
+<p><strong>Example:</strong> Adders – sum output of a half-adder is XOR of inputs.</p>
+
+<h2>7. XNOR Gate (Exclusive NOR)</h2>
+<p><strong>Function:</strong> Output is 1 only if inputs are equal.</p>
+<p><strong>Boolean Expression:</strong> Y = ¬(A⊕B)</p>
+
+<table>
+<tr><th>A</th><th>B</th><th>Y = A⊙B</th></tr>
+<tr><td>0</td><td>0</td><td>1</td></tr>
+<tr><td>0</td><td>1</td><td>0</td></tr>
+<tr><td>1</td><td>0</td><td>0</td></tr>
+<tr><td>1</td><td>1</td><td>1</td></tr>
+</table>
+
+<pre>
+ A ----\
+        XOR ----|>o---- Y
+ B ----/
+</pre>
+
+<p><strong>Example:</strong> Equality checker in digital circuits.</p>
+
+<h2>Summary Table of Gates</h2>
+<table>
+<tr><th>Gate</th><th>Symbol</th><th>Boolean</th><th>Truth Table Example</th></tr>
+<tr><td>AND</td><td>·</td><td>A·B</td><td>0 0 0, 0 1 0, 1 0 0, 1 1 1</td></tr>
+<tr><td>OR</td><td>+</td><td>A+B</td><td>0 0 0, 0 1 1, 1 0 1, 1 1 1</td></tr>
+<tr><td>NOT</td><td>¬</td><td>¬A</td><td>0 1, 1 0</td></tr>
+<tr><td>NAND</td><td>· + ¬</td><td>¬(A·B)</td><td>0 0 1, 0 1 1, 1 0 1, 1 1 0</td></tr>
+<tr><td>NOR</td><td>+ + ¬</td><td>¬(A+B)</td><td>0 0 1, 0 1 0, 1 0 0, 1 1 0</td></tr>
+<tr><td>XOR</td><td>⊕</td><td>A⊕B</td><td>0 0 0, 0 1 1, 1 0 1, 1 1 0</td></tr>
+<tr><td>XNOR</td><td>⊙</td><td>¬(A⊕B)</td><td>0 0 1, 0 1 0, 1 0 0, 1 1 1</td></tr>
+</table>
+<h1>Boolean Function Simplification – Step by Step</h1>
+
+<h2>Step 1: Start with the Boolean Function</h2>
+<p>Function of 3 variables:</p>
+<p><strong>F(A,B,C) = AB' + AB + A'B</strong></p>
+<p>Goal: Simplify algebraically to reduce logic gates.</p>
+
+<h2>Step 2: Group Terms</h2>
+<p>Factor common terms:</p>
+<p><strong>F = AB' + AB + A'B = A(B' + B) + A'B</strong></p>
+<p>We factor <strong>A</strong> from the first two terms.</p>
+
+<h2>Step 3: Apply Boolean Theorems</h2>
+<ul>
+    <li><strong>Complement Law:</strong> B' + B = 1 → F = A(1) + A'B</li>
+    <li><strong>Identity Law:</strong> A·1 = A → F = A + A'B</li>
+    <li><strong>Consensus / Absorption Law:</strong> A + A'B = A + B</li>
+</ul>
+<p>✅ Simplified: <strong>F = A + B</strong></p>
+
+<h2>Step 4: Textual Circuit Diagram</h2>
+<pre>
+       A ───┐
+            │
+            ├── OR ── F
+       B ───┘
+</pre>
+<p>OR gate takes A and B as inputs → output F. No AND or NOT gates needed after simplification.</p>
+
+<h2>Step 5: Verification (Optional)</h2>
+<p>Truth table of original vs simplified function:</p>
+<table>
+<tr><th>A</th><th>B</th><th>C</th><th>Original F</th><th>Simplified F</th></tr>
+<tr><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
+<tr><td>0</td><td>0</td><td>1</td><td>0</td><td>0</td></tr>
+<tr><td>0</td><td>1</td><td>0</td><td>1</td><td>1</td></tr>
+<tr><td>0</td><td>1</td><td>1</td><td>1</td><td>1</td></tr>
+<tr><td>1</td><td>0</td><td>0</td><td>1</td><td>1</td></tr>
+<tr><td>1</td><td>0</td><td>1</td><td>1</td><td>1</td></tr>
+<tr><td>1</td><td>1</td><td>0</td><td>1</td><td>1</td></tr>
+<tr><td>1</td><td>1</td><td>1</td><td>1</td><td>1</td></tr>
+</table>
+
+<h2>Step 6: Recap of Boolean Laws Used</h2>
+<ul>
+    <li>Complement: X + X' = 1</li>
+    <li>Identity: X·1 = X, X + 0 = X</li>
+    <li>Null: X·0 = 0, X + 1 = 1</li>
+    <li>Absorption / Consensus: A + A'B = A + B</li>
+</ul>
+
+<p>Repeat these steps until minimal expression is achieved. Textual diagram represents the simplified logic circuit.</p>
+<h1>K-map Simplification – 3 Variables</h1>
+
+<h2>1. What is a K-map?</h2>
+<p>K-map (Karnaugh Map) is a graphical tool for simplifying Boolean expressions. It helps minimize SOP (Sum of Products) or POS (Product of Sums) expressions.</p>
+<ul>
+    <li>Works for 2, 3, 4, 5… variables (bigger than 6 is impractical).</li>
+    <li>Idea: Group 1s (or 0s) in powers of 2 (1,2,4,8…) to simplify logic.</li>
+</ul>
+
+<h2>2. Rules of K-map</h2>
+<ul>
+    <li>Adjacent cells differ by only 1 variable (Gray code order).</li>
+    <li>Group size must be power of 2 (1,2,4,8…).</li>
+    <li>Groups can wrap around edges.</li>
+    <li>Overlapping groups allowed to get bigger simplification.</li>
+    <li>Minimize the number of groups for simplest expression.</li>
+</ul>
+
+<h2>3. Example Problem</h2>
+<p>Simplify: <strong>F(A,B,C) = Σm(1,2,3,5,7)</strong></p>
+
+<h2>4. Step 1: Draw 3-variable K-map</h2>
+<p>Rows = A, Columns = BC in Gray code: 00,01,11,10</p>
+<table>
+<tr><th>A\BC</th><th>00</th><th>01</th><th>11</th><th>10</th></tr>
+<tr><td>0</td><td>0</td><td>1</td><td>1</td><td>1</td></tr>
+<tr><td>1</td><td>0</td><td>1</td><td>1</td><td>0</td></tr>
+</table>
+
+<h2>5. Step 2: Group 1s</h2>
+<ul>
+    <li>Group 1: A=0, BC=01 & 11 → <strong>A' C</strong></li>
+    <li>Group 2: A=0, BC=11 & 10 → <strong>A' B</strong></li>
+    <li>Group 3: A=1, BC=01 & 11 → <strong>A C</strong></li>
+</ul>
+
+<h2>6. Step 3: Simplified Boolean Expression</h2>
+<p>Combine groups: <strong>F = A'C + A'B + AC</strong></p>
+<p>Optional factoring: <strong>F = A'(B + C) + AC</strong></p>
+<p>✅ Minimal SOP achieved.</p>
+
+<h2>7. Step 4: Textual Circuit Diagram</h2>
+<pre>
+          B ───┐
+               │
+          C ───┤ OR ──┐
+               │       │
+         ┌─┐   │       │
+   A ───>│AND│ ───────── AND ── F
+         └─┘           │
+       ┌─┐             │
+  A ─> │AND│───────────┘
+      └─┘
+</pre>
+<p>
+Explanation:<br>
+A'(B+C) → NOT A + OR + AND<br>
+AC → another AND branch<br>
+Both outputs fed to final OR → F
+</p>
+
+<h2>8. Step 5: Why K-map is Better than Algebra</h2>
+<ul>
+    <li>Visual representation → fewer mistakes</li>
+    <li>Works efficiently for 4–5 variables</li>
+    <li>Shows all possible grouping opportunities</li>
+    <li>Much faster than multiple algebraic steps</li>
+</ul>
+<h1>Quine–McCluskey Method – 4 Variables</h1>
+
+<h2>1. Overview</h2>
+<p>The Quine–McCluskey method is a tabular approach to systematically simplify Boolean functions. It works for any number of variables, identifies all prime implicants, and helps find the minimal SOP expression.</p>
+<ul>
+    <li>Group minterms by the number of 1s</li>
+    <li>Combine adjacent minterms differing by 1 bit</li>
+    <li>Mark combined minterms and repeat until no further combinations</li>
+    <li>Use prime implicant chart to select essential PIs → minimal SOP</li>
+</ul>
+
+<h2>2. Example Problem</h2>
+<p>Simplify: <strong>F(A,B,C,D) = Σm(0,1,2,5,6,7,8,9,10,14)</strong></p>
+
+<h2>Step 1: Convert Minterms to Binary</h2>
+<table>
+<tr><th>Decimal</th><th>Binary (A B C D)</th></tr>
+<tr><td>0</td><td>0000</td></tr>
+<tr><td>1</td><td>0001</td></tr>
+<tr><td>2</td><td>0010</td></tr>
+<tr><td>5</td><td>0101</td></tr>
+<tr><td>6</td><td>0110</td></tr>
+<tr><td>7</td><td>0111</td></tr>
+<tr><td>8</td><td>1000</td></tr>
+<tr><td>9</td><td>1001</td></tr>
+<tr><td>10</td><td>1010</td></tr>
+<tr><td>14</td><td>1110</td></tr>
+</table>
+
+<h2>Step 2: Group Minterms by Number of 1s</h2>
+<ul>
+    <li>0 ones: 0000 (0)</li>
+    <li>1 one: 0001 (1), 0010 (2), 1000 (8)</li>
+    <li>2 ones: 0101 (5), 0110 (6), 1001 (9), 1010 (10)</li>
+    <li>3 ones: 0111 (7), 1110 (14)</li>
+</ul>
+
+<h2>Step 3: Combine Minterms Differing by 1 Bit</h2>
+<ul>
+    <li>0000 & 0001 → 000- (covers 0,1)</li>
+    <li>0000 & 0010 → 00-0 (covers 0,2)</li>
+    <li>0001 & 0101 → 0-01 (covers 1,5)</li>
+    <li>1000 & 1001 → 100- (covers 8,9)</li>
+    <li>1010 & 1110 → 1-10 (covers 10,14)</li>
+</ul>
+
+<h2>Step 4: Prime Implicants</h2>
+<ul>
+    <li>00-- : A'B'</li>
+    <li>01-1 : A'BD</li>
+    <li>0-01 : A'C D'</li>
+    <li>1-00 : AB'D'</li>
+    <li>1-10 : ABD'</li>
+</ul>
+
+<h2>Step 5: Prime Implicant Chart</h2>
+<table>
+<tr><th>PI</th><th>0</th><th>1</th><th>2</th><th>5</th><th>6</th><th>7</th><th>8</th><th>9</th><th>10</th><th>14</th></tr>
+<tr><td>00--</td><td>X</td><td>X</td><td>X</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+<tr><td>01-1</td><td></td><td></td><td></td><td>X</td><td></td><td>X</td><td></td><td></td><td></td><td></td></tr>
+<tr><td>0-01</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td>X</td><td></td><td></td></tr>
+<tr><td>1-00</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td>X</td><td></td></tr>
+<tr><td>100-</td><td></td><td></td><td></td><td></td><td></td><td></td><td>X</td><td>X</td><td></td><td></td></tr>
+<tr><td>1-10</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td>X</td><td>X</td></tr>
+</table>
+<p>X = PI covers minterm. Essential PIs selected to cover all minterms → minimal SOP.</p>
+
+<h2>Step 6: Minimal SOP</h2>
+<p><strong>F = A'B' + A'BD + AB'D' + ABD'</strong></p>
+
+<h2>Step 7: Textual Circuit Diagram</h2>
+<pre>
+          A' ─┐
+               AND ─┐
+          B' ─┘     │
+                    OR ── F
+          A' ─┐
+          B  ─┘
+          D  ── AND ─┘
+          
+          A  ─┐
+          B' ─┘
+          D' ── AND ─┐
+                     OR ── F
+          A  ─┐
+          B  ─┘
+          D' ── AND ─┘
+</pre>
+<p>Explanation: Each AND = product term (prime implicant), OR = sum of products → final output F.</p>
+<div class="section">
+    <h2>1. Half Adder (HA)</h2>
+    <p><strong>Purpose:</strong> Adds two single-bit binary numbers.</p>
+    <p><strong>Inputs:</strong> A, B</p>
+    <p><strong>Outputs:</strong></p>
+    <ul>
+        <li>Sum (S) → XOR of inputs</li>
+        <li>Carry (C) → AND of inputs</li>
+    </ul>
+    <p><strong>Logic Equations:</strong></p>
+    <pre>
+S = A ⊕ B
+C = A ⋅ B
+    </pre>
+    <p><strong>Truth Table:</strong></p>
+    <table>
+        <tr>
+            <th>A</th>
+            <th>B</th>
+            <th>Sum (S)</th>
+            <th>Carry (C)</th>
+        </tr>
+        <tr><td>0</td><td>0</td><td>0</td><td>0</td></tr>
+        <tr><td>0</td><td>1</td><td>1</td><td>0</td></tr>
+        <tr><td>1</td><td>0</td><td>1</td><td>0</td></tr>
+        <tr><td>1</td><td>1</td><td>0</td><td>1</td></tr>
+    </table>
+    <p><strong>Textual Diagram (Logic Gates):</strong></p>
+    <pre>
+   A ----|\
+         | XOR ---- Sum (S)
+   B ----|/
+   
+   A ----|\
+         | AND ---- Carry (C)
+   B ----|/
+    </pre>
+    <p><strong>Observation:</strong> Half Adder cannot handle carry from previous addition. Only two inputs.</p>
+</div>
+
+<div class="section">
+    <h2>2. Full Adder (FA)</h2>
+    <p><strong>Purpose:</strong> Adds three single-bit binary numbers: two significant bits (A, B) and one carry-in (Cin) from previous addition.</p>
+    <p><strong>Outputs:</strong> Sum (S), Carry-out (Cout)</p>
+    <p><strong>Logic Equations:</strong></p>
+    <pre>
+S = A ⊕ B ⊕ Cin
+Cout = (A ⋅ B) + (B ⋅ Cin) + (A ⋅ Cin)
+    </pre>
+    <p><strong>Truth Table:</strong></p>
+    <table>
+        <tr>
+            <th>A</th>
+            <th>B</th>
+            <th>Cin</th>
+            <th>Sum (S)</th>
+            <th>Carry-out (Cout)</th>
+        </tr>
+        <tr><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
+        <tr><td>0</td><td>0</td><td>1</td><td>1</td><td>0</td></tr>
+        <tr><td>0</td><td>1</td><td>0</td><td>1</td><td>0</td></tr>
+        <tr><td>0</td><td>1</td><td>1</td><td>0</td><td>1</td></tr>
+        <tr><td>1</td><td>0</td><td>0</td><td>1</td><td>0</td></tr>
+        <tr><td>1</td><td>0</td><td>1</td><td>0</td><td>1</td></tr>
+        <tr><td>1</td><td>1</td><td>0</td><td>0</td><td>1</td></tr>
+        <tr><td>1</td><td>1</td><td>1</td><td>1</td><td>1</td></tr>
+    </table>
+    <p><strong>Textual Diagram (Logic Gates):</strong></p>
+    <pre>
+   A ----|\          
+         | XOR ----\
+   B ----|/         \
+                     XOR ---- Sum (S)
+   Cin ---------------/
+   
+   A ----|\
+         | AND ----\
+   B ----|/         \
+                     OR ---- Carry-out (Cout)
+   B ----|\         /
+         | AND ----/
+   Cin ----|/
+   
+   A ----|\
+         | AND ---/
+   Cin ----|/
+    </pre>
+    <p><strong>Observation:</strong> Full Adder can be built using two Half Adders + one OR gate. It can propagate carry, enabling multi-bit addition in ripple-carry adders.</p>
+</div>
+
+<div class="section">
+    <h2>3. HA + FA Relationship</h2>
+    <ul>
+        <li>HA: 2 inputs, no carry-in</li>
+        <li>FA: 3 inputs, can handle carry-in</li>
+        <li>Multi-bit addition: chain multiple FAs, carry flows from LSB → MSB</li>
+    </ul>
+</div>
+
+
+</body>
+</html>
+

@@ -5,29 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Computer Network</title>
     <style>
-        /* body {
-            font-family: Arial, sans-serif;
-            margin: 20px;
-        }
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 20px;
-        }
-        th, td {
-            border: 1px solid #333;
-            padding: 10px;
-            text-align: left;
-        }
-        th {
-            background-color: #f2f2f2;
-        }
-        caption {
-            font-size: 1.5em;
-            font-weight: bold;
-            margin-bottom: 10px;
-        } */
-         /* General body settings */
+       
 body {
     font-family: "Segoe UI", Roboto, Arial, sans-serif;
     background: #ffffff; /* white background */
@@ -4615,6 +4593,3390 @@ Network A --- R1 --- R2 --- Network B
 <li>Convergence and loop prevention are critical for network stability</li>
 </ul>
 
+
+ <h1>1. What is the Data Link Layer?</h1>
+
+    <p>
+        The <span class="highlight">Data Link Layer</span> (Layer 2 of the OSI model) is responsible for
+        reliable data transfer between two directly connected devices on the same physical network.
+    </p>
+
+    <p><span class="highlight">In simple words:</span></p>
+
+    <ul>
+        <li>Physical layer moves bits</li>
+        <li>
+            Data Link layer organizes those bits into frames, adds addresses,
+            checks for errors, and controls who can talk and when
+        </li>
+    </ul>
+
+    <p>
+        It works only within a local network segment.
+        The moment data has to cross a router, Layer 2 hands over responsibility.
+    </p>
+
+    <h2>2. Why the Data Link Layer Exists</h2>
+
+    <p>
+        Raw bits are useless without structure. The Data Link layer exists to:
+    </p>
+
+    <ul>
+        <li>Add meaning to bits</li>
+        <li>Identify sender and receiver</li>
+        <li>Detect corruption</li>
+        <li>Prevent devices from talking over each other</li>
+    </ul>
+
+    <p>
+        Without it, Ethernet would be screaming into the void.
+    </p>
+    <h1>1. What is Framing?</h1>
+
+<p>
+    <span class="highlight">Framing</span> is a Data Link Layer function that divides a continuous stream
+    of bits from the Physical layer into manageable units called <span class="highlight">frames</span>.
+</p>
+
+<p>
+    Think of the Physical layer as a firehose of bits. Framing is the only thing stopping that hose
+    from drowning the receiver.
+</p>
+
+<h2>2. Why Framing Is Needed</h2>
+
+<p><span class="highlight">Without framing:</span></p>
+<ul>
+    <li>Receiver cannot tell where one message ends and the next begins</li>
+    <li>Error detection is impossible</li>
+    <li>Addressing cannot be applied</li>
+    <li>Data becomes an undifferentiated bit soup</li>
+</ul>
+
+<p><span class="highlight">Framing gives:</span></p>
+<ul>
+    <li>Start and end boundaries</li>
+    <li>Addressing</li>
+    <li>Error detection</li>
+</ul>
+
+<h2>3. What a Frame Contains</h2>
+
+<p>A frame typically has three parts:</p>
+
+<table>
+    <tr>
+        <th>Header</th>
+        <th>Payload (Data)</th>
+        <th>Trailer</th>
+    </tr>
+</table>
+
+<h3>Header</h3>
+<ul>
+    <li>Source address</li>
+    <li>Destination address</li>
+    <li>Control / Type / Length fields</li>
+</ul>
+
+<h3>Payload</h3>
+<ul>
+    <li>Actual data from upper layers</li>
+</ul>
+
+<h3>Trailer</h3>
+<ul>
+    <li>Error detection (FCS / CRC)</li>
+</ul>
+
+<h2>4. Textual Diagram: Generic Frame Structure</h2>
+
+<pre>
++------------------------------------------------------+
+|   Header        |        Data        |   Trailer     |
++------------------------------------------------------+
+| Address | Ctrl  | Network Packet    |   FCS (CRC)   |
++------------------------------------------------------+
+</pre>
+
+<h2>5. Example: Framing in Ethernet</h2>
+
+<p><span class="highlight">Scenario:</span></p>
+<p>Host A sends data to Host B on the same LAN.</p>
+
+<p>Upper layers give a raw data stream:</p>
+
+<pre>
+101010111010101110101011...
+</pre>
+
+<p>The Data Link layer frames it.</p>
+
+<h3>Ethernet Frame Structure (Simplified)</h3>
+
+<pre>
++------------------------------------------------------------------+
+| Dest MAC | Src MAC | Type |        Data         |     FCS        |
++------------------------------------------------------------------+
+| 6 bytes  | 6 bytes | 2 B  | 46–1500 bytes       |   4 bytes     |
++------------------------------------------------------------------+
+</pre>
+
+<p>This entire block is one frame.</p>
+
+<h2>6. Step-by-Step Framing Process</h2>
+
+<h3>Step 1: Data Arrival</h3>
+<p>Network layer sends a packet to Data Link layer</p>
+<pre>[ IP Packet ]</pre>
+
+<h3>Step 2: Header Added</h3>
+<pre>[ Dest MAC | Src MAC | Type | IP Packet ]</pre>
+
+<h3>Step 3: Trailer Added</h3>
+<pre>[ Dest MAC | Src MAC | Type | IP Packet | FCS ]</pre>
+
+<h3>Step 4: Transmission</h3>
+<pre>1010101010110101010101...</pre>
+
+<h2>7. How Receiver Uses Framing</h2>
+
+<ul>
+    <li>Detects start of frame</li>
+    <li>Reads header fields</li>
+    <li>Collects payload</li>
+    <li>Checks FCS</li>
+    <li>Removes header and trailer</li>
+    <li>Passes data upward</li>
+</ul>
+
+<p>If FCS fails → frame dropped without ceremony.</p>
+
+<h2>8. Frame Boundary Detection Methods</h2>
+
+<h3>1. Character Count</h3>
+<ul>
+    <li>Header specifies frame length</li>
+    <li>Error-prone if count is corrupted</li>
+</ul>
+
+<h3>2. Flag Bytes (Byte Stuffing)</h3>
+<ul>
+    <li>Special flag marks start and end</li>
+    <li>Escape characters used in data</li>
+</ul>
+
+<h3>3. Bit Stuffing</h3>
+<ul>
+    <li>Special bit pattern indicates frame boundary</li>
+    <li>Used in HDLC</li>
+</ul>
+
+<h3>4. Physical Layer Coding Violations</h3>
+<ul>
+    <li>Ethernet uses signal-level tricks</li>
+</ul>
+
+<h2>9. Textual Diagram: Framing Concept</h2>
+
+<pre>
+Bit Stream from Physical Layer
+----------------------------------------------------
+101011001010111010101110101010101010101
+
+After Framing
+----------------------------------------------------
+| Frame 1 | Frame 2 | Frame 3 |
+----------------------------------------------------
+| Header | Data | Trailer | Header | Data | Trailer |
+----------------------------------------------------
+</pre>
+
+<h2>10. Why Framing Is Critical</h2>
+
+<ul>
+    <li>Enables error detection</li>
+    <li>Enables addressing</li>
+    <li>Enables switching</li>
+    <li>Enables reliable local communication</li>
+</ul>
+<h1>1. What is Physical (MAC) Addressing?</h1>
+
+<p>
+    <span class="highlight">Physical addressing</span> is the mechanism used by the Data Link layer
+    to uniquely identify devices within the same local network using
+    <span class="highlight">MAC addresses</span>.
+</p>
+
+<p>A MAC (Media Access Control) address is:</p>
+<ul>
+    <li>48 bits (6 bytes)</li>
+    <li>Written in hexadecimal</li>
+    <li>Assigned to a Network Interface Card (NIC)</li>
+</ul>
+
+<p><span class="highlight">Example:</span></p>
+<pre>00:1A:2B:3C:4D:5E</pre>
+
+<p>
+    Think of it as the device’s permanent name tag on a LAN.
+</p>
+
+<h2>2. Why MAC Addressing is Needed</h2>
+
+<p>
+    Bits don’t know where to go. IP addresses change.
+    Switches need something local, fixed, and fast.
+</p>
+
+<p><span class="highlight">MAC addressing allows:</span></p>
+<ul>
+    <li>Frame delivery inside a LAN</li>
+    <li>Switches to forward frames correctly</li>
+    <li>Multiple devices to coexist without chaos</li>
+</ul>
+
+<p>
+    Routing comes later. MAC handles the “who exactly” part.
+</p>
+
+<h2>3. Structure of a MAC Address</h2>
+
+<table>
+    <tr>
+        <th>OUI (24 bits)</th>
+        <th>NIC-specific (24 bits)</th>
+    </tr>
+</table>
+
+<h3>OUI (Organizationally Unique Identifier)</h3>
+<ul>
+    <li>Assigned by IEEE</li>
+    <li>Identifies the manufacturer</li>
+</ul>
+
+<p><span class="highlight">Example:</span></p>
+<pre>00:1A:2B → Cisco</pre>
+
+<h3>NIC-specific Part</h3>
+<ul>
+    <li>Assigned by the manufacturer</li>
+    <li>Unique per device</li>
+</ul>
+
+<h2>4. Types of MAC Addresses</h2>
+
+<h3>1. Unicast</h3>
+<ul>
+    <li>One-to-one communication</li>
+    <li>Least significant bit of first byte = 0</li>
+</ul>
+
+<pre>00:1A:2B:3C:4D:5E</pre>
+
+<h3>2. Multicast</h3>
+<ul>
+    <li>One-to-many communication</li>
+    <li>First byte has LSB = 1</li>
+</ul>
+
+<pre>01:00:5E:00:00:FB</pre>
+
+<p>
+    Used by protocols like ARP and IPv6 Neighbor Discovery.
+</p>
+
+<h3>3. Broadcast</h3>
+<ul>
+    <li>One-to-all communication</li>
+    <li>All bits set to 1</li>
+</ul>
+
+<pre>FF:FF:FF:FF:FF:FF</pre>
+
+<p>
+    Every device on the LAN listens whether it wants to or not.
+</p>
+
+<h2>5. MAC Addressing in an Ethernet Frame</h2>
+
+<p><span class="highlight">Textual Diagram: Ethernet Frame (Relevant Fields)</span></p>
+
+<pre>
++--------------------------------------------------+
+| Destination MAC | Source MAC | Type | Data | FCS |
++--------------------------------------------------+
+|     6 bytes     |   6 bytes  | 2 B  |      | 4 B |
++--------------------------------------------------+
+</pre>
+
+<p>
+    MAC addresses live right at the front of the frame.
+    No hiding.
+</p>
+
+<h2>6. Example: MAC Addressing in Action</h2>
+
+<h3>Network Setup</h3>
+
+<p><span class="highlight">PC A</span></p>
+<ul>
+    <li>MAC: AA:AA:AA:AA:AA:AA</li>
+    <li>IP: 192.168.1.10</li>
+</ul>
+
+<p><span class="highlight">PC B</span></p>
+<ul>
+    <li>MAC: BB:BB:BB:BB:BB:BB</li>
+    <li>IP: 192.168.1.20</li>
+</ul>
+
+<p>Connected via a switch</p>
+
+<h3>Step 1: Resolve MAC Address (ARP)</h3>
+
+<p>PC A knows the IP, not the MAC.</p>
+
+<pre>
+ARP Request:
+Destination MAC: FF:FF:FF:FF:FF:FF
+"Who has 192.168.1.20?"
+</pre>
+
+<p>PC B replies:</p>
+
+<pre>
+ARP Reply:
+Source MAC: BB:BB:BB:BB:BB:BB
+</pre>
+
+<h3>Step 2: Frame Creation (Data Link Layer)</h3>
+
+<pre>
++------------------------------------------------------+
+| Dest MAC | Src MAC | Type |      Data      | FCS    |
++------------------------------------------------------+
+| BB:BB... | AA:AA.. |  IP  | IP Packet     | CRC    |
++------------------------------------------------------+
+</pre>
+
+<h3>Step 3: Frame Forwarding by Switch</h3>
+
+<pre>
+PC A -----> Switch -----> PC B
+</pre>
+
+<p><span class="highlight">Switch logic:</span></p>
+<ul>
+    <li>Reads destination MAC</li>
+    <li>Looks up MAC table</li>
+    <li>Forwards frame to correct port</li>
+</ul>
+
+<p>No IP inspection. Switch doesn’t care.</p>
+
+<h3>Step 4: Frame Reception</h3>
+
+<ul>
+    <li>PC B checks destination MAC</li>
+    <li>Matches its own MAC</li>
+    <li>Verifies FCS</li>
+    <li>Passes data up the stack</li>
+</ul>
+
+<p>Delivered cleanly.</p>
+
+<h2>7. MAC Address vs IP Address</h2>
+
+<table>
+    <tr>
+        <th>MAC Address</th>
+        <th>IP Address</th>
+    </tr>
+    <tr>
+        <td>Physical</td>
+        <td>Logical</td>
+    </tr>
+    <tr>
+        <td>Layer 2</td>
+        <td>Layer 3</td>
+    </tr>
+    <tr>
+        <td>Fixed (mostly)</td>
+        <td>Can change</td>
+    </tr>
+    <tr>
+        <td>Used in LAN</td>
+        <td>Used across networks</td>
+    </tr>
+    <tr>
+        <td>Hexadecimal</td>
+        <td>Decimal</td>
+    </tr>
+</table>
+
+<p>
+    They solve different problems.
+    Confusing them is a common exam disaster.
+</p>
+
+<h2>8. Key Points for Exams</h2>
+
+<ul>
+    <li>MAC address = 48 bits</li>
+    <li>Used at Data Link layer</li>
+    <li>Included in frame header</li>
+    <li>Required for LAN communication</li>
+    <li>Switches forward frames using MAC addresses</li>
+</ul>
+<h1>1. What is Error Detection?</h1>
+
+<p>
+    <span class="highlight">Error detection</span> is the process of identifying whether data has been
+    corrupted during transmission due to noise, interference, attenuation, or cosmic rays doing
+    whatever they do for fun.
+</p>
+
+<p><span class="highlight">Key points:</span></p>
+<ul>
+    <li>Errors can be detected</li>
+    <li>They are usually not corrected at the Data Link layer</li>
+    <li>Corrupted frames are discarded</li>
+</ul>
+
+<p>Fixing mistakes is someone else’s problem.</p>
+
+<h2>2. Why Error Detection is Needed</h2>
+
+<p>During transmission, bits can flip:</p>
+
+<pre>
+Sent:     10110110
+Received: 10100110   ← one bit flipped
+</pre>
+
+<p>
+    Without error detection, the receiver would accept garbage confidently.
+    Computers are very good at being wrong with confidence.
+</p>
+
+<h2>3. Error Detection at the Data Link Layer</h2>
+
+<p>At Layer 2, error detection is done using:</p>
+
+<ul>
+    <li>FCS (Frame Check Sequence)</li>
+    <li>Located in the trailer of the frame</li>
+    <li>Generated using CRC</li>
+    <li>Verified by the receiver</li>
+</ul>
+
+<h2>4. Textual Diagram: Frame with Error Detection</h2>
+
+<pre>
++------------------------------------------------------+
+| Dest MAC | Src MAC | Type/Length | Data | FCS (CRC) |
++------------------------------------------------------+
+</pre>
+
+<p>The FCS protects everything before it.</p>
+
+<h2>5. Cyclic Redundancy Check (CRC)</h2>
+
+<p>
+    CRC is the most widely used error detection technique at the Data Link layer.
+</p>
+
+<h3>Basic Idea</h3>
+<ul>
+    <li>Treat data as a binary number</li>
+    <li>Divide it by a predefined generator polynomial</li>
+    <li>The remainder becomes the CRC</li>
+    <li>Receiver repeats the division</li>
+</ul>
+
+<p>No, you don’t do polynomial math by hand. Machines suffer so you don’t have to.</p>
+
+<h2>6. CRC Generation: Step-by-Step Example</h2>
+
+<p><span class="highlight">Given:</span></p>
+<ul>
+    <li>Data: 110101</li>
+    <li>Generator: 1011</li>
+</ul>
+
+<h3>Step 1: Append Zeros</h3>
+<pre>110101000</pre>
+
+<h3>Step 2: Binary Division (XOR)</h3>
+<pre>110101000 ÷ 1011</pre>
+
+<p>Assume remainder:</p>
+<pre>100</pre>
+
+<h3>Step 3: Transmitted Frame</h3>
+<pre>110101100</pre>
+
+<h2>7. Receiver Side Error Detection</h2>
+
+<pre>
+Received: 110101100
+Divide by: 1011
+</pre>
+
+<ul>
+    <li>Remainder = 000 → No error</li>
+    <li>Remainder ≠ 000 → Error detected</li>
+</ul>
+
+<h2>8. Error Detection Failure Example</h2>
+
+<pre>
+Sent:     110101100
+Received: 110001100
+</pre>
+
+<p>Remainder ≠ 000 → Frame discarded. Cold efficiency.</p>
+
+<hr>
+
+<h1>Parity Check</h1>
+
+<h2>1. What is Parity Check?</h2>
+
+<p>
+    Parity Check adds one extra bit to make the number of 1s either even or odd.
+    One bit trying its best.
+</p>
+
+<h2>2. Types of Parity</h2>
+
+<ul>
+    <li><span class="highlight">Even Parity</span></li>
+    <li><span class="highlight">Odd Parity</span></li>
+</ul>
+
+<h2>3. Parity Bit Generation Example</h2>
+
+<pre>
+Data: 1011001
+Number of 1s = 4
+</pre>
+
+<p><span class="highlight">Even Parity:</span> Parity bit = 0</p>
+<p><span class="highlight">Odd Parity:</span> Parity bit = 1</p>
+
+<h2>4. Parity Diagram</h2>
+
+<pre>
++-----------------------------+
+| Data Bits       | Parity   |
++-----------------------------+
+| 1 0 1 1 0 0 1   |    0     |
++-----------------------------+
+</pre>
+
+<h2>5. Failure Case</h2>
+
+<pre>
+Sent:     10110010
+Received: 10010010
+</pre>
+
+<p>
+    Two-bit error. Parity smiles and waves.
+</p>
+
+<h2>6. Limitations of Parity</h2>
+
+<ul>
+    <li>Detects only odd number of errors</li>
+    <li>Cannot detect burst errors</li>
+    <li>Cannot correct errors</li>
+    <li>Very weak reliability</li>
+</ul>
+
+<hr>
+
+<h1>Checksum</h1>
+
+<h2>1. What is Checksum?</h2>
+
+<p>
+    A checksum adds blocks of data together and sends the result.
+    The receiver judges silently.
+</p>
+
+<h2>2. Where Checksum is Used</h2>
+
+<ul>
+    <li>IP</li>
+    <li>TCP</li>
+    <li>UDP</li>
+</ul>
+
+<h2>3. Working Principle</h2>
+
+<ul>
+    <li>Divide data into words</li>
+    <li>Add using 1’s complement</li>
+    <li>Complement the result</li>
+    <li>Transmit as checksum</li>
+</ul>
+
+<h2>4. Example</h2>
+
+<pre>
+Word 1: 10101010
+Word 2: 11001100
+</pre>
+
+<h3>Addition</h3>
+<pre>
+10101010
+11001100
+---------
+1 01110110
+</pre>
+
+<h3>Wrap-around & Complement</h3>
+<pre>
+Checksum = 10001000
+</pre>
+
+<h2>5. Receiver Verification</h2>
+
+<pre>
+Final sum = 11111111 → Accept
+</pre>
+
+<h2>6. Limitations</h2>
+
+<ul>
+    <li>Weaker than CRC</li>
+    <li>May miss multi-bit errors</li>
+    <li>No correction</li>
+</ul>
+
+<h2>7. Comparison</h2>
+
+<table>
+    <tr>
+        <th>Technique</th>
+        <th>Error Detection Power</th>
+        <th>Used Where</th>
+    </tr>
+    <tr>
+        <td>Parity</td>
+        <td>Very Weak</td>
+        <td>Legacy Systems</td>
+    </tr>
+    <tr>
+        <td>Checksum</td>
+        <td>Moderate</td>
+        <td>IP, TCP, UDP</td>
+    </tr>
+    <tr>
+        <td>CRC</td>
+        <td>Strong</td>
+        <td>Ethernet, Wi-Fi</td>
+    </tr>
+</table>
+<h1>1. What is Flow Control?</h1>
+
+<p>
+Flow control is a mechanism that ensures a fast sender does not overwhelm a slow receiver by sending
+data faster than the receiver can process.
+</p>
+
+<p>
+It answers one basic question:
+</p>
+
+<p><em>“How much data can I send without breaking the other side?”</em></p>
+
+<p>
+Without flow control, buffers overflow, frames get dropped, and everyone pretends it’s a “network issue.”
+</p>
+
+<h2>2. Why Flow Control Is Needed</h2>
+
+<p><span class="highlight">Consider:</span></p>
+<ul>
+    <li>Sender: High-speed system</li>
+    <li>Receiver: Slower system with limited buffer</li>
+</ul>
+
+<p>If the sender keeps transmitting at full speed:</p>
+<ul>
+    <li>Receiver’s buffer fills up</li>
+    <li>Data loss occurs</li>
+    <li>Retransmissions increase</li>
+    <li>Performance collapses</li>
+</ul>
+
+<p>Flow control prevents this polite disaster.</p>
+
+<h2>3. Flow Control at Different Layers</h2>
+
+<ul>
+    <li>Data Link Layer: Controls frame transmission between directly connected nodes</li>
+    <li>Transport Layer (TCP): Controls end-to-end data flow</li>
+</ul>
+
+<p>Here we focus on Data Link Layer flow control.</p>
+
+<h1>4. Flow Control Techniques</h1>
+
+<h2>Stop-and-Wait Flow Control</h2>
+
+<h3>1. Definition</h3>
+<p>
+Stop-and-Wait Flow Control is a mechanism in which the sender transmits one frame at a time and then
+waits for an acknowledgment (ACK) from the receiver before sending the next frame.
+</p>
+
+<p>No ACK, no next frame.</p>
+
+<h3>2. Why It Exists</h3>
+<ul>
+    <li>Prevents receiver buffer overflow</li>
+    <li>Ensures sender never sends data faster than the receiver can handle</li>
+    <li>Guarantees orderly delivery on unreliable links</li>
+</ul>
+
+<h3>3. How It Works (Step-by-Step)</h3>
+<ul>
+    <li>Sender sends Frame 1</li>
+    <li>Sender stops and waits</li>
+    <li>Receiver receives the frame</li>
+    <li>Receiver sends ACK</li>
+    <li>Sender sends Frame 2</li>
+</ul>
+
+<h3>4. Textual Diagram</h3>
+<pre>
+Sender                         Receiver
+  |                               |
+  |---- Frame 1 ----------------->|
+  |                               |
+  |<--- ACK 1 --------------------|
+  |                               |
+  |---- Frame 2 ----------------->|
+  |                               |
+  |<--- ACK 2 --------------------|
+</pre>
+
+<p>Only one frame is ever in transit.</p>
+
+<h3>5. Example</h3>
+<p><span class="highlight">Scenario:</span></p>
+<ul>
+    <li>Sender: Computer A</li>
+    <li>Receiver: Computer B</li>
+    <li>Link: Slow or unreliable</li>
+</ul>
+
+<p><span class="highlight">Process:</span></p>
+<ul>
+    <li>A sends Frame 1</li>
+    <li>B processes it and sends ACK</li>
+    <li>A sends Frame 2 only after receiving ACK</li>
+</ul>
+
+<p>If ACK is lost:</p>
+<ul>
+    <li>Sender waits</li>
+    <li>Timeout occurs</li>
+    <li>Frame is retransmitted</li>
+</ul>
+
+<h3>6. Handling Errors</h3>
+<p>Each frame has a sequence number (usually 0 or 1).</p>
+
+<pre>
+Frame 0 → ACK 0
+Frame 1 → ACK 1
+</pre>
+
+<h3>7. Advantages</h3>
+<ul>
+    <li>Easy to implement</li>
+    <li>Reliable delivery</li>
+    <li>No receiver overflow</li>
+    <li>Good for short or noisy links</li>
+</ul>
+
+<h3>8. Disadvantages</h3>
+<ul>
+    <li>Very inefficient</li>
+    <li>Wastes bandwidth</li>
+    <li>High latency on fast links</li>
+    <li>Poor performance on long-distance networks</li>
+</ul>
+
+<h3>9. Where It Is Used</h3>
+<ul>
+    <li>Data Link layer protocols</li>
+    <li>Simple communication systems</li>
+    <li>Conceptual base for advanced protocols</li>
+</ul>
+
+<h1>Sliding Window Flow Control</h1>
+
+<h2>1. What is Sliding Window Flow Control?</h2>
+<p>
+Sliding Window Flow Control allows the sender to transmit multiple frames before receiving
+acknowledgements, limited by a window size specified by the receiver.
+</p>
+
+<p>
+Sender can send N frames without waiting, where N = window size.
+</p>
+
+<h2>2. Why Sliding Window Is Needed</h2>
+<ul>
+    <li>Stop-and-Wait wastes time</li>
+    <li>Sliding Window keeps the link busy</li>
+</ul>
+
+<h2>3. Basic Terminology</h2>
+<ul>
+    <li>Window Size (W)</li>
+    <li>Sequence Number</li>
+    <li>ACK</li>
+    <li>Send Window</li>
+    <li>Receive Window</li>
+</ul>
+
+<h2>4. How Sliding Window Works</h2>
+<ul>
+    <li>Sender transmits frames within window</li>
+    <li>Receiver sends ACKs</li>
+    <li>Window slides forward</li>
+    <li>New frames are sent</li>
+</ul>
+
+<h2>5. Textual Diagram</h2>
+<pre>
+Window size = 4
+
+Sender                              Receiver
+  |                                   |
+  |---- Frame 1 --------------------->|
+  |---- Frame 2 --------------------->|
+  |---- Frame 3 --------------------->|
+  |---- Frame 4 --------------------->|
+  |                                   |
+  |<--- ACK 1 ------------------------|
+  |---- Frame 5 --------------------->|
+  |                                   |
+  |<--- ACK 2 ------------------------|
+  |---- Frame 6 --------------------->|
+</pre>
+
+<h2>6. Example with Numbers</h2>
+<pre>
+Window size = 3
+Send window: [0, 1, 2]
+
+After ACK 0:
+Send window: [1, 2, 3]
+</pre>
+
+<h1>Go-Back-N (GBN)</h1>
+
+<h2>1. What is Go-Back-N?</h2>
+<p>
+Go-Back-N is a sliding window ARQ protocol where the sender retransmits a frame and all subsequent
+frames if an error occurs.
+</p>
+
+<h2>2. Key Characteristics</h2>
+<ul>
+    <li>Sender window size = N</li>
+    <li>Receiver window size = 1</li>
+    <li>Cumulative acknowledgements</li>
+    <li>Timeout-based retransmission</li>
+</ul>
+
+<h2>3. Error Case Diagram</h2>
+<pre>
+Window size = 4
+Frame 2 lost
+
+Sender                                   Receiver
+  |---- Frame 0 ----------------------->|
+  |---- Frame 1 ----------------------->|
+  |---- Frame 2 ----X                   |
+  |---- Frame 3 ----------------------->| (discarded)
+  |<--- ACK 1 --------------------------|
+  |        timeout                      |
+  |---- Frame 2 ----------------------->|
+  |---- Frame 3 ----------------------->|
+  |<--- ACK 3 --------------------------|
+</pre>
+
+<h2>4. Advantages</h2>
+<ul>
+    <li>Simple receiver</li>
+    <li>Better than Stop-and-Wait</li>
+</ul>
+
+<h2>5. Disadvantages</h2>
+<ul>
+    <li>Wasted bandwidth</li>
+    <li>Poor performance on noisy links</li>
+</ul>
+
+<h1>Selective Repeat (SR)</h1>
+
+<h2>1. What is Selective Repeat?</h2>
+<p>
+Selective Repeat allows retransmission of only lost or corrupted frames while buffering
+out-of-order frames.
+</p>
+
+<h2>2. Working Diagram</h2>
+<pre>
+Sender                                   Receiver
+  |---- Frame 0 ----------------------->|
+  |---- Frame 1 ----------------------->|
+  |---- Frame 2 ---X                   |
+  |---- Frame 3 ----------------------->|
+  |<--- ACK 0 --------------------------|
+  |<--- ACK 1 --------------------------|
+  |<--- ACK 3 --------------------------| (buffered)
+  |---- Frame 2 ----------------------->|
+  |<--- ACK 2 --------------------------|
+</pre>
+
+<h2>3. Window Size Rule</h2>
+<p>
+Window Size ≤ (Sequence Number Space) / 2
+</p>
+
+<h2>4. Advantages</h2>
+<ul>
+    <li>Efficient bandwidth usage</li>
+    <li>Better performance on noisy links</li>
+</ul>
+
+<h2>5. Disadvantages</h2>
+<ul>
+    <li>Complex logic</li>
+    <li>Large buffer requirement</li>
+</ul>
+
+<h1>5. Flow Control in Ethernet</h1>
+<ul>
+    <li>Classic Ethernet has no flow control</li>
+    <li>IEEE 802.3x PAUSE frames provide optional flow control</li>
+</ul>
+
+<h1>6. Flow Control vs Congestion Control</h1>
+
+<table>
+    <tr>
+        <th>Flow Control</th>
+        <th>Congestion Control</th>
+    </tr>
+    <tr>
+        <td>Sender vs Receiver</td>
+        <td>Network-wide</td>
+    </tr>
+    <tr>
+        <td>Prevents buffer overflow</td>
+        <td>Prevents network overload</td>
+    </tr>
+    <tr>
+        <td>Data Link / Transport Layer</td>
+        <td>Mainly Transport Layer</td>
+    </tr>
+    <tr>
+        <td>Receiver-driven</td>
+        <td>Network-driven</td>
+    </tr>
+</table>
+
+<h1>7. Real-World Example</h1>
+<ul>
+    <li>Switch port connected to a slow device</li>
+    <li>Device sends PAUSE frame</li>
+    <li>Switch pauses transmission</li>
+    <li>Data loss avoided</li>
+</ul>
+<h1>1. What is Access Control?</h1>
+
+<p>
+    <span class="highlight">Access Control</span> at the Data Link layer is the mechanism that decides
+    which device can transmit data on a shared communication medium and when.
+</p>
+
+<p>
+    Because if everyone transmits whenever they feel like it, you don’t get data.
+    You get noise.
+</p>
+
+<p>
+    This function is handled by the <span class="highlight">MAC (Media Access Control)</span> sublayer
+    of Layer 2.
+</p>
+
+<h2>2. Why Access Control Is Needed</h2>
+
+<p><span class="highlight">On a shared medium:</span></p>
+
+<ul>
+    <li>Multiple devices use the same cable or wireless channel</li>
+    <li>Simultaneous transmission causes collisions</li>
+    <li>Collisions corrupt data</li>
+</ul>
+
+<p><span class="highlight">Access control exists to:</span></p>
+
+<ul>
+    <li>Minimize collisions</li>
+    <li>Coordinate transmission</li>
+    <li>Ensure fair usage of the medium</li>
+</ul>
+<h1>1. What is CSMA/CD?</h1>
+
+<p>
+    <span class="highlight">CSMA/CD</span> (Carrier Sense Multiple Access with Collision Detection)
+    is a media access control protocol used in wired Ethernet to control how multiple devices
+    share the same communication medium.
+</p>
+
+<p>
+    It operates at the <span class="highlight">MAC sublayer</span> of the Data Link layer (Layer 2).
+</p>
+
+<p>
+    Its core idea is simple:
+</p>
+
+<ul>
+    <li>Devices try to transmit</li>
+    <li>Collisions are detected</li>
+    <li>Transmission is retried later</li>
+</ul>
+
+<h2>2. Why CSMA/CD Is Needed</h2>
+
+<p>
+    In shared Ethernet environments such as:
+</p>
+
+<ul>
+    <li>Bus topology</li>
+    <li>Hub-based Ethernet</li>
+    <li>Half-duplex links</li>
+</ul>
+
+<p>
+    Multiple devices are connected to the same cable.
+    If two transmit at the same time, a collision occurs and data is corrupted.
+</p>
+
+<p><span class="highlight">CSMA/CD exists to:</span></p>
+
+<ul>
+    <li>Detect collisions quickly</li>
+    <li>Stop transmission immediately</li>
+    <li>Reduce wasted bandwidth</li>
+    <li>Retry transmission intelligently</li>
+</ul>
+
+<h2>3. Breaking Down CSMA/CD</h2>
+
+<h3>1. Carrier Sense</h3>
+<ul>
+    <li>Device listens to the medium before transmitting</li>
+    <li>If channel is busy → wait</li>
+    <li>If channel is idle → transmit</li>
+</ul>
+
+<h3>2. Multiple Access</h3>
+<ul>
+    <li>Many devices share the same medium</li>
+    <li>No central controller</li>
+    <li>All devices follow the same access rules</li>
+</ul>
+
+<h3>3. Collision Detection</h3>
+<ul>
+    <li>Device monitors the signal while transmitting</li>
+    <li>If signal changes unexpectedly → collision detected</li>
+    <li>Possible only in wired Ethernet</li>
+</ul>
+
+<h2>4. Working of CSMA/CD (Step-by-Step)</h2>
+
+<ul>
+    <li>Node senses the channel</li>
+    <li>If idle → starts transmitting</li>
+    <li>If collision detected:</li>
+    <ul>
+        <li>Stops transmitting</li>
+        <li>Sends a jam signal</li>
+        <li>Waits for a random backoff time</li>
+        <li>Retries transmission</li>
+    </ul>
+</ul>
+
+<p>
+    This continues until transmission succeeds or the retry limit is reached.
+</p>
+
+<h2>5. Binary Exponential Backoff</h2>
+
+<ul>
+    <li>After 1st collision → wait 0 or 1 slot</li>
+    <li>After 2nd collision → wait 0–3 slots</li>
+    <li>After <em>n</em> collisions → wait 0–(2<sup>n</sup> − 1) slots</li>
+    <li>Maximum retries = 16</li>
+    <li>Slot time = 512 bit times</li>
+</ul>
+
+<p>
+    If transmission fails after 16 attempts, the frame is dropped.
+</p>
+
+<h2>6. Textual Diagram: CSMA/CD Collision</h2>
+
+<pre>
+Time →
+Host A:  |----Transmit-------X------Wait------Retry---->
+Host B:        |----Transmit------X------Wait-----Retry->
+Medium: =======Collision Detected======================
+</pre>
+
+<h2>7. Textual Diagram: Successful Transmission</h2>
+
+<pre>
+Time →
+Host A:  |----Transmit------------------------------>|
+Host B:       |---Wait------------------------------>|
+Medium: =======Busy=====================Idle=========
+</pre>
+
+<h2>8. Example Scenario</h2>
+
+<h3>Network Setup</h3>
+
+<pre>
+PC1 ---\
+PC2 ---- HUB ---- LAN
+PC3 ---/
+</pre>
+
+<ul>
+    <li>Half-duplex Ethernet</li>
+    <li>PC1, PC2, PC3 connected to a hub</li>
+</ul>
+
+<h3>Event</h3>
+
+<ul>
+    <li>PC1 and PC2 sense idle channel</li>
+    <li>Both transmit simultaneously</li>
+    <li>Collision occurs at hub</li>
+    <li>Jam signal sent</li>
+    <li>PC1 waits 1 slot</li>
+    <li>PC2 waits 2 slots</li>
+    <li>PC1 retransmits successfully</li>
+</ul>
+
+<h2>9. Where CSMA/CD Is Used (and Not Used)</h2>
+
+<h3>Used In</h3>
+<ul>
+    <li>10Base-T Ethernet with hubs</li>
+    <li>Half-duplex Ethernet</li>
+</ul>
+
+<h3>Not Used In</h3>
+<ul>
+    <li>Switched Ethernet</li>
+    <li>Full-duplex links</li>
+    <li>Wi-Fi (uses CSMA/CA)</li>
+</ul>
+
+<p>
+    Modern switches eliminate collisions entirely, making CSMA/CD mostly historical.
+    Unfortunately, exams still care.
+</p>
+<h1>1. What is CSMA/CA?</h1>
+
+<p>
+    <span class="highlight">CSMA/CA</span> (Carrier Sense Multiple Access with Collision Avoidance)
+    is a media access control protocol used in wireless networks (IEEE 802.11) to reduce
+    the chances of collisions before transmission.
+</p>
+
+<p><span class="highlight">Key idea:</span></p>
+<ul>
+    <li>Wired Ethernet detects collisions</li>
+    <li>Wireless cannot reliably detect collisions</li>
+    <li>So it avoids them instead</li>
+</ul>
+
+<h2>2. Why Collision Detection Does Not Work in Wireless</h2>
+
+<p>In wireless networks:</p>
+<ul>
+    <li>A node cannot transmit and listen at the same time</li>
+    <li>Signal strength varies with distance</li>
+    <li>Collisions may occur at the receiver, not the sender</li>
+</ul>
+
+<p>
+    This is called the <span class="highlight">hidden node problem</span>.
+</p>
+
+<h2>3. Basic Working Principle of CSMA/CA</h2>
+
+<p>CSMA/CA uses:</p>
+<ul>
+    <li>Carrier sensing</li>
+    <li>Random backoff</li>
+    <li>Acknowledgements (ACKs)</li>
+    <li>Optional RTS/CTS mechanism</li>
+</ul>
+
+<h2>4. Step-by-Step Operation</h2>
+
+<h3>Step 1: Carrier Sensing</h3>
+<ul>
+    <li>The station listens to the channel</li>
+    <li>If busy → wait</li>
+    <li>If idle → proceed</li>
+</ul>
+
+<h3>Step 2: Inter-Frame Space (IFS)</h3>
+<p>
+    Even if idle, the station waits a short fixed time:
+</p>
+<ul>
+    <li>DIFS (Distributed IFS) for normal data</li>
+</ul>
+
+<p>This prevents unfair access.</p>
+
+<h3>Step 3: Random Backoff</h3>
+<ul>
+    <li>Station selects a random backoff time</li>
+    <li>Countdown decreases only when channel is idle</li>
+    <li>When backoff reaches zero → transmit</li>
+</ul>
+
+<p>This randomness prevents simultaneous transmission.</p>
+
+<h3>Step 4: Data Transmission</h3>
+<p>Frame is transmitted to the receiver.</p>
+
+<h3>Step 5: Acknowledgement (ACK)</h3>
+<ul>
+    <li>Receiver sends ACK after SIFS</li>
+    <li>If ACK not received → assume collision → retry</li>
+</ul>
+
+<h2>5. Textual Diagram: Basic CSMA/CA Operation</h2>
+
+<pre>
+Time →
+Station A:  Sense | DIFS | Backoff | DATA -------->
+Station B:  Sense | DIFS | Backoff(wait) --------->
+Receiver:                         <---- ACK -----
+Channel:     Idle       Busy
+</pre>
+
+<p>
+    Only one station reaches backoff zero first. The other waits.
+</p>
+
+<h2>6. RTS/CTS Mechanism (Optional but Important)</h2>
+
+<p>
+    Used to solve the <span class="highlight">hidden node problem</span>.
+</p>
+
+<h3>Hidden Node Scenario</h3>
+
+<pre>
+A -----> B <----- C
+   (A and C cannot hear each other)
+</pre>
+
+<p>
+    Without RTS/CTS, A and C may transmit together and collide at B.
+</p>
+
+<h3>RTS/CTS Process</h3>
+<ul>
+    <li>Sender sends RTS (Request to Send)</li>
+    <li>Receiver replies with CTS (Clear to Send)</li>
+    <li>Other stations hearing CTS stay silent</li>
+    <li>Data is transmitted</li>
+    <li>ACK is sent</li>
+</ul>
+
+<h2>7. Textual Diagram: RTS/CTS</h2>
+
+<pre>
+Sender (A)        Receiver (B)        Other Node (C)
+   |--- RTS ----->|
+   |<-- CTS ------|
+   |--- DATA ---->|
+   |<-- ACK ------|
+                      (C stays silent)
+</pre>
+
+<p>RTS/CTS reserves the channel.</p>
+
+<h2>8. Example: CSMA/CA in a Wi-Fi Network</h2>
+
+<p><span class="highlight">Scenario:</span></p>
+<ul>
+    <li>Laptop A</li>
+    <li>Laptop B</li>
+    <li>Access Point</li>
+</ul>
+
+<p>Both laptops want to send data.</p>
+
+<p><span class="highlight">What happens:</span></p>
+<ul>
+    <li>Both sense the channel idle</li>
+    <li>Both wait DIFS</li>
+    <li>A chooses backoff = 3 slots</li>
+    <li>B chooses backoff = 7 slots</li>
+    <li>A reaches zero first → transmits</li>
+    <li>AP sends ACK</li>
+    <li>B resumes countdown after channel becomes idle</li>
+</ul>
+
+<p>Collision avoided without detection.</p>
+
+<h2>9. Advantages of CSMA/CA</h2>
+
+<ul>
+    <li>Reduces collisions in wireless</li>
+    <li>Handles hidden node problem</li>
+    <li>Efficient for shared radio medium</li>
+</ul>
+
+<h2>10. Limitations</h2>
+
+<ul>
+    <li>Overhead due to RTS/CTS and ACK</li>
+    <li>Not collision-free, only collision-reducing</li>
+    <li>Performance drops in dense networks</li>
+</ul>
+<h1>1. What is Token Passing?</h1>
+
+<p>
+    <span class="highlight">Token Passing</span> is a Media Access Control (MAC) method used at the
+    Data Link layer where a special control frame called a <span class="highlight">token</span>
+    circulates among devices.
+</p>
+
+<p>
+    Only the device holding the token is allowed to transmit data.
+</p>
+
+<p>
+    No token, no talking. Simple rule. Very strict household.
+</p>
+
+<h2>2. Why Token Passing Exists</h2>
+
+<p>Token passing was designed to:</p>
+<ul>
+    <li>Eliminate collisions</li>
+    <li>Provide deterministic access</li>
+    <li>Guarantee fairness</li>
+</ul>
+
+<p>
+    Unlike Ethernet’s “talk when you feel like it” model, token passing schedules access.
+</p>
+
+<h2>3. Where Token Passing Is Used</h2>
+
+<ul>
+    <li>Token Ring (IEEE 802.5)</li>
+    <li>FDDI (Fiber Distributed Data Interface)</li>
+</ul>
+
+<p>
+    Mostly historical now, but still relevant in theory and exams.
+</p>
+
+<h2>4. How Token Passing Works (Step-by-Step)</h2>
+
+<ul>
+    <li>A token frame circulates continuously in a logical ring</li>
+    <li>Each station checks the token</li>
+    <li>If a station has data to send:</li>
+</ul>
+
+<ul>
+    <li>It captures the token</li>
+    <li>Converts it into a data frame</li>
+    <li>Data frame travels around the ring</li>
+    <li>Destination copies the data</li>
+    <li>Frame returns to sender</li>
+    <li>Sender removes frame and releases a new token</li>
+</ul>
+
+<p>
+    Very organized. Almost suspiciously so.
+</p>
+
+<h2>5. Structure of a Token Ring (Logical Ring)</h2>
+
+<p>
+    Even if physically star-wired, it behaves like a ring.
+</p>
+
+<h3>Textual Diagram: Logical Ring</h3>
+
+<pre>
+[Host A] → [Host B] → [Host C] → [Host D]
+    ↑                                   ↓
+    ←────────── Token Circulation ──────←
+</pre>
+
+<h2>6. Example: Token Passing in Action</h2>
+
+<p><span class="highlight">Scenario:</span></p>
+<p>Four computers connected in a token ring network: A, B, C, D</p>
+
+<p>Token starts at A</p>
+
+<h3>Step-by-Step Flow</h3>
+
+<h4>Step 1: Token at A</h4>
+<ul>
+    <li>A has no data</li>
+    <li>Passes token to B</li>
+</ul>
+
+<p>Token → B</p>
+
+<h4>Step 2: Token at B</h4>
+<ul>
+    <li>B has data to send</li>
+    <li>Captures token</li>
+    <li>Sends data frame</li>
+</ul>
+
+<pre>
+B → Data Frame → C → D → A → B
+</pre>
+
+<h4>Step 3: Data Delivery</h4>
+<ul>
+    <li>C is destination</li>
+    <li>C copies data</li>
+    <li>Frame continues circulating</li>
+</ul>
+
+<h4>Step 4: Token Release</h4>
+<ul>
+    <li>Frame returns to B</li>
+    <li>B removes frame</li>
+    <li>Generates a new token</li>
+</ul>
+
+<p>Token → C</p>
+
+<p>Order restored.</p>
+
+<h2>7. Textual Diagram: Token Capture and Release</h2>
+
+<pre>
+Token
+  ↓
+[ A ] → [ B ] → [ C ] → [ D ]
+           |
+        (Captures)
+           |
+     Data Frame Circulates
+</pre>
+
+<h2>8. Advantages of Token Passing</h2>
+
+<ul>
+    <li>No collisions</li>
+    <li>Predictable delay</li>
+    <li>Fair access (every node gets a turn)</li>
+    <li>Good for real-time systems</li>
+</ul>
+
+<h2>9. Disadvantages of Token Passing</h2>
+
+<ul>
+    <li>Token loss breaks communication</li>
+    <li>Single node failure can disrupt ring</li>
+    <li>Slower under light load</li>
+    <li>Complex management</li>
+</ul>
+
+<p>
+    Ethernet survived because chaos scaled better than order.
+</p>
+
+<h2>10. Token Passing vs Ethernet (Quick Contrast)</h2>
+
+<table>
+    <tr>
+        <th>Feature</th>
+        <th>Token Passing</th>
+        <th>Ethernet</th>
+    </tr>
+    <tr>
+        <td>Collisions</td>
+        <td>None</td>
+        <td>Possible</td>
+    </tr>
+    <tr>
+        <td>Access Method</td>
+        <td>Token-based</td>
+        <td>CSMA</td>
+    </tr>
+    <tr>
+        <td>Delay</td>
+        <td>Predictable</td>
+        <td>Random</td>
+    </tr>
+    <tr>
+        <td>Status</td>
+        <td>Obsolete</td>
+        <td>Dominant</td>
+    </tr>
+</table>
+<h1>4. Example: Access Control in Ethernet LAN</h1>
+
+<h2>Scenario</h2>
+
+<p>Three PCs connected via a hub (shared medium):</p>
+
+<pre>
+PC1 ----\
+PC2 ----- HUB ---- Internet
+PC3 ----/
+</pre>
+
+<h3>What Happens</h3>
+
+<ul>
+    <li>PC1 senses channel → idle → starts transmitting</li>
+    <li>PC2 senses channel → busy → waits</li>
+    <li>PC3 senses channel → busy → waits</li>
+</ul>
+
+<p><span class="highlight">If PC2 and PC3 transmit at the same time:</span></p>
+
+<ul>
+    <li>Collision occurs</li>
+    <li>Both stop transmitting</li>
+    <li>Random backoff time is applied</li>
+    <li>Retry later</li>
+</ul>
+
+<p>
+    Access control prevents chaos by enforcing patience on devices
+    sharing the same medium.
+</p>
+
+<h1>5. Access Control in Switched Ethernet</h1>
+
+<p>
+    Modern Ethernet networks use <span class="highlight">switches</span>, not hubs.
+</p>
+
+<ul>
+    <li>Each switch port is a separate collision domain</li>
+    <li>Full-duplex communication</li>
+    <li>No collisions</li>
+    <li>CSMA/CD is effectively disabled</li>
+</ul>
+
+<p>
+    Access control still exists logically, but collisions are no longer
+    a practical concern because switches isolate traffic.
+</p>
+
+<h1>6. Comparison Summary</h1>
+
+<table>
+    <tr>
+        <th>Method</th>
+        <th>Medium</th>
+        <th>Collisions</th>
+        <th>Usage Status</th>
+    </tr>
+    <tr>
+        <td>CSMA/CD</td>
+        <td>Wired</td>
+        <td>Detects</td>
+        <td>Legacy</td>
+    </tr>
+    <tr>
+        <td>CSMA/CA</td>
+        <td>Wireless</td>
+        <td>Avoids</td>
+        <td>Active</td>
+    </tr>
+    <tr>
+        <td>Token Passing</td>
+        <td>Wired</td>
+        <td>None</td>
+        <td>Obsolete</td>
+    </tr>
+</table>
+<h1>Why the Data Link Layer Has Sub-layers</h1>
+
+<p>
+    The Data Link Layer was split by IEEE to:
+</p>
+
+<ul>
+    <li>Separate media access details from upper-layer coordination</li>
+    <li>Allow multiple network layer protocols to run over the same hardware</li>
+    <li>Keep Ethernet, Wi-Fi, and other technologies sane</li>
+</ul>
+
+<p>
+    As a result, Layer 2 is divided into two sub-layers:
+</p>
+
+<ul>
+    <li>Logical Link Control (LLC)</li>
+    <li>Media Access Control (MAC)</li>
+</ul>
+
+<h2>1. What is the LLC Sub-layer?</h2>
+
+<p>
+    The <span class="highlight">Logical Link Control (LLC)</span> sub-layer is the upper sub-layer of the
+    Data Link Layer (Layer 2), defined by <span class="highlight">IEEE 802.2</span>.
+</p>
+
+<p>
+    Its main role is to act as a bridge between the Network layer (Layer 3) and the MAC sub-layer,
+    ensuring the correct network protocol receives the correct data.
+</p>
+
+<p><span class="highlight">In short:</span></p>
+
+<p>
+    LLC identifies the type of data inside the frame and provides optional control mechanisms.
+</p>
+
+<h2>2. Position of LLC in the OSI Model</h2>
+
+<pre>
++----------------------+
+| Network Layer (L3)   |  ← IP, ARP
++----------------------+
+| Logical Link Control |
+|        (LLC)         |
++----------------------+
+| Media Access Control |
+|        (MAC)         |
++----------------------+
+| Physical Layer (L1)  |
++----------------------+
+</pre>
+
+<p>
+    LLC is software-oriented and independent of the physical network technology.
+</p>
+
+<h2>3. Why LLC Is Needed</h2>
+
+<p><span class="highlight">Without LLC:</span></p>
+
+<ul>
+    <li>The receiver would not know whether the payload contains IP, ARP, or something else</li>
+    <li>Multiple network protocols could not share the same MAC layer cleanly</li>
+</ul>
+
+<p><span class="highlight">LLC solves this by:</span></p>
+
+<ul>
+    <li>Multiplexing protocols</li>
+    <li>Providing a standardized interface to Layer 3</li>
+</ul>
+
+<h2>4. Functions of the LLC Sub-layer</h2>
+
+<h3>1. Protocol Identification (Multiplexing)</h3>
+
+<p>
+    LLC identifies which Layer 3 protocol the frame carries using:
+</p>
+
+<ul>
+    <li>DSAP (Destination Service Access Point)</li>
+    <li>SSAP (Source Service Access Point)</li>
+</ul>
+
+<p><span class="highlight">Example:</span></p>
+
+<pre>
+DSAP = IP
+SSAP = IP
+</pre>
+
+<h3>2. Flow Control (Optional)</h3>
+
+<ul>
+    <li>Prevents sender from overwhelming receiver</li>
+    <li>Uses acknowledgments in some LLC service types</li>
+</ul>
+
+<p>
+    Ethernet usually skips this and lets TCP handle the suffering.
+</p>
+
+<h3>3. Error Control (Optional)</h3>
+
+<ul>
+    <li>Detects and may recover from errors</li>
+    <li>Uses sequence numbers and acknowledgments</li>
+</ul>
+
+<h3>4. Interface to the Network Layer</h3>
+
+<ul>
+    <li>Provides a consistent interface for IP across Ethernet, Wi-Fi, and others</li>
+</ul>
+
+<h2>5. LLC Frame Format</h2>
+
+<pre>
++-------------------------------+
+| DSAP | SSAP | Control | Data |
++-------------------------------+
+</pre>
+
+<ul>
+    <li>DSAP (1 byte) → Destination protocol</li>
+    <li>SSAP (1 byte) → Source protocol</li>
+    <li>Control (1–2 bytes) → Flow & error control</li>
+    <li>Data → Network layer packet (IP, ARP, etc.)</li>
+</ul>
+
+<p>
+    This LLC PDU becomes the payload of the MAC frame.
+</p>
+
+<h2>6. Example: IP Communication Over Ethernet Using LLC</h2>
+
+<p><span class="highlight">Scenario:</span></p>
+<p>Host A sends IP data to Host B on the same LAN.</p>
+
+<h3>Step 1: Network Layer (L3)</h3>
+
+<pre>
+[ IP Header | IP Data ]
+</pre>
+
+<h3>Step 2: LLC Sub-layer</h3>
+
+<pre>
++--------------------------------------+
+| DSAP=IP | SSAP=IP | Control | IP Pkt |
++--------------------------------------+
+</pre>
+
+<h3>Step 3: MAC Sub-layer</h3>
+
+<pre>
++--------------------------------------------------+
+| Dest MAC | Src MAC | LLC | Data | FCS           |
++--------------------------------------------------+
+</pre>
+
+<h3>Step 4: Transmission</h3>
+
+<p>
+    Physical layer sends bits. Receiver:
+</p>
+
+<ul>
+    <li>MAC checks FCS</li>
+    <li>LLC reads DSAP/SSAP</li>
+    <li>Data passed to IP</li>
+</ul>
+
+<p>
+    Correct protocol gets correct data. No guessing.
+</p>
+
+<h2>7. LLC Service Types</h2>
+
+<ul>
+    <li><span class="highlight">Type 1:</span> Unacknowledged connectionless (most common)</li>
+    <li><span class="highlight">Type 2:</span> Connection-oriented (rare in Ethernet)</li>
+    <li><span class="highlight">Type 3:</span> Acknowledged connectionless (almost extinct)</li>
+</ul>
+
+<h2>8. Real-World Reality</h2>
+
+<ul>
+    <li>LLC exists logically in modern Ethernet</li>
+    <li>Protocol identification is usually done via EtherType</li>
+    <li>LLC remains important for concepts and exams</li>
+</ul>
+
+<p>
+    Reality cheated the theory. Networking does that.
+</p>
+<h1>1. IP Traffic</h1>
+
+<h2>What it is</h2>
+<p>
+    <span class="highlight">IP traffic</span> is data carried by the Internet Protocol (IP),
+    which operates at the Network layer (Layer 3).
+</p>
+
+<p><span class="highlight">Its job:</span></p>
+<ul>
+    <li>Logical addressing using IP addresses</li>
+    <li>Packet routing across networks</li>
+    <li>Best-effort delivery</li>
+</ul>
+
+<p>
+    IP does not care about MAC addresses. That’s someone else’s mess.
+</p>
+
+<h2>Example of IP Traffic</h2>
+
+<p>When you open a website:</p>
+<pre>
+HTTP request → TCP segment → IP packet
+</pre>
+
+<p>
+    That IP packet becomes the payload inside an Ethernet frame.
+</p>
+
+<p>IP Packet (simplified):</p>
+<pre>
+| IP Header | TCP/UDP Header | Application Data |
+</pre>
+
+<h2>How IP Traffic Is Carried on Ethernet</h2>
+
+<pre>
++----------------------------------------------------+
+| Dest MAC | Src MAC | Type = 0x0800 | IP Packet | FCS |
++----------------------------------------------------+
+</pre>
+
+<ul>
+    <li>EtherType <span class="highlight">0x0800</span> → IPv4</li>
+    <li>MAC sub-layer handles delivery on the LAN</li>
+    <li>IP handles delivery across networks</li>
+</ul>
+
+<h1>2. ARP Traffic</h1>
+
+<h2>What it is</h2>
+<p>
+    <span class="highlight">ARP (Address Resolution Protocol)</span> maps an IP address
+    to a MAC address.
+</p>
+
+<p>
+    It lives in a weird no-man’s-land:
+</p>
+<ul>
+    <li>Works between Layer 2 and Layer 3</li>
+    <li>Encapsulated directly in an Ethernet frame</li>
+    <li>Not carried inside an IP packet</li>
+</ul>
+
+<p>
+    ARP exists because IP refuses to learn MAC addresses.
+</p>
+
+<h2>When ARP Traffic Occurs</h2>
+
+<p>ARP is used when:</p>
+<ul>
+    <li>A device wants to send an IP packet</li>
+    <li>It knows the destination IP</li>
+    <li>It does not know the destination MAC</li>
+</ul>
+
+<h2>ARP Packet Structure (Simplified)</h2>
+
+<pre>
+| Hardware Type | Protocol Type | Opcode |
+| Sender MAC | Sender IP |
+| Target MAC | Target IP |
+</pre>
+
+<h3>ARP Request (Broadcast)</h3>
+
+<pre>
+Who has 192.168.1.20?
+Tell 192.168.1.10
+</pre>
+
+<p>Ethernet frame:</p>
+<pre>
+Dest MAC: FF:FF:FF:FF:FF:FF
+Src MAC : AA:AA:AA:AA:AA:AA
+Type    : 0x0806 (ARP)
+</pre>
+
+<h3>ARP Reply (Unicast)</h3>
+
+<pre>
+192.168.1.20 is at BB:BB:BB:BB:BB:BB
+</pre>
+
+<h2>3. Textual Diagram: IP vs ARP on Ethernet</h2>
+
+<pre>
+                Ethernet Frame
++----------------------------------------------------+
+| Dest MAC | Src MAC | Type | Payload | FCS          |
++----------------------------------------------------+
+                         |
+          +--------------+--------------+
+          |                             |
+       IP Packet                      ARP Packet
+   (Type = 0x0800)               (Type = 0x0806)
+</pre>
+
+<h2>4. Key Differences: IP Traffic vs ARP Traffic</h2>
+
+<table>
+    <tr>
+        <th>Feature</th>
+        <th>IP Traffic</th>
+        <th>ARP Traffic</th>
+    </tr>
+    <tr>
+        <td>OSI Layer</td>
+        <td>Layer 3</td>
+        <td>Between L2 & L3</td>
+    </tr>
+    <tr>
+        <td>Purpose</td>
+        <td>Data delivery</td>
+        <td>IP → MAC mapping</td>
+    </tr>
+    <tr>
+        <td>Encapsulation</td>
+        <td>Inside Ethernet frame</td>
+        <td>Directly in Ethernet frame</td>
+    </tr>
+    <tr>
+        <td>Broadcast</td>
+        <td>No (usually)</td>
+        <td>Yes (ARP request)</td>
+    </tr>
+    <tr>
+        <td>EtherType</td>
+        <td>0x0800</td>
+        <td>0x0806</td>
+    </tr>
+</table>
+
+<h2>5. How They Work Together (Real Flow)</h2>
+
+<ul>
+    <li>Application generates data</li>
+    <li>IP packet is created</li>
+    <li>ARP runs first (if MAC unknown)</li>
+    <li>MAC address resolved</li>
+    <li>IP traffic is sent using Ethernet frames</li>
+</ul>
+
+<p>
+    ARP is the awkward handshake before IP traffic can happen.
+</p>
+<h1>1. What is the MAC Sub-layer?</h1>
+
+<p>
+    The <span class="highlight">Media Access Control (MAC)</span> sub-layer is the lower sub-layer of
+    the Data Link Layer (Layer 2).
+    It is responsible for how devices access the shared transmission medium and how frames are
+    addressed, transmitted, and checked for errors.
+</p>
+
+<p>
+    If LLC is the polite receptionist, MAC is the traffic cop standing in the middle of the road.
+</p>
+
+<h2>2. Position in the OSI Model</h2>
+
+<pre>
++----------------------+
+| Network Layer (L3)   |
++----------------------+
+| Logical Link Control |
+|        (LLC)         |
++----------------------+
+| Media Access Control |
+|        (MAC)         |  <-- This layer
++----------------------+
+| Physical Layer (L1)  |
++----------------------+
+</pre>
+
+<h2>3. Major Functions of the MAC Sub-layer</h2>
+
+<h3>1. MAC Addressing</h3>
+<ul>
+    <li>Uses 48-bit physical (MAC) addresses</li>
+    <li>Each NIC has a unique MAC address</li>
+    <li>Adds source and destination MAC to every frame</li>
+</ul>
+
+<p><span class="highlight">Example:</span></p>
+<pre>
+Source MAC:      00:14:22:01:23:45
+Destination MAC: 08:00:27:AA:BB:CC
+</pre>
+
+<h3>2. Framing</h3>
+<ul>
+    <li>Encapsulates Network layer packets into frames</li>
+    <li>Adds header and trailer</li>
+</ul>
+
+<p>Ethernet Frame (MAC level):</p>
+<pre>
++--------------------------------------------------+
+| Dest MAC | Src MAC | Type | Data | FCS          |
++--------------------------------------------------+
+</pre>
+
+<h3>3. Media Access Control</h3>
+<ul>
+    <li>Determines when a device can transmit</li>
+    <li>Prevents collisions on shared media</li>
+</ul>
+
+<p><span class="highlight">Access Methods:</span></p>
+<ul>
+    <li>CSMA/CD – Ethernet (legacy wired LANs)</li>
+    <li>CSMA/CA – Wi-Fi (wireless LANs)</li>
+</ul>
+
+<h3>4. Error Detection</h3>
+<ul>
+    <li>Adds Frame Check Sequence (FCS)</li>
+    <li>Uses CRC</li>
+    <li>Detects transmission errors</li>
+</ul>
+
+<p>If CRC fails → frame discarded.</p>
+
+<h2>4. MAC Access Methods Explained</h2>
+
+<h3>A. CSMA/CD (Ethernet)</h3>
+<ul>
+    <li>Carrier Sense Multiple Access with Collision Detection</li>
+</ul>
+
+<p><span class="highlight">Steps:</span></p>
+<ul>
+    <li>Sense the medium</li>
+    <li>If free → transmit</li>
+    <li>If collision → stop, wait random time, retry</li>
+</ul>
+
+<p>Used in half-duplex Ethernet. Largely obsolete now.</p>
+
+<h3>B. CSMA/CA (Wi-Fi)</h3>
+<ul>
+    <li>Carrier Sense Multiple Access with Collision Avoidance</li>
+</ul>
+
+<p><span class="highlight">Steps:</span></p>
+<ul>
+    <li>Check channel</li>
+    <li>Wait random backoff time</li>
+    <li>Use RTS/CTS (optional)</li>
+    <li>Transmit data</li>
+</ul>
+
+<p>
+    Because wireless can’t detect collisions, it avoids them instead.
+</p>
+
+<h2>5. Textual Diagram: Frame Creation at MAC Layer</h2>
+
+<pre>
+IP Packet
+   |
+   v
++--------------------------------------------------+
+| Dest MAC | Src MAC | Type | IP Packet | FCS     |
++--------------------------------------------------+
+                ^
+                |
+           MAC Sub-layer
+</pre>
+
+<h2>6. Practical Example: Ethernet Communication</h2>
+
+<p><span class="highlight">Scenario:</span></p>
+<ul>
+    <li>PC A MAC: AA:AA:AA:AA:AA:AA</li>
+    <li>PC B MAC: BB:BB:BB:BB:BB:BB</li>
+    <li>Connected via a switch</li>
+</ul>
+
+<h3>Step-by-Step Flow</h3>
+
+<h4>Step 1: MAC Address Resolution</h4>
+<p>PC A uses ARP to find PC B’s MAC address.</p>
+
+<h4>Step 2: Frame Construction (MAC Sub-layer)</h4>
+<pre>
+Destination MAC: BB:BB:BB:BB:BB:BB
+Source MAC:      AA:AA:AA:AA:AA:AA
+Type:            IP
+Payload:         IP Packet
+FCS:             CRC
+</pre>
+
+<h4>Step 3: Medium Access</h4>
+<ul>
+    <li>MAC checks if medium is free</li>
+    <li>Applies CSMA/CD rules</li>
+    <li>Transmits frame</li>
+</ul>
+
+<h4>Step 4: Reception</h4>
+<ul>
+    <li>PC B receives frame</li>
+    <li>Checks FCS</li>
+    <li>Extracts IP packet</li>
+    <li>Passes it to Network layer</li>
+</ul>
+
+<p>Node-to-node delivery complete.</p>
+
+<h2>7. Devices Working at MAC Sub-layer</h2>
+<ul>
+    <li>Network Interface Card (NIC)</li>
+    <li>Switch</li>
+    <li>Bridge</li>
+</ul>
+
+<p>Switches forward frames using MAC address tables.</p>
+
+<h2>8. What MAC Sub-layer Does NOT Do</h2>
+<ul>
+    <li>No IP addressing</li>
+    <li>No routing</li>
+    <li>No path selection</li>
+    <li>No end-to-end reliability</li>
+</ul>
+
+<p>That chaos belongs to higher layers.</p>
+<h2>4. Textual Diagram: Sub-layers of Data Link Layer</h2>
+
+<pre>
++----------------------+
+| Network Layer (L3)   |
++----------------------+
+| Logical Link Control |
+|        (LLC)         |
++----------------------+
+| Media Access Control |
+|        (MAC)         |
++----------------------+
+| Physical Layer (L1)  |
++----------------------+
+</pre>
+
+<h2>5. Frame View with Sub-layers</h2>
+
+<pre>
++----------------------------------------------------+
+| MAC Header | LLC Header | Data | FCS (Trailer)     |
++----------------------------------------------------+
+</pre>
+
+<ul>
+    <li><span class="highlight">MAC header:</span> MAC addresses, type/length</li>
+    <li><span class="highlight">LLC header:</span> Protocol identification</li>
+    <li><span class="highlight">FCS:</span> Error detection</li>
+</ul>
+
+<h2>6. Practical Example: Ethernet Communication</h2>
+
+<p><span class="highlight">Scenario:</span> Two computers on the same LAN communicate using IP.</p>
+
+<h3>Step 1: Network Layer</h3>
+<ul>
+    <li>IP creates a packet</li>
+</ul>
+
+<h3>Step 2: LLC Sub-layer</h3>
+<ul>
+    <li>Identifies payload as IP</li>
+    <li>Prepares it for MAC</li>
+</ul>
+
+<h3>Step 3: MAC Sub-layer</h3>
+<ul>
+    <li>Adds source and destination MAC addresses</li>
+    <li>Adds FCS</li>
+    <li>Applies CSMA/CD rules</li>
+</ul>
+
+<h3>Step 4: Physical Layer</h3>
+<ul>
+    <li>Converts frame into bits and transmits</li>
+</ul>
+
+<h2>7. Key Differences: LLC vs MAC</h2>
+
+<table>
+    <tr>
+        <th>Feature</th>
+        <th>LLC</th>
+        <th>MAC</th>
+    </tr>
+    <tr>
+        <td>Position</td>
+        <td>Upper part of L2</td>
+        <td>Lower part of L2</td>
+    </tr>
+    <tr>
+        <td>Handles</td>
+        <td>Protocol ID, flow control</td>
+        <td>Addressing, framing, access</td>
+    </tr>
+    <tr>
+        <td>Standard</td>
+        <td>IEEE 802.2</td>
+        <td>IEEE 802.3 / 802.11</td>
+    </tr>
+    <tr>
+        <td>Hardware dependent</td>
+        <td>No</td>
+        <td>Yes</td>
+    </tr>
+</table>
+
+<h2>8. Exam-Ready Summary</h2>
+
+<ul>
+    <li>Data Link Layer has two sub-layers: LLC and MAC</li>
+    <li>LLC provides interface to Network layer</li>
+    <li>MAC controls access to transmission medium</li>
+    <li>Used in Ethernet and Wi-Fi</li>
+    <li>Improves flexibility and standardization</li>
+</ul>
+<h1>1. Devices That Operate at the Data Link Layer (Layer 2)</h1>
+
+<p>
+    The Data Link layer deals with <span class="highlight">frames</span> and
+    <span class="highlight">MAC addresses</span>. Any device that:
+</p>
+
+<ul>
+    <li>Reads MAC addresses</li>
+    <li>Forwards frames</li>
+    <li>Does not route based on IP</li>
+</ul>
+
+<p>belongs to Layer 2.</p>
+
+<p><span class="highlight">Main Layer 2 devices:</span></p>
+<ul>
+    <li>Network Interface Card (NIC)</li>
+    <li>Bridge</li>
+    <li>Switch</li>
+</ul>
+
+<h2>2. Network Interface Card (NIC)</h2>
+
+<h3>What It Is</h3>
+<p>
+    A <span class="highlight">NIC</span> is the hardware that connects a device to the network.
+    Without it, your computer is just confidently isolated.
+</p>
+
+<h3>Data Link Layer Functions</h3>
+<ul>
+    <li>Has a unique MAC address</li>
+    <li>Encapsulates data into frames</li>
+    <li>Performs error detection using FCS</li>
+    <li>Communicates directly with the medium</li>
+</ul>
+
+<h3>Example</h3>
+<pre>
+Laptop NIC:
+MAC Address: 3C:52:82:9A:BC:11
+</pre>
+
+<p>When your laptop sends data:</p>
+<ul>
+    <li>NIC adds source and destination MAC</li>
+    <li>Creates Ethernet frame</li>
+    <li>Passes bits to Physical layer</li>
+</ul>
+
+<h3>Textual Diagram</h3>
+<pre>
++----------------------+
+| Application          |
++----------------------+
+| Transport            |
++----------------------+
+| Network              |
++----------------------+
+| Data Link (NIC)      | <-- Framing, MAC, FCS
++----------------------+
+| Physical             |
++----------------------+
+</pre>
+
+<h2>3. Bridge</h2>
+
+<h3>What It Is</h3>
+<p>
+    A <span class="highlight">bridge</span> connects two LAN segments and filters traffic
+    between them using MAC addresses.
+</p>
+
+<p>Old-school, yes. Still important conceptually.</p>
+
+<h3>Data Link Layer Functions</h3>
+<ul>
+    <li>Learns MAC addresses</li>
+    <li>Forwards or blocks frames</li>
+    <li>Reduces collisions</li>
+</ul>
+
+<h3>Example</h3>
+<p>Two Ethernet segments:</p>
+<pre>
+LAN A ---- Bridge ---- LAN B
+</pre>
+
+<p>If destination MAC is in LAN A, the frame is not forwarded to LAN B.</p>
+
+<h3>Textual Diagram</h3>
+<pre>
+LAN A                LAN B
+[PC1] [PC2] ---[ BRIDGE ]--- [PC3] [PC4]
+</pre>
+
+<p>
+    Bridges:
+</p>
+<ul>
+    <li>Work in software</li>
+    <li>Have limited ports (usually 2–4)</li>
+</ul>
+
+<h2>4. Switch (Most Important)</h2>
+
+<h3>What It Is</h3>
+<p>
+    A <span class="highlight">switch</span> is a multiport bridge that forwards frames
+    based on MAC address tables.
+</p>
+
+<p>Modern networks run on switches. Routers just get the credit.</p>
+
+<h3>Data Link Layer Functions</h3>
+<ul>
+    <li>Learns source MAC addresses</li>
+    <li>Maintains a MAC address table</li>
+    <li>Forwards frames only to the correct port</li>
+    <li>Eliminates collisions using full-duplex</li>
+</ul>
+
+<h3>MAC Address Table Example</h3>
+<table>
+    <tr>
+        <th>MAC Address</th>
+        <th>Port</th>
+    </tr>
+    <tr>
+        <td>AA:AA:AA:AA:AA:AA</td>
+        <td>1</td>
+    </tr>
+    <tr>
+        <td>BB:BB:BB:BB:BB:BB</td>
+        <td>2</td>
+    </tr>
+    <tr>
+        <td>CC:CC:CC:CC:CC:CC</td>
+        <td>3</td>
+    </tr>
+</table>
+
+<h3>Frame Forwarding Example</h3>
+<p>Host A → Host C:</p>
+<ul>
+    <li>Switch reads destination MAC</li>
+    <li>Looks up MAC table</li>
+    <li>Sends frame only to Port 3</li>
+</ul>
+
+<h3>Textual Diagram</h3>
+<pre>
+        +-----------+
+PC-A ---|           |--- PC-B
+        |  SWITCH   |
+PC-C ---|           |--- PC-D
+        +-----------+
+</pre>
+
+<p>No IP checks. No routing. Just MAC logic.</p>
+
+<h2>5. Comparison of Layer 2 Devices</h2>
+
+<table>
+    <tr>
+        <th>Device</th>
+        <th>Ports</th>
+        <th>Uses MAC</th>
+        <th>Forwards Frames</th>
+        <th>Routing</th>
+    </tr>
+    <tr>
+        <td>NIC</td>
+        <td>1</td>
+        <td>Yes</td>
+        <td>Yes</td>
+        <td>No</td>
+    </tr>
+    <tr>
+        <td>Bridge</td>
+        <td>2–4</td>
+        <td>Yes</td>
+        <td>Yes</td>
+        <td>No</td>
+    </tr>
+    <tr>
+        <td>Switch</td>
+        <td>Many</td>
+        <td>Yes</td>
+        <td>Yes</td>
+        <td>No</td>
+    </tr>
+</table>
+
+<h2>6. What About Hubs? (Trick Question)</h2>
+
+<ul>
+    <li>Hub is <span class="highlight">NOT</span> a Data Link layer device</li>
+    <li>Operates at Physical layer</li>
+    <li>No MAC awareness</li>
+    <li>Broadcasts bits to all ports</li>
+</ul>
+
+<p>Exams love this trap.</p>
+
+<h2>7. Real-World Example (LAN Communication)</h2>
+
+<pre>
+PC-A ----\
+           SWITCH ---- Router ---- Internet
+PC-B ----/
+</pre>
+
+<ul>
+    <li>PC-A → PC-B: Switch handles it (Layer 2)</li>
+    <li>PC-A → Internet: Router needed (Layer 3)</li>
+</ul>
+<h1>1. What is the Physical Layer?</h1>
+
+<p>
+    The <span class="highlight">Physical Layer</span> (Layer 1 of the OSI model) is responsible for
+    transmitting raw bits (<span class="highlight">0s and 1s</span>) over a physical medium.
+</p>
+
+<p>
+    It defines how bits are represented, how they are sent, and what hardware is used.
+    No frames. No MAC. Just electrical, optical, or radio signals.
+</p>
+
+<h2>2. Why the Physical Layer Exists</h2>
+
+<p>
+    Computers don’t magically understand each other. The Physical layer exists to define:
+</p>
+
+<ul>
+    <li>Voltage levels</li>
+    <li>Timing of bits</li>
+    <li>Signal encoding</li>
+    <li>Physical connectors and cables</li>
+</ul>
+
+<p>
+    Without it, data would remain theoretical.
+</p>
+
+<hr>
+
+<h1>1. What is Bit Transmission?</h1>
+
+<p>
+    <span class="highlight">Bit transmission</span> is the process of sending raw binary data
+    (0s and 1s) from one device to another over a physical medium.
+</p>
+
+<ul>
+    <li>Data is just bits</li>
+    <li>Bits are represented as signals</li>
+    <li>The Physical layer defines how a 0 and a 1 look on the wire or in the air</li>
+</ul>
+
+<p>
+    No structure. No meaning. Just physics.
+</p>
+
+<h2>2. Why Bit Transmission Is Needed</h2>
+
+<p>
+    Computers are digital. Transmission media are physical.
+</p>
+
+<p>Bit transmission exists to:</p>
+<ul>
+    <li>Convert binary data into physical signals</li>
+    <li>Send those signals reliably</li>
+    <li>Convert signals back into bits at the receiver</li>
+</ul>
+
+<p>
+    Without this, networking stays theoretical.
+</p>
+
+<h2>3. How Bit Transmission Works (Step-by-Step)</h2>
+
+<h3>Step 1: Bit Stream Generation</h3>
+<pre>10110101</pre>
+
+<h3>Step 2: Encoding Bits into Signals</h3>
+<p>Example (Voltage-based):</p>
+<pre>
+1 → +5V
+0 → 0V
+</pre>
+
+<h3>Step 3: Transmission over Medium</h3>
+<ul>
+    <li>Copper (electrical)</li>
+    <li>Fiber (light)</li>
+    <li>Wireless (radio waves)</li>
+</ul>
+
+<h3>Step 4: Signal Reception and Decoding</h3>
+<ul>
+    <li>Receiver measures signal</li>
+    <li>Interprets voltage/light as 0 or 1</li>
+    <li>Reconstructs original bit stream</li>
+</ul>
+
+<h2>4. Bit Transmission Example (Ethernet over Copper)</h2>
+
+<p><span class="highlight">Scenario:</span></p>
+<p>Sender wants to transmit data <span class="highlight">1011001</span></p>
+
+<p><span class="highlight">Encoding Rule (Simplified):</span></p>
+<pre>
+1 → High voltage
+0 → Low voltage
+</pre>
+
+<h3>Textual Diagram: Bit Transmission</h3>
+
+<pre>
+Bit Stream:   1   0   1   1   0   0   1
+
+Voltage:     ┌───┐       ┌───┐┌───┐       ┌───┐
+             │   │       │   ││   │       │   │
+─────────────┘   └───────┘   └┘   └───────┘   └───
+             H       L       H   H       L   L   H
+</pre>
+
+<p>
+    Each voltage level lasts for a bit duration (defined by the data rate).
+</p>
+
+<h2>5. Data Rate and Bit Duration</h2>
+
+<pre>
+If data rate = 1 Mbps
+1 bit = 1 microsecond
+
+If data rate = 100 Mbps
+1 bit = 0.01 microsecond
+</pre>
+
+<p>
+    Sender and receiver must agree on this timing.
+</p>
+
+<h2>6. Transmission Modes</h2>
+
+<h3>Simplex</h3>
+<pre>Sender -----> Receiver</pre>
+
+<h3>Half Duplex</h3>
+<pre>Sender <----> Receiver (one at a time)</pre>
+
+<h3>Full Duplex</h3>
+<pre>Sender <====> Receiver (simultaneously)</pre>
+
+<h2>7. Common Encoding Techniques</h2>
+
+<ul>
+    <li>NRZ (Non-Return to Zero)</li>
+    <li>Manchester (Ethernet legacy)</li>
+    <li>Differential Manchester</li>
+    <li>4B/5B, 8B/10B</li>
+</ul>
+
+<p>
+    Physical layer standards define these.
+</p>
+
+<h2>8. Errors in Bit Transmission</h2>
+
+<p>Bits can flip due to:</p>
+<ul>
+    <li>Noise</li>
+    <li>Attenuation</li>
+    <li>Interference</li>
+</ul>
+
+<p><span class="highlight">Example:</span></p>
+<pre>
+Sent:     1011001
+Received: 1010001   ← bit error
+</pre>
+
+<p>
+    Physical layer does not detect or correct errors.
+</p>
+
+<h2>9. What Bit Transmission Does NOT Do</h2>
+
+<ul>
+    <li>No error checking</li>
+    <li>No addressing</li>
+    <li>No framing</li>
+    <li>No retransmission</li>
+</ul>
+
+<p>
+    It sends bits and hopes for the best.
+</p>
+<h1>1. What is Physical Topology?</h1>
+
+<p>
+    <span class="highlight">Physical topology</span> describes the actual physical layout of network
+    devices and cables.
+</p>
+
+<p>It answers one simple question:</p>
+<p><span class="highlight">How are devices physically connected?</span></p>
+
+<p>It does not care about:</p>
+<ul>
+    <li>Data flow logic</li>
+    <li>MAC tables</li>
+    <li>Routing paths</li>
+</ul>
+
+<p>Just wires, ports, and real-world connections.</p>
+
+<h2>2. Why Physical Topology Matters</h2>
+
+<ul>
+    <li>Affects cost</li>
+    <li>Determines fault tolerance</li>
+    <li>Impacts performance</li>
+    <li>Influences ease of troubleshooting</li>
+</ul>
+
+<p>Bad physical design leads to good exam questions and bad networks.</p>
+
+<h2>3. Types of Physical Topology</h2>
+
+<h3>1. Bus Topology</h3>
+
+<p><span class="highlight">Description:</span></p>
+<ul>
+    <li>All devices share a single backbone cable</li>
+    <li>Data travels in both directions</li>
+    <li>Ends must be terminated</li>
+</ul>
+
+<p><span class="highlight">Example:</span> Old Ethernet (10Base2, 10Base5)</p>
+
+<p><span class="highlight">Textual Diagram:</span></p>
+<pre>
+[PC1]----[PC2]----[PC3]----[PC4]
+</pre>
+
+<p><span class="highlight">Advantages:</span></p>
+<ul>
+    <li>Cheap</li>
+    <li>Easy to install</li>
+</ul>
+
+<p><span class="highlight">Disadvantages:</span></p>
+<ul>
+    <li>Backbone failure kills network</li>
+    <li>Performance drops with more devices</li>
+    <li>Difficult troubleshooting</li>
+</ul>
+
+<h3>2. Star Topology (Most Common)</h3>
+
+<p><span class="highlight">Description:</span></p>
+<ul>
+    <li>All devices connect to a central device (hub/switch)</li>
+    <li>Each link is independent</li>
+</ul>
+
+<p><span class="highlight">Example:</span> Modern Ethernet LANs</p>
+
+<p><span class="highlight">Textual Diagram:</span></p>
+<pre>
+        [PC1]
+          |
+[PC2]--[SWITCH]--[PC3]
+          |
+        [PC4]
+</pre>
+
+<p><span class="highlight">Advantages:</span></p>
+<ul>
+    <li>Easy to add or remove devices</li>
+    <li>Failure of one cable doesn’t affect others</li>
+    <li>Easy troubleshooting</li>
+</ul>
+
+<p><span class="highlight">Disadvantages:</span></p>
+<ul>
+    <li>Central device failure kills network</li>
+    <li>More cabling cost</li>
+</ul>
+
+<h3>3. Ring Topology</h3>
+
+<p><span class="highlight">Description:</span></p>
+<ul>
+    <li>Each device connects to two neighbors</li>
+    <li>Forms a closed loop</li>
+</ul>
+
+<p><span class="highlight">Example:</span> Token Ring, FDDI</p>
+
+<p><span class="highlight">Textual Diagram:</span></p>
+<pre>
+[PC1]----[PC2]----[PC3]
+  |                   |
+  --------[PC4]--------
+</pre>
+
+<p><span class="highlight">Advantages:</span></p>
+<ul>
+    <li>Predictable performance</li>
+    <li>No collisions</li>
+</ul>
+
+<p><span class="highlight">Disadvantages:</span></p>
+<ul>
+    <li>One break affects entire ring</li>
+    <li>Difficult to reconfigure</li>
+</ul>
+
+<h3>4. Mesh Topology</h3>
+
+<p><span class="highlight">Description:</span></p>
+<ul>
+    <li>Devices are interconnected</li>
+    <li>Can be full mesh or partial mesh</li>
+</ul>
+
+<p><span class="highlight">Example:</span> WAN links, backbone networks</p>
+
+<p><span class="highlight">Textual Diagram (Partial Mesh):</span></p>
+<pre>
+[Router1]----[Router2]
+     |           |
+     |--------[Router3]
+</pre>
+
+<p><span class="highlight">Advantages:</span></p>
+<ul>
+    <li>High reliability</li>
+    <li>Multiple paths</li>
+</ul>
+
+<p><span class="highlight">Disadvantages:</span></p>
+<ul>
+    <li>Expensive</li>
+    <li>Complex cabling</li>
+</ul>
+
+<h3>5. Tree (Hierarchical) Topology</h3>
+
+<p><span class="highlight">Description:</span></p>
+<ul>
+    <li>Combination of star and bus</li>
+    <li>Hierarchical structure</li>
+</ul>
+
+<p><span class="highlight">Example:</span> Enterprise campus networks</p>
+
+<p><span class="highlight">Textual Diagram:</span></p>
+<pre>
+        [Core Switch]
+            |
+      ----------------
+      |              |
+ [Dist SW1]      [Dist SW2]
+      |              |
+   [PCs]          [PCs]
+</pre>
+
+<p><span class="highlight">Advantages:</span></p>
+<ul>
+    <li>Scalable</li>
+    <li>Easy management</li>
+</ul>
+
+<p><span class="highlight">Disadvantages:</span></p>
+<ul>
+    <li>Root failure affects large portion</li>
+    <li>Configuration complexity</li>
+</ul>
+
+<h3>6. Hybrid Topology</h3>
+
+<p><span class="highlight">Description:</span></p>
+<ul>
+    <li>Combination of multiple topologies</li>
+    <li>Most real networks</li>
+</ul>
+
+<p><span class="highlight">Example:</span> Star + Mesh in enterprise networks</p>
+
+<p><span class="highlight">Textual Diagram:</span></p>
+<pre>
+[PC]--\
+        [SW]----[SW]----[SW]
+[PC]--/
+</pre>
+
+<h2>4. Physical vs Logical Topology (Exam Trap)</h2>
+
+<table>
+    <tr>
+        <th>Physical Topology</th>
+        <th>Logical Topology</th>
+    </tr>
+    <tr>
+        <td>Actual wiring</td>
+        <td>Data flow</td>
+    </tr>
+    <tr>
+        <td>Deals with cables</td>
+        <td>Deals with frames</td>
+    </tr>
+    <tr>
+        <td>Example: Star</td>
+        <td>Example: Bus (Ethernet)</td>
+    </tr>
+</table>
+
+<p><span class="highlight">Example:</span></p>
+<ul>
+    <li>Ethernet using a hub</li>
+    <li>Physical: Star</li>
+    <li>Logical: Bus</li>
+</ul>
+
+<h2>5. Real-World Example</h2>
+
+<p><span class="highlight">Home Network:</span></p>
+
+<pre>
+Laptop \
+Phone   --- Wi-Fi Router
+TV     /
+</pre>
+
+<ul>
+    <li>Physical topology: Star</li>
+    <li>Logical topology: Star (switching)</li>
+</ul>
+<h1>1. Physical Layer Standards</h1>
+
+<p>
+    <span class="highlight">Physical layer standards</span> define how bits are transmitted.
+    Not what the bits mean. Just how they survive the trip.
+</p>
+
+<p>They specify:</p>
+<ul>
+    <li>Signal type (electrical, optical, radio)</li>
+    <li>Voltage / light levels</li>
+    <li>Data rate</li>
+    <li>Distance limits</li>
+    <li>Connector type</li>
+</ul>
+
+<p>
+    Most of these standards come from IEEE and a few other standards bodies.
+</p>
+
+<h2>2. Major Physical Layer Standards</h2>
+
+<h3>1. IEEE 802.3 (Ethernet Physical Standards)</h3>
+
+<p>Defines wired Ethernet at Layer 1.</p>
+
+<h4>Common Variants</h4>
+
+<table>
+    <tr>
+        <th>Standard</th>
+        <th>Speed</th>
+        <th>Medium</th>
+        <th>Max Distance</th>
+    </tr>
+    <tr>
+        <td>10BASE-T</td>
+        <td>10 Mbps</td>
+        <td>UTP</td>
+        <td>100 m</td>
+    </tr>
+    <tr>
+        <td>100BASE-TX</td>
+        <td>100 Mbps</td>
+        <td>UTP</td>
+        <td>100 m</td>
+    </tr>
+    <tr>
+        <td>1000BASE-T</td>
+        <td>1 Gbps</td>
+        <td>UTP</td>
+        <td>100 m</td>
+    </tr>
+    <tr>
+        <td>10GBASE-T</td>
+        <td>10 Gbps</td>
+        <td>UTP</td>
+        <td>100 m</td>
+    </tr>
+</table>
+
+<p><span class="highlight">Example:</span></p>
+<ul>
+    <li>Office LAN using Cat6 cable at 1 Gbps</li>
+    <li>PCs connect to switch using 1000BASE-T</li>
+</ul>
+
+<h3>2. IEEE 802.11 (Wi-Fi Physical Standards)</h3>
+
+<p>Defines wireless transmission using radio waves.</p>
+
+<h4>Common Variants</h4>
+
+<table>
+    <tr>
+        <th>Standard</th>
+        <th>Frequency</th>
+        <th>Speed (Theoretical)</th>
+    </tr>
+    <tr>
+        <td>802.11b</td>
+        <td>2.4 GHz</td>
+        <td>11 Mbps</td>
+    </tr>
+    <tr>
+        <td>802.11g</td>
+        <td>2.4 GHz</td>
+        <td>54 Mbps</td>
+    </tr>
+    <tr>
+        <td>802.11n</td>
+        <td>2.4 / 5 GHz</td>
+        <td>600 Mbps</td>
+    </tr>
+    <tr>
+        <td>802.11ac</td>
+        <td>5 GHz</td>
+        <td>&gt; 1 Gbps</td>
+    </tr>
+    <tr>
+        <td>802.11ax (Wi-Fi 6)</td>
+        <td>2.4 / 5 / 6 GHz</td>
+        <td>Very fast, marketing-approved</td>
+    </tr>
+</table>
+
+<p><span class="highlight">Example:</span></p>
+<ul>
+    <li>Laptop connecting to router via Wi-Fi</li>
+    <li>Signals transmitted as radio waves</li>
+</ul>
+
+<h3>3. Fiber Optic Standards</h3>
+
+<p>Used for high speed and long distance communication.</p>
+
+<table>
+    <tr>
+        <th>Standard</th>
+        <th>Type</th>
+        <th>Speed</th>
+        <th>Distance</th>
+    </tr>
+    <tr>
+        <td>100BASE-FX</td>
+        <td>Multimode</td>
+        <td>100 Mbps</td>
+        <td>2 km</td>
+    </tr>
+    <tr>
+        <td>1000BASE-SX</td>
+        <td>Multimode</td>
+        <td>1 Gbps</td>
+        <td>550 m</td>
+    </tr>
+    <tr>
+        <td>1000BASE-LX</td>
+        <td>Single-mode</td>
+        <td>1 Gbps</td>
+        <td>5–10 km</td>
+    </tr>
+</table>
+
+<p><span class="highlight">Example:</span></p>
+<ul>
+    <li>ISP backbone</li>
+    <li>Campus inter-building links</li>
+</ul>
+
+<h2>3. Physical Transmission Media</h2>
+
+<h3>1. Twisted Pair Cable</h3>
+
+<p><span class="highlight">Types:</span></p>
+<ul>
+    <li>UTP (Unshielded Twisted Pair)</li>
+    <li>STP (Shielded Twisted Pair)</li>
+</ul>
+
+<h4>Categories</h4>
+
+<table>
+    <tr>
+        <th>Category</th>
+        <th>Speed</th>
+    </tr>
+    <tr>
+        <td>Cat5e</td>
+        <td>1 Gbps</td>
+    </tr>
+    <tr>
+        <td>Cat6</td>
+        <td>10 Gbps (short range)</td>
+    </tr>
+    <tr>
+        <td>Cat6a</td>
+        <td>10 Gbps</td>
+    </tr>
+</table>
+
+<p><span class="highlight">Pros:</span></p>
+<ul>
+    <li>Cheap</li>
+    <li>Easy to install</li>
+</ul>
+
+<p><span class="highlight">Cons:</span></p>
+<ul>
+    <li>EMI interference</li>
+    <li>Distance limited to 100 m</li>
+</ul>
+
+<h3>2. Coaxial Cable</h3>
+
+<ul>
+    <li>Used in older Ethernet and cable TV</li>
+    <li>Better shielding than twisted pair</li>
+    <li>Bulky and outdated for LANs</li>
+</ul>
+
+<p><span class="highlight">Example:</span> Cable modem connection</p>
+
+<h3>3. Fiber Optic Cable</h3>
+
+<ul>
+    <li>Uses light pulses</li>
+    <li>Immune to EMI</li>
+    <li>Very high speed</li>
+</ul>
+
+<p><span class="highlight">Types:</span></p>
+<ul>
+    <li>Single-mode fiber (SMF)</li>
+    <li>Multi-mode fiber (MMF)</li>
+</ul>
+
+<p><span class="highlight">Pros:</span></p>
+<ul>
+    <li>Long distance</li>
+    <li>High bandwidth</li>
+</ul>
+
+<p><span class="highlight">Cons:</span></p>
+<ul>
+    <li>Expensive</li>
+    <li>Harder to install</li>
+</ul>
+
+<h3>4. Wireless Media</h3>
+
+<ul>
+    <li>Radio waves</li>
+    <li>No cables</li>
+    <li>Susceptible to interference</li>
+</ul>
+
+<p><span class="highlight">Example:</span> Wi-Fi, Bluetooth</p>
+
+<h2>4. Textual Diagram: Media Comparison</h2>
+
+<pre>
+[PC] --UTP--> [Switch] --Fiber--> [Router] )))) Wi-Fi )))) [Laptop]
+</pre>
+
+<h2>5. Example: Office Network Setup</h2>
+
+<pre>
+PCs --Cat6--> Switch --Fiber--> Core Switch --Fiber--> ISP
+             |
+             )))) Wi-Fi AP )))) Laptops
+</pre>
+
+<ul>
+    <li>Cat6 for short distances</li>
+    <li>Fiber for backbone</li>
+    <li>Wireless for mobility</li>
+</ul>
+<h1>1. What Does “Operating at Physical Layer” Mean?</h1>
+
+<p>
+    A <span class="highlight">Physical layer (Layer 1)</span> device:
+</p>
+<ul>
+    <li>Works with raw bits (0s and 1s)</li>
+    <li>Deals with signals, voltage, light, or radio waves</li>
+    <li>Has no idea about frames, MAC addresses, or IP addresses</li>
+</ul>
+
+<p>
+    If it can’t read an address, it’s probably Layer 1.
+</p>
+
+<h2>2. Devices Operating at the Physical Layer</h2>
+
+<h3>1. Cable (Transmission Media)</h3>
+
+<p><span class="highlight">What It Is:</span> The actual path the signals travel through.</p>
+
+<p><span class="highlight">Types:</span></p>
+<ul>
+    <li>Twisted Pair (UTP, STP)</li>
+    <li>Coaxial Cable</li>
+    <li>Optical Fiber</li>
+    <li>Wireless medium (air)</li>
+</ul>
+
+<p><span class="highlight">Function:</span></p>
+<ul>
+    <li>Carries electrical, optical, or radio signals</li>
+    <li>No processing, no intelligence</li>
+</ul>
+
+<p><span class="highlight">Example:</span> Ethernet cable (Cat6) connecting PC to a switch.</p>
+
+<pre>
+[PC] ===== Ethernet Cable ===== [Switch]
+</pre>
+
+<h3>2. Repeater</h3>
+
+<p><span class="highlight">What It Is:</span> A device that regenerates and amplifies signals to extend distance.</p>
+
+<p><span class="highlight">Function:</span></p>
+<ul>
+    <li>Receives weak signal</li>
+    <li>Cleans it</li>
+    <li>Sends it again</li>
+</ul>
+
+<p>No filtering. No thinking.</p>
+
+<p><span class="highlight">Example:</span> Used in long-distance fiber links.</p>
+
+<pre>
+[PC] --- weak signal --- [Repeater] --- regenerated --- [PC]
+</pre>
+
+<h3>3. Hub</h3>
+
+<p><span class="highlight">What It Is:</span> A multiport repeater.</p>
+
+<p><span class="highlight">Function:</span></p>
+<ul>
+    <li>Receives bits on one port</li>
+    <li>Broadcasts them to all other ports</li>
+</ul>
+
+<p>This is why hubs caused chaos and collisions.</p>
+
+<p><span class="highlight">Example:</span> Old Ethernet LANs.</p>
+
+<pre>
+PC-A ---\
+PC-B ---- HUB ---- PC-C
+PC-D ---/
+</pre>
+
+<p>Every bit goes everywhere. Democracy, but terrible.</p>
+
+<h3>4. Modem (Physical Layer Role)</h3>
+
+<p><span class="highlight">What It Is:</span> MOdulator–DEModulator</p>
+
+<p><span class="highlight">Function:</span></p>
+<ul>
+    <li>Converts digital data to analog signals</li>
+    <li>Converts analog signals back to digital</li>
+</ul>
+
+<p>Used to transmit over phone lines or cable networks.</p>
+
+<p><span class="highlight">Example:</span> DSL or cable modem.</p>
+
+<pre>
+[PC] --digital--> [MODEM] --analog--> ISP
+</pre>
+
+<p>(Yes, modems also touch higher layers. Exams usually forgive this.)</p>
+
+<h3>5. NIC (Physical Layer Component)</h3>
+
+<p><span class="highlight">What It Is:</span> The physical interface part of the Network Interface Card.</p>
+
+<p><span class="highlight">Function:</span></p>
+<ul>
+    <li>Converts bits to electrical or radio signals</li>
+    <li>Handles connectors and transmission</li>
+</ul>
+
+<p>MAC addressing belongs to Layer 2. Don’t mix them.</p>
+
+<p><span class="highlight">Example:</span> Ethernet port on a laptop.</p>
+
+<pre>
+[Computer]
+   |
+[ NIC ]  <-- signal generation
+   |
+[ Cable ]
+</pre>
+
+<h2>3. What About These Devices?</h2>
+
+<ul>
+    <li>❌ <span class="highlight">Switch</span> – Data Link layer (uses MAC addresses)</li>
+    <li>❌ <span class="highlight">Router</span> – Network layer (uses IP addresses)</li>
+    <li>❌ <span class="highlight">Bridge</span> – Data Link layer</li>
+</ul>
+
+<p>Classic exam traps. Step around them calmly.</p>
+
+<h2>4. Comparison Table</h2>
+
+<table>
+    <tr>
+        <th>Device</th>
+        <th>Layer</th>
+        <th>Role</th>
+    </tr>
+    <tr>
+        <td>Cable</td>
+        <td>L1</td>
+        <td>Signal transmission</td>
+    </tr>
+    <tr>
+        <td>Repeater</td>
+        <td>L1</td>
+        <td>Signal regeneration</td>
+    </tr>
+    <tr>
+        <td>Hub</td>
+        <td>L1</td>
+        <td>Broadcast bits</td>
+    </tr>
+    <tr>
+        <td>Modem</td>
+        <td>L1 (part)</td>
+        <td>Digital ↔ Analog</td>
+    </tr>
+    <tr>
+        <td>NIC (physical part)</td>
+        <td>L1</td>
+        <td>Signal encoding</td>
+    </tr>
+</table>
+
+<h2>5. Real-World Example</h2>
+
+<p>Home setup:</p>
+<pre>
+Laptop -- Ethernet Cable -- Router
+</pre>
+
+<p><span class="highlight">Physical layer:</span></p>
+<ul>
+    <li>Cable carries signals</li>
+    <li>NIC sends and receives bits</li>
+    <li>Router’s PHY receives signals</li>
+</ul>
+
+<p>
+    Everything above that is someone else’s job.
+</p>
 
 
 
