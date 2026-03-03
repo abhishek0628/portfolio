@@ -11,7 +11,7 @@
 // }
 // export default Home;
 import { Link } from "react-router-dom";
-import "./Home.css";
+import "../Style/Home.css";
 
 function Home() {
   return (

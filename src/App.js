@@ -29,6 +29,7 @@ import Home from "./Pages/Home"
 import Projects from "./Pages/Projects"
 import Contacts from "./Pages/Contacts"
 import About from "./Pages/About"
+import Blog from "./Pages/Blog"
 function App(){
   return(
     <Router>
@@ -38,6 +39,7 @@ function App(){
         <Route path="/projects" element={<Projects/>}/>
         <Route path="/contacts" element={<Contacts/>}/>
         <Route path="/About" element={<About/>}/>
+        <Route path="/Blog" element={<Blog/>}/>
 
       </Routes>
     </Router>

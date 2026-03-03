@@ -1,4 +1,4 @@
-import "./About.css";
+import "../Style/About.css";
 
 function About() {
   const skills = ["React.js", "Node.js", "Express", "MongoDB", "Python", "Machine Learning", "C/C++", "Java"];
