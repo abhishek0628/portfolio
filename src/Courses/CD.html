@@ -1,0 +1,1802 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Compiler Design</title>
+    <style>
+        /* body {
+            font-family: "Segoe UI", Roboto, Arial, sans-serif;
+            background: #0f172a;
+            color: #e5e7eb;
+            margin: 0;
+            padding: 0;
+            line-height: 1.7;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: auto;
+            padding: 40px;
+        }
+
+        h1, h2, h3 {
+            color: #38bdf8;
+            margin-top: 30px;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            border-bottom: 2px solid #38bdf8;
+            padding-bottom: 10px;
+        }
+
+        h2 {
+            font-size: 1.9rem;
+        }
+
+        h3 {
+            font-size: 1.4rem;
+            color: #a5f3fc;
+        }
+
+        p {
+            font-size: 1.05rem;
+            margin: 15px 0;
+        }
+
+        ul {
+            margin-left: 25px;
+        }
+
+        li {
+            margin: 8px 0;
+        }
+
+        .box, .example {
+            background: #020617;
+            border-left: 5px solid #38bdf8;
+            padding: 20px;
+            margin: 25px 0;
+            border-radius: 6px;
+        }
+
+        .diagram, .code {
+            background: #020617;
+            padding: 20px;
+            font-family: "Courier New", monospace;
+            white-space: pre;
+            border-radius: 6px;
+            margin: 20px 0;
+            color: #d1d5db;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+
+        table th, table td {
+            border: 1px solid #334155;
+            padding: 10px;
+            text-align: left;
+        }
+
+        table th {
+            background: #020617;
+            color: #38bdf8;
+        }
+
+        .highlight {
+            color: #facc15;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            color: #fff;
+            background-color: #38bdf8;
+            margin-top: 20px;
+        } */
+         body {
+    font-family: "Segoe UI", Roboto, Arial, sans-serif;
+    background: #ffffff; /* white background */
+    color: #000000;      /* black text */
+    margin: 0;
+    padding: 0;
+    line-height: 1.7;
+}
+
+.container {
+    max-width: 1000px;
+    margin: auto;
+    padding: 40px;
+}
+
+h1, h2, h3 {
+    color: #1a1a1a; /* dark gray/black headings */
+    margin-top: 30px;
+}
+
+h1 {
+    font-size: 2.5rem;
+    border-bottom: 2px solid #000000;
+    padding-bottom: 10px;
+}
+
+h2 {
+    font-size: 1.9rem;
+}
+
+h3 {
+    font-size: 1.4rem;
+    color: #333333;
+}
+
+p {
+    font-size: 1.05rem;
+    margin: 15px 0;
+}
+
+ul {
+    margin-left: 25px;
+}
+
+li {
+    margin: 8px 0;
+}
+
+.box, .example {
+    background: #f0f0f0; /* light gray background for boxes */
+    border-left: 5px solid #000000;
+    padding: 20px;
+    margin: 25px 0;
+    border-radius: 6px;
+    color: #000000;
+}
+
+.diagram, .code {
+    background: #e5e5e5; /* slightly darker gray for code blocks */
+    padding: 20px;
+    font-family: "Courier New", monospace;
+    white-space: pre;
+    border-radius: 6px;
+    margin: 20px 0;
+    color: #000000;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+}
+
+table th, table td {
+    border: 1px solid #cccccc;
+    padding: 10px;
+    text-align: left;
+    color: #000000;
+}
+
+table th {
+    background: #e0e0e0;
+    color: #000000;
+}
+
+.highlight {
+    color: #ff6600; /* highlighted text in orange */
+}
+
+footer {
+    text-align: center;
+    padding: 20px;
+    color: #ffffff;
+    background-color: #000000; /* black footer background */
+    margin-top: 20px;
+}
+
+    </style>
+</head>
+<body>
+
+    <!-- FRONT END CONTENT -->
+    <div class="container">
+        <h1>Introduction to Compiler (Refresh Mode)</h1>
+
+        <p>
+            A compiler is system software that translates a high-level program (C, C++, etc.)
+            into machine code so the computer can actually run it.
+        </p>
+
+        <p>
+            It does this before execution, unlike interpreters that improvise line by line
+            like they’re making it up as they go.
+        </p>
+
+        <h2>Why Compilers Exist</h2>
+        <div class="box">
+            <ul>
+                <li>Humans write readable code</li>
+                <li>Machines understand only binary</li>
+                <li>Nobody wants to write 101010 manually</li>
+            </ul>
+            <p>
+                <span class="highlight">Compiler</span> = professional translator with zero patience for mistakes.
+            </p>
+        </div>
+
+        <h2>Basic Working (Big Picture)</h2>
+        <div class="diagram">
+Source Code → Compiler → Target Code → Execution
+        </div>
+        <p>That’s it. No mystery.</p>
+
+        <!-- FRONT END IN DEPTH -->
+        <h2>Compiler Front End (In Depth)</h2>
+
+        <h3>What is the Front End?</h3>
+        <p>The front end of a compiler is the part that:</p>
+        <ul>
+            <li>Reads source code</li>
+            <li>Checks correctness</li>
+            <li>Understands structure and meaning</li>
+            <li>Stops execution if the program is nonsense</li>
+        </ul>
+        <p>It is machine-independent. Same front end, different hardware later.</p>
+
+        <h3>Components of the Front End</h3>
+        <div class="diagram">
+Source Code
+    ↓
+Lexical Analysis
+    ↓
+Syntax Analysis
+    ↓
+Semantic Analysis
+    ↓
+Intermediate Representation (IR)
+        </div>
+        <p>That’s the front end pipeline. Now let’s zoom in.</p>
+
+        <!-- LEXICAL ANALYSIS -->
+        <h2>1. Lexical Analysis (Scanner)</h2>
+        <h3>What it does</h3>
+        <ul>
+            <li>Converts characters → tokens</li>
+            <li>Removes whitespace & comments</li>
+            <li>Detects lexical errors</li>
+        </ul>
+
+        <h3>Input → Output</h3>
+        <div class="code">
+Input  : int a = b + 5;<br>
+Output : &lt;INT&gt; &lt;ID,a&gt; &lt;=&gt; &lt;ID,b&gt; &lt;+&gt; &lt;NUM,5&gt; &lt;;&gt;
+        </div>
+
+        <h3>Example</h3>
+        <div class="code">
+Source code:<br><br>
+int sum = a + 10;
+        </div>
+        <p>Tokens generated:</p>
+        <div class="code">
+(INT) (ID,sum) (=) (ID,a) (+) (NUM,10) (;)
+        </div>
+
+        <h3>Symbol Table (starts here)</h3>
+        <table>
+            <tr>
+                <th>Name</th>
+                <th>Type</th>
+                <th>Scope</th>
+            </tr>
+            <tr>
+                <td>sum</td>
+                <td>int</td>
+                <td>local</td>
+            </tr>
+            <tr>
+                <td>a</td>
+                <td>int</td>
+                <td>local</td>
+            </tr>
+        </table>
+        <p>Lexical analyzer doesn’t care if <b>a</b> is declared. That’s someone else’s headache.</p>
+
+        <!-- SYNTAX ANALYSIS -->
+        <h2>2. Syntax Analysis (Parser)</h2>
+        <h3>What it does</h3>
+        <ul>
+            <li>Checks grammar</li>
+            <li>Builds Parse Tree / Syntax Tree</li>
+            <li>Detects syntax errors</li>
+        </ul>
+
+        <h3>Grammar example</h3>
+        <div class="code">
+stmt → id = expr ;<br>
+expr → expr + term | term<br>
+term → id | num
+        </div>
+
+        <h3>Parse Tree (textual)</h3>
+        <div class="diagram">
+          stmt
+        /  |   \
+      id   =   expr
+      |        |
+    sum      expr + term
+              |      |
+            id      num
+            |        |
+            a       10
+        </div>
+        <p>If grammar rules are violated, compilation stops here. Parser is strict. No mercy.</p>
+
+        <!-- SEMANTIC ANALYSIS -->
+        <h2>3. Semantic Analysis</h2>
+        <h3>What it does</h3>
+        <ul>
+            <li>Checks meaning</li>
+            <li>Type checking</li>
+            <li>Variable declaration</li>
+            <li>Scope rules</li>
+        </ul>
+
+        <h3>Example Checks</h3>
+        <div class="code">
+int a;<br>
+a = "hello";   ❌ type mismatch<br><br>
+b = 5;         ❌ b not declared
+        </div>
+
+        <h3>Valid Example</h3>
+        <div class="code">
+int a, sum;<br>
+sum = a + 10;
+        </div>
+
+        <p>Semantic analyzer:</p>
+        <ul>
+            <li>Confirms a exists</li>
+            <li>Confirms types are compatible</li>
+            <li>Confirms operation + is legal</li>
+        </ul>
+
+        <h3>Syntax Tree after Semantic Analysis (AST)</h3>
+        <div class="diagram">
+        =
+      /   \
+   sum     +
+          / \
+        a   10
+        </div>
+        <p>Cleaner. No unnecessary grammar clutter. This is what later phases love.</p>
+
+        <h2>Output of Front End</h2>
+        <p>The front end produces:</p>
+        <ul>
+            <li>Intermediate Representation (IR)</li>
+            <li>Symbol Table</li>
+            <li>Error messages (if any)</li>
+        </ul>
+
+        <h3>Example IR (Three Address Code)</h3>
+        <div class="code">
+t1 = a + 10<br>
+sum = t1
+        </div>
+
+        <ul>
+            <li>Correct</li>
+            <li>Understood</li>
+            <li>Machine-independent</li>
+        </ul>
+        <p><b>Front end’s job is done.</b></p>
+
+        <h2>Complete Front End Flow (Textual Diagram)</h2>
+        <div class="diagram">
+Source Code
+   |
+   v
+Lexical Analyzer
+   |-- tokens
+   |-- symbol table
+   v
+Syntax Analyzer
+   |-- parse tree
+   v
+Semantic Analyzer
+   |-- AST
+   |-- type checks
+   v
+Intermediate Code (IR)
+        </div>
+    </div>
+
+    <!-- MIDDLE AND BACK END -->
+    <header>
+        <h1>Middle End and Back End of Compiler</h1>
+    </header>
+
+    <main class="container">
+        <!-- MIDDLE END -->
+        <section>
+            <h2>Middle End of Compiler</h2>
+            <p>The Middle End comes after the Front End (which checks correctness) and before the Back End (which generates machine code). Its main job is to optimize the code so it runs efficiently without changing its behavior.</p>
+            <p>Think of it as the part of the compiler that says: <strong>"Your code works… but it could be smarter."</strong></p>
+
+            <h3>Main Responsibilities</h3>
+            <ul>
+                <li><strong>Intermediate Code Generation (ICG):</strong> Converts parse tree or AST into intermediate code. This code is machine-independent. Example forms: Three-Address Code (TAC), Quadruples, Triples.</li>
+                <li><strong>Code Optimization:</strong> Machine-independent optimizations happen here. Improves runtime, memory usage, and reduces instructions. Techniques include:
+                    <ul>
+                        <li>Constant folding: compute constant expressions at compile-time.</li>
+                        <li>Strength reduction: replace expensive operations with cheaper ones.</li>
+                        <li>Dead code elimination: remove code that never executes.</li>
+                        <li>Common subexpression elimination: avoid repeated calculations.</li>
+                        <li>Loop optimization: unrolling, invariant code motion.</li>
+                    </ul>
+                </li>
+                <li><strong>Flow Analysis:</strong> Analyzes basic blocks and control flow. Helps optimization algorithms understand the program structure. Techniques: data flow analysis, live variable analysis, reaching definitions.</li>
+            </ul>
+
+            <div class="example">
+                <h3>Example: Middle End Optimization</h3>
+                <p>Source Code (C):</p>
+                <pre>
+int a = 3;
+int b = 4;
+int c;
+c = a * b + a * b;
+                </pre>
+                <p>Step 1: Generate Intermediate Code (TAC)</p>
+                <pre>
+t1 = a * b
+t2 = a * b
+c = t1 + t2
+                </pre>
+                <p>Step 2: Optimize (common subexpression elimination)</p>
+                <pre>
+t1 = a * b
+c = t1 + t1
+
+Further simplified:
+
+t1 = a * b
+c = 2 * t1
+                </pre>
+            </div>
+
+            <div class="diagram">
+                <h3>Textual Diagram of Middle End</h3>
+                <pre>
+          +----------------+
+Source →  |  Front End     |  → Tokens, AST, Parse Tree
+          +----------------+
+                    |
+                    v
+          +----------------+
+          |  Middle End    |  ← Machine-independent optimizations
+          |----------------|
+          | 1. ICG         |
+          | 2. Optimization|
+          | 3. Flow Analysis|
+          +----------------+
+                    |
+                    v
+          +----------------+
+          |  Back End      |  → Target machine code
+          +----------------+
+                </pre>
+            </div>
+
+            <p><strong>Key Points to Remember:</strong></p>
+            <ul>
+                <li>Middle End does not care about hardware.</li>
+                <li>Focuses purely on code efficiency.</li>
+                <li>Optimization here improves all target architectures.</li>
+            </ul>
+        </section>
+
+        <!-- BACK END -->
+        <section>
+            <h2>Back End of a Compiler</h2>
+            <p>The Back End takes intermediate code from the middle end and converts it into machine-specific code while optimizing for performance, memory, and CPU registers.</p>
+
+            <h3>Main Tasks of the Back End</h3>
+            <ul>
+                <li><strong>Instruction Selection:</strong> Translate intermediate representation (IR) into target machine instructions.
+                    <pre>
+IR: t1 = a + b
+Assembly: LOAD R1, a
+          ADD R1, b
+          STORE t1, R1
+                    </pre>
+                </li>
+                <li><strong>Register Allocation:</strong> Assign variables to CPU registers for faster access.
+                    <pre>
+t1 = a + b
+t2 = t1 * c
+Registers: R1 → t1, R2 → t2
+                    </pre>
+                </li>
+                <li><strong>Code Scheduling / Optimization:</strong> Rearrange instructions to reduce stalls or improve pipeline efficiency.</li>
+                <li><strong>Address Calculation:</strong> Map variables and arrays to memory addresses.
+                    <pre>
+For array A[i] with base 1000, i=2, element size 4:
+Address = 1000 + 2*4 = 1008
+                    </pre>
+                </li>
+                <li><strong>Code Emission:</strong> Output actual machine code or assembly instructions.</li>
+            </ul>
+
+            <div class="example">
+                <h3>Example Walkthrough</h3>
+                <p>Source code:</p>
+                <pre>
+int a = 2, b = 3, c;
+c = a + b;
+                </pre>
+
+                <p>Step 1: Intermediate Code (TAC)</p>
+                <pre>
+t1 = 2
+t2 = 3
+t3 = t1 + t2
+c = t3
+                </pre>
+
+                <p>Step 2: Instruction Selection (Assembly)</p>
+                <pre>
+LOAD R1, #2       ; Load immediate 2 into R1
+LOAD R2, #3       ; Load immediate 3 into R2
+ADD R3, R1, R2    ; R3 = R1 + R2
+STORE R3, c       ; Store result into c
+                </pre>
+
+                <p>Step 3: Register Allocation</p>
+                <pre>
+R1 → t1
+R2 → t2
+R3 → t3
+                </pre>
+
+                <p>Step 4: Code Scheduling / Optimization</p>
+                <pre>
+No dependencies here, but independent instructions can be reordered in loops for efficiency.
+                </pre>
+
+                <p>Step 5: Final Machine Code</p>
+                <pre>
+0001 0001 0010  ; hypothetical encoding
+                </pre>
+            </div>
+
+            <div class="diagram">
+                <h3>Textual Diagram of Back End</h3>
+                <pre>
+               +----------------------+
+               |  Intermediate Code   | <- from middle end
+               +----------+-----------+
+                          |
+                  Instruction Selection
+                          |
+               +----------v-----------+
+               |  Target Machine IR   |
+               +----------+-----------+
+                          |
+                    Register Allocation
+                          |
+               +----------v-----------+
+               |  Optimized Machine   |
+               |       Code           |
+               +----------+-----------+
+                          |
+                   Code Scheduling
+                          |
+               +----------v-----------+
+               |    Final Machine     |
+               |       Code           |
+               +----------------------+
+                </pre>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        &copy; 2025 Compiler Concepts
+    </footer>
+    <div class="container">
+        <h1>Lexical Analysis – First Phase of Compiler</h1>
+
+        <p>
+            Lexical Analysis is the first phase of a compiler. Its job is to take the raw source code 
+            (what you write in C, C++, Java, etc.) and break it down into meaningful units called tokens 
+            that the compiler can understand.
+        </p>
+
+        <h2>Overview</h2>
+        <ul>
+            <li>Reads the program character by character.</li>
+            <li>Groups characters into <strong>lexemes</strong> (like keywords, identifiers, numbers, operators).</li>
+            <li>Removes whitespace and comments that aren’t needed.</li>
+            <li>Detects lexical errors (like invalid symbols).</li>
+            <li>Passes the token stream to the next phase, the parser.</li>
+        </ul>
+
+        <h2>Example</h2>
+        <p>Source code:</p>
+        <div class="code">
+int sum = a + b;
+        </div>
+
+        <p>Lexical Analysis output:</p>
+        <table>
+            <tr>
+                <th>Lexeme</th>
+                <th>Token</th>
+            </tr>
+            <tr><td>int</td><td>KEYWORD</td></tr>
+            <tr><td>sum</td><td>IDENTIFIER</td></tr>
+            <tr><td>=</td><td>ASSIGN_OP</td></tr>
+            <tr><td>a</td><td>IDENTIFIER</td></tr>
+            <tr><td>+</td><td>ADD_OP</td></tr>
+            <tr><td>b</td><td>IDENTIFIER</td></tr>
+            <tr><td>;</td><td>SEMICOLON</td></tr>
+        </table>
+
+        <h2>Key Points</h2>
+        <ul>
+            <li>Tokens are the atomic units of the programming language.</li>
+            <li>Lexical analysis uses regular expressions and finite automata to identify tokens.</li>
+            <li>Maintains a symbol table for identifiers and constants.</li>
+        </ul>
+
+        <h2>Textual Diagram of Flow</h2>
+        <div class="diagram">
+Source Code --> [Lexical Analyzer] --> Tokens --> [Parser]
+                    |
+                    v
+               Symbol Table
+        </div>
+
+        <h2>1. Tokens</h2>
+        <p>
+            <strong>Definition:</strong> A token is a class of language constructs that the compiler recognizes as a single logical unit. Think of it as the “type” of something in the code.
+        </p>
+        <p>Examples of tokens in C-like language:</p>
+        <table>
+            <tr>
+                <th>Token Type</th>
+                <th>Description</th>
+            </tr>
+            <tr><td>KEYWORD</td><td>Reserved words like int, if, return</td></tr>
+            <tr><td>ID</td><td>Identifiers (variable/function names)</td></tr>
+            <tr><td>NUM</td><td>Numeric literals</td></tr>
+            <tr><td>OP</td><td>Operators like +, -, *, /</td></tr>
+            <tr><td>SEPARATOR</td><td>Punctuation like ;, ,, {, }</td></tr>
+            <tr><td>REL_OP</td><td>Relational operators like ==, >=</td></tr>
+        </table>
+
+        <h2>2. Lexemes</h2>
+        <p>
+            <strong>Definition:</strong> A lexeme is the actual instance of a token in the source code. It’s the concrete string that matches the token’s pattern.
+        </p>
+        <p>Example:</p>
+        <div class="code">
+Source code snippet:
+int sum = a + 42;
+
+Lexeme   Token
+int      KEYWORD
+sum      ID
+=        OP (ASSIGN)
+a        ID
++        OP (ADD)
+42       NUM
+;        SEPARATOR
+        </div>
+
+        <h2>3. Patterns</h2>
+        <p>
+            <strong>Definition:</strong> A pattern is a rule or description that defines which lexemes belong to which token. Typically written as regular expressions (RE).
+        </p>
+        <table>
+            <tr>
+                <th>Token</th>
+                <th>Pattern (RE)</th>
+            </tr>
+            <tr><td>ID</td><td>[a-zA-Z][a-zA-Z0-9]*</td></tr>
+            <tr><td>NUM</td><td>[0-9]+(\.[0-9]+)?</td></tr>
+            <tr><td>KEYWORD</td><td>`int</td></tr>
+            <tr><td>OP</td><td>`+</td></tr>
+            <tr><td>SEPARATOR</td><td>`;</td></tr>
+        </table>
+
+        <p>
+            Explanation of RE components:
+            <ul>
+                <li>[a-zA-Z] → first character must be a letter</li>
+                <li>[a-zA-Z0-9]* → followed by zero or more letters or digits</li>
+                <li>[0-9]+ → one or more digits</li>
+                <li>(\.[0-9]+)? → optional decimal part for floating numbers</li>
+                <li>| → alternation (OR)</li>
+            </ul>
+        </p>
+
+        <h2>4. Step-by-Step Example</h2>
+        <p>Source code:</p>
+        <div class="code">
+float avg = sum / count;
+        </div>
+
+        <p>Step 1: Identify lexemes</p>
+        <div class="code">
+float, avg, =, sum, /, count, ;
+        </div>
+
+        <p>Step 2: Match lexemes to token types using patterns</p>
+        <table>
+            <tr>
+                <th>Lexeme</th>
+                <th>Token</th>
+                <th>Pattern</th>
+            </tr>
+            <tr><td>float</td><td>KEYWORD</td><td>`int</td></tr>
+            <tr><td>avg</td><td>ID</td><td>[a-zA-Z][a-zA-Z0-9]*</td></tr>
+            <tr><td>=</td><td>OP</td><td>=</td></tr>
+            <tr><td>sum</td><td>ID</td><td>[a-zA-Z][a-zA-Z0-9]*</td></tr>
+            <tr><td>/</td><td>OP</td><td>/</td></tr>
+            <tr><td>count</td><td>ID</td><td>[a-zA-Z][a-zA-Z0-9]*</td></tr>
+            <tr><td>;</td><td>SEPARATOR</td><td>;</td></tr>
+        </table>
+
+        <h2>5. Textual Diagram of Tokenization</h2>
+        <div class="diagram">
+Source Code: float avg = sum / count;
+
+       ↓ Lexical Analyzer (Lexer)
+
+Tokens Identified:
+[KEYWORD: float] -> [ID: avg] -> [OP: =] -> [ID: sum] -> [OP: /] -> [ID: count] -> [SEPARATOR: ;]
+
+       ↓ Symbol Table Update
+IDs: avg, sum, count (type info, memory location, scope)
+        </div>
+
+        <h2>6. Key Notes</h2>
+        <ul>
+            <li>One lexeme → One token, but one token → many lexemes. Example: Token ID → avg, sum, count</li>
+            <li>Patterns are usually defined using regular expressions.</li>
+            <li>Lexer also removes comments and whitespace before tokenization.</li>
+        </ul>
+
+        <h2>1. Lexical Analysis Techniques</h2>
+        <p>Main goal: Convert a sequence of characters into tokens using formal methods.</p>
+        <ul>
+            <li>Finite Automata (FA)</li>
+            <li>Regular Expressions (RE)</li>
+            <li>Transition Tables / Lexical Tables</li>
+        </ul>
+
+        <h3>1️⃣ Regular Expressions (RE)</h3>
+        <p>Definition: A regular expression is a formal way to define patterns for tokens.</p>
+        <table>
+            <tr>
+                <th>Token</th>
+                <th>Pattern (RE)</th>
+            </tr>
+            <tr><td>Identifier</td><td>[a-zA-Z][a-zA-Z0-9]*</td></tr>
+            <tr><td>Number</td><td>[0-9]+(\.[0-9]+)?</td></tr>
+            <tr><td>Keyword</td><td>if</td></tr>
+            <tr><td>Operator</td><td>`+</td></tr>
+        </table>
+
+        <p>Example source code:</p>
+        <div class="code">
+int sum = a + 10;
+        </div>
+
+        <h3>Step 1 – Matching with RE:</h3>
+        <div class="code">
+int → matches Keyword
+sum → matches Identifier
+= → matches Assignment Operator
+a → Identifier
++ → Operator
+10 → Number
+; → Separator
+        </div>
+
+        <h3>2️⃣ Finite Automata (FA)</h3>
+        <p>REs are good for description, but FAs are how computers implement them.</p>
+        <ul>
+            <li>NFA (Non-deterministic FA) – multiple transitions for the same input.</li>
+            <li>DFA (Deterministic FA) – exactly one transition per input per state.</li>
+        </ul>
+
+        <p>Example: Recognizing identifiers <code>[a-zA-Z][a-zA-Z0-9]*</code></p>
+        <div class="diagram">
+State 0 --[a-zA-Z]--> State 1
+State 1 --[a-zA-Z0-9]--> State 1 (loop)
+State 1 is accepting
+        </div>
+
+        <p>How it works on input <code>sum1</code>:</p>
+        <div class="code">
+Step    Char    State    Action
+1       s       0→1      move to state 1
+2       u       1→1      stay
+3       m       1→1      stay
+4       1       1→1      stay
+End             1        Accept sum1
+        </div>
+
+        <h3>3️⃣ Transition Tables / Lexical Tables</h3>
+        <p>Instead of drawing FA every time, we store transitions in a table.</p>
+        <table>
+            <tr>
+                <th>State/Input</th>
+                <th>Letter</th>
+                <th>Digit</th>
+                <th>Other</th>
+            </tr>
+            <tr>
+                <td>0</td><td>1</td><td>—</td><td>—</td>
+            </tr>
+            <tr>
+                <td>1</td><td>1</td><td>1</td><td>Accept</td>
+            </tr>
+        </table>
+
+        <p>Processing <code>sum1</code>:</p>
+        <ul>
+            <li>Start at state 0, s → state 1</li>
+            <li>u → state 1</li>
+            <li>m → state 1</li>
+            <li>1 → state 1</li>
+            <li>End → other → Accept sum1</li>
+        </ul>
+
+        <h3>4️⃣ Symbol Table Integration</h3>
+        <p>Once a token is recognized, identifiers are stored in symbol table.</p>
+        <div class="code">
+Symbol Table:
++-------+-------+
+| Name  | Type  |
++-------+-------+
+| sum   | int   |
+| a     | int   |
++-------+-------+
+        </div>
+
+        <h2>5️⃣ Textual Diagram of Techniques</h2>
+        <div class="diagram">
+Source Code --> [Regular Expression Definitions] --> [Finite Automata / DFA] --> [Token Stream] --> Parser
+                                              |
+                                              v
+                                       Symbol Table
+        </div>
+
+        <h2>Example End-to-End</h2>
+        <p>Input:</p>
+        <div class="code">
+int x = y + 5;
+        </div>
+
+        <p>Stepwise Using Techniques:</p>
+        <ul>
+            <li>RE Matching: identify keywords, identifiers, numbers, operators</li>
+            <li>DFA Processing: states move for each character → accept tokens</li>
+            <li>Transition Table: decide next state and accept/reject</li>
+            <li>Symbol Table Update: x, y stored</li>
+        </ul>
+
+        <p>Token Stream Output:</p>
+        <div class="code">
+(KEYWORD, int), (ID, x), (ASSIGN, =), (ID, y), (PLUS, +), (NUM, 5), (SEMI, ;)
+        </div>
+    </div>
+
+   <div class="container">
+
+    <h1>Syntax Analysis (Parsing)</h1>
+
+    <h2>1. Definition</h2>
+    <p>
+        Syntax Analysis is the phase in a compiler where the compiler checks whether the sequence of tokens from lexical analysis conforms to the syntactic rules (grammar) of the programming language.
+    </p>
+    <p><strong>Input:</strong> Tokens from lexical analysis, e.g., INT ID ASSIGN NUM SEMI</p>
+    <p><strong>Output:</strong> Parse tree or syntax tree if syntax is correct, or syntax error if invalid.</p>
+    <p><strong>Goal:</strong> Ensure the program is grammatically correct before generating machine code.</p>
+
+    <h2>2. Why Syntax Analysis?</h2>
+    <div class="box">
+        <p>
+            Without syntax analysis:
+        </p>
+        <pre>int a = ;  // Invalid</pre>
+        <p>
+            Lexical analyzer sees: INT ID ASSIGN SEMI → all valid tokens individually, but the statement is invalid. Parser catches this.
+        </p>
+    </div>
+
+    <h2>3. Types of Parsing</h2>
+    <h3>A. Top-Down Parsing</h3>
+    <ul>
+        <li>Start from start symbol and try to reach input string.</li>
+        <li>Examples: Recursive descent, Predictive (LL(1))</li>
+        <li>Works if grammar is free from left recursion and factored properly</li>
+    </ul>
+
+    <h3>B. Bottom-Up Parsing</h3>
+    <ul>
+        <li>Start from input tokens and try to reach start symbol.</li>
+        <li>Examples: Shift-Reduce parsing, SLR, LALR, CLR</li>
+        <li>Used in most modern compilers (efficient for complex grammars)</li>
+    </ul>
+
+    <h2>4. Example Statement</h2>
+    <p>Consider the simple statement in C:</p>
+    <pre>int a = 5;</pre>
+
+    <h3>Step 1: Tokens from Lexical Analysis</h3>
+    <table>
+        <tr>
+            <th>Token</th>
+            <th>Value</th>
+        </tr>
+        <tr>
+            <td>INT</td>
+            <td>int</td>
+        </tr>
+        <tr>
+            <td>ID</td>
+            <td>a</td>
+        </tr>
+        <tr>
+            <td>ASSIGN</td>
+            <td>=</td>
+        </tr>
+        <tr>
+            <td>NUM</td>
+            <td>5</td>
+        </tr>
+        <tr>
+            <td>SEMI</td>
+            <td>;</td>
+        </tr>
+    </table>
+
+    <h3>Step 2: Grammar (Simplified CFG)</h3>
+    <div class="code">
+S → TYPE ID ASSIGN NUM SEMI
+TYPE → int | float
+ID → a | b | c
+NUM → 0 | 1 | 2 | ... | 9
+    </div>
+
+    <h3>Step 3: Parse Tree (Textual Diagram)</h3>
+    <div class="diagram">
+               S
+   ____________|_________________
+  |      |      |       |        |
+ TYPE    ID    ASSIGN   NUM      SEMI
+  |      |       |      |        |
+ int     a       =      5        ;
+    </div>
+
+    <h3>Step 4: Derivation (Leftmost)</h3>
+    <pre>
+S
+→ TYPE ID ASSIGN NUM SEMI
+→ int ID ASSIGN NUM SEMI
+→ int a ASSIGN NUM SEMI
+→ int a = NUM SEMI
+→ int a = 5 SEMI
+→ int a = 5 ;
+    </pre>
+
+    <h3>Step 5: Shift-Reduce Parsing Example (Bottom-Up)</h3>
+    <table>
+        <tr>
+            <th>Step</th>
+            <th>Stack</th>
+            <th>Input Tokens</th>
+            <th>Action</th>
+        </tr>
+        <tr>
+            <td>1</td>
+            <td></td>
+            <td>INT ID ASSIGN NUM ;</td>
+            <td>Shift INT</td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td>INT</td>
+            <td>ID ASSIGN NUM ;</td>
+            <td>Reduce INT → TYPE</td>
+        </tr>
+        <tr>
+            <td>3</td>
+            <td>TYPE</td>
+            <td>ID ASSIGN NUM ;</td>
+            <td>Shift ID</td>
+        </tr>
+        <tr>
+            <td>4</td>
+            <td>TYPE ID</td>
+            <td>ASSIGN NUM ;</td>
+            <td>Reduce ID → ID</td>
+        </tr>
+        <tr>
+            <td>5</td>
+            <td>TYPE ID</td>
+            <td>ASSIGN NUM ;</td>
+            <td>Shift ASSIGN</td>
+        </tr>
+        <tr>
+            <td>6</td>
+            <td>TYPE ID ASSIGN</td>
+            <td>NUM ;</td>
+            <td>Shift NUM</td>
+        </tr>
+        <tr>
+            <td>7</td>
+            <td>TYPE ID ASSIGN NUM</td>
+            <td>;</td>
+            <td>Reduce NUM → NUM</td>
+        </tr>
+        <tr>
+            <td>8</td>
+            <td>TYPE ID ASSIGN NUM</td>
+            <td>;</td>
+            <td>Shift SEMI</td>
+        </tr>
+        <tr>
+            <td>9</td>
+            <td>TYPE ID ASSIGN NUM SEMI</td>
+            <td></td>
+            <td>Reduce S → TYPE ID ASSIGN NUM SEMI</td>
+        </tr>
+    </table>
+    <p>Final Stack: S → Successful parse</p>
+
+    <h3>Step 6: Key Points</h3>
+    <ul>
+        <li>Parsing ensures syntax correctness.</li>
+        <li>Parse Tree shows hierarchical structure.</li>
+        <li>Top-Down Parsers use derivation from start symbol.</li>
+        <li>Bottom-Up Parsers reduce input tokens to start symbol using shift-reduce rules.</li>
+        <li>Useful for error detection, intermediate code generation, and compiler optimization.</li>
+    </ul>
+
+    <h2>Top-Down Parsing</h2>
+    <p>Top-down parsing starts from the start symbol of the grammar and tries to derive the input string by applying productions. Root → leaves.</p>
+    <ul>
+        <li>Requirements: No left recursion, preferably factored.</li>
+        <li>Techniques: Recursive Descent, Predictive Parser (LL(1))</li>
+    </ul>
+
+    <h3>Recursive Descent Parsing</h3>
+    <p>Each non-terminal has a recursive function that matches input tokens according to grammar rules. May require backtracking.</p>
+    <div class="code">
+void E() {
+    T();
+    EPrime();
+}
+
+void EPrime() {
+    if (nextToken == '+') {
+        match('+');
+        T();
+        EPrime();
+    } else {
+        // epsilon
+    }
+}
+
+void T() {
+    if (nextToken == ID) {
+        match(ID);
+    } else {
+        error();
+    }
+}
+    </div>
+
+    <h3>Example Grammar</h3>
+    <pre>
+E → T E'
+E' → + T E' | ε
+T → ID
+
+Input: id + id
+Tokens: ID PLUS ID
+    </pre>
+
+    <h3>Textual Parse Tree</h3>
+    <div class="diagram">
+           E
+         /   \
+        T     E'
+        |    / \
+       ID   +   T  E'
+             |   |
+            ID   ε
+    </div>
+
+    <h3>Advantages</h3>
+    <ul>
+        <li>Simple to implement</li>
+        <li>Easy to debug</li>
+        <li>Mirrors grammar structure in code</li>
+    </ul>
+
+    <h3>Disadvantages</h3>
+    <ul>
+        <li>Cannot handle left-recursive grammars</li>
+        <li>Backtracking may be inefficient</li>
+        <li>Manual grammar transformation may be needed</li>
+    </ul>
+
+    <h2>Predictive Parsing</h2>
+    <p>Table-driven top-down parsing without backtracking using FIRST and FOLLOW sets.</p>
+    <div class="code">
+Grammar (LL(1)):
+E  → T E'
+E' → + T E' | ε
+T  → ID
+
+Input Tokens: ID PLUS ID $
+$ = end of input marker
+    </div>
+
+    <h3>Predictive Parsing Steps (Stack-Based)</h3>
+    <ul>
+        <li>Initialize stack: [ $, StartSymbol ]</li>
+        <li>Repeat: if top = terminal → match & pop, if top = non-terminal → use parsing table</li>
+        <li>Pop non-terminal, push RHS of production</li>
+        <li>If production = ε → pop non-terminal</li>
+    </ul>
+
+    <h3>Parsing Table Example</h3>
+    <table>
+        <tr>
+            <th>Non-terminal</th>
+            <th>ID</th>
+            <th>+</th>
+            <th>$</th>
+        </tr>
+        <tr>
+            <td>E</td>
+            <td>E → T E'</td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>E'</td>
+            <td></td>
+            <td>E' → + T E'</td>
+            <td>E' → ε</td>
+        </tr>
+        <tr>
+            <td>T</td>
+            <td>T → ID</td>
+            <td></td>
+            <td></td>
+        </tr>
+    </table>
+
+    <h3>Parsing Steps (Stack Method)</h3>
+    <table>
+        <tr>
+            <th>Stack</th>
+            <th>Input</th>
+            <th>Action</th>
+        </tr>
+        <tr>
+            <td>E $</td>
+            <td>ID + ID $</td>
+            <td>Table[E,ID] → E → T E'</td>
+        </tr>
+        <tr>
+            <td>T E' $</td>
+            <td>ID + ID $</td>
+            <td>Table[T,ID] → T → ID</td>
+        </tr>
+        <tr>
+            <td>ID E' $</td>
+            <td>ID + ID $</td>
+            <td>Match ID, pop</td>
+        </tr>
+        <tr>
+            <td>E' $</td>
+            <td>+ ID $</td>
+            <td>Table[E',+] → E' → + T E'</td>
+        </tr>
+        <tr>
+            <td>+ T E' $</td>
+            <td>+ ID $</td>
+            <td>Match +</td>
+        </tr>
+        <tr>
+            <td>T E' $</td>
+            <td>ID $</td>
+            <td>Table[T,ID] → T → ID</td>
+        </tr>
+        <tr>
+            <td>ID E' $</td>
+            <td>ID $</td>
+            <td>Match ID</td>
+        </tr>
+        <tr>
+            <td>E' $</td>
+            <td>$</td>
+            <td>Table[E',$] → E' → ε</td>
+        </tr>
+        <tr>
+            <td>$</td>
+            <td>$</td>
+            <td>Success</td>
+        </tr>
+    </table>
+
+    <h3>Parse Tree (Textual)</h3>
+    <div class="diagram">
+           E
+           |
+         /   \
+        T     E'
+        |    / \
+       ID   +   T  E'
+               |   |
+              ID   ε
+    </div>
+
+    <h3>Key Points</h3>
+    <ul>
+        <li>Predictive parser = top-down, table-driven, no backtracking</li>
+        <li>Only works with LL(1) grammar</li>
+        <li>Parse table uses FIRST and FOLLOW sets</li>
+        <li>Success = input completely consumed + stack empty</li>
+    </ul>
+
+</div>
+
+ <div class="container">
+        <h1>Bottom-Up Parsing</h1>
+
+        <h2>1. Definition of Bottom-Up Parsing</h2>
+        <p>
+            Bottom-Up Parsing is a method of syntax analysis in which the parser starts from the input symbols (tokens) and gradually reduces them to the start symbol of the grammar.
+        </p>
+        <p>
+            Essentially, it tries to reconstruct the parse tree from leaves (tokens) to root (start symbol).
+        </p>
+        <p>
+            It is also called <span class="highlight">Shift-Reduce Parsing</span>, because the parser shifts tokens onto a stack and reduces sequences to non-terminals according to grammar rules.
+        </p>
+        <p><strong>Key Idea:</strong> “Start from the concrete (tokens) and build the abstract (start symbol).”</p>
+
+        <h2>2. Why Bottom-Up Parsing?</h2>
+        <ul>
+            <li>Can handle a larger class of grammars than top-down parsing.</li>
+            <li>Works even for grammars with left recursion, which top-down parsers struggle with.</li>
+            <li>Widely used in real-world compilers (like LALR parsers in Yacc/Bison).</li>
+        </ul>
+
+        <h2>3. Basic Components</h2>
+        <ul>
+            <li><strong>Stack:</strong> Stores terminals and non-terminals during parsing.</li>
+            <li><strong>Input Buffer:</strong> Holds remaining tokens to parse.</li>
+            <li><strong>Actions:</strong>
+                <ul>
+                    <li><strong>Shift:</strong> Move the next input symbol onto the stack.</li>
+                    <li><strong>Reduce:</strong> Replace a sequence on the stack (matching RHS of a production) with LHS non-terminal.</li>
+                    <li><strong>Accept:</strong> Stack has only the start symbol and input is empty.</li>
+                    <li><strong>Error:</strong> No valid action is possible.</li>
+                </ul>
+            </li>
+        </ul>
+
+        <h2>4. Example</h2>
+        <p><strong>Parse the expression:</strong></p>
+        <div class="code">id + id * id</div>
+
+        <h3>Step 1: Grammar (Expression Grammar)</h3>
+        <div class="code">
+E → E + T | T
+T → T * F | F
+F → id
+        </div>
+
+        <h3>Step 2: Input Tokens</h3>
+        <div class="code">id + id * id</div>
+
+        <h3>Step 3: Shift-Reduce Parsing Table (Simplified Stepwise)</h3>
+        <table>
+            <tr>
+                <th>Step</th>
+                <th>Stack</th>
+                <th>Input</th>
+                <th>Action</th>
+            </tr>
+            <tr><td>1</td><td>ε</td><td>id + id * id</td><td>Shift id</td></tr>
+            <tr><td>2</td><td>id</td><td>+ id * id</td><td>Reduce id → F</td></tr>
+            <tr><td>3</td><td>F</td><td>+ id * id</td><td>Reduce F → T</td></tr>
+            <tr><td>4</td><td>T</td><td>+ id * id</td><td>Shift +</td></tr>
+            <tr><td>5</td><td>T +</td><td>id * id</td><td>Shift id</td></tr>
+            <tr><td>6</td><td>T + id</td><td>* id</td><td>Reduce id → F</td></tr>
+            <tr><td>7</td><td>T + F</td><td>* id</td><td>Reduce F → T</td></tr>
+            <tr><td>8</td><td>T + T</td><td>* id</td><td>Shift *</td></tr>
+            <tr><td>9</td><td>T + T *</td><td>id</td><td>Shift id</td></tr>
+            <tr><td>10</td><td>T + T * id</td><td>ε</td><td>Reduce id → F</td></tr>
+            <tr><td>11</td><td>T + T * F</td><td>ε</td><td>Reduce T * F → T</td></tr>
+            <tr><td>12</td><td>T + T</td><td>ε</td><td>Reduce T + T → E</td></tr>
+            <tr><td>13</td><td>E</td><td>ε</td><td>Accept</td></tr>
+        </table>
+
+        <h3>Step 4: Textual Parse Tree</h3>
+        <div class="diagram">
+              E
+         _____|_____
+        E           +
+        |           |
+        T           T
+        |        ___|___
+        F       T       *
+        |       |       |
+       id       F       F
+               |       |
+              id      id
+        </div>
+
+        <h2>Explanation</h2>
+        <ul>
+            <li>Parsing starts from input tokens.</li>
+            <li>Every Reduce operation creates a non-terminal node in the parse tree.</li>
+            <li>Shift-Reduce continues until the stack has only the start symbol.</li>
+        </ul>
+
+        <h2>5. Key Points to Remember</h2>
+        <ul>
+            <li>Bottom-Up Parsing = Shift + Reduce</li>
+            <li>Can parse most context-free grammars (more powerful than top-down).</li>
+            <li>Stack grows as tokens are shifted, shrinks when reductions happen.</li>
+            <li>Parse tree is built bottom-up from leaves to root.</li>
+        </ul>
+    </div>
+    <div class="container">
+        <h1>SLR Parsing – Detailed Guide</h1>
+
+        <h2>1. What is SLR Parsing?</h2>
+        <p>
+            SLR (Simple LR) is a Bottom-Up parser:
+        </p>
+        <ul>
+            <li>Uses LR(0) items (productions with a dot showing progress).</li>
+            <li>Resolves conflicts using FOLLOW sets.</li>
+            <li>Simpler than full LR(1), widely used in textbooks and Yacc/Bison.</li>
+        </ul>
+        <p><strong>Key Idea:</strong></p>
+        <ul>
+            <li>Construct canonical collection of LR(0) items → make parsing table → parse input with shift-reduce actions.</li>
+            <li>Decisions are made using stack, input, and ACTION/GOTO table.</li>
+        </ul>
+
+        <h2>2. Steps to Construct an SLR Parser</h2>
+
+        <h3>Step 1: Augment Grammar</h3>
+        <p>Add a new start symbol S'</p>
+        <div class="code">
+Original grammar:<br>
+E → E + T | T<br>
+T → T * F | F<br>
+F → (E) | id
+        </div>
+        <div class="code">
+Augmented grammar:<br>
+S' → E<br>
+E  → E + T | T<br>
+T  → T * F | F<br>
+F  → (E) | id
+        </div>
+
+        <h3>Step 2: Construct LR(0) Items</h3>
+        <p>An LR(0) item is a production with a dot • showing how much has been seen.</p>
+        <div class="code">
+Example:<br>
+E → • E + T    (dot at start)<br>
+E → E • + T    (dot after E)<br>
+E → E + • T
+        </div>
+        <p><strong>Closure:</strong> Add items for non-terminal immediately after dot.</p>
+        <p><strong>GOTO:</strong> Move dot over a symbol to form a new state.</p>
+
+        <h3>Step 3: Canonical Collection of LR(0) Items</h3>
+        <p>Textual representation of states (partial for simplicity):</p>
+        <div class="code">
+I0:<br>
+S' → • E<br>
+E  → • E + T<br>
+E  → • T<br>
+T  → • T * F<br>
+T  → • F<br>
+F  → • (E)<br>
+F  → • id
+        </div>
+        <div class="code">
+I1 (after shifting E):<br>
+S' → E •<br>
+E  → E • + T
+        </div>
+        <p>I0 = initial state, I1 = after seeing E, and so on…</p>
+
+        <h3>Step 4: Construct SLR Parsing Table</h3>
+        <p>ACTION: Shift / Reduce / Accept</p>
+        <p>GOTO: State transitions for non-terminals</p>
+        <div class="code">
+Example (simplified):<br>
+State	id	+	*	(	)	$	E	T	F<br>
+0	s5			s4			1	2	3<br>
+1		s6				acc	<br>
+2		r2	s7		r2	r2<br>
+3		r4	r4		r4	r4<br>
+…										
+<br>
+s = shift<br>
+r = reduce by production<br>
+acc = accept
+        </div>
+
+        <h3>Step 5: Parse an Input String</h3>
+        <p>Input: id + id * id $</p>
+        <div class="code">
+Step	Stack	Input	Action
+0	0	id + id * id $	Shift 5
+1	0 5	+ id * id $	Reduce F→id
+2	0 3	+ id * id $	Reduce T→F
+3	0 2	+ id * id $	Reduce E→T
+4	0 1	+ id * id $	Shift 6 (+)
+5	0 1 6	id * id $	Shift 5
+6	0 1 6 5	* id $	Reduce F→id
+7	0 1 6 3	* id $	Reduce T→T*F
+8	0 1 2	$	Reduce E→E+T
+9	0 1	$	Accept
+        </div>
+
+        <h3>Step 6: Textual Parse Tree</h3>
+        <div class="diagram">
+                 E
+           ______|______
+          E             +
+      ____|____        |
+     T          F       T
+     |          |    ___|___
+     F          id  T       F
+     |              |       |
+    id              F       id
+                    |
+                   id
+        </div>
+        <p>Each reduce operation corresponds to creating a node in the parse tree. Stack changes show how the input is gradually reduced to start symbol.</p>
+
+        <h2>7. Key Points</h2>
+        <ul>
+            <li>SLR = LR(0) items + FOLLOW sets</li>
+            <li>Shift-Reduce parsing</li>
+            <li>Simple, memory-efficient, used in Yacc/Bison</li>
+            <li>Can handle a large class of unambiguous grammars</li>
+            <li>Conflicts resolved using FOLLOW of non-terminal</li>
+            <li>Parse tree is built bottom-up from leaves to root</li>
+        </ul>
+    </div>
+    <div class="container">
+    <h1>CLR (Canonical LR) Parsing</h1>
+
+    <h2>1. What is CLR (Canonical LR / LR(1) Parsing)?</h2>
+    <p>CLR parsing is a Bottom-Up parsing technique.</p>
+    <ul>
+        <li>It uses LR(1) items, meaning it considers the position in the production (the dot .) and 1-symbol lookahead (next input symbol) to decide reduce actions.</li>
+        <li>More powerful than SLR and LALR because it handles more grammars without conflicts.</li>
+        <li>Key Idea: Shift and reduce using lookahead to avoid incorrect reductions.</li>
+    </ul>
+
+    <h2>2. CLR Items (LR(1) Item)</h2>
+    <p>An LR(1) item is written as:</p>
+    <div class="code">
+[A → α . β , a]
+    </div>
+    <p>Where:</p>
+    <ul>
+        <li>A → α β is a production</li>
+        <li>. shows current position</li>
+        <li>a is lookahead terminal that can follow A</li>
+    </ul>
+    <p>Example: For grammar E → E + T | T, LR(1) items include:</p>
+    <div class="code">
+E → . E + T , $      (dot at start, lookahead $)
+E → E . + T , $      (dot after E, lookahead $)
+T → . id , +         (dot at start of T, lookahead +)
+    </div>
+
+    <h2>3. Grammar Example</h2>
+    <p>Use a simple expression grammar:</p>
+    <ul>
+        <li>E → E + T</li>
+        <li>E → T</li>
+        <li>T → T * F</li>
+        <li>T → F</li>
+        <li>F → id</li>
+    </ul>
+    <p>Goal: Parse <b>id + id * id</b> using CLR (LR(1)).</p>
+
+    <h2>4. Step 1: Construct LR(1) Items (States)</h2>
+    <p>Augmented Grammar: Add E' → E as start</p>
+    <p>Build canonical collection of LR(1) items (states)</p>
+    <div class="diagram">
+I0: 
+E' → . E , $
+E  → . E + T , $
+E  → . T , $
+T  → . T * F , +
+T  → . F , +
+F  → . id , * / + / $
+    </div>
+    <p>From I0:</p>
+    <ul>
+        <li>on id → shift → I5</li>
+        <li>on E → goto I1</li>
+        <li>on T → goto I2</li>
+        <li>on F → goto I3</li>
+    </ul>
+
+    <h2>5. Step 2: Construct CLR Parsing Table</h2>
+    <div class="table-responsive">
+        <table>
+            <tr>
+                <th>State</th>
+                <th>id</th>
+                <th>+</th>
+                <th>*</th>
+                <th>$</th>
+                <th>E</th>
+                <th>T</th>
+                <th>F</th>
+            </tr>
+            <tr>
+                <td>0</td>
+                <td>S5</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>1</td>
+                <td>2</td>
+                <td>3</td>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td></td>
+                <td>S6</td>
+                <td></td>
+                <td>Acc</td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>R2</td>
+                <td>S7</td>
+                <td>R2</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>R4</td>
+                <td>R4</td>
+                <td>R4</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>5</td>
+                <td>R5</td>
+                <td>R5</td>
+                <td>R5</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>6</td>
+                <td>S5</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>8</td>
+                <td></td>
+                <td>3</td>
+            </tr>
+            <tr>
+                <td>7</td>
+                <td>S5</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>9</td>
+            </tr>
+            <tr>
+                <td>8</td>
+                <td>R1</td>
+                <td>S7</td>
+                <td>R1</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>9</td>
+                <td>R3</td>
+                <td>R3</td>
+                <td>R3</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+        </table>
+    </div>
+    <p>S = Shift, R = Reduce, Acc = Accept</p>
+
+    <h2>6. Step 3: Parsing id + id * id Using CLR</h2>
+    <div class="code">
+Stack	Input	Action
+0	id + id * id $	Shift (S5)
+0 5	+ id * id $	Reduce F → id
+0 3	+ id * id $	Reduce T → F
+0 2	+ id * id $	Reduce E → T
+0 1	+ id * id $	Shift (S6)
+0 1 6	id * id $	Shift (S5)
+0 1 6 5	* id $	Reduce F → id
+0 1 6 3	* id $	Reduce T → F
+0 1 6 7	id $	Shift (S5)
+...	...	Continue ...
+0 1	$	Accept
+    </div>
+
+    <h2>7. Step 4: Textual Parse Tree</h2>
+    <div class="diagram">
+                E
+       __________|__________
+      E                     +
+      |                     |
+      T                     T
+  ____|____             ____|____
+ T         *           F
+ |         |           |
+ F         F           id
+ |         |
+ id       id
+    </div>
+
+    <h2>8. Key Points About CLR (LR(1))</h2>
+    <ul>
+        <li>Most powerful LR parser.</li>
+        <li>Handles all deterministic context-free grammars.</li>
+        <li>Uses 1-symbol lookahead for safe reductions.</li>
+        <li>Expensive in memory → often replaced by LALR in practice.</li>
+        <li>Useful for expressions, statements, and programming languages parsing.</li>
+    </ul>
+
+    <h1>LALR Parsing</h1>
+
+    <h2>1. What is LALR Parsing?</h2>
+    <ul>
+        <li>LALR stands for Look-Ahead LR.</li>
+        <li>It is a bottom-up parser like LR parsing.</li>
+        <li>Combines states of LR(0) items to reduce table size but still uses 1-symbol lookahead like LR(1).</li>
+        <li>Memory-efficient compared to Canonical LR(1), but more powerful than SLR.</li>
+        <li>Key Idea: Merge LR(1) states that have the same LR(0) core to reduce number of states. Lookahead resolves conflicts that SLR cannot handle.</li>
+    </ul>
+
+    <h2>2. Steps to Construct LALR Parsing Table</h2>
+    <ul>
+        <li>Start with grammar, augment it with S' → S (start symbol).</li>
+        <li>Construct LR(0) items (A → α . β).</li>
+        <li>Compute lookahead sets for each item.</li>
+        <li>Merge states with same LR(0) core; combine lookahead sets.</li>
+        <li>Construct LALR parsing table (Actions: Shift, Reduce, Accept, Error; Goto for non-terminals).</li>
+    </ul>
+
+    <h2>3. Example</h2>
+    <p>Grammar:</p>
+    <ul>
+        <li>S → L = R | R</li>
+        <li>L → * R | id</li>
+        <li>R → L</li>
+    </ul>
+
+    <h3>Augment Grammar</h3>
+    <p>S' → S</p>
+
+    <h3>Step 1: LR(0) Items (partial)</h3>
+    <div class="code">
+I0: S' → . S
+    S → . L = R
+    S → . R
+    L → . * R
+    L → . id
+    R → . L
+    </div>
+
+    <h3>Step 2: Compute LR(1) Lookahead (before merging)</h3>
+    <p>Example: S → L = R . , $ (reduce L = R when lookahead is $)</p>
+
+    <h3>Step 3: Merge LR(0) Cores</h3>
+    <p>States with same items ignoring lookahead are merged; lookahead sets unioned to reduce table size.</p>
+
+    <h3>Step 4: LALR Parsing Table (partial textual)</h3>
+    <div class="code">
+State	id	*	=	$	S	L	R
+0	S4	S3			1	2	5
+1				Acc			
+2			S6				
+3	S3	S3				7	5
+...							
+
+S = Shift
+R = Reduce (not shown fully here)
+Acc = Accept
+    </div>
+
+    <h3>Step 5: Parse Example: id = id</h3>
+    <div class="code">
+Stack | Input | Action
+0       id = id $   Shift → stack: 0 id 4
+0 id4   = id $     Reduce L→id
+0 L2    = id $     Shift = → stack: 0 L2 = 6
+0 L2 =6 id $       Shift id → stack: 0 L2 =6 id 4
+0 L2 =6 id4 $      Reduce L→id
+0 L2 =6 L2 $       Reduce S→L=R
+0 S1    $          Accept
+    </div>
+
+    <h3>Step 6: Textual Parse Tree</h3>
+    <div class="diagram">
+        S
+     ___|___
+    L       R
+    |       |
+   id       L
+           |
+          id
+    </div>
+
+    <h2>7. Key Points</h2>
+    <ul>
+        <li>LALR = SLR + lookahead in merged states.</li>
+        <li>Most practical parser generators (Yacc/Bison) use LALR.</li>
+        <li>Reduces table size dramatically compared to Canonical LR(1).</li>
+        <li>Handles shift-reduce conflicts better than SLR.</li>
+    </ul>
+
+</div>
+
+
+
+
+</body>
+</html>

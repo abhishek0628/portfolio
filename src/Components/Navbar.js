@@ -17,7 +17,7 @@ function Navbar() {
   return (
     <nav className="navbar">
       <div className="logo">
-        <Link to="/">Abhi</Link>
+        {/* <Link to="/">Abhi</Link> */}
       </div>
 
       <ul className="nav-links">
@@ -26,6 +26,7 @@ function Navbar() {
         <li><Link to="/projects">Projects</Link></li>
         <li><Link to="/contacts">Contact</Link></li>
         <li><Link to="/Blog">Blog</Link></li>
+        <li><Link to="/Courses">Courses</Link></li>
       </ul>
     </nav>
   );

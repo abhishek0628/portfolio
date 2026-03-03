@@ -30,6 +30,8 @@ import Projects from "./Pages/Projects"
 import Contacts from "./Pages/Contacts"
 import About from "./Pages/About"
 import Blog from "./Pages/Blog"
+import Courses from "./Pages/Courses"
+
 function App(){
   return(
     <Router>
@@ -40,6 +42,7 @@ function App(){
         <Route path="/contacts" element={<Contacts/>}/>
         <Route path="/About" element={<About/>}/>
         <Route path="/Blog" element={<Blog/>}/>
+        <Route path="/Courses" element={<Courses/>}/>
 
       </Routes>
     </Router>

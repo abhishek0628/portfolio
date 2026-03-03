@@ -3,19 +3,34 @@ import "../Style/Projects.css";
 function Projects() {
   const projects = [
     {
-      title: "MERN Blog App",
+      title: "Blogging Platform",
       desc: "Full-stack blog platform with authentication, CRUD posts, and likes.",
-      github: "https://github.com/abhishek/mern-blog-app",
+      github: "https://github.com/abhishek0628/Blog",
     },
     {
-      title: "Spam Email Classifier",
-      desc: "Machine learning project classifying emails as spam or not using SVM.",
-      github: "https://github.com/abhishek/spam-classifier",
+      title: "Image differentiator",
+      desc: "Finding difference between two images.",
+      github: "https://github.com/abhishek0628/ImageDiff",
     },
     {
-      title: "Compiler Frontend",
-      desc: "Compiler project using Lex and Yacc to parse custom language.",
-      github: "https://github.com/abhishek/compiler-frontend",
+      title: "Real Object Detection",
+      desc: "Detecting images from video",
+      github: "https://github.com/abhishek0628/RealVision",
+    },
+    {
+      title: "College-Assignment",
+      desc: "Assignments during college",
+      github: "https://github.com/abhishek0628/College-Assignments",
+    },
+    {
+      title: "Movie Recommendation System",
+      desc: "Recommending movie from given movie",
+      github: "https://github.com/abhishek0628/CINEMATE",
+    },
+    {
+      title: "Final Year Project",
+      desc: "safety checking in OMAS using RBN",
+      github: "https://github.com/abhishek0628/Final_Year_Project",
     },
   ];
 
