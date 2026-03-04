@@ -8,7 +8,7 @@ function Contact() {
       <div className="contact-container">
         <div className="contact-card">
           <h3>Email</h3>
-          <p>abhi124@gmail.com</p>
+          <p>abhijnv124@gmail.com</p>
         </div>
 
         <div className="contact-card">
