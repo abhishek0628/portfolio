@@ -1,5 +1,10 @@
 
 import {BrowserRouter as Router,Routes,Route} from "react-router-dom"
+// import DSA from "./Courses/DSA";
+// import OS from "./Courses/OS";
+// import CN from "./Courses/CN";
+
+
 import Navbar from "./Components/Navbar"
 import Home from "./Pages/Home"
 import Projects from "./Pages/Projects"
@@ -19,6 +24,7 @@ function App(){
         <Route path="/About" element={<About/>}/>
         <Route path="/Blog" element={<Blog/>}/>
         <Route path="/Courses" element={<Courses/>}/>
+        
 
       </Routes>
     </Router>
