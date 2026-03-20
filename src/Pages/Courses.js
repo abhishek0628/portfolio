@@ -16,35 +16,35 @@ function Courses() {
       date: "February 2026",
       content:
         "Operating Systems concepts including processes, scheduling, memory management, file systems, and synchronization.",
-      link: "/Courses/OS.html",
+      link: "Courses/OS.html",
     },
     {
       title: "Compiler Design",
       date: "January 2026",
       content:
         "Study compiler phases such as lexical analysis, parsing, semantic analysis, and intermediate code generation.",
-      link: "/Courses/CD.html",
+      link: "Courses/CD.html",
     },
      {
       title: "Computer Networks",
       date: "January 2026",
       content:
         "Study computer networks,ip addressing ,newtworking.",
-      link: "/Courses/CN.html",
+      link: "Courses/CN.html",
     },
      {
       title: "DBMS",
       date: "January 2026",
       content:
         "Study dbms.",
-      link: "/Courses/DBMS.html",
+      link: "Courses/DBMS.html",
     },
      {
       title: "OOPS",
       date: "January 2026",
       content:
         "Study oops.",
-      link: "/Courses/OOPS.html",
+      link: "Courses/OOPS.html",
     },
   ]);
 
