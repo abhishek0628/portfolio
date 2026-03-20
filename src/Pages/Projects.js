@@ -30,7 +30,7 @@ function Projects() {
     {
       title: "Final Year Project",
       desc: "safety checking in OMAS using RBN",
-      github: "https://github.com/abhishek0628/Final_Year_Project",
+      github: "https://github.com/abhishek0628/College-Assignments/tree/main/FYP",
     },
   ];
 

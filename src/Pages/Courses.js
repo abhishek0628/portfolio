@@ -9,7 +9,7 @@ function Courses() {
       date: "March 2026",
       content:
         "Learn Data Structures and Algorithms including arrays, linked lists, trees, graphs, and problem-solving strategies.",
-      link: "/Courses/DSA.html",
+      link: "Courses/DSA.html",
     },
     {
       title: "OS",
