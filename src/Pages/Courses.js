@@ -1,77 +1,77 @@
 
-import { useState } from "react";
-import "../Style/Blog.css";
+// import { useState } from "react";
+// import "../Style/Blog.css";
 
-function Courses() {
-  const [posts] = useState([
-    {
-      title: "DSA",
-      date: "March 2026",
-      content:
-        "Learn Data Structures and Algorithms including arrays, linked lists, trees, graphs, and problem-solving strategies.",
-      link: "Courses/DSA.html",
-    },
-    {
-      title: "OS",
-      date: "February 2026",
-      content:
-        "Operating Systems concepts including processes, scheduling, memory management, file systems, and synchronization.",
-      link: "Courses/OS.html",
-    },
-    {
-      title: "Compiler Design",
-      date: "January 2026",
-      content:
-        "Study compiler phases such as lexical analysis, parsing, semantic analysis, and intermediate code generation.",
-      link: "Courses/CD.html",
-    },
-     {
-      title: "Computer Networks",
-      date: "January 2026",
-      content:
-        "Study computer networks,ip addressing ,newtworking.",
-      link: "Courses/CN.html",
-    },
-     {
-      title: "DBMS",
-      date: "January 2026",
-      content:
-        "Study dbms.",
-      link: "Courses/DBMS.html",
-    },
-     {
-      title: "OOPS",
-      date: "January 2026",
-      content:
-        "Study oops.",
-      link: "Courses/OOPS.html",
-    },
-  ]);
+// function Courses() {
+//   const [posts] = useState([
+//     {
+//       title: "DSA",
+//       date: "March 2026",
+//       content:
+//         "Learn Data Structures and Algorithms including arrays, linked lists, trees, graphs, and problem-solving strategies.",
+//       link: "Courses/DSA.html",
+//     },
+//     {
+//       title: "OS",
+//       date: "February 2026",
+//       content:
+//         "Operating Systems concepts including processes, scheduling, memory management, file systems, and synchronization.",
+//       link: "Courses/OS.html",
+//     },
+//     {
+//       title: "Compiler Design",
+//       date: "January 2026",
+//       content:
+//         "Study compiler phases such as lexical analysis, parsing, semantic analysis, and intermediate code generation.",
+//       link: "Courses/CD.html",
+//     },
+//      {
+//       title: "Computer Networks",
+//       date: "January 2026",
+//       content:
+//         "Study computer networks,ip addressing ,newtworking.",
+//       link: "Courses/CN.html",
+//     },
+//      {
+//       title: "DBMS",
+//       date: "January 2026",
+//       content:
+//         "Study dbms.",
+//       link: "Courses/DBMS.html",
+//     },
+//      {
+//       title: "OOPS",
+//       date: "January 2026",
+//       content:
+//         "Study oops.",
+//       link: "Courses/OOPS.html",
+//     },
+//   ]);
 
-  return (
-    <section className="blog" id="blog">
-      <h1>Courses</h1>
+//   return (
+//     <section className="blog" id="blog">
+//       <h1>Courses</h1>
 
-      <div className="blog-container">
-        {posts.map((post, index) => (
-          <div className="blog-card" key={index}>
-            <h3>{post.title}</h3>
+//       <div className="blog-container">
+//         {posts.map((post, index) => (
+//           <div className="blog-card" key={index}>
+//             <h3>{post.title}</h3>
 
-            <span className="blog-date">{post.date}</span>
+//             <span className="blog-date">{post.date}</span>
 
-            <p>{post.content}</p>
+//             <p>{post.content}</p>
 
-            <a href={post.link}>
-              <button className="read-more">Read More</button>
-            </a>
-          </div>
-        ))}
-      </div>
-    </section>
-  );
-}
+//             <a href={post.link}>
+//               <button className="read-more">Read More</button>
+//             </a>
+//           </div>
+//         ))}
+//       </div>
+//     </section>
+//   );
+// }
 
-export default Courses;
+// export default Courses;
 // import { useState } from "react";
 // import { Link } from "react-router-dom";
 // import "../Style/Blog.css";
@@ -141,3 +141,80 @@ export default Courses;
 // }
 
 // export default Courses;
+
+
+
+
+import { useState } from "react";
+import "../Style/Blog.css";
+
+function Courses() {
+  const [posts] = useState([
+    {
+      title: "DSA",
+      date: "March 2026",
+      content:
+        "Learn Data Structures and Algorithms including arrays, linked lists, trees, graphs, and problem-solving strategies.",
+      link: "/Courses/DSA.html",
+    },
+    {
+      title: "OS",
+      date: "February 2026",
+      content:
+        "Operating Systems concepts including processes, scheduling, memory management, file systems, and synchronization.",
+      link: "/Courses/OS.html",
+    },
+    {
+      title: "Compiler Design",
+      date: "January 2026",
+      content:
+        "Study compiler phases such as lexical analysis, parsing, semantic analysis, and intermediate code generation.",
+      link: "/Courses/CD.html",
+    },
+     {
+      title: "Computer Networks",
+      date: "January 2026",
+      content:
+        "Study computer networks,ip addressing ,newtworking.",
+      link: "/Courses/CN.html",
+    },
+     {
+      title: "DBMS",
+      date: "January 2026",
+      content:
+        "Study dbms.",
+      link: "/Courses/DBMS.html",
+    },
+     {
+      title: "OOPS",
+      date: "January 2026",
+      content:
+        "Study oops.",
+      link: "/Courses/OOPS.html",
+    },
+  ]);
+
+  return (
+    <section className="blog" id="blog">
+      <h1>Courses</h1>
+
+      <div className="blog-container">
+        {posts.map((post, index) => (
+          <div className="blog-card" key={index}>
+            <h3>{post.title}</h3>
+
+            <span className="blog-date">{post.date}</span>
+
+            <p>{post.content}</p>
+
+            <a href={post.link}>
+              <button className="read-more">Read More</button>
+            </a>
+          </div>
+        ))}
+      </div>
+    </section>
+  );
+}
+
+export default Courses; 
